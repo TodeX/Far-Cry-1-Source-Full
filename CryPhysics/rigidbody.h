@@ -2,7 +2,7 @@
 //
 //	Rigid Body header
 //	
-//	File: rigidbody.cpp
+//	File: rigidbody.h
 //	Description : RigidBody class declaration
 //
 //	History:
@@ -14,34 +14,39 @@
 #define rigidbody_h
 #pragma once
 
+#include "utils.h"
+#include "primitives.h"
+#include "physinterface.h"
+
 struct entity_contact;
+class CPhysicalEntity;
 
 const int MAX_CONTACTS = 4096;
 enum solver_events { solver_initialize, solver_end_iter, solver_end };
 
 class IRigidBodyOwner {
 public:
-	virtual void AddImpulseAtContact(entity_contact *pcontact, int iop, const vectorf &dP) = 0;
-	virtual vectorf GetVelocityAtContact(entity_contact *pcontact, int iop) = 0;
-	virtual int OnRegisterContact(entity_contact *pcontact, int iop) = 0;
+	virtual void AddImpulseAtContact(entity_contact *pContact, int iop, const vectorf &dP) = 0;
+	virtual vectorf GetVelocityAtContact(entity_contact *pContact, int iop) = 0;
+	virtual int OnRegisterContact(entity_contact *pContact, int iop) = 0;
 	virtual void OnSolverEvent(int iEvent) = 0;
 };
 
 class RigidBody : public IRigidBodyOwner {
 public:
 	RigidBody();
-	void Create(const vectorf &center,const vectorf &Ibody0,const quaternionf &q0, float volume,float mass, 
-							const quaternionf &qframe,const vectorf &posframe);
-	void Add(const vectorf &center,const vectorf Ibodyop,const quaternionf &qop, float volume,float mass);
+	void Create(const vectorf &center, const vectorf &Ibody0, const quaternionf &q0, float volume, float mass,
+		const quaternionf &qframe, const vectorf &posframe);
+	void Add(const vectorf &center, const vectorf Ibodyop, const quaternionf &qop, float volume, float mass);
 	void zero();
 
 	void Step(float dt);
 	void UpdateState();
 	void GetContactMatrix(const vectorf &r, matrix3x3f &K);
 
-	virtual void AddImpulseAtContact(entity_contact *pcontact, int iop, const vectorf &dP);
-	virtual vectorf GetVelocityAtContact(entity_contact *pcontact, int iop);
-	virtual int OnRegisterContact(entity_contact *pcontact, int iop) { return 1; }
+	virtual void AddImpulseAtContact(entity_contact *pContact, int iop, const vectorf &dP);
+	virtual vectorf GetVelocityAtContact(entity_contact *pContact, int iop);
+	virtual int OnRegisterContact(entity_contact *pContact, int iop) { return 1; }
 	virtual void OnSolverEvent(int iEvent) {}
 
 	vectorf pos;
@@ -49,7 +54,7 @@ public:
 	vectorf P,L;
 	vectorf w,v;
 
-	float M,Minv; // mass, 1.0/mass (0 for static objects)
+	float M, Minv; // mass, 1.0/mass (0 for static objects)
 	float V; // volume
 	matrix3x3diagf Ibody; // diagonalized inertia tensor (aligned with body's axes of inertia)
 	matrix3x3diagf Ibody_inv; // { 1/Ibody.ii }
@@ -58,7 +63,7 @@ public:
 
 	matrix3x3f Iinv; // I^-1(t)
 
-	vectorf Fcollision,Tcollision;
+	vectorf Fcollision, Tcollision;
 	int bProcessed; // used internally
 	float Eunproj;
 	float softness[2];
@@ -66,14 +71,14 @@ public:
 	IRigidBodyOwner *pOwner;
 };
 
-enum contactflags { contact_count_mask=0x3F, contact_new=0x40, contact_2b_verified=0x80, contact_2b_verified_log2=7, 
-										contact_angular=0x100, contact_constraint_3dof=0x200, contact_constraint_2dof=0x400, 
-										contact_constraint_1dof=0x800, contact_solve_for=0x1000,
-										contact_constraint=contact_constraint_3dof|contact_constraint_2dof|contact_constraint_1dof,
-										contact_angular_log2=8,contact_bidx=0x2000,contact_bidx_log2=13, contact_maintain_count=0x4000,
-										contact_wheel=0x8000, contact_use_C=0x10000, contact_inexact=0x20000 };
-
-class CPhysicalEntity;
+enum contactflags {
+	contact_count_mask=0x3F, contact_new=0x40, contact_2b_verified=0x80, contact_2b_verified_log2=7,
+	contact_angular=0x100, contact_constraint_3dof=0x200, contact_constraint_2dof=0x400,
+	contact_constraint_1dof=0x800, contact_solve_for=0x1000,
+	contact_constraint=contact_constraint_3dof|contact_constraint_2dof|contact_constraint_1dof,
+	contact_angular_log2=8, contact_bidx=0x2000, contact_bidx_log2=13, contact_maintain_count=0x4000,
+	contact_wheel=0x8000, contact_use_C=0x10000, contact_inexact=0x20000
+};
 
 struct entity_contact {
 	vectorf pt[2];
@@ -92,24 +97,37 @@ struct entity_contact {
 	//float vsep;
 	float Pspare;
 	float penetration;
-	matrix3x3f K,Kinv;
+	matrix3x3f K, Kinv;
 	matrix3x3f C;
 	int iNormal;
 	int iPrim[2];
 	int iFeature[2];
 	int bProcessed;
-	int iCount,*pBounceCount;
+	int iCount, *pBounceCount;
 
-	vectorf r0,r;
-	vectorf dP,P;
+	vectorf r0, r;
+	vectorf dP, P;
 	float dPn;
 };
 
+class RigidBodySolver {
+public:
+	static void Init(float timeInterval);
+	static void RegisterContact(entity_contact *pContact);
+	static void Invoke(float timeInterval, SolverSettings *pSolverSettings);
+	static char* AllocTmpBuf(int size);
+
+	static int GetContactCount();
+	static int GetBodyCount();
+};
+
+// Deprecated global functions, redirected to RigidBodySolver
+inline void InitContactSolver(float time_interval) { RigidBodySolver::Init(time_interval); }
+inline void RegisterContact(entity_contact *pcontact) { RigidBodySolver::RegisterContact(pcontact); }
+inline void InvokeContactSolver(float time_interval, SolverSettings *pss) { RigidBodySolver::Invoke(time_interval, pss); }
+inline char *AllocSolverTmpBuf(int size) { return RigidBodySolver::AllocTmpBuf(size); }
+inline int GetNumContacts() { return RigidBodySolver::GetContactCount(); }
+
 extern bool g_bUsePreCG;
-extern int g_nContacts,g_nBodies;
-void InitContactSolver(float time_interval);
-void RegisterContact(entity_contact *pcontact);
-void InvokeContactSolver(float time_interval, SolverSettings *pss);
-char *AllocSolverTmpBuf(int size);
 
 #endif
