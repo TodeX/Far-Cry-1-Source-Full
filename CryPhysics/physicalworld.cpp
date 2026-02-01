@@ -43,7 +43,7 @@ CPhysicalWorld::CPhysicalWorld(ILog *pLog)
 	m_pLog = pLog; 
 	Init(); 
 	g_pPhysWorlds[g_nPhysWorlds] = this;
-	g_nPhysWorlds = min(g_nPhysWorlds+1,sizeof(g_pPhysWorlds)/sizeof(g_pPhysWorlds[0]));
+	g_nPhysWorlds = min(g_nPhysWorlds+1, (int)(sizeof(g_pPhysWorlds)/sizeof(g_pPhysWorlds[0])));
 	m_pEntBeingDeleted = 0;
 	m_bGridThunksChanged = 0;
 	m_bUpdateOnlyFlagged = 0;
@@ -54,9 +54,9 @@ CPhysicalWorld::~CPhysicalWorld()
 	Shutdown();
 	int i;
 	for(i=0; i<g_nPhysWorlds && g_pPhysWorlds[i]!=this; i++);
-	if (i<g_nPhysWorlds)
+	if (i < g_nPhysWorlds)
 		g_nPhysWorlds--;
-	for(; i<g_nPhysWorlds; i++) g_pPhysWorlds[i] = g_pPhysWorlds[i+1];
+	for(; i < g_nPhysWorlds; i++) g_pPhysWorlds[i] = g_pPhysWorlds[i+1];
 }
 
 
@@ -71,9 +71,9 @@ void CPhysicalWorld::Init()
 	m_iTimeSnapshot[0]=m_iTimeSnapshot[1]=m_iTimeSnapshot[2]=m_iTimeSnapshot[3] = 0;
 	m_iTimePhysics = 0;
 	m_pHeightfield = 0;
-	int i; for(i=0;i<8;i++) { m_pTypedEnts[i]=m_pTypedEntsPerm[i]=0; m_updateTimes[i]=0; }
+	int i; for(i=0; i<8; i++) { m_pTypedEnts[i]=m_pTypedEntsPerm[i]=0; m_updateTimes[i]=0; }
 	m_vars.nMaxSubsteps = 10;
-	for(i=0;i<NSURFACETYPES;i++) {
+	for(i=0; i<NSURFACETYPES; i++) {
 		m_BouncinessTable[i] = 0;
 		m_FrictionTable[i] = 1.2f;
 		m_DynFrictionTable[i] = 1.2f/1.5f;
@@ -116,7 +116,7 @@ void CPhysicalWorld::Init()
 	m_vars.bUseDistanceContacts = 0;
 	m_vars.unprojVelScale = 10.0f;
 	m_vars.maxUnprojVel = 1.2f;
-	m_vars.gravity.Set(0,0,-9.8f);
+	m_vars.gravity.Set(0, 0, -9.8f);
 	m_vars.nGroupDamping = 8;
 	m_vars.groupDamping = 0.5f;
 	m_vars.bEnforceContacts = 1;//1;
@@ -152,14 +152,14 @@ void CPhysicalWorld::Init()
 
 void CPhysicalWorld::Shutdown(int bDeleteGeometries)
 {
-	int i; CPhysicalEntity *pent,*pent_next;
-	for(i=0;i<8;i++) {
-		for(pent=m_pTypedEnts[i]; pent; pent=pent_next) 
-		{ pent_next=pent->m_next; delete pent; }
+	int i; CPhysicalEntity *pEntity, *pNextEntity;
+	for(i=0; i<8; i++) {
+		for(pEntity=m_pTypedEnts[i]; pEntity; pEntity=pNextEntity)
+		{ pNextEntity = pEntity->m_next; delete pEntity; }
 		m_pTypedEnts[i] = 0; m_pTypedEntsPerm[i] = 0;
 	}
 	m_nEnts = m_nEntsAlloc = 0;
-	for(i=0;i<m_nPlaceholderChunks;i++) if (m_pPlaceholders[i])
+	for(i=0; i<m_nPlaceholderChunks; i++) if (m_pPlaceholders[i])
 		delete[] m_pPlaceholders[i];
 	if (m_pPlaceholders) delete[] m_pPlaceholders;
 	if (m_pPlaceholderMap) delete[] m_pPlaceholderMap;
@@ -174,7 +174,7 @@ void CPhysicalWorld::Shutdown(int bDeleteGeometries)
 	if (m_pGroupIds) delete[] m_pGroupIds; m_pGroupIds = 0;
 	if (m_pGroupNums) delete[] m_pGroupNums; m_pGroupNums = 0;
 	if (m_pEntsById) delete[] m_pEntsById; m_pEntsById = 0;
-	if (m_nOccRes) for(i=0;i<6;i++) {
+	if (m_nOccRes) for(i=0; i<6; i++) {
 		delete[] m_pGridStat[i]; delete[] m_pGridDyn[i];
 	}
 	if (m_nExplVictimsAlloc) {
@@ -228,30 +228,30 @@ int CPhysicalWorld::GetHeightfieldData(heightfield *phf)
 {
 	if (!m_pHeightfield)
 		return 0;
-	m_pHeightfield->m_parts[0].pPhysGeom->pGeom->GetPrimitive(0,phf);
+	m_pHeightfield->m_parts[0].pPhysGeom->pGeom->GetPrimitive(0, phf);
 	phf->Basis = m_HeightfieldBasis;
 	phf->origin = m_HeightfieldOrigin;
 	return 1;
 }
 
 
-void CPhysicalWorld::SetupEntityGrid(int axisz, vectorf org, int nx,int ny, float stepx,float stepy)
+void CPhysicalWorld::SetupEntityGrid(int axisz, vectorf org, int nx, int ny, float stepx, float stepy)
 {
 	if (m_pEntGrid) delete[] m_pEntGrid;
 	m_iEntAxisz = axisz;
-	m_entgrid.size.set(nx,ny);
-	m_entgrid.stride.set(1,nx);
-	m_entgrid.step.set(stepx,stepy);
-	m_entgrid.stepr.set(1.0f/stepx,1.0f/stepy);
+	m_entgrid.size.set(nx, ny);
+	m_entgrid.stride.set(1, nx);
+	m_entgrid.step.set(stepx, stepy);
+	m_entgrid.stepr.set(1.0f/stepx, 1.0f/stepy);
 	m_entgrid.origin = org;
 	m_pEntGrid = new pe_gridthunk*[nx*ny+1];
-	for(int i=nx*ny;i>=0;i--) m_pEntGrid[i]=0;
+	for(int i=nx*ny; i>=0; i--) m_pEntGrid[i] = 0;
 }
 
 
-int CPhysicalWorld::SetSurfaceParameters(int surface_idx, float bounciness,float friction, unsigned int flags)
+int CPhysicalWorld::SetSurfaceParameters(int surface_idx, float bounciness, float friction, unsigned int flags)
 {
-	if ((unsigned int)surface_idx>=(unsigned int)NSURFACETYPES)
+	if ((unsigned int)surface_idx >= (unsigned int)NSURFACETYPES)
 		return 0;
 	m_BouncinessTable[surface_idx] = bounciness;
 	m_FrictionTable[surface_idx] = friction;
@@ -259,9 +259,9 @@ int CPhysicalWorld::SetSurfaceParameters(int surface_idx, float bounciness,float
 	m_SurfaceFlagsTable[surface_idx] = flags;
 	return 1;
 }
-int CPhysicalWorld::GetSurfaceParameters(int surface_idx, float &bounciness,float &friction, unsigned int &flags)
+int CPhysicalWorld::GetSurfaceParameters(int surface_idx, float &bounciness, float &friction, unsigned int &flags)
 {
-	if ((unsigned int)surface_idx>=(unsigned int)NSURFACETYPES)
+	if ((unsigned int)surface_idx >= (unsigned int)NSURFACETYPES)
 		return 0;
 	bounciness = m_BouncinessTable[surface_idx];
 	friction = m_FrictionTable[surface_idx];
@@ -272,22 +272,22 @@ int CPhysicalWorld::GetSurfaceParameters(int surface_idx, float &bounciness,floa
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-template<class dtype> void ReallocateList(dtype *&plist, int szold,int sznew,bool bZero=false)
+template<class dtype> void ReallocateList(dtype *&plist, int szold, int sznew, bool bZero=false)
 {
 	dtype *newlist = new dtype[sznew];
 	if (bZero)
-		memset(newlist+szold,0,sizeof(dtype)*max(0,sznew-szold));
-	memcpy(newlist,plist,min(szold,sznew)*sizeof(dtype));
+		memset(newlist+szold, 0, sizeof(dtype)*max(0, sznew-szold));
+	memcpy(newlist, plist, min(szold, sznew)*sizeof(dtype));
 	if (plist)
 		delete[] plist;
 	plist = newlist;
 }
 
 
-IPhysicalEntity* CPhysicalWorld::CreatePhysicalEntity(pe_type type, float lifeTime, pe_params* params, void *pForeignData,int iForeignData, 
+IPhysicalEntity* CPhysicalWorld::CreatePhysicalEntity(pe_type type, float lifeTime, pe_params* params, void *pForeignData, int iForeignData,
 																											int id, IPhysicalEntity *pHostPlaceholder)
 {
-	CPhysicalEntity *res=0;
+	CPhysicalEntity *res = 0;
 	CPhysicalPlaceholder *pPrevHost = m_pCurEntityHost;
 	if (pHostPlaceholder)
 		m_pCurEntityHost = (CPhysicalPlaceholder*)pHostPlaceholder;
@@ -304,9 +304,9 @@ IPhysicalEntity* CPhysicalWorld::CreatePhysicalEntity(pe_type type, float lifeTi
 	}
 
 	if (res) {
-		if (type!=PE_STATIC)
+		if (type != PE_STATIC)
 			m_nDynamicEntitiesDeleted = 0;
-		if (m_pCurEntityHost && lifeTime>0) {
+		if (m_pCurEntityHost && lifeTime > 0) {
 			res->m_pForeignData = m_pCurEntityHost->m_pForeignData;
 			res->m_iForeignData = m_pCurEntityHost->m_iForeignData;
 			res->m_iForeignFlags = m_pCurEntityHost->m_iForeignFlags;
@@ -325,19 +325,19 @@ IPhysicalEntity* CPhysicalWorld::CreatePhysicalEntity(pe_type type, float lifeTi
 			res->m_bPermanent = 1;
 			res->m_pForeignData = pForeignData;
 			res->m_iForeignData = iForeignData;
-			SetPhysicalEntityId(res, id>=0 ? id:m_iNextId++);
+			SetPhysicalEntityId(res, id >= 0 ? id : m_iNextId++);
 		}
 		if (params)
 			res->SetParams(params);
-		RepositionEntity(res,2);
+		RepositionEntity(res, 2);
 		if (++m_nEnts > m_nEntsAlloc-1) {
 			m_nEntsAlloc += 256;
-			ReallocateList(m_pTmpEntList,m_nEnts-1,m_nEntsAlloc);
-			ReallocateList(m_pTmpEntList1,m_nEnts-1,m_nEntsAlloc);
-			ReallocateList(m_pGroupMass,m_nEnts-1,m_nEntsAlloc);
-			ReallocateList(m_pMassList,m_nEnts-1,m_nEntsAlloc);
-			ReallocateList(m_pGroupIds,m_nEnts-1,m_nEntsAlloc);
-			ReallocateList(m_pGroupNums,m_nEnts-1,m_nEntsAlloc);
+			ReallocateList(m_pTmpEntList, m_nEnts-1, m_nEntsAlloc);
+			ReallocateList(m_pTmpEntList1, m_nEnts-1, m_nEntsAlloc);
+			ReallocateList(m_pGroupMass, m_nEnts-1, m_nEntsAlloc);
+			ReallocateList(m_pMassList, m_nEnts-1, m_nEntsAlloc);
+			ReallocateList(m_pGroupIds, m_nEnts-1, m_nEntsAlloc);
+			ReallocateList(m_pGroupNums, m_nEnts-1, m_nEntsAlloc);
 		}
 	}
 
@@ -346,28 +346,28 @@ IPhysicalEntity* CPhysicalWorld::CreatePhysicalEntity(pe_type type, float lifeTi
 }
 
 
-IPhysicalEntity *CPhysicalWorld::CreatePhysicalPlaceholder(pe_type type, pe_params* params, void *pForeignData,int iForeignData, int id)
+IPhysicalEntity *CPhysicalWorld::CreatePhysicalPlaceholder(pe_type type, pe_params* params, void *pForeignData, int iForeignData, int id)
 {
-	int i,j,iChunk;
-	if (m_nPlaceholders*10<m_iLastPlaceholder*7) {
+	int i, j, iChunk;
+	if (m_nPlaceholders*10 < m_iLastPlaceholder*7) {
 		for(i=m_iLastPlaceholder>>5; i>=0 && m_pPlaceholderMap[i]==-1; i--);
-		if (i>=0) {
-			for(j=0;j<32 && m_pPlaceholderMap[i]&1<<j;j++);
+		if (i >= 0) {
+			for(j=0; j<32 && m_pPlaceholderMap[i]&1<<j; j++);
 			i = i<<5|j;
 		}
 		i = i-(i>>31) | m_iLastPlaceholder+1&i>>31;
 	} else
 		i = m_iLastPlaceholder+1;
 
-	iChunk = i>>PLACEHOLDER_CHUNK_SZLG2;
-	if (iChunk==m_nPlaceholderChunks) {
+	iChunk = i >> PLACEHOLDER_CHUNK_SZLG2;
+	if (iChunk == m_nPlaceholderChunks) {
 		m_nPlaceholderChunks++;
-		ReallocateList(m_pPlaceholders, m_nPlaceholderChunks-1,m_nPlaceholderChunks,true);
-		ReallocateList(m_pPlaceholderMap, (m_iLastPlaceholder>>5)+1,m_nPlaceholderChunks<<PLACEHOLDER_CHUNK_SZLG2-5,true);
+		ReallocateList(m_pPlaceholders, m_nPlaceholderChunks-1, m_nPlaceholderChunks, true);
+		ReallocateList(m_pPlaceholderMap, (m_iLastPlaceholder>>5)+1, m_nPlaceholderChunks<<PLACEHOLDER_CHUNK_SZLG2-5, true);
 	}
 	if (!m_pPlaceholders[iChunk])
 		m_pPlaceholders[iChunk] = new CPhysicalPlaceholder[PLACEHOLDER_CHUNK_SZ];
-	CPhysicalPlaceholder *res = m_pPlaceholders[iChunk]+(i & PLACEHOLDER_CHUNK_SZ-1);
+	CPhysicalPlaceholder *res = m_pPlaceholders[iChunk] + (i & PLACEHOLDER_CHUNK_SZ-1);
 	
 	res->m_pForeignData = pForeignData;
 	res->m_iForeignData = iForeignData;
@@ -386,46 +386,46 @@ IPhysicalEntity *CPhysicalWorld::CreatePhysicalPlaceholder(pe_type type, pe_para
 	}
 	m_pPlaceholderMap[i>>5] |= 1<<(i&31);
 
-	SetPhysicalEntityId(res, id>=0 ? id:m_iNextId++);
+	SetPhysicalEntityId(res, id >= 0 ? id : m_iNextId++);
 	if (params)
 		res->SetParams(params);
 	m_nPlaceholders++;
-	m_iLastPlaceholder = max(m_iLastPlaceholder,i);
+	m_iLastPlaceholder = max(m_iLastPlaceholder, i);
 
 	return res;
 }
 
 
-int CPhysicalWorld::DestroyPhysicalEntity(IPhysicalEntity* _pent,int mode)
+int CPhysicalWorld::DestroyPhysicalEntity(IPhysicalEntity* _pent, int mode)
 {
-	FUNCTION_PROFILER( GetISystem(),PROFILE_PHYSICS );
+	FUNCTION_PROFILER( GetISystem(), PROFILE_PHYSICS );
 
 	int idx;
 	CPhysicalPlaceholder *ppc = (CPhysicalPlaceholder*)_pent;
-	if (ppc->m_pEntBuddy && IsPlaceholder(ppc->m_pEntBuddy) && mode!=0 || m_nDynamicEntitiesDeleted && ppc->m_iSimClass>0)
+	if (ppc->m_pEntBuddy && IsPlaceholder(ppc->m_pEntBuddy) && mode != 0 || m_nDynamicEntitiesDeleted && ppc->m_iSimClass > 0)
 		return 0;
 
-	if (idx=IsPlaceholder(ppc)) {
-		if (mode!=0)
+	if (idx = IsPlaceholder(ppc)) {
+		if (mode != 0)
 			return 0;
 		if (ppc->m_pEntBuddy)
-			DestroyPhysicalEntity(ppc->m_pEntBuddy,mode);
-		SetPhysicalEntityId(ppc,-1);
+			DestroyPhysicalEntity(ppc->m_pEntBuddy, mode);
+		SetPhysicalEntityId(ppc, -1);
 		DetachEntityGridThunks(ppc);
 		if (ppc->m_pGridThunks) delete[] ppc->m_pGridThunks;
 		--idx;
 		m_pPlaceholderMap[idx>>5] &= ~(1<<(idx&31));
 		m_nPlaceholders--;
 
-		int i,j,iChunk = idx>>PLACEHOLDER_CHUNK_SZLG2;
+		int i, j, iChunk = idx>>PLACEHOLDER_CHUNK_SZLG2;
 		// if entire iChunk is empty, deallocate it
-		for(i=j=0;i<PLACEHOLDER_CHUNK_SZ>>5;i++) j |= m_pPlaceholderMap[(iChunk<<PLACEHOLDER_CHUNK_SZLG2-5)+i];
+		for(i=j=0; i<PLACEHOLDER_CHUNK_SZ>>5; i++) j |= m_pPlaceholderMap[(iChunk<<PLACEHOLDER_CHUNK_SZLG2-5)+i];
 		if (!j) {
 			delete[] m_pPlaceholders[iChunk]; m_pPlaceholders[iChunk] = 0;
 		}
 		j = m_nPlaceholderChunks;
 		// make sure that m_iLastPlaceholder points to the last used placeholder slot
-		for(; m_iLastPlaceholder>=0 && !(m_pPlaceholderMap[m_iLastPlaceholder>>5] & 1<<(m_iLastPlaceholder&31)); m_iLastPlaceholder--)
+		for(; m_iLastPlaceholder >= 0 && !(m_pPlaceholderMap[m_iLastPlaceholder>>5] & 1<<(m_iLastPlaceholder&31)); m_iLastPlaceholder--)
 		if ((m_iLastPlaceholder^m_iLastPlaceholder-1)+1>>1 == PLACEHOLDER_CHUNK_SZ) {	
 			// if m_iLastPlaceholder points to the 1st chunk element, entire chunk is free and can be deallocated
 			iChunk = m_iLastPlaceholder>>PLACEHOLDER_CHUNK_SZLG2;
@@ -434,77 +434,71 @@ int CPhysicalWorld::DestroyPhysicalEntity(IPhysicalEntity* _pent,int mode)
 			}
 			m_nPlaceholderChunks = iChunk;
 		}
-		if (m_nPlaceholderChunks<j)
-			ReallocateList(m_pPlaceholderMap,j<<PLACEHOLDER_CHUNK_SZLG2-5,m_nPlaceholderChunks<<PLACEHOLDER_CHUNK_SZLG2-5,true);
+		if (m_nPlaceholderChunks < j)
+			ReallocateList(m_pPlaceholderMap, j<<PLACEHOLDER_CHUNK_SZLG2-5, m_nPlaceholderChunks<<PLACEHOLDER_CHUNK_SZLG2-5, true);
 
 		return 1;
 	}
 
-	CPhysicalEntity *pent = (CPhysicalEntity*)_pent;
-	if (pent->m_iSimClass==7)
+	CPhysicalEntity *pEntity = (CPhysicalEntity*)_pent;
+	if (pEntity->m_iSimClass == 7)
 		return 0;
 
-	if (mode==2) {
-		if (pent->m_iSimClass==-1 && pent->m_iPrevSimClass>=0) {
-			pent->m_ig[0].x=pent->m_ig[1].x=pent->m_ig[0].y=pent->m_ig[1].y = -2;
-			pent->m_iSimClass = pent->m_iPrevSimClass & 0x0F; pent->m_iPrevSimClass=-1;
-			RepositionEntity(pent);
+	if (mode == 2) {
+		if (pEntity->m_iSimClass == -1 && pEntity->m_iPrevSimClass >= 0) {
+			pEntity->m_ig[0].x=pEntity->m_ig[1].x=pEntity->m_ig[0].y=pEntity->m_ig[1].y = -2;
+			pEntity->m_iSimClass = pEntity->m_iPrevSimClass & 0x0F; pEntity->m_iPrevSimClass = -1;
+			RepositionEntity(pEntity);
 		}
 		return 1;
 	}
 
-	if (m_pEntBeingDeleted==pent)
+	if (m_pEntBeingDeleted == pEntity)
 		return 1;
-	m_pEntBeingDeleted = pent;
-	if (mode==0 && !pent->m_bPermanent && m_pPhysicsStreamer)
-		m_pPhysicsStreamer->DestroyPhysicalEntity(pent);
+	m_pEntBeingDeleted = pEntity;
+	if (mode == 0 && !pEntity->m_bPermanent && m_pPhysicsStreamer)
+		m_pPhysicsStreamer->DestroyPhysicalEntity(pEntity);
 	m_pEntBeingDeleted = 0;
 
-	pent->AlertNeighbourhoodND();
-	if ((unsigned int)pent->m_iPrevSimClass<8u && pent->m_iSimClass>=0) {
-		if (pent->m_next) pent->m_next->m_prev = pent->m_prev;
-		(pent->m_prev ? pent->m_prev->m_next : m_pTypedEnts[pent->m_iPrevSimClass]) = pent->m_next;
-		if (pent==m_pTypedEntsPerm[pent->m_iPrevSimClass])
-			m_pTypedEntsPerm[pent->m_iPrevSimClass] = pent->m_next;
+	pEntity->AlertNeighbourhoodND();
+	if ((unsigned int)pEntity->m_iPrevSimClass < 8u && pEntity->m_iSimClass >= 0) {
+		if (pEntity->m_next) pEntity->m_next->m_prev = pEntity->m_prev;
+		(pEntity->m_prev ? pEntity->m_prev->m_next : m_pTypedEnts[pEntity->m_iPrevSimClass]) = pEntity->m_next;
+		if (pEntity == m_pTypedEntsPerm[pEntity->m_iPrevSimClass])
+			m_pTypedEntsPerm[pEntity->m_iPrevSimClass] = pEntity->m_next;
 	}
-	pent->m_next=pent->m_prev = 0;
-/*#ifdef _DEBUG
-CPhysicalEntity *ptmp = m_pTypedEnts[1];
-for(;ptmp && ptmp!=m_pTypedEntsPerm[1]; ptmp=ptmp->m_next);
-if (ptmp!=m_pTypedEntsPerm[1])
-DEBUG_BREAK;
-#endif*/
+	pEntity->m_next = pEntity->m_prev = 0;
 
-	if (!pent->m_pEntBuddy) {
-		DetachEntityGridThunks(pent);
-		if (pent->m_pGridThunks) delete[] pent->m_pGridThunks;
+	if (!pEntity->m_pEntBuddy) {
+		DetachEntityGridThunks(pEntity);
+		if (pEntity->m_pGridThunks) delete[] pEntity->m_pGridThunks;
 	}
-	pent->m_nGridThunks = pent->m_nGridThunksAlloc = 0;
-	pent->m_pGridThunks = 0;
+	pEntity->m_nGridThunks = pEntity->m_nGridThunksAlloc = 0;
+	pEntity->m_pGridThunks = 0;
 
-	if (mode==0) {
-		pent->m_iPrevSimClass = -1; pent->m_iSimClass = 7;
-		if (pent->m_next = m_pTypedEnts[7]) 
-			pent->m_next->m_prev=pent;
-		if (pent->m_pEntBuddy)
-			pent->m_pEntBuddy->m_pEntBuddy = 0;
+	if (mode == 0) {
+		pEntity->m_iPrevSimClass = -1; pEntity->m_iSimClass = 7;
+		if (pEntity->m_next = m_pTypedEnts[7])
+			pEntity->m_next->m_prev = pEntity;
+		if (pEntity->m_pEntBuddy)
+			pEntity->m_pEntBuddy->m_pEntBuddy = 0;
 		else
-			SetPhysicalEntityId(pent,-1);
-		m_pTypedEnts[7] = pent;	
+			SetPhysicalEntityId(pEntity, -1);
+		m_pTypedEnts[7] = pEntity;
 		if (--m_nEnts < m_nEntsAlloc-512) {
-			ReallocateList(m_pTmpEntList,m_nEntsAlloc,m_nEntsAlloc-512);
-			ReallocateList(m_pTmpEntList1,m_nEntsAlloc,m_nEntsAlloc-512);
-			ReallocateList(m_pGroupMass,0,m_nEntsAlloc-512);
-			ReallocateList(m_pMassList,0,m_nEntsAlloc-512);
-			ReallocateList(m_pGroupIds,0,m_nEntsAlloc-512);
-			ReallocateList(m_pGroupNums,0,m_nEntsAlloc-512);
+			ReallocateList(m_pTmpEntList, m_nEntsAlloc, m_nEntsAlloc-512);
+			ReallocateList(m_pTmpEntList1, m_nEntsAlloc, m_nEntsAlloc-512);
+			ReallocateList(m_pGroupMass, 0, m_nEntsAlloc-512);
+			ReallocateList(m_pMassList, 0, m_nEntsAlloc-512);
+			ReallocateList(m_pGroupIds, 0, m_nEntsAlloc-512);
+			ReallocateList(m_pGroupNums, 0, m_nEntsAlloc-512);
 			m_nEntsAlloc -= 512;
 		}
-	} else if (pent->m_iSimClass>=0) {
+	} else if (pEntity->m_iSimClass >= 0) {
 		pe_action_reset reset;
-		pent->Action(&reset);
-		pent->m_iPrevSimClass = pent->m_iSimClass | 0x100;
-		pent->m_iSimClass = -1;
+		pEntity->Action(&reset);
+		pEntity->m_iPrevSimClass = pEntity->m_iSimClass | 0x100;
+		pEntity->m_iSimClass = -1;
 	}
 	
 	return 1;
@@ -515,21 +509,21 @@ int CPhysicalWorld::SetPhysicalEntityId(IPhysicalEntity *_pent, int id, int bRep
 {
 	CPhysicalPlaceholder *pent = (CPhysicalPlaceholder*)_pent;
 	unsigned int previd = (unsigned int)pent->m_id;
-	if (previd<(unsigned int)m_nIdsAlloc) {
+	if (previd < (unsigned int)m_nIdsAlloc) {
 		m_pEntsById[previd] = 0;
-		if (previd==m_iNextId-1)
-			for(;m_iNextId>0 && m_pEntsById[m_iNextId-1]==0;m_iNextId--);
+		if (previd == m_iNextId-1)
+			for(; m_iNextId > 0 && m_pEntsById[m_iNextId-1] == 0; m_iNextId--);
 	}
-	m_iNextId = max(m_iNextId,id+1);
+	m_iNextId = max(m_iNextId, id+1);
 
-	if (id>=0) { 
-		if (id>=m_nIdsAlloc) {
+	if (id >= 0) {
+		if (id >= m_nIdsAlloc) {
 			int nAllocPrev = m_nIdsAlloc;
-			ReallocateList(m_pEntsById, nAllocPrev,m_nIdsAlloc=(id&~255)+256, true);
+			ReallocateList(m_pEntsById, nAllocPrev, m_nIdsAlloc=(id&~255)+256, true);
 		}
 		if (m_pEntsById[id]) {
 			if (bReplace)
-				SetPhysicalEntityId(m_pEntsById[id],m_iNextId++);
+				SetPhysicalEntityId(m_pEntsById[id], m_iNextId++);
 			else 
 				return 0;
 		}
@@ -550,64 +544,64 @@ int CPhysicalWorld::GetPhysicalEntityId(IPhysicalEntity *pent)
 
 IPhysicalEntity* CPhysicalWorld::GetPhysicalEntityById(int id)
 {
-	if ((unsigned int)id<(unsigned int)m_nIdsAlloc)
+	if ((unsigned int)id < (unsigned int)m_nIdsAlloc)
 		return m_pEntsById[id] ? m_pEntsById[id]->GetEntity() : 0;
 	else
-		return id==-1 ? m_pHeightfield : 0;
+		return id == -1 ? m_pHeightfield : 0;
 }
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-static inline void swap(CPhysicalEntity **pentlist,float *pmass,int *pids, int i1,int i2) {	
-	CPhysicalEntity *pent = pentlist[i1]; pentlist[i1] = pentlist[i2]; pentlist[i2] = pent;
+static inline void swap(CPhysicalEntity **pentlist, float *pmass, int *pids, int i1, int i2) {
+	CPhysicalEntity *pEntity = pentlist[i1]; pentlist[i1] = pentlist[i2]; pentlist[i2] = pEntity;
 	float m = pmass[i1]; pmass[i1] = pmass[i2]; pmass[i2] = m;
 	if (pids) {
 		int id = pids[i1]; pids[i1] = pids[i2]; pids[i2] = id;
 	}
 }
-static void qsort(CPhysicalEntity **pentlist,float *pmass,int *pids, int ileft,int iright)
+static void qsort(CPhysicalEntity **pentlist, float *pmass, int *pids, int ileft, int iright)
 {
-	if (ileft>=iright) return;
-	int i,ilast; 
-	swap(pentlist,pmass,pids, ileft,ileft+iright>>1);
-	for(ilast=ileft,i=ileft+1; i<=iright; i++)
+	if (ileft >= iright) return;
+	int i, ilast;
+	swap(pentlist, pmass, pids, ileft, ileft+iright>>1);
+	for(ilast=ileft, i=ileft+1; i<=iright; i++)
 	if (pmass[i] > pmass[ileft])
-		swap(pentlist,pmass,pids, ++ilast,i);
-	swap(pentlist,pmass,pids, ileft,ilast);
+		swap(pentlist, pmass, pids, ++ilast, i);
+	swap(pentlist, pmass, pids, ileft, ilast);
 
-	qsort(pentlist,pmass,pids, ileft,ilast-1);
-	qsort(pentlist,pmass,pids, ilast+1,iright);
+	qsort(pentlist, pmass, pids, ileft, ilast-1);
+	qsort(pentlist, pmass, pids, ilast+1, iright);
 }
 
 
-int CPhysicalWorld::GetEntitiesAround(const vectorf &ptmin,const vectorf &ptmax, CPhysicalEntity **&pList, int objtypes, 
+int CPhysicalWorld::GetEntitiesAround(const vectorf &ptmin, const vectorf &ptmax, CPhysicalEntity **&pList, int objtypes,
 																			CPhysicalEntity *pPetitioner)
 {
-	FUNCTION_PROFILER( GetISystem(),PROFILE_PHYSICS );
+	FUNCTION_PROFILER( GetISystem(), PROFILE_PHYSICS );
 
 	if (!m_pEntGrid) return 0;
-	int i,j,igx[2],igy[2],ix,iy,nout=0,itype,bSortRequired=0,bContact,nGridEnts=0,nEntsChecked=0;
-	vectorf bbox[2],bbox1[2];
-	pe_gridthunk *thunk,*thunk_next; 
+	int i, j, igx[2], igy[2], ix, iy, nout=0, itype, bSortRequired=0, bContact, nGridEnts=0, nEntsChecked=0;
+	vectorf bbox[2], bbox1[2];
+	pe_gridthunk *thunk, *thunk_next;
 	itype = pPetitioner ? 1<<pPetitioner->m_iSimClass & -iszero((int)pPetitioner->m_flags&pef_never_affect_triggers): 0;
 
 	bbox[0]=ptmin; bbox[1]=ptmax;
-	for(i=0;i<2;i++) {
-		igx[i] = max(-1,min(m_entgrid.size.x,float2int((bbox[i][inc_mod3[m_iEntAxisz]]-m_entgrid.origin[inc_mod3[m_iEntAxisz]])*m_entgrid.stepr.x-0.5f)));
-		igy[i] = max(-1,min(m_entgrid.size.y,float2int((bbox[i][dec_mod3[m_iEntAxisz]]-m_entgrid.origin[dec_mod3[m_iEntAxisz]])*m_entgrid.stepr.y-0.5f)));
+	for(i=0; i<2; i++) {
+		igx[i] = max(-1, min(m_entgrid.size.x, float2int((bbox[i][inc_mod3[m_iEntAxisz]] - m_entgrid.origin[inc_mod3[m_iEntAxisz]])*m_entgrid.stepr.x - 0.5f)));
+		igy[i] = max(-1, min(m_entgrid.size.y, float2int((bbox[i][dec_mod3[m_iEntAxisz]] - m_entgrid.origin[dec_mod3[m_iEntAxisz]])*m_entgrid.stepr.y - 0.5f)));
 	}
 
-	if ((igx[1]-igx[0]+1)*(igy[1]-igy[0]+1)>m_vars.nGEBMaxCells) {
+	if ((igx[1]-igx[0]+1)*(igy[1]-igy[0]+1) > m_vars.nGEBMaxCells) {
 		m_pLog->Log("\003GetEntitiesInBox: too many cells requested by %s (%d, (%.1f,%.1f,%.1f)-(%.1f,%.1f,%.1f))",
-			pPetitioner ? m_pPhysicsStreamer->GetForeignName(pPetitioner->m_pForeignData,pPetitioner->m_iForeignData,pPetitioner->m_iForeignFlags):"Game",
-			(igx[1]-igx[0]+1)*(igy[1]-igy[0]+1), bbox[0].x,bbox[0].y,bbox[0].z, bbox[1].x,bbox[1].y,bbox[1].z);
+			pPetitioner ? m_pPhysicsStreamer->GetForeignName(pPetitioner->m_pForeignData, pPetitioner->m_iForeignData, pPetitioner->m_iForeignFlags):"Game",
+			(igx[1]-igx[0]+1)*(igy[1]-igy[0]+1), bbox[0].x, bbox[0].y, bbox[0].z, bbox[1].x, bbox[1].y, bbox[1].z);
 		if (m_vars.bBreakOnValidation) DoBreak
 	}
 	
-	for(ix=igx[0];ix<=igx[1];ix++) for(iy=igy[0];iy<=igy[1];iy++) {
-		for(thunk=m_pEntGrid[m_entgrid.getcell_safe(ix,iy)]; thunk; thunk=thunk_next,nGridEnts++) {
+	for(ix=igx[0]; ix<=igx[1]; ix++) for(iy=igy[0]; iy<=igy[1]; iy++) {
+		for(thunk=m_pEntGrid[m_entgrid.getcell_safe(ix,iy)]; thunk; thunk=thunk_next, nGridEnts++) {
 			thunk_next = thunk->next;
 			if ((thunk->pent->m_bProcessed^1) & (objtypes>>thunk->pent->m_iSimClass)&1) {
 				CPhysicalPlaceholder *pGridEnt = thunk->pent;
@@ -617,73 +611,65 @@ int CPhysicalWorld::GetEntitiesAround(const vectorf &ptmin,const vectorf &ptmax,
 									 isneg(fabsf(bbox[0].z+bbox[1].z-bbox1[0].z-bbox1[1].z) - (bbox[1].z-bbox[0].z)-(bbox1[1].z-bbox1[0].z));
 
 				if (bContact) {
-					if (pGridEnt->m_iSimClass!=6) {
+					if (pGridEnt->m_iSimClass != 6) {
 						m_bGridThunksChanged = 0;
-						CPhysicalEntity *pent = thunk->pent->GetEntity();
+						CPhysicalEntity *pEntity = thunk->pent->GetEntity();
 						if (m_bGridThunksChanged)
-							thunk_next = m_pEntGrid[m_entgrid.getcell_safe(ix,iy)];
+							thunk_next = m_pEntGrid[m_entgrid.getcell_safe(ix, iy)];
 						m_bGridThunksChanged = 0;
 						if (objtypes & ent_ignore_noncolliding) {
-							for(i=0;i<pent->m_nParts && !(pent->m_parts[i].flags & (geom_collides&~geom_colltype_ray));i++);
-							if (i==pent->m_nParts) continue;
+							for(i=0; i<pEntity->m_nParts && !(pEntity->m_parts[i].flags & (geom_collides&~geom_colltype_ray)); i++);
+							if (i == pEntity->m_nParts) continue;
 						}
-						m_pTmpEntList[nout] = pent;
-						nout += (pGridEnt->m_bProcessed = iszero(m_bUpdateOnlyFlagged & ((int)pent->m_flags^pef_update)) | iszero(pent->m_iSimClass));
-						bSortRequired += pent->m_pOuterEntity!=0;
+						m_pTmpEntList[nout] = pEntity;
+						nout += (pGridEnt->m_bProcessed = iszero(m_bUpdateOnlyFlagged & ((int)pEntity->m_flags^pef_update)) | iszero(pEntity->m_iSimClass));
+						bSortRequired += pEntity->m_pOuterEntity!=0;
 					} else if (pGridEnt->m_iForeignFlags & itype && m_pEventClient)	{
-						/*bContact = 
-							isneg(fabsf(pPetitioner->m_BBox[0].x+pPetitioner->m_BBox[1].x-bbox1[0].x-bbox1[1].x) - 
-										(pPetitioner->m_BBox[1].x-pPetitioner->m_BBox[0].x)-(bbox1[1].x-bbox1[0].x)) & 
-							isneg(fabsf(pPetitioner->m_BBox[0].y+pPetitioner->m_BBox[1].y-bbox1[0].y-bbox1[1].y) - 
-										(pPetitioner->m_BBox[1].y-pPetitioner->m_BBox[0].y)-(bbox1[1].y-bbox1[0].y)) &
-							isneg(fabsf(pPetitioner->m_BBox[0].z+pPetitioner->m_BBox[1].z-bbox1[0].z-bbox1[1].z) - 
-										(pPetitioner->m_BBox[1].z-pPetitioner->m_BBox[0].z)-(bbox1[1].z-bbox1[0].z));
-						if (bContact)*/ 
-						m_pEventClient->OnBBoxOverlap(pGridEnt,pGridEnt->m_pForeignData,pGridEnt->m_iForeignData,
-							pPetitioner,pPetitioner->m_pForeignData,pPetitioner->m_iForeignData);
+						m_pEventClient->OnBBoxOverlap(pGridEnt, pGridEnt->m_pForeignData, pGridEnt->m_iForeignData,
+							pPetitioner, pPetitioner->m_pForeignData, pPetitioner->m_iForeignData);
 					}
 				}
 				nEntsChecked++;
 			}
 		}
 	}
-	for(i=0;i<nout;i++)	{
+	for(i=0; i<nout; i++)	{
 		m_pTmpEntList[i]->m_bProcessed = 0;
 		if (m_pTmpEntList[i]->m_pEntBuddy)
 			m_pTmpEntList[i]->m_pEntBuddy->m_bProcessed = 0;
 	}
 
 	if (bSortRequired) {
-		CPhysicalEntity *pent,*pents,*pstart;
-		for(i=0;i<nout;i++) m_pTmpEntList[i]->m_bProcessed_aux = 1;
-		for(i=0,pent=0;i<nout-1;i++) {
-			m_pTmpEntList[i]->m_prev_aux = pent;
+		CPhysicalEntity *pEntity, *pents, *pstart;
+		for(i=0; i<nout; i++) m_pTmpEntList[i]->m_bProcessed_aux = 1;
+		for(i=0, pEntity=0; i<nout-1; i++) {
+			m_pTmpEntList[i]->m_prev_aux = pEntity;
 			m_pTmpEntList[i]->m_next_aux = m_pTmpEntList[i+1];
-			pent = m_pTmpEntList[i];
+			pEntity = m_pTmpEntList[i];
 		}
 		pstart = m_pTmpEntList[0];
-		m_pTmpEntList[nout-1]->m_prev_aux = pent;
+		m_pTmpEntList[nout-1]->m_prev_aux = pEntity;
 		m_pTmpEntList[nout-1]->m_next_aux = 0;
-		for(i=0;i<nout;i++) {
-			if ((pent=m_pTmpEntList[i])->m_pOuterEntity && pent->m_pOuterEntity->m_bProcessed_aux>0) {
+		for(i=0; i<nout; i++) {
+			if ((pEntity=m_pTmpEntList[i])->m_pOuterEntity && pEntity->m_pOuterEntity->m_bProcessed_aux > 0) {
 				// if entity has an outer entity, move it together with its children right before this outer entity
-				for(pents=pent,j=pent->m_bProcessed_aux-1; j>0; pents=pents->m_prev_aux);	// count back the number of pent children
-				(pents->m_prev_aux ? pent->m_prev_aux->m_next_aux : pstart) = pent->m_next_aux;	// cut pents-pent stripe from list ...
-				if (pent->m_next_aux) pent->m_next_aux->m_prev_aux = pents->m_prev_aux;
-				pent->m_next_aux = pent->m_pOuterEntity; // ... and insert if before pent
-				pents->m_prev_aux = pent->m_pOuterEntity->m_prev_aux;
-				(pent->m_pOuterEntity->m_prev_aux ? pent->m_pOuterEntity->m_prev_aux->m_next_aux : pstart) = pents;
-				pent->m_pOuterEntity->m_prev_aux = pent;
-				pent->m_pOuterEntity->m_bProcessed_aux += pent->m_bProcessed_aux;
+				for(pents=pEntity, j=pEntity->m_bProcessed_aux-1; j>0; pents=pents->m_prev_aux);	// count back the number of pent children
+				(pents->m_prev_aux ? pents->m_prev_aux->m_next_aux : pstart) = pEntity->m_next_aux;	// cut pents-pent stripe from list ...
+				if (pEntity->m_next_aux) pEntity->m_next_aux->m_prev_aux = pents->m_prev_aux;
+				pEntity->m_next_aux = pEntity->m_pOuterEntity; // ... and insert if before pent
+				pents->m_prev_aux = pEntity->m_pOuterEntity->m_prev_aux;
+				(pEntity->m_pOuterEntity->m_prev_aux ? pEntity->m_pOuterEntity->m_prev_aux->m_next_aux : pstart) = pents;
+				pEntity->m_pOuterEntity->m_prev_aux = pEntity;
+				pEntity->m_pOuterEntity->m_bProcessed_aux += pEntity->m_bProcessed_aux;
 			}
 		}
 		vectorf ptc = (ptmin+ptmax)*0.5f;
-		for(i=0;i<nout;i++) m_pTmpEntList[i]->m_bProcessed_aux = 0;
-		for(pent=pstart,nout=0; pent; pent=pent->m_next_aux) if (!pent->m_bProcessed_aux) {
-			m_pTmpEntList[nout] = pent;
-			if (pent->m_pOuterEntity && pent->IsPointInside(ptc))
-				for(pent=pent->m_pOuterEntity; pent; pent=pent->m_pOuterEntity) pent->m_bProcessed_aux=-1;
-			pent = m_pTmpEntList[nout++];
+		for(i=0; i<nout; i++) m_pTmpEntList[i]->m_bProcessed_aux = 0;
+		for(pEntity=pstart, nout=0; pEntity; pEntity=pEntity->m_next_aux) if (!pEntity->m_bProcessed_aux) {
+			m_pTmpEntList[nout] = pEntity;
+			if (pEntity->m_pOuterEntity && pEntity->IsPointInside(ptc))
+				for(pEntity=pEntity->m_pOuterEntity; pEntity; pEntity=pEntity->m_pOuterEntity) pEntity->m_bProcessed_aux = -1;
+			pEntity = m_pTmpEntList[nout++];
 		}
 	}
 
@@ -692,22 +678,22 @@ int CPhysicalWorld::GetEntitiesAround(const vectorf &ptmin,const vectorf &ptmax,
 
 	pList = m_pTmpEntList;
 	if (objtypes & ent_sort_by_mass) {
-		for(i=0;i<nout;i++) m_pMassList[i] = m_pTmpEntList[i]->GetMassInv();
+		for(i=0; i<nout; i++) m_pMassList[i] = m_pTmpEntList[i]->GetMassInv();
 		// manually put all static (0-massinv) object to the end of the list, since qsort doesn't
 		// perform very well on lists of same numbers
 		int ilast;
-		for(i=ilast=nout-1; i>0; i--) if (m_pMassList[i]==0) {
-			if (i!=ilast) 
-				swap(m_pTmpEntList,m_pMassList,0, i,ilast);
+		for(i=ilast=nout-1; i>0; i--) if (m_pMassList[i] == 0) {
+			if (i != ilast)
+				swap(m_pTmpEntList, m_pMassList, 0, i, ilast);
 			--ilast;
 		}
-		qsort(m_pTmpEntList,m_pMassList,0, 0,ilast);
+		qsort(m_pTmpEntList, m_pMassList, 0, 0, ilast);
 	}
 
-	if (objtypes&ent_allocate_list) {
-		if (nout>0) {
+	if (objtypes & ent_allocate_list) {
+		if (nout > 0) {
 			pList = new CPhysicalEntity*[nout];	
-			for(i=0;i<nout;i++) pList[i] = m_pTmpEntList[i];
+			for(i=0; i<nout; i++) pList[i] = m_pTmpEntList[i];
 		}	else
 			pList = 0; //  don't allocate 0-elements arrays
 	}
@@ -716,38 +702,40 @@ int CPhysicalWorld::GetEntitiesAround(const vectorf &ptmin,const vectorf &ptmax,
 }
 
 
-void CPhysicalWorld::ScheduleForStep(CPhysicalEntity *pent)
+void CPhysicalWorld::ScheduleForStep(CPhysicalEntity *pEntity)
 {
-	if (!(pent->m_flags & pef_step_requested)) {
-		pent->m_flags |= pef_step_requested;
-		pent->m_next_coll = m_pAuxStepEnt;
-		m_pAuxStepEnt = pent;
+	if (!(pEntity->m_flags & pef_step_requested)) {
+		pEntity->m_flags |= pef_step_requested;
+		pEntity->m_next_coll = m_pAuxStepEnt;
+		m_pAuxStepEnt = pEntity;
 	}
 }
 
 int __curstep = 0; // debug
 
+// Advances the physical world by time_interval.
+// flags determines which entity types to update.
 void CPhysicalWorld::TimeStep(float time_interval, int flags)
 {
-	FUNCTION_PROFILER( GetISystem(),PROFILE_PHYSICS );
+	FUNCTION_PROFILER( GetISystem(), PROFILE_PHYSICS );
 
-	float m,max_time_step,time_interval_org = time_interval, Ebefore,Eafter,damping;
-	CPhysicalEntity *pent,*phead,*ptail,**pentlist,*pent_next,*pent1,*pentmax;
-	int i,j,n,iter,ipass,nGroups,bHeadAdded,bGroupFinished,bAllGroupsFinished,bStepValid,nAnimatedObjects,nEnts,bSkipFlagged;
+	float m, max_time_step, time_interval_org = time_interval, Ebefore, Eafter, damping;
+	CPhysicalEntity *pEntity, *pHead, *pTail, **pentlist, *pNextEntity, *pent1, *pentmax;
+	int i, j, n, iter, ipass, nGroups, bHeadAdded, bGroupFinished, bAllGroupsFinished, bStepValid, nAnimatedObjects, nEnts, bSkipFlagged;
 
-	if (time_interval<0)
+	if (time_interval < 0)
 		return;
 	if (time_interval > m_vars.maxWorldStep)
 		time_interval = time_interval_org = m_vars.maxWorldStep;
 	
-	if (m_vars.timeGranularity>0) {
+	if (m_vars.timeGranularity > 0) {
 		i = float2int(time_interval_org/m_vars.timeGranularity);
 		time_interval_org = time_interval = i*m_vars.timeGranularity;
 		m_iTimePhysics += i;
 		m_timePhysics = m_iTimePhysics*m_vars.timeGranularity;
 	}	else
 		m_timePhysics += time_interval;
-	if (m_vars.fixedTimestep>0)
+	if (m_vars.fixedTimestep > 0)
 		time_interval = m_vars.fixedTimestep;
 	m_bUpdateOnlyFlagged = flags & ent_flagged_only;
 	bSkipFlagged = flags>>1 & pef_update;
@@ -755,16 +743,18 @@ void CPhysicalWorld::TimeStep(float time_interval, int flags)
 	m_vars.bUseDistanceContacts &= m_vars.bMultiplayer^1;
 
 	if (flags & ent_living) {
-		for(pent=m_pTypedEnts[3]; pent; pent=pent->m_next) if (!(m_bUpdateOnlyFlagged&(pent->m_flags^pef_update) | bSkipFlagged&pent->m_flags))
-			pent->StartStep(time_interval_org);	// prepare to advance living entities
+		for(pEntity=m_pTypedEnts[3]; pEntity; pEntity=pEntity->m_next)
+			if (!(m_bUpdateOnlyFlagged&(pEntity->m_flags^pef_update) | bSkipFlagged&pEntity->m_flags))
+				pEntity->StartStep(time_interval_org);	// prepare to advance living entities
 	}
 
 	if (!m_vars.bSingleStepMode || m_vars.bDoStep) {
 		m_nProfiledEnts = 0;
 		iter = 0;	__curstep++;
 		if (flags & ent_independent) {
-			for(pent=m_pTypedEnts[4]; pent; pent=pent->m_next) if (!(m_bUpdateOnlyFlagged&(pent->m_flags^pef_update) | bSkipFlagged&pent->m_flags))
-				pent->StartStep(time_interval);
+			for(pEntity=m_pTypedEnts[4]; pEntity; pEntity=pEntity->m_next)
+				if (!(m_bUpdateOnlyFlagged&(pEntity->m_flags^pef_update) | bSkipFlagged&pEntity->m_flags))
+					pEntity->StartStep(time_interval);
 		}
 
 		if (flags & ent_rigid) {
@@ -775,48 +765,48 @@ void CPhysicalWorld::TimeStep(float time_interval, int flags)
 
 				for(ipass=0; ipass<2; ipass++) {
 					// build lists of intercolliding groups of entities
-					for(pent=m_pTypedEnts[2],nGroups=0; pent; pent=pent->m_next) 
-					if (!(pent->m_bMoved | m_bUpdateOnlyFlagged&(pent->m_flags^pef_update) | bSkipFlagged&pent->m_flags)) {
-						if (pent->GetMassInv()<=0) { 
-							if ((iter|ipass)==0) { // just make isolated step for rigids with infinite mass
-								pent->StartStep(time_interval); 
-								pent->m_iGroup = m_nEntsAlloc-1;
+					for(pEntity=m_pTypedEnts[2], nGroups=0; pEntity; pEntity=pEntity->m_next)
+					if (!(pEntity->m_bMoved | m_bUpdateOnlyFlagged&(pEntity->m_flags^pef_update) | bSkipFlagged&pEntity->m_flags)) {
+						if (pEntity->GetMassInv() <= 0) {
+							if ((iter|ipass) == 0) { // just make isolated step for rigids with infinite mass
+								pEntity->StartStep(time_interval);
+								pEntity->m_iGroup = m_nEntsAlloc-1;
 							}
-							if (ipass==0)	{
-								pent->Step(pent->GetMaxTimeStep(time_interval));
-								bAllGroupsFinished &= pent->Update(time_interval,1);
+							if (ipass == 0)	{
+								pEntity->Step(pEntity->GetMaxTimeStep(time_interval));
+								bAllGroupsFinished &= pEntity->Update(time_interval, 1);
 							}
 						} else {
-							pent->m_iGroup = nGroups; pent->m_bMoved = 1;	m_pGroupIds[nGroups] = 0;
-							m_pGroupMass[nGroups] = 1.0f/pent->GetMassInv();
-							if ((iter | ipass)==0) pent->StartStep(time_interval);
-							pent->m_next_coll1 = pent->m_next_coll = 0;
+							pEntity->m_iGroup = nGroups; pEntity->m_bMoved = 1;	m_pGroupIds[nGroups] = 0;
+							m_pGroupMass[nGroups] = 1.0f/pEntity->GetMassInv();
+							if ((iter | ipass) == 0) pEntity->StartStep(time_interval);
+							pEntity->m_next_coll1 = pEntity->m_next_coll = 0;
 							m_pTmpEntList1[nGroups] = 0;
 							// initially m_pTmpEntList1 points to group entities that collide with statics (sorted by mass) - linked via m_next_coll
 							// m_next_coll1 maintains a queue of current intercolliding objects
 
-							for(phead=ptail=pentmax=pent; phead; phead=phead->m_next_coll1) {
-								for(i=bHeadAdded=0,n=phead->GetColliders(pentlist); i<n; i++) if (pentlist[i]->GetMassInv()<=0) {
+							for(pHead=pTail=pentmax=pEntity; pHead; pHead=pHead->m_next_coll1) {
+								for(i=bHeadAdded=0, n=pHead->GetColliders(pentlist); i<n; i++) if (pentlist[i]->GetMassInv() <= 0) {
 									if (!bHeadAdded) {
-										for(pent1=m_pTmpEntList1[nGroups]; pent1 && pent1->m_next_coll && pent1->m_next_coll->GetMassInv()<=phead->GetMassInv(); 
+										for(pent1=m_pTmpEntList1[nGroups]; pent1 && pent1->m_next_coll && pent1->m_next_coll->GetMassInv() <= pHead->GetMassInv();
 												pent1=pent1->m_next_coll);
-										if (!pent1 || pent1->GetMassInv()>phead->GetMassInv()) {
-											phead->m_next_coll = pent1; m_pTmpEntList1[nGroups] = phead;
+										if (!pent1 || pent1->GetMassInv() > pHead->GetMassInv()) {
+											pHead->m_next_coll = pent1; m_pTmpEntList1[nGroups] = pHead;
 										} else {
-											phead->m_next_coll = pent1->m_next_coll; pent1->m_next_coll = phead;
+											pHead->m_next_coll = pent1->m_next_coll; pent1->m_next_coll = pHead;
 										}
 										bHeadAdded = 1;
 									}
 									m_pGroupIds[nGroups] = 1; // tells that group has static entities
 								} else if (!(pentlist[i]->m_bMoved | m_bUpdateOnlyFlagged & (pentlist[i]->m_flags^pef_update))) {
 									pentlist[i]->m_flags &= ~bSkipFlagged;
-									ptail->m_next_coll1 = pentlist[i]; ptail = pentlist[i]; ptail->m_next_coll1 = 0;
-									ptail->m_next_coll = 0;
-									ptail->m_iGroup = nGroups; ptail->m_bMoved = 1;
-									if ((iter | ipass)==0) ptail->StartStep(time_interval);
-									m_pGroupMass[nGroups] += 1.0f/(m=ptail->GetMassInv());
-									if (pentmax->GetMassInv()>m)
-										pentmax = ptail;
+									pTail->m_next_coll1 = pentlist[i]; pTail = pentlist[i]; pTail->m_next_coll1 = 0;
+									pTail->m_next_coll = 0;
+									pTail->m_iGroup = nGroups; pTail->m_bMoved = 1;
+									if ((iter | ipass) == 0) pTail->StartStep(time_interval);
+									m_pGroupMass[nGroups] += 1.0f/(m=pTail->GetMassInv());
+									if (pentmax->GetMassInv() > m)
+										pentmax = pTail;
 								}
 							}
 							if (!m_pTmpEntList1[nGroups])
@@ -826,148 +816,148 @@ void CPhysicalWorld::TimeStep(float time_interval, int flags)
 					}
 
 					// add maximum group mass to all groups that contain static entities
-					for(i=1,m=m_pGroupMass[0]; i<nGroups; i++) m = max(m,m_pGroupMass[i]);
-					for(m*=1.01f,i=0; i<nGroups; i++) m_pGroupMass[i] += m*m_pGroupIds[i];
-					for(i=0;i<nGroups;i++) m_pGroupIds[i] = i;
+					for(i=1, m=m_pGroupMass[0]; i<nGroups; i++) m = max(m, m_pGroupMass[i]);
+					for(m*=1.01f, i=0; i<nGroups; i++) m_pGroupMass[i] += m*m_pGroupIds[i];
+					for(i=0; i<nGroups; i++) m_pGroupIds[i] = i;
 
 					// sort groups by decsending group mass
-					qsort(m_pTmpEntList1,m_pGroupMass,m_pGroupIds, 0,nGroups-1);
-					for(i=0;i<nGroups;i++) m_pGroupNums[m_pGroupIds[i]] = i;
+					qsort(m_pTmpEntList1, m_pGroupMass, m_pGroupIds, 0, nGroups-1);
+					for(i=0; i<nGroups; i++) m_pGroupNums[m_pGroupIds[i]] = i;
 
-					for(i=0;i<nGroups;i++) {
+					for(i=0; i<nGroups; i++) {
 						m_iCurGroup = m_pGroupIds[i];
 						max_time_step = time_interval; nAnimatedObjects = 0;
-						for(ptail=m_pTmpEntList1[i]; ptail->m_next_coll; ptail=ptail->m_next_coll) ptail->m_bMoved = 0;
-						ptail->m_bMoved = 0;
-						for(phead=m_pTmpEntList1[i]; phead; phead=phead->m_next_coll)
-							for(j=0,n=phead->GetColliders(pentlist); j<n; j++) if (pentlist[j]->GetMassInv()>0) {
+						for(pTail=m_pTmpEntList1[i]; pTail->m_next_coll; pTail=pTail->m_next_coll) pTail->m_bMoved = 0;
+						pTail->m_bMoved = 0;
+						for(pHead=m_pTmpEntList1[i]; pHead; pHead=pHead->m_next_coll)
+							for(j=0, n=pHead->GetColliders(pentlist); j<n; j++) if (pentlist[j]->GetMassInv() > 0) {
 								if (!(pentlist[j]->m_bMoved^1 | m_bUpdateOnlyFlagged & (pentlist[j]->m_flags^pef_update))) {
-									ptail->m_next_coll = pentlist[j]; ptail = pentlist[j]; ptail->m_next_coll = 0; ptail->m_bMoved = 0;
+									pTail->m_next_coll = pentlist[j]; pTail = pentlist[j]; pTail->m_next_coll = 0; pTail->m_bMoved = 0;
 								} 
-							} else if (pentlist[j]->m_iSimClass>1) {
-								max_time_step = min(max_time_step,pentlist[j]->GetLastTimeStep(time_interval));
+							} else if (pentlist[j]->m_iSimClass > 1) {
+								max_time_step = min(max_time_step, pentlist[j]->GetLastTimeStep(time_interval));
 								nAnimatedObjects++;
 							}
-						for(pent=m_pTmpEntList1[i]; pent; pent=pent->m_next_coll)
-							max_time_step = min(max_time_step, pent->GetMaxTimeStep(time_interval));
+						for(pEntity=m_pTmpEntList1[i]; pEntity; pEntity=pEntity->m_next_coll)
+							max_time_step = min(max_time_step, pEntity->GetMaxTimeStep(time_interval));
 
-						if (ipass==0) {
+						if (ipass == 0) {
+							// First pass: Attempt to step entities forward.
+							// If any entity fails (e.g. moves too fast into collision), we might need to rollback or substep.
 							m_pAuxStepEnt = 0;
-							for(pent=m_pTmpEntList1[i],bStepValid=1; pent; pent=pent->m_next_coll) {
-								bStepValid &= pent->Step(max_time_step); pent->m_bMoved = 1;
+							for(pEntity=m_pTmpEntList1[i], bStepValid=1; pEntity; pEntity=pEntity->m_next_coll) {
+								bStepValid &= pEntity->Step(max_time_step); pEntity->m_bMoved = 1;
 							}
 							if (!bStepValid) {
-								for(pent=m_pTmpEntList1[i]; pent; pent=pent->m_next_coll)
-									pent->StepBack(max_time_step);
-								for(pent=m_pAuxStepEnt; pent; pent=pent->m_next_coll) 
-									pent->m_flags &= ~pef_step_requested;
+								for(pEntity=m_pTmpEntList1[i]; pEntity; pEntity=pEntity->m_next_coll)
+									pEntity->StepBack(max_time_step);
+								for(pEntity=m_pAuxStepEnt; pEntity; pEntity=pEntity->m_next_coll)
+									pEntity->m_flags &= ~pef_step_requested;
 							} else {
 								m_bWorldStep = 2;
-								for(pent=m_pAuxStepEnt; pent; pent=pent_next) {
-									pent_next = pent->m_next_coll;
-									pent->m_flags &= ~pef_step_requested;
-									pent->Step(pent->GetMaxTimeStep(max_time_step));
+								for(pEntity=m_pAuxStepEnt; pEntity; pEntity=pNextEntity) {
+									pNextEntity = pEntity->m_next_coll;
+									pEntity->m_flags &= ~pef_step_requested;
+									pEntity->Step(pEntity->GetMaxTimeStep(max_time_step));
 								}
 								m_bWorldStep = 1;
 							}
-							for(pent=m_pTmpEntList1[i]; pent; pent=pent->m_next_coll) pent->m_bMoved = 0;
+							for(pEntity=m_pTmpEntList1[i]; pEntity; pEntity=pEntity->m_next_coll) pEntity->m_bMoved = 0;
 						} else {
+							// Second pass: Solve contacts/collisions.
 							InitContactSolver(max_time_step);
 							Ebefore = Eafter = 0.0f; 
 
-							if (m_vars.nMaxPlaneContactsDistress!=m_vars.nMaxPlaneContacts) {
-								for(pent=m_pTmpEntList1[i],j=nEnts=0; pent; pent=pent->m_next_coll,nEnts++)	{
-									j += pent->GetContactCount(m_vars.nMaxPlaneContacts);
-									Ebefore += pent->CalcEnergy(max_time_step);
+							if (m_vars.nMaxPlaneContactsDistress != m_vars.nMaxPlaneContacts) {
+								for(pEntity=m_pTmpEntList1[i], j=nEnts=0; pEntity; pEntity=pEntity->m_next_coll, nEnts++)	{
+									j += pEntity->GetContactCount(m_vars.nMaxPlaneContacts);
+									Ebefore += pEntity->CalcEnergy(max_time_step);
 								}
-								n = j>m_vars.nMaxContacts ? m_vars.nMaxPlaneContactsDistress : m_vars.nMaxPlaneContacts;
-								for(pent=m_pTmpEntList1[i]; pent; pent=pent->m_next_coll)
-									pent->RegisterContacts(max_time_step,n);
-							} else for(pent=m_pTmpEntList1[i],nEnts=0; pent; pent=pent->m_next_coll,nEnts++) {
-								pent->RegisterContacts(max_time_step, m_vars.nMaxPlaneContacts);
-								Ebefore += pent->CalcEnergy(max_time_step);
+								n = j > m_vars.nMaxContacts ? m_vars.nMaxPlaneContactsDistress : m_vars.nMaxPlaneContacts;
+								for(pEntity=m_pTmpEntList1[i]; pEntity; pEntity=pEntity->m_next_coll)
+									pEntity->RegisterContacts(max_time_step, n);
+							} else for(pEntity=m_pTmpEntList1[i], nEnts=0; pEntity; pEntity=pEntity->m_next_coll, nEnts++) {
+								pEntity->RegisterContacts(max_time_step, m_vars.nMaxPlaneContacts);
+								Ebefore += pEntity->CalcEnergy(max_time_step);
 							}
 
-							Ebefore = max(m_pGroupMass[i]*sqr(0.005f),Ebefore);
+							Ebefore = max(m_pGroupMass[i]*sqr(0.005f), Ebefore);
 							
 							InvokeContactSolver(max_time_step, &m_vars);
 
-							//if (nAnimatedObjects==0) 
-							damping = 1.0f-max_time_step*m_vars.groupDamping*isneg(m_vars.nGroupDamping-1-max(nEnts,g_nBodies));
-							for(pent=m_pTmpEntList1[i],bGroupFinished=1; pent; pent=pent->m_next_coll) {
-								Eafter += pent->CalcEnergy(0);	
-								if (!(pent->m_flags & pef_fixed_damping))
-									damping = min(damping,pent->GetDamping(max_time_step));
+							damping = 1.0f - max_time_step*m_vars.groupDamping*isneg(m_vars.nGroupDamping-1-max(nEnts, g_nBodies));
+							for(pEntity=m_pTmpEntList1[i], bGroupFinished=1; pEntity; pEntity=pEntity->m_next_coll) {
+								Eafter += pEntity->CalcEnergy(0);
+								if (!(pEntity->m_flags & pef_fixed_damping))
+									damping = min(damping, pEntity->GetDamping(max_time_step));
 								else {
-									damping = pent->GetDamping(max_time_step);
+									damping = pEntity->GetDamping(max_time_step);
 									break;
 								}
 							}
 							Ebefore *= isneg(-nAnimatedObjects)+1; // increase energy growth limit if we have animated bodies involved
-							if (Eafter>Ebefore*(1.0f+0.1f*isneg(g_nBodies-15)))
+							if (Eafter > Ebefore*(1.0f + 0.1f*isneg(g_nBodies-15)))
 								damping = min(damping, sqrt_tpl(Ebefore/Eafter));
-							for(pent=m_pTmpEntList1[i],bGroupFinished=1; pent; pent=pent->m_next_coll)
-								bGroupFinished &= pent->Update(max_time_step, damping);
-							for(pent=m_pTmpEntList1[i]; pent; pent=pent->m_next_coll)
-								pent->m_bMoved = bGroupFinished;
+							for(pEntity=m_pTmpEntList1[i], bGroupFinished=1; pEntity; pEntity=pEntity->m_next_coll)
+								bGroupFinished &= pEntity->Update(max_time_step, damping);
+							for(pEntity=m_pTmpEntList1[i]; pEntity; pEntity=pEntity->m_next_coll)
+								pEntity->m_bMoved = bGroupFinished;
 							bAllGroupsFinished &= bGroupFinished;
 						}
 					}
 				}
-			} while (!bAllGroupsFinished && ++iter<m_vars.nMaxSubsteps);
+			} while (!bAllGroupsFinished && ++iter < m_vars.nMaxSubsteps);
 
-			for(pent=m_pTypedEnts[1]; pent; pent=pent->m_next) {
-				pent->m_bMoved=0; pent->m_iGroup=-1;
+			for(pEntity=m_pTypedEnts[1]; pEntity; pEntity=pEntity->m_next) {
+				pEntity->m_bMoved = 0; pEntity->m_iGroup = -1;
 			}
-			for(pent=m_pTypedEnts[2]; pent; pent=pent->m_next) pent->m_bMoved=0;
+			for(pEntity=m_pTypedEnts[2]; pEntity; pEntity=pEntity->m_next) pEntity->m_bMoved = 0;
 			m_updateTimes[1] = m_updateTimes[2] = m_timePhysics;
 		}
 	}
 	m_iSubstep++;
 
 	if (flags & ent_living) {
-		//for(pent=m_pTypedEnts[3]; pent; pent=pent->m_next) if (!(m_bUpdateOnlyFlagged & (pent->m_flags^pef_update)))
-		//	pent->StartStep(time_interval_org);	// prepare to advance living entities
-		for(pent=m_pTypedEnts[3]; pent; pent=pent_next) {
-			pent_next = pent->m_next;
-			if (!(m_bUpdateOnlyFlagged&(pent->m_flags^pef_update) | bSkipFlagged&pent->m_flags))
-				pent->Step(pent->GetMaxTimeStep(time_interval_org)); // advance living entities
+		for(pEntity=m_pTypedEnts[3]; pEntity; pEntity=pNextEntity) {
+			pNextEntity = pEntity->m_next;
+			if (!(m_bUpdateOnlyFlagged&(pEntity->m_flags^pef_update) | bSkipFlagged&pEntity->m_flags))
+				pEntity->Step(pEntity->GetMaxTimeStep(time_interval_org)); // advance living entities
 		}
 		m_updateTimes[3] = m_timePhysics;
 	}
 
 	if (!m_vars.bSingleStepMode || m_vars.bDoStep) {
 		if (flags & ent_independent) {
-			for(pent=m_pTypedEnts[4]; pent; pent=pent->m_next) if (!(m_bUpdateOnlyFlagged&(pent->m_flags^pef_update) | bSkipFlagged&pent->m_flags))
-				for(/*pent->StartStep(time_interval),*/iter=0; !pent->Step(pent->GetMaxTimeStep(time_interval)) && ++iter<m_vars.nMaxSubsteps; );
+			for(pEntity=m_pTypedEnts[4]; pEntity; pEntity=pEntity->m_next) if (!(m_bUpdateOnlyFlagged&(pEntity->m_flags^pef_update) | bSkipFlagged&pEntity->m_flags))
+				for(/*pEntity->StartStep(time_interval),*/iter=0; !pEntity->Step(pEntity->GetMaxTimeStep(time_interval)) && ++iter < m_vars.nMaxSubsteps; );
 			m_updateTimes[4] = m_timePhysics;
 		}
 	}
 
 	if (flags & ent_deleted) {
 		if (!m_vars.bSingleStepMode || m_vars.bDoStep) {
-			for(pent=m_pTypedEnts[7]; pent; pent=pent_next) { // purge deletion requests
-				pent_next = pent->m_next; delete pent;
+			for(pEntity=m_pTypedEnts[7]; pEntity; pEntity=pNextEntity) { // purge deletion requests
+				pNextEntity = pEntity->m_next; delete pEntity;
 			}
 			m_pTypedEnts[7] = 0;
 		}
 
 		// flush static and sleeping physical objects that have timeouted
-		for(i=0;i<2;i++) for(pent=m_pTypedEnts[i]; pent!=m_pTypedEntsPerm[i]; pent=pent_next) {
-			pent_next = pent->m_next;
-			if (pent->m_nRefCount==0 && (pent->m_timeIdle+=time_interval_org)>pent->m_maxTimeIdle)
-				DestroyPhysicalEntity(pent);
+		for(i=0; i<2; i++) for(pEntity=m_pTypedEnts[i]; pEntity!=m_pTypedEntsPerm[i]; pEntity=pNextEntity) {
+			pNextEntity = pEntity->m_next;
+			if (pEntity->m_nRefCount == 0 && (pEntity->m_timeIdle += time_interval_org) > pEntity->m_maxTimeIdle)
+				DestroyPhysicalEntity(pEntity);
 		}
 
-		for(pent=m_pTypedEnts[2]; pent!=m_pTypedEntsPerm[2]; pent=pent->m_next)
-			pent->m_timeIdle = 0;	// reset idle count for active physical entities 
+		for(pEntity=m_pTypedEnts[2]; pEntity!=m_pTypedEntsPerm[2]; pEntity=pEntity->m_next)
+			pEntity->m_timeIdle = 0;	// reset idle count for active physical entities
 
-		for(pent=m_pTypedEnts[4]; pent!=m_pTypedEntsPerm[4]; pent=pent_next) {
-			pent_next = pent->m_next;
-			if (pent->IsAwake())
-				pent->m_timeIdle = 0;	// reset idle count for active detached entities 
-			else if (pent->m_nRefCount==0 && (pent->m_timeIdle+=time_interval_org)>pent->m_maxTimeIdle)
-				DestroyPhysicalEntity(pent);
+		for(pEntity=m_pTypedEnts[4]; pEntity!=m_pTypedEntsPerm[4]; pEntity=pNextEntity) {
+			pNextEntity = pEntity->m_next;
+			if (pEntity->IsAwake())
+				pEntity->m_timeIdle = 0;	// reset idle count for active detached entities
+			else if (pEntity->m_nRefCount == 0 && (pEntity->m_timeIdle += time_interval_org) > pEntity->m_maxTimeIdle)
+				DestroyPhysicalEntity(pEntity);
 		}
 
 		m_updateTimes[7] = m_timePhysics;
@@ -980,15 +970,10 @@ void CPhysicalWorld::TimeStep(float time_interval, int flags)
 
 void CPhysicalWorld::DetachEntityGridThunks(CPhysicalPlaceholder *pobj)
 {
-	for(int i=0;i<pobj->m_nGridThunks;i++) {
+	for(int i=0; i<pobj->m_nGridThunks; i++) {
 		if (pobj->m_pGridThunks[i].next) pobj->m_pGridThunks[i].next->prev = pobj->m_pGridThunks[i].prev;
 		if (pobj->m_pGridThunks[i].prev) pobj->m_pGridThunks[i].prev->next = pobj->m_pGridThunks[i].next;
 		pobj->m_pGridThunks[i].next = pobj->m_pGridThunks[i].prev = 0;
-		/*else for(ix=pobj->m_ig[0].x;ix<=pobj->m_ig[1].x;ix++) for(iy=pobj->m_ig[0].y;iy<=pobj->m_ig[1].y;iy++) {
-			j = m_entgrid.getcell_safe(ix,iy);
-			if (m_pEntGrid[j]==pobj->m_pGridThunks+i)
-				m_pEntGrid[j] = pobj->m_pGridThunks[i].next;
-		}*/
 	}
 	pobj->m_nGridThunks = 0;
 }
@@ -996,18 +981,18 @@ void CPhysicalWorld::DetachEntityGridThunks(CPhysicalPlaceholder *pobj)
 
 void CPhysicalWorld::RepositionEntity(CPhysicalPlaceholder *pobj, int flags)
 {
-	int i,j,igx[2],igy[2],n,ix,iy;
-	if ((unsigned int)pobj->m_iSimClass>=7u) return; // entity is frozen
+	int i, j, igx[2], igy[2], n, ix, iy;
+	if ((unsigned int)pobj->m_iSimClass >= 7u) return; // entity is frozen
 
 	if (flags&1 && m_pEntGrid) {
-		for(i=0;i<2;i++) {
-			igx[i] = max(-1,min(m_entgrid.size.x,
-				float2int((pobj->m_BBox[i][inc_mod3[m_iEntAxisz]] - m_entgrid.origin[inc_mod3[m_iEntAxisz]])*m_entgrid.stepr.x-0.5f)));
-			igy[i] = max(-1,min(m_entgrid.size.y,
-				float2int((pobj->m_BBox[i][dec_mod3[m_iEntAxisz]] - m_entgrid.origin[dec_mod3[m_iEntAxisz]])*m_entgrid.stepr.y-0.5f)));
+		for(i=0; i<2; i++) {
+			igx[i] = max(-1, min(m_entgrid.size.x,
+				float2int((pobj->m_BBox[i][inc_mod3[m_iEntAxisz]] - m_entgrid.origin[inc_mod3[m_iEntAxisz]])*m_entgrid.stepr.x - 0.5f)));
+			igy[i] = max(-1, min(m_entgrid.size.y,
+				float2int((pobj->m_BBox[i][dec_mod3[m_iEntAxisz]] - m_entgrid.origin[dec_mod3[m_iEntAxisz]])*m_entgrid.stepr.y - 0.5f)));
 		}
 		if ((igx[0]-pobj->m_ig[0].x | igy[0]-pobj->m_ig[0].y | igx[1]-pobj->m_ig[1].x | igy[1]-pobj->m_ig[1].y) &&
-				pobj->m_ig[0].x!=-3) // if m_igx[0] is -3, the entity should not be registered in grid at all
+				pobj->m_ig[0].x != -3) // if m_igx[0] is -3, the entity should not be registered in grid at all
 		{
 			m_bGridThunksChanged = 1;
 			DetachEntityGridThunks(pobj);
@@ -1015,27 +1000,24 @@ void CPhysicalWorld::RepositionEntity(CPhysicalPlaceholder *pobj, int flags)
 			if (IsPlaceholder(pobj->m_pEntBuddy))
 				pcurobj = pobj->m_pEntBuddy;
 			n = (igx[1]-igx[0]+1)*(igy[1]-igy[0]+1);
-			if (n<=0 || n>1024) {
+			if (n <= 0 || n > 1024) {
 				vectorf pos = (pcurobj->m_BBox[0]+pcurobj->m_BBox[1])*0.5f;
-				char buf[256]; sprintf(buf,"\002Error: %s @ %.1f,%.1f,%.1f is too large or invalid",
-					m_pPhysicsStreamer->GetForeignName(pcurobj->m_pForeignData,pcurobj->m_iForeignData,pcurobj->m_iForeignFlags), pos.x,pos.y,pos.z);
-				VALIDATOR_LOG(m_pLog,buf);
+				char buf[256]; sprintf(buf, "\002Error: %s @ %.1f,%.1f,%.1f is too large or invalid",
+					m_pPhysicsStreamer->GetForeignName(pcurobj->m_pForeignData, pcurobj->m_iForeignData, pcurobj->m_iForeignFlags), pos.x, pos.y, pos.z);
+				VALIDATOR_LOG(m_pLog, buf);
 				if (m_vars.bBreakOnValidation) DoBreak
 				pobj->m_ig[0].x=pobj->m_ig[1].x=pobj->m_ig[0].y=pobj->m_ig[1].y = -2;
 				goto skiprepos;
 			}
 			if (n > pcurobj->m_nGridThunksAlloc) {
-				// check the heap for integrity
-				//assert (IsHeapValid());
 				if (pcurobj->m_pGridThunks) delete[] pcurobj->m_pGridThunks;
 				pcurobj->m_pGridThunks = new pe_gridthunk[pcurobj->m_nGridThunksAlloc=n];
-				for(i=0;i<n;i++) pcurobj->m_pGridThunks[i].pent = pcurobj;
+				for(i=0; i<n; i++) pcurobj->m_pGridThunks[i].pent = pcurobj;
 			}
-			for(ix=igx[0],i=0;ix<=igx[1];ix++) for(iy=igy[0];iy<=igy[1];iy++,i++) {
-				j = m_entgrid.getcell_safe(ix,iy);
+			for(ix=igx[0], i=0; ix<=igx[1]; ix++) for(iy=igy[0]; iy<=igy[1]; iy++, i++) {
+				j = m_entgrid.getcell_safe(ix, iy);
 				pcurobj->m_pGridThunks[i].next = m_pEntGrid[j];
 				pcurobj->m_pGridThunks[i].prev = (pe_gridthunk*)&m_pEntGrid[j];
-				//pcurobj->m_pGridThunks[i].prev = 0;
 				if (m_pEntGrid[j]) m_pEntGrid[j]->prev = pcurobj->m_pGridThunks+i;
 				m_pEntGrid[j] = pcurobj->m_pGridThunks+i;
 			}
@@ -1054,63 +1036,53 @@ void CPhysicalWorld::RepositionEntity(CPhysicalPlaceholder *pobj, int flags)
 	}
 
 	if (flags&2) {
-		CPhysicalEntity *pent = (CPhysicalEntity*)pobj;
-		if (pent->m_iPrevSimClass!=pent->m_iSimClass) {
-			if ((unsigned int)pent->m_iPrevSimClass<8u) {
-				if (pent->m_next) pent->m_next->m_prev = pent->m_prev;
-				(pent->m_prev ? pent->m_prev->m_next : m_pTypedEnts[pent->m_iPrevSimClass]) = pent->m_next;
-				if (pent==m_pTypedEntsPerm[pent->m_iPrevSimClass])
-					m_pTypedEntsPerm[pent->m_iPrevSimClass] = pent->m_next;
+		CPhysicalEntity *pEntity = (CPhysicalEntity*)pobj;
+		if (pEntity->m_iPrevSimClass != pEntity->m_iSimClass) {
+			if ((unsigned int)pEntity->m_iPrevSimClass < 8u) {
+				if (pEntity->m_next) pEntity->m_next->m_prev = pEntity->m_prev;
+				(pEntity->m_prev ? pEntity->m_prev->m_next : m_pTypedEnts[pEntity->m_iPrevSimClass]) = pEntity->m_next;
+				if (pEntity == m_pTypedEntsPerm[pEntity->m_iPrevSimClass])
+					m_pTypedEntsPerm[pEntity->m_iPrevSimClass] = pEntity->m_next;
 			}
 
-			if (!pent->m_bPermanent) {
-				pent->m_next = m_pTypedEnts[pent->m_iSimClass]; 
-				pent->m_prev = 0;
-				if (pent->m_next) pent->m_next->m_prev = pent;
-				m_pTypedEnts[pent->m_iSimClass] = pent;
+			if (!pEntity->m_bPermanent) {
+				pEntity->m_next = m_pTypedEnts[pEntity->m_iSimClass];
+				pEntity->m_prev = 0;
+				if (pEntity->m_next) pEntity->m_next->m_prev = pEntity;
+				m_pTypedEnts[pEntity->m_iSimClass] = pEntity;
 			} else {
-				pent->m_next = m_pTypedEntsPerm[pent->m_iSimClass];
-				if (m_pTypedEntsPerm[pent->m_iSimClass]) {
-					if (pent->m_prev = m_pTypedEntsPerm[pent->m_iSimClass]->m_prev)
-						pent->m_prev->m_next = pent;
-					pent->m_next->m_prev = pent;
-				} else if (m_pTypedEnts[pent->m_iSimClass]) {
-					for(pent->m_prev=m_pTypedEnts[pent->m_iSimClass]; pent->m_prev && pent->m_prev->m_next; 
-						pent->m_prev=pent->m_prev->m_next);
-					pent->m_prev->m_next = pent;
+				pEntity->m_next = m_pTypedEntsPerm[pEntity->m_iSimClass];
+				if (m_pTypedEntsPerm[pEntity->m_iSimClass]) {
+					if (pEntity->m_prev = m_pTypedEntsPerm[pEntity->m_iSimClass]->m_prev)
+						pEntity->m_prev->m_next = pEntity;
+					pEntity->m_next->m_prev = pEntity;
+				} else if (m_pTypedEnts[pEntity->m_iSimClass]) {
+					for(pEntity->m_prev=m_pTypedEnts[pEntity->m_iSimClass]; pEntity->m_prev && pEntity->m_prev->m_next;
+						pEntity->m_prev=pEntity->m_prev->m_next);
+					pEntity->m_prev->m_next = pEntity;
 				} else
-					pent->m_prev = 0;
-				if (m_pTypedEntsPerm[pent->m_iSimClass]==m_pTypedEnts[pent->m_iSimClass])
-					m_pTypedEnts[pent->m_iSimClass] = pent;
-				m_pTypedEntsPerm[pent->m_iSimClass] = pent;
+					pEntity->m_prev = 0;
+				if (m_pTypedEntsPerm[pEntity->m_iSimClass] == m_pTypedEnts[pEntity->m_iSimClass])
+					m_pTypedEnts[pEntity->m_iSimClass] = pEntity;
+				m_pTypedEntsPerm[pEntity->m_iSimClass] = pEntity;
 			}
-			i = pent->m_iPrevSimClass;
-			pent->m_iPrevSimClass = pent->m_iSimClass;
+			i = pEntity->m_iPrevSimClass;
+			pEntity->m_iPrevSimClass = pEntity->m_iSimClass;
 
-			if (pent->m_flags & pef_monitor_state_changes && m_pEventClient)
-				m_pEventClient->OnStateChange(pent,pent->m_pForeignData,pent->m_iForeignData,i,pent->m_iSimClass);
-
-/*#ifdef _DEBUG
-CPhysicalEntity *ptmp = m_pTypedEnts[1];
-for(;ptmp && ptmp!=m_pTypedEntsPerm[1]; ptmp=ptmp->m_next);
-if (ptmp!=m_pTypedEntsPerm[1])
-DEBUG_BREAK;
-#endif*/
+			if (pEntity->m_flags & pef_monitor_state_changes && m_pEventClient)
+				m_pEventClient->OnStateChange(pEntity, pEntity->m_pForeignData, pEntity->m_iForeignData, i, pEntity->m_iSimClass);
 		}
 	}
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 struct entity_grid_checker {
 	geom_world_data gwd;
 	intersection_params ip;
-	int nMaxHits,nThroughHits,nThroughHitsAux,objtypes,nEnts,bCallbackUsed;
-	unsigned int flags,flagsCollider;
-	vector2df org2d,dir2d;
-	float dir2d_len,maxt;
+	int nMaxHits, nThroughHits, nThroughHitsAux, objtypes, nEnts, bCallbackUsed;
+	unsigned int flags, flagsCollider;
+	vector2df org2d, dir2d;
+	float dir2d_len, maxt;
 	ray_hit *phits;
 	CPhysicalWorld *pWorld;
 	CPhysicalPlaceholder *pGridEnt;
@@ -1119,18 +1091,18 @@ struct entity_grid_checker {
 	entity_grid_checker() {}
 
 	int check_cell(const vector2di &icell, int &ilastcell) {
-		quotientf t((org2d+icell)*dir2d, dir2d_len*dir2d_len);
-		if (t.x>maxt && (icell.x&icell.y)!=-1)
+		quotientf t((org2d+icell).Dot(dir2d), dir2d_len*dir2d_len); // Replaced *
+		if (t.x > maxt && (icell.x&icell.y) != -1)
 			return 1;
 
 		box bbox;
 		bbox.Basis.SetIdentity();
 		bbox.bOriented = 0;
 		geom_contact *pcontacts;
-		pe_gridthunk *thunk,*thunk_next;
-		int i,j,ihit,nCellEnts=0,nEntsChecked=0;
+		pe_gridthunk *thunk, *thunk_next;
+		int i, j, ihit, nCellEnts=0, nEntsChecked=0;
 
-		for(thunk=pWorld->m_pEntGrid[pWorld->m_entgrid.getcell_safe(icell.x,icell.y)]; thunk; thunk=thunk_next) {
+		for(thunk=pWorld->m_pEntGrid[pWorld->m_entgrid.getcell_safe(icell.x, icell.y)]; thunk; thunk=thunk_next) {
 			thunk_next = thunk->next;
 			if (!thunk->pent->m_bProcessed && objtypes & 1u<<thunk->pent->m_iSimClass && 
 					(!pSkipForeignData || thunk->pent->GetForeignData()!=pSkipForeignData)) 
@@ -1139,77 +1111,74 @@ struct entity_grid_checker {
 				bbox.size = (thunk->pent->m_BBox[1]-thunk->pent->m_BBox[0])*0.5f;
 				nCellEnts++;
 
-				if ((bbox.center-aray.m_ray.origin-aray.m_dirn*((bbox.center-aray.m_ray.origin)*aray.m_dirn)).len2() > bbox.size.len2())
+				if ((bbox.center - aray.m_ray.origin - aray.m_dirn*((bbox.center - aray.m_ray.origin).Dot(aray.m_dirn))).len2() > bbox.size.len2())
 					continue; // skip objects that lie to far from the ray
 
-				//if ((ptc-aray.m_ray.origin)*aray.m_dirn-fabsf(size.x*aray.m_dirn.x)-fabs(size.y*aray.m_dirn.y)-fabs(size.z*aray.m_dirn.z) > phits[0].dist)
-				//	continue;	// skip objects that lie farther than the last ray hit point
-				if (!box_ray_overlap_check(&bbox,&aray.m_ray))
+				if (!box_ray_overlap_check(&bbox, &aray.m_ray))
 					continue;
 				nEntsChecked++;	
 				pWorld->m_bGridThunksChanged = 0;
-				CPhysicalEntity *pent = (pGridEnt=thunk->pent)->GetEntity();
+				CPhysicalEntity *pEntity = (pGridEnt=thunk->pent)->GetEntity();
 				if (pWorld->m_bGridThunksChanged)
-					thunk_next = pWorld->m_pEntGrid[pWorld->m_entgrid.getcell_safe(icell.x,icell.y)];
+					thunk_next = pWorld->m_pEntGrid[pWorld->m_entgrid.getcell_safe(icell.x, icell.y)];
 				pWorld->m_bGridThunksChanged = 0;
 
 				bCallbackUsed = 0;
-				if (pent->m_nParts==0 || pent->m_flags&pef_use_geom_callbacks) {
-					j = pent->RayTrace(&aray,pcontacts);
+				if (pEntity->m_nParts == 0 || pEntity->m_flags&pef_use_geom_callbacks) {
+					j = pEntity->RayTrace(&aray, pcontacts);
 					i=0; bCallbackUsed=1; goto gotcontacts;
 				}
 
-				for(i=0;i<pent->m_nParts;i++) 
-				if ((pent->m_parts[i].flags & flagsCollider)==flagsCollider) {
-					if (pent->m_nParts>1) {
-						bbox.center = (pent->m_parts[i].BBox[0]+pent->m_parts[i].BBox[1])*0.5f;
-						bbox.size = (pent->m_parts[i].BBox[1]-pent->m_parts[i].BBox[0])*0.5f;
-						if (!box_ray_overlap_check(&bbox,&aray.m_ray))
+				for(i=0; i<pEntity->m_nParts; i++)
+				if ((pEntity->m_parts[i].flags & flagsCollider) == flagsCollider) {
+					if (pEntity->m_nParts > 1) {
+						bbox.center = (pEntity->m_parts[i].BBox[0] + pEntity->m_parts[i].BBox[1])*0.5f;
+						bbox.size = (pEntity->m_parts[i].BBox[1] - pEntity->m_parts[i].BBox[0])*0.5f;
+						if (!box_ray_overlap_check(&bbox, &aray.m_ray))
 							continue;
 					}
-					gwd.offset = pent->m_pos + pent->m_qrot*pent->m_parts[i].pos;
-					//(pent->m_qrot*pent->m_parts[i].q).getmatrix(gwd.R);	//Q2M_IVO 
-					gwd.R = matrix3x3f(pent->m_qrot*pent->m_parts[i].q);
-					gwd.scale = pent->m_parts[i].scale;
-					j = pent->m_parts[i].pPhysGeom->pGeom->Intersect(&aray, &gwd,0, &ip, pcontacts);
+					gwd.offset = pEntity->m_pos + pEntity->m_qrot*pEntity->m_parts[i].pos;
+					gwd.R = matrix3x3f(pEntity->m_qrot*pEntity->m_parts[i].q);
+					gwd.scale = pEntity->m_parts[i].scale;
+					j = pEntity->m_parts[i].pPhysGeom->pGeom->Intersect(&aray, &gwd, 0, &ip, pcontacts);
 					gotcontacts:
 
 					for(j--; j>=0; j--) 
-					if (pcontacts[j].t<phits[0].dist && (!(flags & rwi_ignore_back_faces) || pcontacts[j].n*aray.m_dirn<0)) {
+					if (pcontacts[j].t < phits[0].dist && (!(flags & rwi_ignore_back_faces) || pcontacts[j].n.Dot(aray.m_dirn) < 0)) { // Replaced *
 						ihit = 0;
-						if (pcontacts[j].id[0]<0) pcontacts[j].id[0] = pent->m_parts[i].surface_idx;
+						if (pcontacts[j].id[0] < 0) pcontacts[j].id[0] = pEntity->m_parts[i].surface_idx;
 						if ((flags & rwi_pierceability_mask) < 
 								(pWorld->m_SurfaceFlagsTable[pcontacts[j].id[0]&NSURFACETYPES-1] & sf_pierceable_mask))
 						{
 							if ((pWorld->m_SurfaceFlagsTable[pcontacts[j].id[0]&NSURFACETYPES-1]|flags) & sf_important) {
-								for(ihit=1; ihit<=nThroughHits && phits[ihit].dist<pcontacts[j].t; ihit++);
-								if (ihit<=nThroughHits)
-									memmove(phits+ihit+1, phits+ihit, (min(nThroughHits+1,nMaxHits-1)-ihit)*sizeof(ray_hit));
-								else if (nThroughHits+1==nMaxHits)
+								for(ihit=1; ihit<=nThroughHits && phits[ihit].dist < pcontacts[j].t; ihit++);
+								if (ihit <= nThroughHits)
+									memmove(phits+ihit+1, phits+ihit, (min(nThroughHits+1, nMaxHits-1)-ihit)*sizeof(ray_hit));
+								else if (nThroughHits+1 == nMaxHits)
 									continue;
 								nThroughHits = min(nThroughHits+1, nMaxHits-1);
 								nThroughHitsAux = min(nThroughHitsAux, nMaxHits-1-nThroughHits);
 							}	else {
-								for(ihit=nMaxHits-1; ihit>=nMaxHits-nThroughHitsAux && phits[ihit].dist<pcontacts[j].t; ihit--);
-								if (ihit>=nMaxHits-nThroughHitsAux) {
-									int istart = max(nMaxHits-nThroughHitsAux-1,nThroughHits+1);
+								for(ihit=nMaxHits-1; ihit>=nMaxHits-nThroughHitsAux && phits[ihit].dist < pcontacts[j].t; ihit--);
+								if (ihit >= nMaxHits-nThroughHitsAux) {
+									int istart = max(nMaxHits-nMaxHits-nThroughHitsAux-1, nThroughHits+1);
 									memmove(phits+istart, phits+istart+1, (ihit-istart)*sizeof(ray_hit));
-								} else if (nThroughHits+nThroughHitsAux>=nMaxHits-1)
+								} else if (nThroughHits+nThroughHitsAux >= nMaxHits-1)
 									continue;
 								nThroughHitsAux = min(nThroughHitsAux+1, nMaxHits-1-nThroughHits);
 							}
 						} else {
 							ilastcell = 
-								float2int((pcontacts[j].pt[inc_mod3[pWorld->m_iEntAxisz]]-pWorld->m_entgrid.origin[inc_mod3[pWorld->m_iEntAxisz]])*
-									pWorld->m_entgrid.stepr.x-0.5f) |
-								float2int((pcontacts[j].pt[dec_mod3[pWorld->m_iEntAxisz]]-pWorld->m_entgrid.origin[dec_mod3[pWorld->m_iEntAxisz]])*
-									pWorld->m_entgrid.stepr.y-0.5f)<<16;
-							aray.m_ray.dir = pcontacts[j].pt-aray.m_ray.origin;
+								float2int((pcontacts[j].pt[inc_mod3[pWorld->m_iEntAxisz]] - pWorld->m_entgrid.origin[inc_mod3[pWorld->m_iEntAxisz]])*
+									pWorld->m_entgrid.stepr.x - 0.5f) |
+								float2int((pcontacts[j].pt[dec_mod3[pWorld->m_iEntAxisz]] - pWorld->m_entgrid.origin[dec_mod3[pWorld->m_iEntAxisz]])*
+									pWorld->m_entgrid.stepr.y - 0.5f)<<16;
+							aray.m_ray.dir = pcontacts[j].pt - aray.m_ray.origin;
 						}
 						phits[ihit].dist = pcontacts[j].t;
-						phits[ihit].pCollider = pent; 
+						phits[ihit].pCollider = pEntity;
 						if (!bCallbackUsed)
-							phits[ihit].partid = pent->m_parts[phits[ihit].ipart=i].id;
+							phits[ihit].partid = pEntity->m_parts[phits[ihit].ipart=i].id;
 						else
 							phits[ihit].partid = phits[ihit].ipart = pcontacts[j].iNode[0];
 						phits[ihit].surface_idx = pcontacts[j].id[0];
@@ -1219,7 +1188,7 @@ struct entity_grid_checker {
 					}
 				}
 
-				pWorld->m_pTmpEntList[nEnts++] = pent;
+				pWorld->m_pTmpEntList[nEnts++] = pEntity;
 				pGridEnt->m_bProcessed = 1;
 			}
 		}

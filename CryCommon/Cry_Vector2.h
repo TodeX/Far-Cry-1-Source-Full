@@ -86,6 +86,9 @@ return res;
 #endif
 F atan2() const { return atan2_tpl(y,x); }
 
+F Dot(const Vec2_tpl<F> &rhs) const { return x*rhs.x + y*rhs.y; }
+F Cross(const Vec2_tpl<F> &rhs) const { return x*rhs.y - y*rhs.x; }
+
 Vec2_tpl operator-() const { return Vec2_tpl(-x,-y); }
 
 Vec2_tpl operator*(F k) const { return Vec2_tpl(x*k,y*k); }
