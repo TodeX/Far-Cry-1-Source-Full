@@ -51,6 +51,7 @@ public:
 	public:
 	virtual BOOL InitInstance();
 	virtual int ExitInstance();
+	virtual int Run();
 	virtual BOOL OnIdle(LONG lCount);
 	virtual CDocument* OpenDocumentFile(LPCTSTR lpszFileName);
 	//}}AFX_VIRTUAL
