@@ -1040,6 +1040,31 @@ int CCryEditApp::ExitInstance()
 
 	return CWinApp::ExitInstance();
 }
+
+int CCryEditApp::Run()
+{
+	MSG msg;
+	for (;;)
+	{
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			if (msg.message == WM_QUIT)
+				return (int)msg.wParam;
+
+			if (!PreTranslateMessage(&msg))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+		}
+
+		if (!OnIdle(0))
+		{
+			if (!PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
+				WaitMessage();
+		}
+	}
+}
  
 BOOL CCryEditApp::OnIdle(LONG lCount) 
 {
