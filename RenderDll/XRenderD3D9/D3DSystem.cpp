@@ -1414,17 +1414,28 @@ HRESULT CD3D9Renderer::Initialize3DEnvironment()
       if(hr == D3DERR_NOTAVAILABLE)
       {
         SAFE_RELEASE(m_pd3dDevice);
-        Sleep(1000);
         m_d3dpp.Flags |= D3DPRESENTFLAG_LOCKABLE_BACKBUFFER;
 
         // Create the device
-        hr = m_pD3D->CreateDevice(m_D3DSettings.AdapterOrdinal(), pDeviceInfo->DevType, (HWND)m_CurrContext->m_hWnd, behaviorFlags, &m_d3dpp, &m_pd3dDevice);
+        for (int i = 0; i < 20; ++i)
+        {
+          hr = m_pD3D->CreateDevice(m_D3DSettings.AdapterOrdinal(), pDeviceInfo->DevType, (HWND)m_CurrContext->m_hWnd, behaviorFlags, &m_d3dpp, &m_pd3dDevice);
+          if (SUCCEEDED(hr))
+            break;
+          Sleep(50);
+        }
+
         if (FAILED(hr))
         {
           SAFE_RELEASE(m_pd3dDevice);
-          Sleep(1000);
           m_d3dpp.Flags &= ~D3DPRESENTFLAG_LOCKABLE_BACKBUFFER;
-          hr = m_pD3D->CreateDevice(m_D3DSettings.AdapterOrdinal(), pDeviceInfo->DevType, (HWND)m_CurrContext->m_hWnd, behaviorFlags, &m_d3dpp, &m_pd3dDevice);
+          for (int i = 0; i < 20; ++i)
+          {
+            hr = m_pD3D->CreateDevice(m_D3DSettings.AdapterOrdinal(), pDeviceInfo->DevType, (HWND)m_CurrContext->m_hWnd, behaviorFlags, &m_d3dpp, &m_pd3dDevice);
+            if (SUCCEEDED(hr))
+              break;
+            Sleep(50);
+          }
         }
       }
     }
