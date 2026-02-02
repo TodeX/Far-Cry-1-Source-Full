@@ -834,7 +834,6 @@ bool CXGame::LoadFromStream(CStream &stm, bool isdemo)
 
 	m_pSystem->GetISoundSystem()->Mute(true); 
 
-	bool			bLoadBar = false;
 	IConsole *pConsole = m_pSystem->GetIConsole();
 
 	assert(pConsole);
@@ -865,13 +864,7 @@ bool CXGame::LoadFromStream(CStream &stm, bool isdemo)
 	}
 	else
 	{
-		bLoadBar = 1;
-		
-		string sLoadingScreenTexture = m_currentLevelFolder + "/loadscreen_" + m_currentLevel + ".dds";
-		pConsole->SetLoadingImage( sLoadingScreenTexture.c_str() );
-
 		pConsole->Clear();
-		pConsole->ResetProgressBar(nEnt + 3);
 		pConsole->SetScrollMax(600);
 		pConsole->ShowConsole(1);
 		DeleteMessage("Switch"); // no switching during loading
@@ -906,14 +899,10 @@ bool CXGame::LoadFromStream(CStream &stm, bool isdemo)
 			pEntitySystem->RemoveEntity(pEnt->GetId());		
 		}
 
-		pConsole->TickProgressBar();	// advance progress
-
 		pEntitySystem->Update();
 		
 		SoftReset();
 		m_pEntitySystem->Reset();
-
-		pConsole->TickProgressBar();	// advance progress
 	}
 	
 	// PETAR lets delete all guys since they will be spawned anyway
@@ -950,11 +939,6 @@ bool CXGame::LoadFromStream(CStream &stm, bool isdemo)
 	for (int i = 0; i<20; i++) 
 		Update();
 
-	if (bLoadBar)
-	{
-		pConsole->TickProgressBar();	// advance progress
-	}
-	
 	VERIFY_COOKIE_NO(stm,0x3c);
 
 	// loading reserver IDs for dynacally created saved entities
@@ -1359,11 +1343,6 @@ bool CXGame::LoadFromStream(CStream &stm, bool isdemo)
 		default:
 			ASSERT(0);
 		};
-
-		if (bLoadBar)
-		{
-			pConsole->TickProgressBar();	// advance progress
-		}
 	}
 
 	{	// [Anton] - allow entities to restore pointer links between them during post load step 
@@ -1390,7 +1369,6 @@ bool CXGame::LoadFromStream(CStream &stm, bool isdemo)
 
 	//	m_pLog->Log("HIDE CONSOLE");
 	m_pRenderer->ClearColorBuffer(Vec3(0,0,0));
-	m_pSystem->GetIConsole()->ResetProgressBar(0);
 	m_pSystem->GetIConsole()->ShowConsole(false);
 	m_pSystem->GetIConsole()->SetScrollMax(600/2);
 
@@ -1875,7 +1853,6 @@ bool CXGame::LoadFromStream_RELEASEVERSION(CStream &stm, bool isdemo, CScriptObj
 
 	m_pSystem->GetISoundSystem()->Mute(true); 
 
-	bool			bLoadBar = false;
 	IConsole *pConsole = m_pSystem->GetIConsole();
 
 	assert(pConsole);
@@ -1906,13 +1883,7 @@ bool CXGame::LoadFromStream_RELEASEVERSION(CStream &stm, bool isdemo, CScriptObj
 	}
 	else
 	{
-		bLoadBar = 1;
-		
-		string sLoadingScreenTexture = m_currentLevelFolder + "/loadscreen_" + m_currentLevel + ".dds";
-		pConsole->SetLoadingImage( sLoadingScreenTexture.c_str() );
-
 		pConsole->Clear();
-		pConsole->ResetProgressBar(nEnt + 3);
 		pConsole->SetScrollMax(600);
 		pConsole->ShowConsole(1);
 		DeleteMessage("Switch"); // no switching during loading
@@ -1947,14 +1918,10 @@ bool CXGame::LoadFromStream_RELEASEVERSION(CStream &stm, bool isdemo, CScriptObj
 			pEntitySystem->RemoveEntity(pEnt->GetId());		
 		}
 
-		pConsole->TickProgressBar();	// advance progress
-
 		pEntitySystem->Update();
 		
 		SoftReset();
 		m_pEntitySystem->Reset();
-
-		pConsole->TickProgressBar();	// advance progress
 	}
 	
 	// PETAR lets delete all guys since they will be spawned anyway
@@ -1991,11 +1958,6 @@ bool CXGame::LoadFromStream_RELEASEVERSION(CStream &stm, bool isdemo, CScriptObj
 	for (int i = 0; i<20; i++) 
 		Update();
 
-	if (bLoadBar)
-	{
-		pConsole->TickProgressBar();	// advance progress
-	}
-	
 	VERIFY_COOKIE_NO(stm,0x3c);
 
 	// loading reserver IDs for dynacally created saved entities
@@ -2307,11 +2269,6 @@ bool CXGame::LoadFromStream_RELEASEVERSION(CStream &stm, bool isdemo, CScriptObj
 		default:
 			ASSERT(0);
 		};
-
-		if (bLoadBar)
-		{
-			pConsole->TickProgressBar();	// advance progress
-		}
 	}
 
 	{	// [Anton] - allow entities to restore pointer links between them during post load step 
@@ -2338,7 +2295,6 @@ bool CXGame::LoadFromStream_RELEASEVERSION(CStream &stm, bool isdemo, CScriptObj
 
 	//	m_pLog->Log("HIDE CONSOLE");
 	m_pRenderer->ClearColorBuffer(Vec3(0,0,0));
-	m_pSystem->GetIConsole()->ResetProgressBar(0);
 	m_pSystem->GetIConsole()->ShowConsole(false);
 	m_pSystem->GetIConsole()->SetScrollMax(600/2);
 
@@ -2441,7 +2397,6 @@ bool CXGame::LoadFromStream_PATCH_1(CStream &stm, bool isdemo, CScriptObjectStre
 
 	m_pSystem->GetISoundSystem()->Mute(true); 
 
-	bool			bLoadBar = false;
 	IConsole *pConsole = m_pSystem->GetIConsole();
 
 	assert(pConsole);
@@ -2472,13 +2427,7 @@ bool CXGame::LoadFromStream_PATCH_1(CStream &stm, bool isdemo, CScriptObjectStre
 	}
 	else
 	{
-		bLoadBar = 1;
-
-		string sLoadingScreenTexture = m_currentLevelFolder + "/loadscreen_" + m_currentLevel + ".dds";
-		pConsole->SetLoadingImage( sLoadingScreenTexture.c_str() );
-
 		pConsole->Clear();
-		pConsole->ResetProgressBar(nEnt + 3);
 		pConsole->SetScrollMax(600);
 		pConsole->ShowConsole(1);
 		DeleteMessage("Switch"); // no switching during loading
@@ -2513,14 +2462,10 @@ bool CXGame::LoadFromStream_PATCH_1(CStream &stm, bool isdemo, CScriptObjectStre
 			pEntitySystem->RemoveEntity(pEnt->GetId());		
 		}
 
-		pConsole->TickProgressBar();	// advance progress
-
 		pEntitySystem->Update();
 
 		SoftReset();
 		m_pEntitySystem->Reset();
-
-		pConsole->TickProgressBar();	// advance progress
 	}
 
 	// PETAR lets delete all guys since they will be spawned anyway
@@ -2556,11 +2501,6 @@ bool CXGame::LoadFromStream_PATCH_1(CStream &stm, bool isdemo, CScriptObjectStre
 	// or savegame won't load
 	for (int i = 0; i<20; i++) 
 		Update();
-
-	if (bLoadBar)
-	{
-		pConsole->TickProgressBar();	// advance progress
-	}
 
 	VERIFY_COOKIE_NO(stm,0x3c);
 
@@ -2962,11 +2902,6 @@ bool CXGame::LoadFromStream_PATCH_1(CStream &stm, bool isdemo, CScriptObjectStre
 		default:
 			ASSERT(0);
 		};
-
-		if (bLoadBar)
-		{
-			pConsole->TickProgressBar();	// advance progress
-		}
 	}
 
 	{	// [Anton] - allow entities to restore pointer links between them during post load step 
@@ -2993,7 +2928,6 @@ bool CXGame::LoadFromStream_PATCH_1(CStream &stm, bool isdemo, CScriptObjectStre
 
 	//	m_pLog->Log("HIDE CONSOLE");
 	m_pRenderer->ClearColorBuffer(Vec3(0,0,0));
-	m_pSystem->GetIConsole()->ResetProgressBar(0);
 	m_pSystem->GetIConsole()->ShowConsole(false);
 	m_pSystem->GetIConsole()->SetScrollMax(600/2);
 
