@@ -53,6 +53,7 @@ struct IStreamEngine;
 struct ICryCharManager;
 struct SFileVersion;
 struct IDataProbe;
+struct IJobManager;
 
 class CFrameProfilerSection;
 
@@ -265,6 +266,7 @@ struct ISystem
 	virtual ICryCharManager *GetIAnimationSystem() = 0;
 	virtual IValidator			*GetIValidator() = 0;
 	virtual IFrameProfileSystem* GetIProfileSystem() = 0;	
+	virtual IJobManager			*GetIJobManager() = 0;
 
 	//virtual	const char			*GetGamePath()=0;
 

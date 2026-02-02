@@ -49,6 +49,7 @@ typedef void* WIN_HMODULE;
 //forward declarations
 class CScriptSink;
 class CLUADbg;
+class CJobManager;
 struct IMusicSystem;
 struct SDefaultValidator;
 struct IDataProbe;
@@ -135,6 +136,7 @@ public:
 	CLUADbg					*GetLuaDebugger() { return m_pLuaDebugger; }
 	IValidator			*GetIValidator() { return m_pValidator; };
 	IFrameProfileSystem* GetIProfileSystem() { return &m_FrameProfileSystem; }
+	IJobManager			*GetIJobManager();
 	const char			*GetGameMOD() { if (m_szGameMOD[0]) return (m_szGameMOD);return (NULL); }
 
 	XDOM::IXMLDOMDocument *CreateXMLDocument();
@@ -357,6 +359,9 @@ private: // ------------------------------------------------------
 
 	//! THe streaming engine
 	CStreamEngine* m_pStreamEngine;
+
+	//! Job Manager
+	CJobManager* m_pJobManager;
 	
 	//! current active process
 	IProcess *m_pProcess;
