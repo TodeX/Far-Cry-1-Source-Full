@@ -5,6 +5,7 @@
 
 #include <assert.h>
 #include <set>
+#include <cstring>
 
 #pragma warning(push)
 #pragma warning(disable:4018) // signed/unsigned mismatch
@@ -533,43 +534,13 @@ inline void NvStripInfo::MarkTriangle(NvFaceInfo *faceInfo){
 }
 
 
-bool NvStripInfo::Unique(NvFaceInfoVec& faceVec, NvFaceInfo* face)
+bool NvStripInfo::Unique(const std::set<int>& uniqueVertices, NvFaceInfo* face)
 {
-	bool bv0, bv1, bv2; //bools to indicate whether a vertex is in the faceVec or not
-	bv0 = bv1 = bv2 = false;
+	if(uniqueVertices.find(face->m_v0) != uniqueVertices.end() &&
+		uniqueVertices.find(face->m_v1) != uniqueVertices.end() &&
+		uniqueVertices.find(face->m_v2) != uniqueVertices.end())
+		return false;
 
-	for(int i = 0; i < faceVec.size(); i++)
-	{
-		if(!bv0)
-		{
-			if( (faceVec[i]->m_v0 == face->m_v0) ||
-				(faceVec[i]->m_v1 == face->m_v0) ||
-				(faceVec[i]->m_v2 == face->m_v0) )
-				bv0 = true;
-		}
-
-		if(!bv1)
-		{
-			if( (faceVec[i]->m_v0 == face->m_v1) ||
-				(faceVec[i]->m_v1 == face->m_v1) ||
-				(faceVec[i]->m_v2 == face->m_v1) )
-				bv1 = true;
-		}
-
-		if(!bv2)
-		{
-			if( (faceVec[i]->m_v0 == face->m_v2) ||
-				(faceVec[i]->m_v1 == face->m_v2) ||
-				(faceVec[i]->m_v2 == face->m_v2) )
-				bv2 = true;
-		}
-
-		//the face is not unique, all it's vertices exist in the face vector
-		if(bv0 && bv1 && bv2)
-			return false;
-	}
-
-	//if we get out here, it's unique
 	return true;
 }
 
@@ -658,9 +629,13 @@ void NvStripInfo::Build(NvEdgeInfoVec &edgeInfos, NvFaceInfoVec &faceInfos)
 
 	// tempAllFaces is going to be forwardFaces + backwardFaces
 	// it's used for Unique()
-	NvFaceInfoVec tempAllFaces;
+	std::set<int> uniqueVertices;
 	for(int i = 0; i < forwardFaces.size(); i++)
-		tempAllFaces.push_back(forwardFaces[i]);
+	{
+		uniqueVertices.insert(forwardFaces[i]->m_v0);
+		uniqueVertices.insert(forwardFaces[i]->m_v1);
+		uniqueVertices.insert(forwardFaces[i]->m_v2);
+	}
 
 	//
 	// reset the indices for building the strip backwards and do so
@@ -676,7 +651,7 @@ void NvStripInfo::Build(NvEdgeInfoVec &edgeInfos, NvFaceInfoVec &faceInfos)
 	{
 		//this tests to see if a face is "unique", meaning that its vertices aren't already in the list
 		// so, strips which "wrap-around" are not allowed
-		if(!Unique(tempAllFaces, nextFace))
+		if(!Unique(uniqueVertices, nextFace))
 			break;
 
 		//check to see if this next face is going to cause us to die soon
@@ -710,7 +685,9 @@ void NvStripInfo::Build(NvEdgeInfoVec &edgeInfos, NvFaceInfoVec &faceInfos)
 		backwardFaces.push_back(nextFace);
 
 		//this is just so Unique() will work
-		tempAllFaces.push_back(nextFace);
+		uniqueVertices.insert(nextFace->m_v0);
+		uniqueVertices.insert(nextFace->m_v1);
+		uniqueVertices.insert(nextFace->m_v2);
 
 		MarkTriangle(nextFace);
 
