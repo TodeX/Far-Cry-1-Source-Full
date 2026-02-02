@@ -51,6 +51,7 @@
 #include "XML\Xml.h"
 #include "DataProbe.h"
 #include "ApplicationHelper.h"			// CApplicationHelper
+#include "JobManager.h"
 
 #include "CryWaterMark.h"
 WATERMARKDATA(_m);
@@ -227,6 +228,7 @@ CSystem::CSystem():
 	m_bForceNonDevMode=false;
 	m_bWasInDevMode = false;
 	m_bInDevMode = false;
+	m_pJobManager = NULL;
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -527,6 +529,7 @@ void CSystem::ShutDown(bool bRelaunch)
 	SAFE_DELETE(m_pSizer);
 	SAFE_DELETE(m_pStreamEngine);
 	SAFE_DELETE(m_pDefaultValidator);
+	SAFE_DELETE(m_pJobManager);
 
 	SAFE_RELEASE(m_pDownloadManager);
 
@@ -1127,6 +1130,11 @@ void CSystem::Warning( EValidatorModule module,EValidatorSeverity severity,int f
 ISystem *GetISystem()
 {
 	return (g_System);
+}
+
+IJobManager* CSystem::GetIJobManager()
+{
+	return m_pJobManager;
 }
 
 #ifdef USE_FRAME_PROFILER

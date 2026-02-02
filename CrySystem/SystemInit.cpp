@@ -44,6 +44,7 @@
 #include "XML\Xml.h"
 #include "DataProbe.h"
 #include "ApplicationHelper.h"				// CApplicationHelper
+#include "JobManager.h"
 
 #define  PROFILE_WITH_VTUNE
 
@@ -1192,6 +1193,12 @@ bool CSystem::Init( const SSystemInitParams &params )
 	CryLogAlways("Stream Engine Initialization");
 	InitStreamEngine();
 
+	CryLogAlways("Job Manager Initialization");
+	m_pJobManager = new CJobManager();
+	if (!m_pJobManager->Init(0))
+	{
+		CryLogAlways("Job Manager Initialization Failed");
+	}
 
 	//////////////////////////////////////////////////////////////////////////
 	// SCRIPT SYSTEM
