@@ -349,11 +349,11 @@ void CSprite::Render( const PartProcessParams &PPP,IShader *pShader )
 				vAmbientColor,
 				vParticlePos, arrTailVerts, nTailVertsNum, arrTailIndices, nTailIndsNum, (float)nSortId, dwCCObjFlags, m_pMaterial);
 
-			if (m_pArrvPosHistory)
+			if (m_nTailSteps)
 			{
 				float fTailLength = (m_pParams->fTailLenght/m_nTailSteps) /  m_fScale; // Here we must divide by scale because speed is scaled.
 				m_fTrailCurPos += min(1.f, PPP.fFrameTime/fTailLength);
-				m_pArrvPosHistory[FtoI(m_fTrailCurPos)%m_nTailSteps] = m_vPos;
+				m_ArrvPosHistory[FtoI(m_fTrailCurPos)%m_nTailSteps] = m_vPos;
 			}
 		}
 		else
@@ -378,7 +378,7 @@ int CSprite::FillTailVertBuffer(	SColorVert * pTailVerts,
 {
 	int nVertCount=0;
 
-  if (m_pArrvPosHistory && m_pParams->fTailLenght && (m_vDelta!=Vec3(0.0f,0.0f,0.0f))  )
+  if (m_nTailSteps && m_pParams->fTailLenght && (m_vDelta!=Vec3(0.0f,0.0f,0.0f))  )
   {
     int nPos = FtoI(m_fTrailCurPos);
 
@@ -400,7 +400,7 @@ int CSprite::FillTailVertBuffer(	SColorVert * pTailVerts,
     // fill vert buffer
     for(int it=0; it < m_nTailSteps && nPos >= 0; it++)
     {
-      Vec3 vPos = m_pArrvPosHistory[ nPos % m_nTailSteps ];
+      Vec3 vPos = m_ArrvPosHistory[ nPos % m_nTailSteps ];
 
 			vDelta = vPrev-vPos;
 			if (vDelta.IsZero())

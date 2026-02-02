@@ -265,13 +265,13 @@ void CSpriteManager::SpawnParticle( CParticleEmitter &emitter,bool bChildProcess
 		pPart->m_nTailSteps = Params.nTailSteps;
 		if (pPart->m_nTailSteps <= 0)
 			pPart->m_nTailSteps = 8; // Default steps.
-		if (pPart->m_nTailSteps > 16)
-			pPart->m_nTailSteps = 16; // Max steps (Renderer cant do more).
+		if (pPart->m_nTailSteps > MAX_PARTICLE_TAIL_STEPS)
+			pPart->m_nTailSteps = MAX_PARTICLE_TAIL_STEPS; // Max steps (Renderer cant do more).
 		// init history stack
 		pPart->m_fTrailCurPos = 1.0f;
-		pPart->m_pArrvPosHistory = new Vec3[pPart->m_nTailSteps];
+		//pPart->m_pArrvPosHistory = new Vec3[pPart->m_nTailSteps];
 		for(int t=0; t < pPart->m_nTailSteps; t++)
-			pPart->m_pArrvPosHistory[t] = Params.vPosition;
+			pPart->m_ArrvPosHistory[t] = Params.vPosition;
 	}
 
 	// init physical particle if requested

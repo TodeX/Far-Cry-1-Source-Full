@@ -22,6 +22,7 @@
 #define PARTICLES_SMOOTH_FRAMES 20
 
 #define PART_MAX_HISTORY_ELEMENTS 256
+#define MAX_PARTICLE_TAIL_STEPS 16
 
 #define rn() ((((float)rand())/RAND_MAX)-0.5f)
 
@@ -92,7 +93,7 @@ public:
 	CParticleEmitter* m_pEmitter;
 
 	// For patricles with tail, keeps history of previous positions.
-	Vec3 *m_pArrvPosHistory;
+	Vec3 m_ArrvPosHistory[MAX_PARTICLE_TAIL_STEPS];
 	unsigned char m_nTailSteps;
 	char m_reserved[3]; // Fill to 32 byte.
 
@@ -118,9 +119,9 @@ public:
 		//m_nFogVolumeId = 0;
 		m_pMaterial = 0;
 		m_pSpawnerEntity = 0;
-		m_pArrvPosHistory = 0;
+		//m_pArrvPosHistory = 0;
 		m_fTrailCurPos = 0;
-		m_nTailSteps = 8;
+		m_nTailSteps = 0;
 		m_reserved[0] = 0;
 		m_reserved[1] = 0;
 		m_reserved[2] = 0;
