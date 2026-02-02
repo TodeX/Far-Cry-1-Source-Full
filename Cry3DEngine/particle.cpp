@@ -394,11 +394,11 @@ bool CParticle::Update(const PartProcessParams & PPP)
 	// Remember prev positions for trail
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
-	if (m_pArrvPosHistory)
+	if (m_nTailSteps)
 	{
 		//float fTailLength = (m_pParams->fTailLenght/m_nTailSteps) /  m_fScale; // Here we must divide by scale because speed is scaled.
 		//m_fTrailCurPos += min(1.f, PPP.fFrameTime/fTailLength);
-		//m_pArrvPosHistory[ ((unsigned int)FtoI(m_fTrailCurPos))%m_nTailSteps ] = m_vPos;
+		//m_ArrvPosHistory[ ((unsigned int)FtoI(m_fTrailCurPos))%m_nTailSteps ] = m_vPos;
 
 		/*
 		float t = PPP.fCurTime-m_fLastTailPosTime;
@@ -407,12 +407,12 @@ bool CParticle::Update(const PartProcessParams & PPP)
 		if (t > dt)
 		{
 			//m_fTrailCurPos += min(1.f, PPP.fFrameTime/fTailLength);
-			//m_pArrvPosHistory[int(m_fTrailCurPos) & PART_HISTORY_ID_MASK] = m_vPos;
+			//m_ArrvPosHistory[int(m_fTrailCurPos) & PART_HISTORY_ID_MASK] = m_vPos;
 			for (int i = 0; i < PART_HISTORY_ELEMENTS-1; i++)
 			{
-				m_pArrvPosHistory[i] = m_pArrvPosHistory[i+1];
+				m_ArrvPosHistory[i] = m_ArrvPosHistory[i+1];
 			}
-			m_pArrvPosHistory[PART_HISTORY_ELEMENTS-1] = m_vPos;
+			m_ArrvPosHistory[PART_HISTORY_ELEMENTS-1] = m_vPos;
 			m_fLastTailPosTime = PPP.fCurTime;
 		}
 		else
@@ -422,8 +422,8 @@ bool CParticle::Update(const PartProcessParams & PPP)
 			// Smooth last to prev.
 			for (int i = 0; i < PART_HISTORY_ELEMENTS-1; i++)
 			{
-				Vec3 &last = m_pArrvPosHistory[i];
-				Vec3 &prev = m_pArrvPosHistory[i+1];
+				Vec3 &last = m_ArrvPosHistory[i];
+				Vec3 &prev = m_ArrvPosHistory[i+1];
 //				//last = last*(1.0f-a) + (prev+Vec3(0,0,0))*a;
 			}
 		}
@@ -489,11 +489,11 @@ void CParticle::DeActivateParticle(IPhysicalWorld * pPhysicalWorld)
 		m_pEmitter = 0;
 	}
 
-	if (m_pArrvPosHistory)
-	{
-		delete []m_pArrvPosHistory;
-		m_pArrvPosHistory = 0;
-	}
+	//if (m_pArrvPosHistory)
+	//{
+	//	delete []m_pArrvPosHistory;
+	//	m_pArrvPosHistory = 0;
+	//}
 	m_pSpawnerEntity = 0;
 }
 
