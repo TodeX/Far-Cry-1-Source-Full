@@ -3651,7 +3651,7 @@ bool CD3D9Renderer::EF_PreDraw(SShaderPass *sl, bool bSetVertexDecl)
         {
           CREOcLeaf *re = m_RP.m_MergedREs[i];
           CCObject *obj = m_RP.m_MergedObjs[i];
-          CLeafBuffer *lb = re->m_pBuffer;
+          CLeafBuffer *lb = re->m_pBuffer->GetVertexContainer();
           CMatInfo *mi = re->m_pChunk;
           SPipTangents *src = (SPipTangents *)lb->m_pSecVertBuffer->m_VS[VSF_TANGENTS].m_VData;
           src += mi->nFirstVertId;
@@ -3817,7 +3817,7 @@ _Loop:
             dst += nNumVerts;
             continue;
           }
-          struct_VERTEX_FORMAT_TEX2F *src = (struct_VERTEX_FORMAT_TEX2F *)pObj->m_pLMTCBufferO->m_pSecVertBuffer->m_VS[0].m_VData;
+          struct_VERTEX_FORMAT_TEX2F *src = (struct_VERTEX_FORMAT_TEX2F *)pObj->m_pLMTCBufferO->GetVertexContainer()->m_pSecVertBuffer->m_VS[0].m_VData;
           src += re->m_pChunk->nFirstVertId;
           for (int n=0; n<nNumVerts; n++)
           {
