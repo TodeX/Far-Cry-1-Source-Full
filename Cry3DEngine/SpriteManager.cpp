@@ -20,6 +20,8 @@
 #include "visareas.h"
 //#include "ParticleEffect.h"
 #include "3dEngine.h"
+#include <ISystem.h>
+#include <IJobManager.h>
 
 CSpriteManager::CSpriteManager( CPartManager *pPartManager )
 {
@@ -310,6 +312,27 @@ void CSpriteManager::SpawnParticle( CParticleEmitter &emitter,bool bChildProcess
 }
 
 //////////////////////////////////////////////////////////////////////////
+struct SUpdateParticlesJob
+{
+	CSpriteManager* pManager;
+	int nStart;
+	int nEnd;
+	const PartProcessParams* pParams;
+};
+
+void UpdateParticlesJob(void* pData)
+{
+	SUpdateParticlesJob* pJob = (SUpdateParticlesJob*)pData;
+	CSprite* pSprites = pJob->pManager->m_arrSprites;
+	unsigned char* pActive = &pJob->pManager->m_particleActive[0];
+	const PartProcessParams& ProcParams = *pJob->pParams;
+
+	for (int i = pJob->nStart; i < pJob->nEnd; ++i)
+	{
+		pActive[i] = pSprites[i].Update(ProcParams) ? 1 : 0;
+	}
+}
+
 void CSpriteManager::Render(CObjManager * pObjManager, CTerrain * pTerrain, int nRecursionLevel, CPartManager * pPartManager, IShader * pPartLightShader)
 {
 	// update max sprites count if console variable changed
@@ -360,6 +383,35 @@ void CSpriteManager::Render(CObjManager * pObjManager, CTerrain * pTerrain, int 
 	ProcParams.pPartManager = pPartManager;
 	ProcParams.vCamPos = pCamera->GetPos();
 
+	bool bParallelUpdate = !nRecursionLevel && GetSystem()->GetIJobManager();
+	int nUpdateCount = m_nCurSpritesCount;
+
+	if (bParallelUpdate)
+	{
+		if (m_particleActive.size() < (size_t)m_nMaxSpritesCount)
+			m_particleActive.resize(m_nMaxSpritesCount);
+
+		int nJobSize = 128; // Batch size
+		int nJobs = (nUpdateCount + nJobSize - 1) / nJobSize;
+
+		static std::vector<SUpdateParticlesJob> jobs; // Static to avoid realloc
+		if (jobs.size() < (size_t)nJobs)
+			jobs.resize(nJobs);
+
+		for (int i = 0; i < nJobs; ++i)
+		{
+			SUpdateParticlesJob& job = jobs[i];
+			job.pManager = this;
+			job.nStart = i * nJobSize;
+			job.nEnd = min(job.nStart + nJobSize, nUpdateCount);
+			job.pParams = &ProcParams;
+
+			GetSystem()->GetIJobManager()->AddJob(UpdateParticlesJob, &job);
+		}
+
+		GetSystem()->GetIJobManager()->WaitForAllJobs();
+	}
+
 	for( int i=0; i<m_nCurSpritesCount && i<m_nMaxSpritesCount; i++)
 	{
 		bool bActive = true;
@@ -368,7 +420,14 @@ void CSpriteManager::Render(CObjManager * pObjManager, CTerrain * pTerrain, int 
 
 		if(!nRecursionLevel)
 		{
-			bActive = pSprite->Update(ProcParams);
+			if (bParallelUpdate && i < nUpdateCount)
+			{
+				bActive = m_particleActive[i] != 0;
+			}
+			else
+			{
+				bActive = pSprite->Update(ProcParams);
+			}
 			//Vec3 vsz = Vec3(pSprite->m_fSize,pSprite->m_fSize,pSprite->m_fSize);
 			//pSprite->m_pEmitter->m_bbox.Add( pSprite->m_vPos - vsz );
 			//pSprite->m_pEmitter->m_bbox.Add( pSprite->m_vPos + vsz );
@@ -401,10 +460,17 @@ void CSpriteManager::Render(CObjManager * pObjManager, CTerrain * pTerrain, int 
 			if(i < m_nCurSpritesCount-1)
 			{
 				m_arrSprites[i] = m_arrSprites[m_nCurSpritesCount-1];
+				// Also swap active flag if we are still in range of updated particles
+				if (bParallelUpdate && i < nUpdateCount && m_nCurSpritesCount - 1 < nUpdateCount)
+				{
+					 m_particleActive[i] = m_particleActive[m_nCurSpritesCount - 1];
+				}
 				memset(&m_arrSprites[m_nCurSpritesCount-1],0,sizeof(m_arrSprites[m_nCurSpritesCount-1]));
 			}
 			m_nCurSpritesCount--;
 			i--;
+			if (nUpdateCount > m_nCurSpritesCount)
+				nUpdateCount = m_nCurSpritesCount; // Shrink update count just in case
 		}
 	}
 }

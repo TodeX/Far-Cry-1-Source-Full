@@ -193,6 +193,7 @@ CPartManager::~CPartManager()
 //////////////////////////////////////////////////////////////////////////
 void CPartManager::Spawn( CParticleEmitter *pEmitter,bool bChildProcess )
 {
+	AUTO_LOCK(m_csSpawn);
 	if(!GetCVars()->e_particles)
 		return;
 
@@ -242,6 +243,7 @@ void CPartManager::Spawn( CParticleEmitter *pEmitter,bool bChildProcess )
 //////////////////////////////////////////////////////////////////////////
 void CPartManager::Spawn( const ParticleParams &Params,float fMaxViewDist,CObjManager * pObjManager,bool bNoEmitter ) 
 {
+	AUTO_LOCK(m_csSpawn);
 //	if(Params.fLifeTime<0.5 && Params.pStatObj)
 	//	return;
 

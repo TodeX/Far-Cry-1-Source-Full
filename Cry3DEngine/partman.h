@@ -27,6 +27,8 @@
 
 #include "ParticleEffect.h"
 #include "ParticleEmitter.h"
+#include "CritSection.h"
+#include <IJobManager.h>
 
 // particle proc params
 struct PartProcessParams
@@ -233,7 +235,8 @@ public:
 
   CSprite * m_arrSprites;//[MAX_SPRITES_COUNT];
   int m_nCurSpritesCount;  
-	int m_nMaxSpritesCount;  
+	int m_nMaxSpritesCount;
+	std::vector<unsigned char> m_particleActive;
 
 private:
 	void SpawnParticle( CParticleEmitter &emitter,bool bChildProcess,float fCurrTime,CParticle *pParticle );
@@ -271,6 +274,8 @@ public:
   ~CPartManager();
   void Spawn( const ParticleParams &Params,float fMaxViewDist, CObjManager * pObjManager,bool bNoEmitter=false );
 	void Spawn( CParticleEmitter *pEmitter,bool bChildProcess=false );
+	void LockSpawn() { m_csSpawn.Lock(); }
+	void UnlockSpawn() { m_csSpawn.Unlock(); }
   void UpdateMan(CObjManager * pObjManager, CTerrain * pTerrain, int nRecursionLevel);
   void Render(CObjManager * pObjManager, CTerrain * pTerrain);
   int  Count(int * pCurSpritesCount, int * pCurFreeCount, int * pCurEmitCount);
@@ -319,6 +324,7 @@ protected:
 private:
 	//CPartList m_FreeParticles;
 	//CParticle             m_arrParts[MAX_PARTICLES_COUNT];
+	CCritSection					m_csSpawn;
 	CSpriteManager *      m_pSpriteMan;
 	int                   m_nGlowTexID;
 	//  list2<CPartEmitter*>  m_lstpPartEmitters;
