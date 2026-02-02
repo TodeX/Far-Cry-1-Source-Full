@@ -5,6 +5,7 @@
 
 #include "NvTriStripObjects.h"
 #include "NvTriStrip.h"
+#include <cstring>
 
 #pragma warning(push)
 #pragma warning(disable:4018) // signed/unsigned mismatch

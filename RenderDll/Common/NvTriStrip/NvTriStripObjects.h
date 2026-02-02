@@ -8,6 +8,7 @@
 #endif
 #include <vector>
 #include <list>
+#include <set>
 #include "VertexCache.h"
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -145,7 +146,7 @@ public:
 	void Combine(const NvFaceInfoVec &forward, const NvFaceInfoVec &backward);
 
 	//returns true if the face is "unique", i.e. has a vertex which doesn't exist in the faceVec
-	bool Unique(NvFaceInfoVec& faceVec, NvFaceInfo* face);
+	bool Unique(const std::set<int>& uniqueVertices, NvFaceInfo* face);
 
 	// mark the triangle as taken by this strip
 	bool IsMarked    (NvFaceInfo *faceInfo);
