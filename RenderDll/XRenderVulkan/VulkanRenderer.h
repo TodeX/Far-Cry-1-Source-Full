@@ -267,6 +267,7 @@ public:
 
     // Pipeline management
     CVulkanPipeline* GetPipeline(const VulkanPipelineState& state);
+    VkDescriptorSet GetDescriptorSet(SVulkanTexture* pTex, CVulkanPipeline* pPipeline);
 
 private:
     WIN_HWND m_hWnd;
@@ -300,6 +301,7 @@ private:
     VkRenderPass m_RenderPass;
 
     VkCommandPool m_CommandPool;
+    std::vector<VkDescriptorPool> m_DescriptorPools;
     std::vector<VkCommandBuffer> m_CommandBuffers;
     std::vector<VkSemaphore> m_ImageAvailableSemaphores;
     std::vector<VkSemaphore> m_RenderFinishedSemaphores;
@@ -323,6 +325,7 @@ private:
     void CreateDepthResources();
     void CreateFramebuffers();
     void CreateCommandPool();
+    void CreateDescriptorPools();
     void CreateCommandBuffers();
     void CreateSyncObjects();
     bool IsDeviceSuitable(VkPhysicalDevice device);

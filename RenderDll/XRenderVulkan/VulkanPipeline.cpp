@@ -12,6 +12,7 @@ CVulkanPipeline::CVulkanPipeline(VkDevice device, VkPipelineCache cache, const V
     , m_State(state)
     , m_Pipeline(VK_NULL_HANDLE)
     , m_PipelineLayout(VK_NULL_HANDLE)
+    , m_DescriptorSetLayout(VK_NULL_HANDLE)
 {
 }
 
@@ -28,6 +29,12 @@ CVulkanPipeline::~CVulkanPipeline()
         vkDestroyPipelineLayout(m_Device, m_PipelineLayout, nullptr);
         m_PipelineLayout = VK_NULL_HANDLE;
     }
+
+    if (m_DescriptorSetLayout)
+    {
+        vkDestroyDescriptorSetLayout(m_Device, m_DescriptorSetLayout, nullptr);
+        m_DescriptorSetLayout = VK_NULL_HANDLE;
+    }
 }
 
 bool CVulkanPipeline::Init()
@@ -39,6 +46,23 @@ bool CVulkanPipeline::Init()
 
 void CVulkanPipeline::CreateLayout()
 {
+    // Create Descriptor Set Layout for Texture
+    VkDescriptorSetLayoutBinding samplerLayoutBinding = {};
+    samplerLayoutBinding.binding = 0;
+    samplerLayoutBinding.descriptorCount = 1;
+    samplerLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+    samplerLayoutBinding.pImmutableSamplers = nullptr;
+    samplerLayoutBinding.stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
+
+    VkDescriptorSetLayoutCreateInfo layoutInfo = {};
+    layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+    layoutInfo.bindingCount = 1;
+    layoutInfo.pBindings = &samplerLayoutBinding;
+
+    if (vkCreateDescriptorSetLayout(m_Device, &layoutInfo, nullptr, &m_DescriptorSetLayout) != VK_SUCCESS) {
+        // gRenDev->CheckError("Failed to create descriptor set layout!");
+    }
+
     // Enable Push Constants for MVP matrix (and other data)
     VkPushConstantRange pushConstantRange = {};
     pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
@@ -47,8 +71,8 @@ void CVulkanPipeline::CreateLayout()
 
     VkPipelineLayoutCreateInfo pipelineLayoutInfo = {};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-    pipelineLayoutInfo.setLayoutCount = 0;
-    pipelineLayoutInfo.pSetLayouts = nullptr;
+    pipelineLayoutInfo.setLayoutCount = 1;
+    pipelineLayoutInfo.pSetLayouts = &m_DescriptorSetLayout;
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
