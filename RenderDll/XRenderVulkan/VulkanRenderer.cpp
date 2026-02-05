@@ -1,18 +1,31 @@
+#include "../RenderPCH.h"
+#include <windows.h> // Ensure windows.h is included for types
+#include <stdexcept>
+#include <cstring>
 #include "VulkanRenderer.h"
 #include <IConsole.h>
 #include <ILog.h>
+#include <set>
+#include <algorithm>
 
 // --------------------------------------------------------------------------------
-// Vulkan Renderer Implementation Skeleton
+// Vulkan Renderer Implementation
 // --------------------------------------------------------------------------------
 
 CVulkanRenderer::CVulkanRenderer()
+    : m_Instance(VK_NULL_HANDLE)
+    , m_PhysicalDevice(VK_NULL_HANDLE)
+    , m_Device(VK_NULL_HANDLE)
+    , m_Queue(VK_NULL_HANDLE)
+    , m_Surface(VK_NULL_HANDLE)
+    , m_Swapchain(VK_NULL_HANDLE)
 {
     m_type = R_VULKAN_RENDERER;
 }
 
 CVulkanRenderer::~CVulkanRenderer()
 {
+    ShutDown();
 }
 
 #ifndef PS2
@@ -31,11 +44,19 @@ WIN_HWND CVulkanRenderer::Init(int x,int y,int width,int height,unsigned int cbp
 
     if (m_pLog) m_pLog->Log("Initializing Vulkan Renderer...");
 
-    // TODO: Initialize Vulkan Instance
-    // TODO: Create Surface
-    // TODO: Pick Physical Device
-    // TODO: Create Logical Device
-    // TODO: Create Swapchain
+    try {
+        CreateInstance();
+        CreateSurface(hinst, Glhwnd);
+        PickPhysicalDevice();
+        CreateLogicalDevice();
+        CreateSwapchain();
+    } catch (const std::exception& e) {
+        if (m_pLog) m_pLog->Log("Vulkan Initialization Failed: %s", e.what());
+        ShutDown();
+        return 0;
+    }
+
+    if (m_pLog) m_pLog->Log("Vulkan Renderer Initialized Successfully");
 
     return m_hWnd;
 }
@@ -50,24 +71,264 @@ void CVulkanRenderer::ShutDown(bool bReInit)
 {
     if (m_pLog) m_pLog->Log("Shutting down Vulkan Renderer...");
 
-    // TODO: Destroy Vulkan resources
+    if (m_Device) {
+        vkDeviceWaitIdle(m_Device);
+    }
+
+    if (m_Swapchain) {
+        vkDestroySwapchainKHR(m_Device, m_Swapchain, nullptr);
+        m_Swapchain = VK_NULL_HANDLE;
+    }
+
+    if (m_Device) {
+        vkDestroyDevice(m_Device, nullptr);
+        m_Device = VK_NULL_HANDLE;
+    }
+
+    if (m_Surface) {
+        vkDestroySurfaceKHR(m_Instance, m_Surface, nullptr);
+        m_Surface = VK_NULL_HANDLE;
+    }
+
+    if (m_Instance) {
+        vkDestroyInstance(m_Instance, nullptr);
+        m_Instance = VK_NULL_HANDLE;
+    }
 }
 
 void CVulkanRenderer::BeginFrame()
 {
-    // TODO: Acquire next image from swapchain
-    // TODO: Begin command buffer recording
+    // Placeholder
 }
 
 void CVulkanRenderer::Update()
 {
-    // TODO: End command buffer recording
-    // TODO: Submit to queue
-    // TODO: Present image
+    // Placeholder
+}
+
+void CVulkanRenderer::CreateInstance()
+{
+    VkApplicationInfo appInfo = {};
+    appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+    appInfo.pApplicationName = "CryEngine Game";
+    appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+    appInfo.pEngineName = "CryEngine";
+    appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+    appInfo.apiVersion = VK_API_VERSION_1_0;
+
+    std::vector<const char*> extensions;
+    extensions.push_back(VK_KHR_SURFACE_EXTENSION_NAME);
+    extensions.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
+
+    VkInstanceCreateInfo createInfo = {};
+    createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    createInfo.pApplicationInfo = &appInfo;
+    createInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
+    createInfo.ppEnabledExtensionNames = extensions.data();
+    createInfo.enabledLayerCount = 0;
+
+    if (vkCreateInstance(&createInfo, nullptr, &m_Instance) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create instance!");
+    }
+}
+
+void CVulkanRenderer::CreateSurface(WIN_HINSTANCE hinst, WIN_HWND hWnd)
+{
+    VkWin32SurfaceCreateInfoKHR createInfo = {};
+    createInfo.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+    createInfo.hinstance = (HINSTANCE)hinst;
+    createInfo.hwnd = (HWND)hWnd;
+
+    if (vkCreateWin32SurfaceKHR(m_Instance, &createInfo, nullptr, &m_Surface) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create window surface!");
+    }
+}
+
+void CVulkanRenderer::PickPhysicalDevice()
+{
+    uint32_t deviceCount = 0;
+    vkEnumeratePhysicalDevices(m_Instance, &deviceCount, nullptr);
+
+    if (deviceCount == 0) {
+        throw std::runtime_error("failed to find GPUs with Vulkan support!");
+    }
+
+    std::vector<VkPhysicalDevice> devices(deviceCount);
+    vkEnumeratePhysicalDevices(m_Instance, &deviceCount, devices.data());
+
+    for (const auto& device : devices) {
+        if (IsDeviceSuitable(device)) {
+            m_PhysicalDevice = device;
+            break;
+        }
+    }
+
+    if (m_PhysicalDevice == VK_NULL_HANDLE) {
+        throw std::runtime_error("failed to find a suitable GPU!");
+    }
+}
+
+bool CVulkanRenderer::IsDeviceSuitable(VkPhysicalDevice device)
+{
+    bool extensionsSupported = CheckDeviceExtensionSupport(device);
+    bool swapChainAdequate = false;
+    if (extensionsSupported) {
+        SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(device);
+        swapChainAdequate = !swapChainSupport.formats.empty() && !swapChainSupport.presentModes.empty();
+    }
+    return extensionsSupported && swapChainAdequate;
+}
+
+bool CVulkanRenderer::CheckDeviceExtensionSupport(VkPhysicalDevice device)
+{
+    uint32_t extensionCount;
+    vkEnumerateDeviceExtensionProperties(device, nullptr, &extensionCount, nullptr);
+
+    std::vector<VkExtensionProperties> availableExtensions(extensionCount);
+    vkEnumerateDeviceExtensionProperties(device, nullptr, &extensionCount, availableExtensions.data());
+
+    std::set<std::string> requiredExtensions;
+    requiredExtensions.insert(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
+
+    for (const auto& extension : availableExtensions) {
+        requiredExtensions.erase(extension.extensionName);
+    }
+
+    return requiredExtensions.empty();
+}
+
+CVulkanRenderer::SwapChainSupportDetails CVulkanRenderer::QuerySwapChainSupport(VkPhysicalDevice device)
+{
+    SwapChainSupportDetails details;
+    vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, m_Surface, &details.capabilities);
+
+    uint32_t formatCount;
+    vkGetPhysicalDeviceSurfaceFormatsKHR(device, m_Surface, &formatCount, nullptr);
+
+    if (formatCount != 0) {
+        details.formats.resize(formatCount);
+        vkGetPhysicalDeviceSurfaceFormatsKHR(device, m_Surface, &formatCount, details.formats.data());
+    }
+
+    uint32_t presentModeCount;
+    vkGetPhysicalDeviceSurfacePresentModesKHR(device, m_Surface, &presentModeCount, nullptr);
+
+    if (presentModeCount != 0) {
+        details.presentModes.resize(presentModeCount);
+        vkGetPhysicalDeviceSurfacePresentModesKHR(device, m_Surface, &presentModeCount, details.presentModes.data());
+    }
+
+    return details;
+}
+
+void CVulkanRenderer::CreateLogicalDevice()
+{
+    uint32_t queueFamilyCount = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(m_PhysicalDevice, &queueFamilyCount, nullptr);
+
+    std::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+    vkGetPhysicalDeviceQueueFamilyProperties(m_PhysicalDevice, &queueFamilyCount, queueFamilies.data());
+
+    int graphicsQueueFamilyIndex = -1;
+    for (int i = 0; i < (int)queueFamilies.size(); i++) {
+        if (queueFamilies[i].queueCount > 0 && (queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)) {
+            graphicsQueueFamilyIndex = i;
+            break;
+        }
+    }
+
+    if (graphicsQueueFamilyIndex == -1) {
+        throw std::runtime_error("failed to find a graphics queue family!");
+    }
+
+    float queuePriority = 1.0f;
+    VkDeviceQueueCreateInfo queueCreateInfo = {};
+    queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+    queueCreateInfo.queueFamilyIndex = graphicsQueueFamilyIndex;
+    queueCreateInfo.queueCount = 1;
+    queueCreateInfo.pQueuePriorities = &queuePriority;
+
+    VkPhysicalDeviceFeatures deviceFeatures = {};
+
+    std::vector<const char*> deviceExtensions;
+    deviceExtensions.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
+
+    VkDeviceCreateInfo createInfo = {};
+    createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+    createInfo.pQueueCreateInfos = &queueCreateInfo;
+    createInfo.queueCreateInfoCount = 1;
+    createInfo.pEnabledFeatures = &deviceFeatures;
+    createInfo.enabledExtensionCount = static_cast<uint32_t>(deviceExtensions.size());
+    createInfo.ppEnabledExtensionNames = deviceExtensions.data();
+
+    if (vkCreateDevice(m_PhysicalDevice, &createInfo, nullptr, &m_Device) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create logical device!");
+    }
+
+    vkGetDeviceQueue(m_Device, 0, 0, &m_Queue);
+}
+
+void CVulkanRenderer::CreateSwapchain()
+{
+    SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(m_PhysicalDevice);
+
+    VkSurfaceFormatKHR surfaceFormat = swapChainSupport.formats[0];
+    for (const auto& availableFormat : swapChainSupport.formats) {
+        if (availableFormat.format == VK_FORMAT_B8G8R8A8_UNORM && availableFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
+            surfaceFormat = availableFormat;
+            break;
+        }
+    }
+
+    VkPresentModeKHR presentMode = VK_PRESENT_MODE_FIFO_KHR; // V-Sync
+    for (const auto& availablePresentMode : swapChainSupport.presentModes) {
+        if (availablePresentMode == VK_PRESENT_MODE_MAILBOX_KHR) {
+            presentMode = availablePresentMode;
+            break;
+        }
+    }
+
+    VkExtent2D extent = swapChainSupport.capabilities.currentExtent;
+    if (swapChainSupport.capabilities.currentExtent.width == UINT32_MAX) {
+        extent.width = (std::max)(swapChainSupport.capabilities.minImageExtent.width, (std::min)(swapChainSupport.capabilities.maxImageExtent.width, (uint32_t)m_width));
+        extent.height = (std::max)(swapChainSupport.capabilities.minImageExtent.height, (std::min)(swapChainSupport.capabilities.maxImageExtent.height, (uint32_t)m_height));
+    }
+
+    uint32_t imageCount = swapChainSupport.capabilities.minImageCount + 1;
+    if (swapChainSupport.capabilities.maxImageCount > 0 && imageCount > swapChainSupport.capabilities.maxImageCount) {
+        imageCount = swapChainSupport.capabilities.maxImageCount;
+    }
+
+    VkSwapchainCreateInfoKHR createInfo = {};
+    createInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+    createInfo.surface = m_Surface;
+    createInfo.minImageCount = imageCount;
+    createInfo.imageFormat = surfaceFormat.format;
+    createInfo.imageColorSpace = surfaceFormat.colorSpace;
+    createInfo.imageExtent = extent;
+    createInfo.imageArrayLayers = 1;
+    createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+    createInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+    createInfo.preTransform = swapChainSupport.capabilities.currentTransform;
+    createInfo.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+    createInfo.presentMode = presentMode;
+    createInfo.clipped = VK_TRUE;
+    createInfo.oldSwapchain = VK_NULL_HANDLE;
+
+    if (vkCreateSwapchainKHR(m_Device, &createInfo, nullptr, &m_Swapchain) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create swap chain!");
+    }
+
+    vkGetSwapchainImagesKHR(m_Device, m_Swapchain, &imageCount, nullptr);
+    m_SwapchainImages.resize(imageCount);
+    vkGetSwapchainImagesKHR(m_Device, m_Swapchain, &imageCount, m_SwapchainImages.data());
+
+    m_SwapchainImageFormat = surfaceFormat.format;
+    m_SwapchainExtent = extent;
 }
 
 // --------------------------------------------------------------------------------
-// IRenderer Interface Implementation Stubs
+// IRenderer Interface Implementation Stubs (unchanged or minimally adjusted)
 // --------------------------------------------------------------------------------
 
 bool CVulkanRenderer::SetCurrentContext(WIN_HWND hWnd) { return true; }
