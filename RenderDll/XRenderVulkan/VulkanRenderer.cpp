@@ -100,6 +100,7 @@ WIN_HWND CVulkanRenderer::Init(int x,int y,int width,int height,unsigned int cbp
         CreateDepthResources();
         CreateFramebuffers();
         CreateCommandPool();
+        CreateDescriptorPools();
         CreateCommandBuffers();
         CreateSyncObjects();
 
@@ -175,6 +176,11 @@ void CVulkanRenderer::ShutDown(bool bReInit)
     m_DynVBs.clear();
     m_DynVBMapped.clear();
 
+    for (size_t i = 0; i < m_DescriptorPools.size(); i++) {
+        vkDestroyDescriptorPool(m_Device, m_DescriptorPools[i], nullptr);
+    }
+    m_DescriptorPools.clear();
+
     if (m_CommandPool) {
         vkDestroyCommandPool(m_Device, m_CommandPool, nullptr);
         m_CommandPool = VK_NULL_HANDLE;
@@ -243,6 +249,8 @@ void CVulkanRenderer::BeginFrame()
     if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
         throw std::runtime_error("failed to acquire swap chain image!");
     }
+
+    vkResetDescriptorPool(m_Device, m_DescriptorPools[m_CurrentFrame], 0);
 
     vkResetCommandBuffer(m_CommandBuffers[m_CurrentFrame], 0);
 
@@ -682,6 +690,27 @@ void CVulkanRenderer::CreateCommandPool()
 
     if (vkCreateCommandPool(m_Device, &poolInfo, nullptr, &m_CommandPool) != VK_SUCCESS) {
         throw std::runtime_error("failed to create command pool!");
+    }
+}
+
+void CVulkanRenderer::CreateDescriptorPools()
+{
+    m_DescriptorPools.resize(MAX_FRAMES_IN_FLIGHT);
+
+    std::array<VkDescriptorPoolSize, 1> poolSizes = {};
+    poolSizes[0].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+    poolSizes[0].descriptorCount = 1000;
+
+    VkDescriptorPoolCreateInfo poolInfo = {};
+    poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
+    poolInfo.poolSizeCount = static_cast<uint32_t>(poolSizes.size());
+    poolInfo.pPoolSizes = poolSizes.data();
+    poolInfo.maxSets = 1000;
+
+    for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+        if (vkCreateDescriptorPool(m_Device, &poolInfo, nullptr, &m_DescriptorPools[i]) != VK_SUCCESS) {
+            throw std::runtime_error("failed to create descriptor pool!");
+        }
     }
 }
 
@@ -1433,7 +1462,11 @@ void CVulkanRenderer::Draw2dImage(float xpos,float ypos,float w,float h,int text
         // Use m_ProjMatrix. View and Model are Identity in 2D Mode usually
         vkCmdPushConstants(cmd, pPipeline->GetLayout(), VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(Matrix44), &m_ProjMatrix);
 
-        // TODO: Bind Texture (Descriptor Sets)
+        SVulkanTexture* pTex = m_TexMan->GetVulkanTexture(texture_id);
+        VkDescriptorSet descriptorSet = GetDescriptorSet(pTex, pPipeline);
+        if (descriptorSet != VK_NULL_HANDLE) {
+            vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pPipeline->GetLayout(), 0, 1, &descriptorSet, 0, nullptr);
+        }
 
         VulkanBuffer* pVB = (VulkanBuffer*)vb->m_VS[VSF_GENERAL].m_VertBuf.m_pPtr;
         VkBuffer vertexBuffers[] = { pVB->buffer };
@@ -2155,6 +2188,62 @@ CVulkanPipeline* CVulkanRenderer::GetPipeline(const VulkanPipelineState& state)
 
     delete pPipeline;
     return NULL;
+}
+
+VkDescriptorSet CVulkanRenderer::GetDescriptorSet(SVulkanTexture* pTex, CVulkanPipeline* pPipeline)
+{
+    if (!pPipeline) return VK_NULL_HANDLE;
+
+    VkDescriptorSetAllocateInfo allocInfo = {};
+    allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+    allocInfo.descriptorPool = m_DescriptorPools[m_CurrentFrame];
+    VkDescriptorSetLayout layout = pPipeline->GetDescriptorSetLayout();
+    allocInfo.descriptorSetCount = 1;
+    allocInfo.pSetLayouts = &layout;
+
+    VkDescriptorSet descriptorSet;
+    if (vkAllocateDescriptorSets(m_Device, &allocInfo, &descriptorSet) != VK_SUCCESS) {
+        // Handle allocation failure (e.g., pool empty)
+        return VK_NULL_HANDLE;
+    }
+
+    // Update Descriptor Set
+    VkDescriptorImageInfo imageInfo = {};
+    if (pTex) {
+        imageInfo.imageLayout = pTex->imageLayout;
+        imageInfo.imageView = pTex->view;
+        imageInfo.sampler = pTex->sampler;
+    } else {
+        // Fallback to white texture? or some valid texture
+        // Note: m_TexMan->m_Text_White might not be initialized or available in all contexts,
+        // but it's a member of CTexMan.
+        STexPic* pWhiteTex = m_TexMan->m_Text_White;
+        if (pWhiteTex) {
+             SVulkanTexture* pWhite = (SVulkanTexture*)pWhiteTex->m_RefTex.m_VidTex;
+             if (pWhite) {
+                imageInfo.imageLayout = pWhite->imageLayout;
+                imageInfo.imageView = pWhite->view;
+                imageInfo.sampler = pWhite->sampler;
+             } else {
+                 return VK_NULL_HANDLE;
+             }
+        } else {
+             return VK_NULL_HANDLE;
+        }
+    }
+
+    VkWriteDescriptorSet descriptorWrite = {};
+    descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+    descriptorWrite.dstSet = descriptorSet;
+    descriptorWrite.dstBinding = 0;
+    descriptorWrite.dstArrayElement = 0;
+    descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+    descriptorWrite.descriptorCount = 1;
+    descriptorWrite.pImageInfo = &imageInfo;
+
+    vkUpdateDescriptorSets(m_Device, 1, &descriptorWrite, 0, nullptr);
+
+    return descriptorSet;
 }
 
 #include "Vulkan_Textures.cpp" // Include implementations of texture manager

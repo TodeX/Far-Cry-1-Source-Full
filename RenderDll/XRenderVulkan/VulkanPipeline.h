@@ -79,6 +79,7 @@ public:
 
     VkPipeline GetPipeline() const { return m_Pipeline; }
     VkPipelineLayout GetLayout() const { return m_PipelineLayout; }
+    VkDescriptorSetLayout GetDescriptorSetLayout() const { return m_DescriptorSetLayout; }
 
     bool Init();
 
@@ -88,6 +89,7 @@ private:
     VulkanPipelineState m_State;
     VkPipeline m_Pipeline;
     VkPipelineLayout m_PipelineLayout;
+    VkDescriptorSetLayout m_DescriptorSetLayout;
 
     void CreateLayout();
     void CreatePipeline();
