@@ -18,10 +18,6 @@
 #include "IGame.h"
 #include "IDataProbe.h"
 
-#ifndef NOT_USE_UBICOM_SDK
-	#include "NewUbisoftClient.h"								// NewUbisoftClient
-#endif // NOT_USE_UBICOM_SDK
-
 #if defined(_DEBUG) && !defined(LINUX)
 static char THIS_FILE[] = __FILE__;
 #define DEBUG_CLIENTBLOCK new( _NORMAL_BLOCK, THIS_FILE, __LINE__) 
@@ -229,15 +225,7 @@ void CServerSlotImpl::OnConnect()
 	NET_ASSERT(m_pSink);
 	if(m_pSink)
 	{
-#ifndef NOT_USE_UBICOM_SDK
-		// If its a multiplayer game check the cdkey
-		if(GetISystem()->GetIGame()->GetModuleState(EGameMultiplayer))
-			m_pNetwork->m_pUbiSoftClient->Server_CheckPlayerAuthorizationID(GetID(),m_pbAuthorizationID);
-		else
-#endif // NOT_USE_UBICOM_SDK
-		{
-			m_pSink->OnXPlayerAuthorization(true,"",NULL,0);
-		}
+		m_pSink->OnXPlayerAuthorization(true,"",NULL,0);
 
 		m_pSink->OnXServerSlotConnect(m_pbAuthorizationID,m_uiAuthorizationSize);
 	}
@@ -270,10 +258,6 @@ void CServerSlotImpl::OnDisconnect(const char *szCause)
 	{
 		if(szCause==NULL)
 			szCause="Undefined";
-
-#ifndef NOT_USE_UBICOM_SDK
-		m_pNetwork->m_pUbiSoftClient->Server_RemovePlayer(GetID());
-#endif // NOT_USE_UBICOM_SDK
 
 		m_pSink->OnXServerSlotDisconnect(szCause);
 	}
@@ -560,15 +544,7 @@ void CServerSlotLocal::OnCCPConnectResp(CStream &stm)
 
 	if(m_pSink)
 	{
-		#ifndef NOT_USE_UBICOM_SDK
-		// If its a multiplayer game check the cdkey
-		if(GetISystem()->GetIGame()->GetModuleState(EGameMultiplayer))
-			m_pNetwork->m_pUbiSoftClient->Server_CheckPlayerAuthorizationID(GetID(),m_pbAuthorizationID);
-		else
-#endif // NOT_USE_UBICOM_SDK
-		{
-			m_pSink->OnXPlayerAuthorization(true,"",NULL,0);
-		}
+		m_pSink->OnXPlayerAuthorization(true,"",NULL,0);
 
 		m_pSink->OnXServerSlotConnect(m_pbAuthorizationID,m_uiAuthorizationSize);
 	}

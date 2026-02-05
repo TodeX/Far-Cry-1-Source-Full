@@ -17,11 +17,6 @@
 #endif
 #include "ITimer.h"
 
-#ifndef NOT_USE_UBICOM_SDK
-	#include "NewUbisoftClient.h"								// NewUbisoftClient
-	#include "ScriptObjectNewUbisoftClient.h"		// CScriptObjectNewUbisoftClient
-#endif // NOT_USE_UBICOM_SDK
-
 #define ANTI_CHEATS
 
 #include "platform.h"
@@ -113,23 +108,12 @@ CNetwork::CNetwork()
 	m_bHaveServer = false;
 	m_bHaveClient = false;
 
-#ifndef NOT_USE_UBICOM_SDK
-	m_pScriptObjectNewUbisoftClient=0;
-	m_pUbiSoftClient=0;
-#endif // NOT_USE_UBICOM_SDK
-
 	m_pScriptSystem=0;
 	m_pClient=0;
 }
 
 CNetwork::~CNetwork()
 {
-#ifndef NOT_USE_UBICOM_SDK
-	SAFE_DELETE(m_pUbiSoftClient);
-	SAFE_DELETE(m_pScriptObjectNewUbisoftClient);
-	CScriptObjectNewUbisoftClient::ReleaseTemplate();
-#endif // NOT_USE_UBICOM_SDK
-
 	SAFE_RELEASE( m_pNetCompressPackets );
 	SAFE_RELEASE( m_pNetLog );
 	SAFE_DELETE( m_pDefenceWall );
@@ -152,19 +136,6 @@ void CNetwork::SetLocalIP( const char *szLocalIP )
 	ip.Set(0,(char *)szLocalIP);
 
 	m_dwLocalIP=ip.GetAsUINT();
-	
-#ifndef NOT_USE_UBICOM_SDK
-	// Ubi.com cannot change the IP later than creation
-	{
-		CIPAddress localip;
-		localip.Set(0,GetLocalIP());
-		m_pUbiSoftClient=new NewUbisoftClient(localip.GetAsString());
-
-		m_pScriptObjectNewUbisoftClient=new CScriptObjectNewUbisoftClient;
-		CScriptObjectNewUbisoftClient::InitializeTemplate(m_pScriptSystem);
-		m_pScriptObjectNewUbisoftClient->Init(m_pScriptSystem,m_pSystem,m_pUbiSoftClient);
-	}
-#endif // NOT_USE_UBICOM_SDK
 }
 
 DWORD CNetwork::GetLocalIP() const
@@ -322,10 +293,6 @@ IServer *CNetwork::CreateServer(IServerSlotFactory *pFactory, WORD nPort, bool l
 		}
 	}
 
-#ifndef NOT_USE_UBICOM_SDK
-	m_pUbiSoftClient->Server_SetGamePort(nPort);	// set the connection to the server
-#endif // NOT_USE_UBICOM_SDK
-
 	LockPunkbusterCVars();
 
 	return pServer;
@@ -434,12 +401,6 @@ IServer *CNetwork::GetServerByPort( const WORD wPort )
 
 void CNetwork::UnregisterServer(WORD wPort)
 {
-#ifndef NOT_USE_UBICOM_SDK
-	// We have to tell Ubisoft that the client has finished the game.
-	// If ubisoft is not running this won't do anything.
-	m_pUbiSoftClient->Client_LeaveGameServer();
-#endif // NOT_USE_UBICOM_SDK
-
 	if(m_bHaveServer)
 	{
 #if !defined(NOT_USE_PUNKBUSTER_SDK)
@@ -470,10 +431,6 @@ void CNetwork::UnregisterClient( IClient *pClient )
 void CNetwork::GetMemoryStatistics(ICrySizer *pSizer)
 {
 	pSizer->AddObject(m_neNetErrors,sizeof(m_neNetErrors));
-	
-#ifndef NOT_USE_UBICOM_SDK
-	pSizer->AddObject( m_pScriptObjectNewUbisoftClient, sizeof *m_pScriptObjectNewUbisoftClient);
-#endif // NOT_USE_UBICOM_SDK
 }
 
 bool CNetwork::IsPacketCompressionEnabled() const
@@ -514,10 +471,6 @@ void CNetwork::PunkDetected( CIPAddress &ip )
 //////////////////////////////////////////////////////////////////////////
 void CNetwork::UpdateNetwork()
 {
-#ifndef NOT_USE_UBICOM_SDK
-	// Update ubisoft
-	m_pUbiSoftClient->Update();
-#endif // NOT_USE_UBICOM_SDK
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -757,62 +710,13 @@ void CNetwork::OnAfterServerLoadLevel( const char *szServerName, const uint32 dw
 		assert(pServer);		// internal error
 		return;
 	}
-
-#ifndef NOT_USE_UBICOM_SDK
-	if(m_pSystem->GetIGame()->GetModuleState(EGameMultiplayer) && pServer->GetServerType()!=eMPST_LAN)
-	{
-		// if it's a ubi-server, publish the server
-		if(pServer->GetServerType()==eMPST_UBI)
-			m_pUbiSoftClient->Server_CreateServer(szServerName,dwPlayerCount);
-
-		// if it's a internet server, check CDKey
-//		m_pSystem->GetILog()->Log("Ubi.com DEBUG OnAfterServerLoadLevel() 2");
-		m_pUbiSoftClient->Server_CheckCDKeys(1);
-	}
-	else
-	{
-//		m_pSystem->GetILog()->Log("Ubi.com DEBUG OnAfterServerLoadLevel() 3");
-		m_pUbiSoftClient->Server_DestroyServer();
-		m_pUbiSoftClient->Server_CheckCDKeys(0);
-	}
-#endif // NOT_USE_UBICOM_SDK
 }
 
 bool CNetwork::VerifyMultiplayerOverInternet()
 {
-#ifndef NOT_USE_UBICOM_SDK
-	if(!m_pUbiSoftClient->Client_IsConnected())
-	{
-		// if this is a ubi.com server, and we don't have a ubi.com connection
-		// disconnect, login, and retry
-		GetClient()->Disconnect("@UserDisconnected");
-
-		HSCRIPTFUNCTION pfnOnConnectNeedUbi = m_pScriptSystem->GetFunctionPtr("Game", "OnConnectNeedUbi");
-
-		if (pfnOnConnectNeedUbi)
-		{
-			_SmartScriptObject pGameScriptObject(m_pScriptSystem,true);
-			m_pScriptSystem->GetGlobalValue("Game",*pGameScriptObject);
-
-			m_pScriptSystem->BeginCall(pfnOnConnectNeedUbi);
-			m_pScriptSystem->PushFuncParam(pGameScriptObject);
-			m_pScriptSystem->EndCall();
-
-			m_pScriptSystem->ReleaseFunc(pfnOnConnectNeedUbi);
-		}
-
-		return false;
-	}
-#endif // NOT_USE_UBICOM_SDK
-
 	return true;
 }
 
 void CNetwork::Client_ReJoinGameServer()
 {
-#ifndef NOT_USE_UBICOM_SDK
-	// We have to tell Ubisoft that the client has successfully connected
-	// If ubisoft is not running this won't do anything.
-	m_pUbiSoftClient->Client_ReJoinGameServer();
-#endif NOT_USE_UBICOM_SDK
 }
