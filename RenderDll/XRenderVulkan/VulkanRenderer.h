@@ -3,6 +3,10 @@
 
 #include "../Common/Renderer.h"
 
+#define VK_USE_PLATFORM_WIN32_KHR
+#include <vulkan/vulkan.h>
+#include <vector>
+
 class CVulkanRenderer : public CRenderer
 {
 public:
@@ -151,6 +155,34 @@ public:
 public:
     ILog* m_pLog;
     ISystem* m_pSystem;
+
+private:
+    WIN_HWND m_hWnd;
+
+    VkInstance m_Instance;
+    VkPhysicalDevice m_PhysicalDevice;
+    VkDevice m_Device;
+    VkQueue m_Queue;
+    VkSurfaceKHR m_Surface;
+    VkSwapchainKHR m_Swapchain;
+
+    std::vector<VkImage> m_SwapchainImages;
+    VkFormat m_SwapchainImageFormat;
+    VkExtent2D m_SwapchainExtent;
+
+    void CreateInstance();
+    void CreateSurface(WIN_HINSTANCE hinst, WIN_HWND hWnd);
+    void PickPhysicalDevice();
+    void CreateLogicalDevice();
+    void CreateSwapchain();
+    bool IsDeviceSuitable(VkPhysicalDevice device);
+    bool CheckDeviceExtensionSupport(VkPhysicalDevice device);
+    struct SwapChainSupportDetails {
+        VkSurfaceCapabilitiesKHR capabilities;
+        std::vector<VkSurfaceFormatKHR> formats;
+        std::vector<VkPresentModeKHR> presentModes;
+    };
+    SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
 };
 
 extern "C" DLL_EXPORT IRenderer * PackageRenderConstructor(int argc, char * argv[], SCryRenderInterface * sp);
