@@ -116,7 +116,7 @@ void CPhysicalWorld::Init()
 	m_vars.bUseDistanceContacts = 0;
 	m_vars.unprojVelScale = 10.0f;
 	m_vars.maxUnprojVel = 1.2f;
-	m_vars.gravity.Set(0,0,-9.8f);
+	m_vars.gravity.Set(0,0,-13.0f);
 	m_vars.nGroupDamping = 8;
 	m_vars.groupDamping = 0.5f;
 	m_vars.bEnforceContacts = 1;//1;
