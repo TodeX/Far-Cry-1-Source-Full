@@ -936,8 +936,111 @@ void CVulkanRenderer::EF_Release(int nFlags) {}
 void CVulkanRenderer::EF_PipelineShutdown() {}
 void CVulkanRenderer::EF_LightMaterial(SLightMaterial *lm, int Flags) {}
 void CVulkanRenderer::EF_CheckOverflow(int nVerts, int nTris, CRendElement *re) {}
-void CVulkanRenderer::EF_Start(SShader *ef, SShader *efState, SRenderShaderResources *Res, int nFog, CRendElement *re) {}
-void CVulkanRenderer::EF_Start(SShader *ef, SShader *efState, SRenderShaderResources *Res, CRendElement *re) {}
+void CVulkanRenderer::EF_Start(SShader *ef, SShader *efState, SRenderShaderResources *Res, int nFog, CRendElement *re)
+{
+    m_RP.m_RendPass = 0;
+    m_RP.m_FirstIndex = 0;
+    m_RP.m_FirstVertex = 0;
+    m_RP.m_BaseVertex = 0;
+    m_RP.m_RendNumIndices = 0;
+    m_RP.m_RendNumVerts = 0;
+    m_RP.m_pShader = ef;
+    m_RP.m_pStateShader = efState;
+    m_RP.m_pShaderResources = Res;
+    m_RP.m_pCurEnvTexture = NULL;
+#ifdef PIPE_USE_INSTANCING
+    m_RP.m_MergedObjects.SetUse(0);
+#endif
+    m_RP.m_pCurLightMaterial = NULL;
+    m_RP.m_FlagsPerFlush = 0;
+    m_RP.m_FlagsModificators = 0;
+    m_RP.m_fCurOpacity = 1.0f;
+    if (nFog && CV_r_VolumetricFog)
+        m_RP.m_pFogVolume = &m_RP.m_FogVolumes[nFog];
+    else
+        m_RP.m_pFogVolume = NULL;
+
+    if (m_RP.m_pCurObject)
+        m_RP.m_ObjFlags = m_RP.m_pCurObject->m_ObjFlags;
+    else
+        m_RP.m_ObjFlags = 0;
+
+    m_RP.m_CurVFormat = ef->m_VertexFormatId;
+
+    SBufInfoTable *pOffs = &gBufInfoTable[m_RP.m_CurVFormat];
+    int Size = m_VertexSize[m_RP.m_CurVFormat];
+    m_RP.m_Stride = Size;
+    m_RP.m_OffsD  = pOffs->OffsColor;
+    m_RP.m_OffsT  = pOffs->OffsTC;
+    m_RP.m_OffsN  = pOffs->OffsNormal;
+    m_RP.m_NextPtr = m_RP.m_Ptr;
+
+    if (m_RP.m_pCurObject)
+        m_RP.m_DynLMask = m_RP.m_pCurObject->m_DynLMMask;
+    else
+        m_RP.m_DynLMask = 0;
+
+    m_RP.m_MergedREs.SetUse(0);
+    m_RP.m_MergedObjs.SetUse(0);
+
+    if (!EF_BuildLightsList())
+    {
+        if (m_pLog) m_pLog->Log("WARNING: CVulkanRenderer::EF_BuildLightsList: Too many light sources per render item (> 16). Shader: '%s'\n", ef->m_Name.c_str());
+    }
+
+    // Choose appropriate shader technique depend on some input parameters
+    if (ef->m_HWTechniques.Num())
+    {
+        m_RP.m_pRE = re;
+        int nHW = EF_SelectHWTechnique(ef);
+        if (nHW >= 0)
+            m_RP.m_pCurTechnique = ef->m_HWTechniques[nHW];
+        else
+            m_RP.m_pCurTechnique = NULL;
+    }
+    else
+        m_RP.m_pCurTechnique = NULL;
+
+    m_RP.m_pRE = NULL;
+
+    m_RP.m_Frame++;
+}
+
+void CVulkanRenderer::EF_Start(SShader *ef, SShader *efState, SRenderShaderResources *Res, CRendElement *re)
+{
+    m_RP.m_RendPass = 0;
+    m_RP.m_RendNumIndices = 0;
+    m_RP.m_RendNumVerts = 0;
+    m_RP.m_FirstIndex = 0;
+    m_RP.m_FirstVertex = 0;
+    m_RP.m_BaseVertex = 0;
+    m_RP.m_pShader = ef;
+#ifdef PIPE_USE_INSTANCING
+    m_RP.m_MergedObjects.SetUse(0);
+#endif
+    m_RP.m_pCurLightMaterial = NULL;
+    m_RP.m_pStateShader = efState;
+    m_RP.m_pShaderResources = Res;
+    m_RP.m_FlagsPerFlush = 0;
+    m_RP.m_FlagsModificators = 0;
+    m_RP.m_pFogVolume = NULL;
+    m_RP.m_pRE = NULL;
+    m_RP.m_fCurOpacity = 1.0f;
+
+    // Choose appropriate shader technique depend on some input parameters
+    if (ef->m_HWTechniques.Num())
+    {
+        int nHW = EF_SelectHWTechnique(ef);
+        if (nHW >= 0)
+            m_RP.m_pCurTechnique = ef->m_HWTechniques[nHW];
+        else
+            m_RP.m_pCurTechnique = NULL;
+    }
+    else
+        m_RP.m_pCurTechnique = NULL;
+
+    m_RP.m_Frame++;
+}
 bool CVulkanRenderer::EF_SetLightHole(Vec3 vPos, Vec3 vNormal, int idTex, float fScale, bool bAdditive) { return true; }
 STexPic *CVulkanRenderer::EF_MakePhongTexture(int Exp) { return NULL; }
 void CVulkanRenderer::EF_EndEf3D (int nFlags) {}
