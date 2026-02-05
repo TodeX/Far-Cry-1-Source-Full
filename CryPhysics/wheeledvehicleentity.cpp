@@ -62,6 +62,7 @@ CWheeledVehicleEntity::CWheeledVehicleEntity(CPhysicalWorld *pworld) : CRigidEnt
 	m_slipThreshold = 0.05f;
 	m_engineStartw = 40;
 	m_brakeTorque = 4000.0f;
+	m_kStabilizer = 0.0f;
 }
 
 
@@ -371,7 +372,7 @@ void CWheeledVehicleEntity::RecalcSuspStiffness()
 		m_susp[i].kStiffness = m_susp[i].Mpt*-m_gravity.z;			
 
 	for(i=0;i<m_nParts-m_nHullParts;i++) {
-		m_susp[i].kStiffness /= m_susp[i].fullen-m_susp[i].len0;
+		m_susp[i].kStiffness /= max(0.01f, m_susp[i].fullen-m_susp[i].len0);
 		if (m_susp[i].kDamping0<=0)
 			m_susp[i].kDamping = -m_susp[i].kDamping0*sqrt_tpl(4*m_susp[i].kStiffness*m_susp[i].Mpt);
 	}
@@ -868,7 +869,7 @@ void CWheeledVehicleEntity::AddAdditionalImpulses(float time_interval)
 			frdir[nfr] = axisz^axis; frdir[nfr] *= -sgnnz(frdir[nfr]*m_susp[i].ncontact);
 			sina = pulldir*axisz;
 			cosa = sqrt_tpl(max(0.0f,1.0f-sina*sina));
-			calc_lateral_limits(cosa,sina, N*=0.85f,friction, frmin[nfr],frmax[nfr]);
+			calc_lateral_limits(cosa,sina, N,friction, frmin[nfr],frmax[nfr]);
 			idx[nfr] = i;
 			nfr += isneg(m_body.M*1E-6f*frmax[nfr].y-frmax[nfr].x);
 		} else {
