@@ -2,15 +2,87 @@
 #define VULKAN_RENDERER_H
 
 #include "../Common/Renderer.h"
+#include "../Common/Textures/TexMan.h"
 
 #define VK_USE_PLATFORM_WIN32_KHR
 #include <vulkan/vulkan.h>
 #include <vector>
+#include <map>
 
 struct VulkanBuffer {
     VkBuffer buffer;
     VkDeviceMemory memory;
     VkDeviceSize size;
+};
+
+// Texture wrapper for Vulkan
+struct SVulkanTexture {
+    VkImage image;
+    VkDeviceMemory memory;
+    VkImageView view;
+    VkSampler sampler;
+    VkImageLayout imageLayout;
+    VkFormat format;
+    uint32_t width;
+    uint32_t height;
+    uint32_t mipLevels;
+};
+
+class CVulkanRenderer;
+extern CVulkanRenderer *gcpVulkan;
+
+class CVKTexMan : public CTexMan
+{
+public:
+    CVKTexMan();
+    virtual ~CVKTexMan();
+
+    virtual STexPic *CreateTexture();
+    virtual STexPic *CreateTexture(const char *name, int wdt, int hgt, int depth, uint flags, uint flags2, byte *dst, ETexType eTT, float fAmount1=-1.0f, float fAmount2=-1.0f, int DXTSize=0, STexPic *ti=NULL, int bind=0, ETEX_Format eTF=eTF_8888, const char *szSourceName=NULL);
+    virtual STexPic *CopyTexture(const char *name, STexPic *ti, int CubeSide=-1);
+
+    virtual bool SetFilter(char *filt);
+    virtual void UpdateTextureData(STexPic *pic, byte *data, int USize, int VSize, bool bProc, int State, bool bPal);
+    virtual void UpdateTextureRegion(STexPic *pic, byte *data, int X, int Y, int USize, int VSize);
+    virtual byte *GenerateDXT_HW(STexPic *ti, EImFormat eF, byte *dst, int *numMips, int *DXTSize, bool bMips=true);
+
+    virtual void DrawToTexture(Plane& Pl, STexPic *Tex, int RendFlags);
+    virtual void DrawToTextureForGlare(int Id);
+    virtual void DrawToTextureForRainMap(int Id);
+    virtual void StartHeatMap(int Id);
+    virtual void EndHeatMap();
+    virtual void StartRefractMap(int Id);
+    virtual void EndRefractMap();
+    virtual void StartNightMap(int Id);
+    virtual void EndNightMap();
+    virtual void DrawFlashBangMap(int Id, int RendFlags, CREFlashBang *pRE);
+    virtual void StartScreenMap(int Id);
+    virtual void EndScreenMap();
+    virtual void StartScreenTexMap(int Id);
+    virtual void EndScreenTexMap();
+    virtual void DrawToTextureForDof(int Id);
+    virtual bool PreloadScreenFxMaps(void);
+
+    virtual bool ScanEnvironmentCM (const char *name, int size, Vec3d& Pos);
+    virtual void GetAverageColor(SEnvTexture *cm, int nSide);
+    virtual void ScanEnvironmentCube(SEnvTexture *cm, int RendFlags, int Size, bool bLightCube);
+    virtual void ScanEnvironmentTexture(SEnvTexture *cm, SShader *pSH, SRenderShaderResources *pRes, int RendFlags, bool bUseExistingREs);
+    virtual void EndCubeSide(CCObject *obj, bool bNeedClear);
+    virtual void StartCubeSide(CCObject *obj);
+    virtual void Update();
+
+    virtual STexPic *GetByID(int Id);
+    virtual STexPic *AddToHash(int Id, STexPic *ti);
+    virtual void RemoveFromHash(int Id, STexPic *ti);
+    virtual void SetTexture(int Id, ETexType eTT);
+
+    virtual void GenerateFuncTextures();
+
+    // Helper functions
+    SVulkanTexture* GetVulkanTexture(int Id);
+    void DestroyVulkanTexture(SVulkanTexture* pTex);
+
+    std::map<int, STexPic*> m_RefTexs;
 };
 
 class CVulkanRenderer : public CRenderer
@@ -165,6 +237,16 @@ public:
     // Helper methods for Vulkan
     void CreateVulkanBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
     uint32_t FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
+    void CreateImage(uint32_t width, uint32_t height, VkFormat format, VkImageTiling tiling, VkImageUsageFlags usage, VkMemoryPropertyFlags properties, VkImage& image, VkDeviceMemory& imageMemory);
+    VkImageView CreateImageView(VkImage image, VkFormat format, VkImageAspectFlags aspectFlags);
+    void CopyBufferToImage(VkBuffer buffer, VkImage image, uint32_t width, uint32_t height);
+    void TransitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout);
+    VkCommandBuffer BeginSingleTimeCommands();
+    void EndSingleTimeCommands(VkCommandBuffer commandBuffer);
+
+    VkDevice GetDevice() { return m_Device; }
+    VkQueue GetQueue() { return m_Queue; }
+    VkPhysicalDevice GetPhysicalDevice() { return m_PhysicalDevice; }
 
 private:
     WIN_HWND m_hWnd;
