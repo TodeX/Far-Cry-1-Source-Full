@@ -16,6 +16,8 @@
 #include <process.h>
 #endif
 
+#include "CryLibrary.h"
+
 //#define FARCRY_CD_CHECK_RUSSIAN
 #define FARCRY_CD_LABEL _T("FARCRY_1")
 
@@ -93,10 +95,15 @@ static ISystem *g_pISystem=NULL;
 static bool g_bSystemRelaunch = false;
 static char szMasterCDFolder[_MAX_PATH];
 
-#ifdef WIN32
 static HMODULE g_hSystemHandle=NULL;
+
+#ifdef WIN32
 #define DLL_SYSTEM "CrySystem.dll"
 #define DLL_GAME	 "CryGame.dll"
+#else
+#define DLL_SYSTEM "crysystem.so"
+#define DLL_GAME	 "crygame.so"
+typedef void* HINSTANCE;
 #endif
 
 #ifndef PS2
@@ -147,6 +154,7 @@ char * getenv( const char *varname )
 
 void SetMasterCDFolder()
 {
+#ifdef WIN32
 	char szExeFileName[_MAX_PATH];
 	// Get the path of the executable
 	GetModuleFileName( GetModuleHandle(NULL), szExeFileName, sizeof(szExeFileName));
@@ -162,6 +170,7 @@ void SetMasterCDFolder()
 	strcat( path_buffer,".." );
 	SetCurrentDirectory( path_buffer );
 	GetCurrentDirectory( sizeof(szMasterCDFolder),szMasterCDFolder );
+#endif
 }
 
 #ifdef FARCRY_CD_CHECK_RUSSIAN
@@ -230,6 +239,7 @@ void CheckFarCryCD( HINSTANCE hInstance ) {};
 #endif // FARCRY_CD_CHECK_RUSSIAN
 
 ///////////////////////////////////////////////
+#ifdef WIN32
 int APIENTRY WinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
                      LPSTR     lpCmdLine,
@@ -278,14 +288,23 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	CheckFarCryCD(hInstance);
 	SetMasterCDFolder();
 
-#if !defined(PS2)
 	RunGame(hInstance,lpCmdLine);
-#else
-	RunGame(hInstance);
-#endif
 	return 0;
 }
+#else
+int main(int argc, char **argv)
+{
+	string cmdLine;
+	for(int i=1; i<argc; ++i) {
+		cmdLine += argv[i];
+		if(i < argc-1) cmdLine += " ";
+	}
+	RunGame(0, cmdLine.c_str());
+	return 0;
+}
+#endif
 
+#ifdef WIN32
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// Window procedure
@@ -489,6 +508,7 @@ bool RegisterWindow(HINSTANCE hInst)
 	else
 		return true;
 }
+#endif // WIN32
 #endif
 
 #else	//PS2
@@ -671,6 +691,7 @@ bool RunGame(HINSTANCE hInstance,const char *sCmdLine)
 #ifndef _XBOX
 		/////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////
+#ifdef WIN32
 		if (!hWnd && !RegisterWindow(hInstance))
 		{
 			if (!hWnd && RegisterWindow(hInstance))
@@ -679,18 +700,22 @@ bool RunGame(HINSTANCE hInstance,const char *sCmdLine)
 				return false;
 			}
 		}
+#endif
 
-		g_hSystemHandle = LoadLibrary(DLL_SYSTEM);
+		g_hSystemHandle = CryLoadLibrary(DLL_SYSTEM);
 		if (!g_hSystemHandle)
 		{
+#ifdef WIN32
 			DWORD dwLastError = GetLastError();
-
 			MessageBox( NULL,("CrySystem.dll Loading Failed:\n" + TryFormatWinError(dwLastError)).c_str(),"FarCry Error",MB_OK|MB_ICONERROR );
+#else
+			printf("CrySystem.so Loading Failed\n");
+#endif
 			return false;
 		}
 
 		PFNCREATESYSTEMINTERFACE pfnCreateSystemInterface =
-			(PFNCREATESYSTEMINTERFACE)::GetProcAddress( g_hSystemHandle,"CreateSystemInterface" );
+			(PFNCREATESYSTEMINTERFACE)CryGetProcAddress( g_hSystemHandle,"CreateSystemInterface" );
 
 		// Initialize with instance and window handles.
 		sip.hInstance = hInstance;
@@ -846,7 +871,7 @@ bool RunGame(HINSTANCE hInstance,const char *sCmdLine)
 		*/
 
 		if (!bRelaunch)
-			::FreeLibrary(g_hSystemHandle);
+			CryFreeLibrary(g_hSystemHandle);
 		g_hSystemHandle= NULL;
 
 		if (hWnd)
@@ -854,6 +879,10 @@ bool RunGame(HINSTANCE hInstance,const char *sCmdLine)
 			::DestroyWindow((HWND)hWnd);
 			hWnd = NULL;
 		}
+#else
+		if (!bRelaunch)
+			CryFreeLibrary(g_hSystemHandle);
+		g_hSystemHandle= NULL;
 #endif;
 
 	} while(false);

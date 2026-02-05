@@ -180,6 +180,43 @@ bool Init(ISystem *pSystem,LPDIRECTINPUT8 &g_pdi, HINSTANCE hinst, HWND hwnd, bo
 	return true;
 }
 #endif
+#else
+bool CXMouse::Init(ISystem *pSystem,LPDIRECTINPUT8 &g_pdi, HINSTANCE hinst, HWND hwnd, bool dinput)
+{
+	m_pSystem = pSystem;
+	m_pLog = pSystem->GetILog();
+	m_pTimer = pSystem->GetITimer();
+
+	i_mouse_buffered = m_pSystem->GetIConsole()->CreateVariable("i_mouse_buffered", "0",0,
+		"Toggles mouse input buffering.\n"
+		"Usage: i_mouse_buffered [0/1]\n"
+		"Default is 0 (off). Set to 1 to process buffered mouse input.");
+
+	//mouse accel
+	i_mouse_accel = m_pSystem->GetIConsole()->CreateVariable("i_mouse_accel", "0.0",VF_DUMPTODISK,
+		"Set mouse acceleration, 0.0 means no acceleration.\n"
+		"Usage: i_mouse_accel [float number] (usually a small number, 0.1 is a good one)\n"
+		"Default is 0.0 (off)");
+
+	//mouse accel cap
+	i_mouse_accel_max = m_pSystem->GetIConsole()->CreateVariable("i_mouse_accel_max", "100.0",VF_DUMPTODISK,
+		"Set mouse max mouse delta when using acceleration.\n"
+		"Usage: i_mouse_accel_max [float number]\n"
+		"Default is 100.0");
+
+	//mouse smooth
+	i_mouse_smooth = m_pSystem->GetIConsole()->CreateVariable("i_mouse_smooth", "0.0",VF_DUMPTODISK,
+		"Set mouse smoothing value, also if 0 (disabled) there will be a simple average between the old and the actual input.\n"
+		"Usage: i_mouse_smooth [float number] (1.0 = very very smooth, 30 = almost istant)\n"
+		"Default is 0.0");
+
+	//mouse mirror
+	i_mouse_mirror = m_pSystem->GetIConsole()->CreateVariable("i_mouse_mirror", "0",VF_DUMPTODISK,
+		"Set mouse mirroring, if not 0 the mouse input will be mirrored.\n"
+		"Usage: i_mouse_smooth [0 or 1]\n"
+		"Default is 0");
+	return true;
+}
 #endif
 
 #ifdef PS2
@@ -1201,6 +1238,7 @@ bool CXMouse::MouseReleased(int p_numButton)
 
 bool CXMouse::GetOSKeyName(int nKey, wchar_t *szwKeyName, int iBufSize)
 {
+#ifdef WIN32
 	if (IS_MOUSE_KEY(nKey) && m_pMouse)
 	{
 		DIDEVICEOBJECTINSTANCE dido;
@@ -1272,6 +1310,7 @@ bool CXMouse::GetOSKeyName(int nKey, wchar_t *szwKeyName, int iBufSize)
 
 		return true;
 	}
+#endif
 
 	return false;
 }
@@ -1282,9 +1321,11 @@ void CXMouse::Shutdown()
 	m_pLog->LogToFile("Mouse Shutdown\n");
 	UnAcquire();
 #if !defined(_XBOX) && !defined(PS2)
+#ifdef WIN32
 	if (m_pMouse) 
 		m_pMouse->Release();
 	m_pMouse = NULL;
+#endif
 #endif
 }
 
@@ -1295,6 +1336,7 @@ bool CXMouse::SetExclusive(bool value,void *hwnd)
 	if (hwnd)
 		m_hwnd = (HWND)hwnd;
 
+#ifdef WIN32
 	if (m_dinput)
 	{	
 		if (!m_pMouse) 
@@ -1335,6 +1377,7 @@ bool CXMouse::SetExclusive(bool value,void *hwnd)
 	else
 	{
 	}
+#endif
 #endif
 	return (true);
 }

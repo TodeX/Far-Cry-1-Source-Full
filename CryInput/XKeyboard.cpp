@@ -129,8 +129,10 @@ bool CXKeyboard::Init(CInput *pInput,ISystem *pSystem, LPDIRECTINPUT8 &g_pdi,HIN
 
 	m_hwnd=hwnd;
 	
+#ifdef WIN32
 	HRESULT hr;
 	DIPROPDWORD dipdw = {{sizeof(DIPROPDWORD), sizeof(DIPROPHEADER), 0, DIPH_DEVICE}, KEYFLAG_BUFFERSIZE};
+#endif
 
 	m_pLog->LogToFile("Initializing Keyboard\n");
 
@@ -144,6 +146,7 @@ bool CXKeyboard::Init(CInput *pInput,ISystem *pSystem, LPDIRECTINPUT8 &g_pdi,HIN
 		"Usage: i_dinputkeys [0/1]\n"
 		"Default is 1 (on). Set to 0 to process keys events from windows (under Win32).");
 
+#ifdef WIN32
 	if (g_pdi)
 	{
 
@@ -178,6 +181,7 @@ bool CXKeyboard::Init(CInput *pInput,ISystem *pSystem, LPDIRECTINPUT8 &g_pdi,HIN
 			return false;
 		}
 	}
+#endif
  	
 	memset(m_cKeysState, 0, sizeof(m_cKeysState));
 	memset(m_cOldKeysState, 0, sizeof(m_cOldKeysState));
@@ -293,12 +297,14 @@ bool CXKeyboard::Acquire()
 	return true;
 #else
 	m_modifiers = 0;
+#ifdef WIN32
 	if (m_cvDirectInputKeys->GetIVal())
 	{	
 		if (m_pKeyboard && m_pKeyboard->Acquire()) 
 			return (true);
 		return (false);	
 	}
+#endif
 	return (true);
 #endif
 }
@@ -310,12 +316,14 @@ bool CXKeyboard::UnAcquire()
 	return true;
 #else
 	m_modifiers = 0;
+#ifdef WIN32
 	if (m_cvDirectInputKeys->GetIVal())
 	{	
 		if (m_pKeyboard && m_pKeyboard->Unacquire()) 
 			return (true);
 		return (false);
 	}
+#endif
 	return (true);
 #endif	
 }
@@ -1194,6 +1202,7 @@ void CXKeyboard::Update()
 		return; // use windows messages
 
 #ifndef PS2
+#ifdef WIN32
 	HRESULT hr;    	
 	DIDEVICEOBJECTDATA rgdod[256];	
 	DWORD dwItems = 256;
@@ -1249,7 +1258,8 @@ void CXKeyboard::Update()
 		*/
 		else
 		break;
-	} 		  
+	}
+#endif
 #else
 	
 	////////////////////////////////////////////////
@@ -1308,7 +1318,9 @@ void CXKeyboard::ShutDown()
 #ifndef PS2
 	m_pLog->LogToFile("Keyboard Shutdown\n");
 	UnAcquire();
+#ifdef WIN32
 	if (m_pKeyboard) m_pKeyboard->Release();
+#endif
 	m_pKeyboard=NULL;
 #else
 

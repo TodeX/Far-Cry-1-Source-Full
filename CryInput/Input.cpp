@@ -227,6 +227,7 @@ bool CInput::Init(ISystem *pSystem,HINSTANCE hinst,HWND hwnd,bool dinput)
 	{
 		m_pLog->Log("Initializing Direct Input\n");
 
+#ifdef WIN32
 		HRESULT hr = DirectInput8Create(m_hinst,
 			DIRECTINPUT_VERSION, 
 			IID_IDirectInput8, 
@@ -239,6 +240,7 @@ bool CInput::Init(ISystem *pSystem,HINSTANCE hinst,HWND hwnd,bool dinput)
 			m_pLog->Log("Cannot initialize Direct Input\n");		
 			return (false);
 		}			
+#endif
 	}
 	//else
 	//	return (true);
@@ -375,11 +377,13 @@ void CInput::ShutDown()
 
 #ifndef PS2
 #ifndef _XBOX
+#ifdef WIN32
 	if (m_g_pdi)
 	{
 		m_g_pdi->Release();
 		m_g_pdi = NULL;
 	}	
+#endif
 #endif //_XBOX
 #endif
 	//
