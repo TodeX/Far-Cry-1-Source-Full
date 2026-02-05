@@ -640,12 +640,29 @@ void CVulkanRenderer::ReleaseBuffer(CVertexBuffer *bufptr)
 
 void CVulkanRenderer::DrawBuffer(CVertexBuffer *src,SVertexStream *indicies,int numindices, int offsindex, int prmode,int vert_start,int vert_stop, CMatInfo *mi)
 {
-    // TODO: Implement drawing
-    // Need pipeline, render pass, shaders bound.
-    //
-    // vkCmdBindVertexBuffers(m_CommandBuffers[m_CurrentFrame], 0, 1, &vertexBuffers, &offsets);
-    // vkCmdBindIndexBuffer(m_CommandBuffers[m_CurrentFrame], indexBuffer, 0, VK_INDEX_TYPE_UINT16);
-    // vkCmdDrawIndexed(m_CommandBuffers[m_CurrentFrame], static_cast<uint32_t>(indices.size()), 1, 0, 0, 0);
+    if (m_CurrentFrame >= MAX_FRAMES_IN_FLIGHT) return;
+    VkCommandBuffer cmd = m_CommandBuffers[m_CurrentFrame];
+
+    // Bind VB
+    if (src)
+    {
+        VulkanBuffer* vb = (VulkanBuffer*)src->m_VS[VSF_GENERAL].m_VertBuf.m_pPtr;
+        if (vb) {
+            VkBuffer vertexBuffers[] = { vb->buffer };
+            VkDeviceSize offsets[] = { 0 };
+            vkCmdBindVertexBuffers(cmd, 0, 1, vertexBuffers, offsets);
+        }
+    }
+
+    // Bind IB & Draw
+    if (indicies && indicies->m_VertBuf.m_pPtr) {
+        VulkanBuffer* ib = (VulkanBuffer*)indicies->m_VertBuf.m_pPtr;
+        vkCmdBindIndexBuffer(cmd, ib->buffer, 0, VK_INDEX_TYPE_UINT16);
+        vkCmdDrawIndexed(cmd, numindices, 1, offsindex, vert_start, 0);
+    } else {
+        // Non-indexed draw
+        vkCmdDraw(cmd, numindices, 1, vert_start, 0);
+    }
 }
 
 void CVulkanRenderer::UpdateBuffer(CVertexBuffer *dest,const void *src,int vertexcount, bool bUnLock, int offs, int Type)
@@ -783,9 +800,23 @@ void CVulkanRenderer::SetLodBias(float value) {}
 void CVulkanRenderer::EnableVSync(bool enable) {}
 
 void CVulkanRenderer::DrawTriStrip(CVertexBuffer *src, int vert_num) {
-    // TODO: Implement triangle strip drawing
-    // Should bind the vertex buffer from src and issue a draw call
-    // with VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP.
+    if (!src || !vert_num) return;
+
+    // Create a temporary buffer for immediate mode drawing
+    // Note: In a real implementation, we should use a dynamic ring buffer to avoid frequent allocations.
+    CVertexBuffer* vb = CreateBuffer(vert_num, src->m_vertexformat, "DrawTriStrip_Temp", true);
+
+    // Copy data from source to the new buffer
+    // Assuming src->m_VS[VSF_GENERAL].m_VData points to the data in system memory
+    if (src->m_VS[VSF_GENERAL].m_VData) {
+        UpdateBuffer(vb, src->m_VS[VSF_GENERAL].m_VData, vert_num, true);
+    }
+
+    // Draw using DrawBuffer
+    DrawBuffer(vb, NULL, vert_num, 0, R_PRIMV_TRIANGLE_STRIP, 0, vert_num);
+
+    // Release the temporary buffer
+    ReleaseBuffer(vb);
 }
 
 // Matrix operations
@@ -1338,7 +1369,41 @@ void CVulkanRenderer::EF_FlushHW()
 
 void CVulkanRenderer::EF_DrawIndexedMesh(int nPrimType)
 {
-    // TODO: Implement indexed mesh drawing using Vulkan
+    if (m_CurrentFrame >= MAX_FRAMES_IN_FLIGHT) return;
+    VkCommandBuffer cmd = m_CommandBuffers[m_CurrentFrame];
+
+    // 1. Setup Pipeline State
+    VulkanPipelineState state;
+    // Fill state from m_RP (Render Pipeline state)
+    // state.vertexShader = ...
+    // state.fragmentShader = ...
+    // state.renderState = ... (Cull mode, Depth test, etc.)
+    state.vertexFormat = m_RP.m_CurVFormat;
+    // state.topology = ... map nPrimType to VkPrimitiveTopology
+
+    switch (nPrimType) {
+        case R_PRIMV_TRIANGLES: state.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; break;
+        case R_PRIMV_TRIANGLE_STRIP: state.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP; break;
+        default: state.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; break;
+    }
+
+    // 2. Get/Create Pipeline
+    CVulkanPipeline* pPipeline = GetPipeline(state);
+    if (pPipeline)
+    {
+        vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pPipeline->GetPipeline());
+    }
+
+    // 3. Draw
+    // Buffers should be bound by EF_PreDraw
+    if (m_RP.m_RendNumIndices > 0)
+    {
+        vkCmdDrawIndexed(cmd, m_RP.m_RendNumIndices, 1, m_RP.m_FirstIndex, m_RP.m_BaseVertex, 0);
+    }
+    else
+    {
+        vkCmdDraw(cmd, m_RP.m_RendNumVerts, 1, m_RP.m_FirstVertex, 0);
+    }
 }
 
 void CVulkanRenderer::EF_DrawDebugTools()
@@ -1346,7 +1411,20 @@ void CVulkanRenderer::EF_DrawDebugTools()
     // TODO: Implement EF_DrawDebugTools
 }
 
-bool CVulkanRenderer::EF_PreDraw(SShaderPass *sl) { return true; }
+bool CVulkanRenderer::EF_PreDraw(SShaderPass *sl)
+{
+    if (m_RP.m_pRE)
+    {
+        return m_RP.m_pRE->mfPreDraw(sl);
+    }
+    else
+    {
+        // Dynamic/Immediate mode drawing (no RE)
+        // TODO: Implement dynamic buffer handling
+        return false;
+    }
+}
+
 bool CVulkanRenderer::EF_ObjectChange(SShader *Shader, SRenderShaderResources *pRes, int nObject, CRendElement *pRE) { return true; }
 int CVulkanRenderer::EF_Preprocess(SRendItemPre *ri, int nums, int nume) { return 0; }
 void CVulkanRenderer::EF_DrawREPreprocess(SRendItemPreprocess *ris, int Nums) {}
@@ -1540,6 +1618,7 @@ CVulkanPipeline* CVulkanRenderer::GetPipeline(const VulkanPipelineState& state)
 
 #include "Vulkan_Textures.cpp" // Include implementations of texture manager
 #include "VulkanPipeline.cpp"
+#include "VulkanRenderRE.cpp"
 
 extern "C" DLL_EXPORT IRenderer * PackageRenderConstructor(int argc, char * argv[], SCryRenderInterface * sp)
 {
