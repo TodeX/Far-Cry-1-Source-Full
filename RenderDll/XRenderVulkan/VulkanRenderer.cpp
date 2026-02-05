@@ -55,6 +55,8 @@ CVulkanRenderer::CVulkanRenderer()
     , m_PS2D(VK_NULL_HANDLE)
     , m_CurrentFrame(0)
     , m_ImageIndex(0)
+    , m_DynVBOffset(0)
+    , m_DynVBSize(0)
 {
     if (!gcpVulkan)
         gcpVulkan = this;
@@ -100,6 +102,17 @@ WIN_HWND CVulkanRenderer::Init(int x,int y,int width,int height,unsigned int cbp
         CreateCommandPool();
         CreateCommandBuffers();
         CreateSyncObjects();
+
+        // Create Dynamic Vertex Buffer
+        m_DynVBSize = 4 * 1024 * 1024; // 4MB
+        m_DynVBs.resize(MAX_FRAMES_IN_FLIGHT);
+        m_DynVBMapped.resize(MAX_FRAMES_IN_FLIGHT);
+
+        for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+            CreateVulkanBuffer(m_DynVBSize, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, m_DynVBs[i].buffer, m_DynVBs[i].memory);
+            m_DynVBs[i].size = m_DynVBSize;
+            vkMapMemory(m_Device, m_DynVBs[i].memory, 0, m_DynVBSize, 0, &m_DynVBMapped[i]);
+        }
 
         // Create Internal Shaders
         VkShaderModuleCreateInfo createInfo = {};
@@ -153,6 +166,14 @@ void CVulkanRenderer::ShutDown(bool bReInit)
         vkDestroyFence(m_Device, m_InFlightFences[i], nullptr);
     }
     m_InFlightFences.clear();
+
+    for (size_t i = 0; i < m_DynVBs.size(); i++) {
+        if (m_DynVBMapped[i]) { vkUnmapMemory(m_Device, m_DynVBs[i].memory); }
+        if (m_DynVBs[i].buffer) { vkDestroyBuffer(m_Device, m_DynVBs[i].buffer, nullptr); }
+        if (m_DynVBs[i].memory) { vkFreeMemory(m_Device, m_DynVBs[i].memory, nullptr); }
+    }
+    m_DynVBs.clear();
+    m_DynVBMapped.clear();
 
     if (m_CommandPool) {
         vkDestroyCommandPool(m_Device, m_CommandPool, nullptr);
@@ -263,6 +284,8 @@ void CVulkanRenderer::BeginFrame()
     scissor.offset = {0, 0};
     scissor.extent = m_SwapchainExtent;
     vkCmdSetScissor(m_CommandBuffers[m_CurrentFrame], 0, 1, &scissor);
+
+    m_DynVBOffset = 0;
 }
 
 void CVulkanRenderer::Update()
@@ -723,19 +746,58 @@ bool CVulkanRenderer::ChangeResolution(int nNewWidth, int nNewHeight, int nNewCo
 void CVulkanRenderer::Reset() {}
 
 void *CVulkanRenderer::GetDynVBPtr(int nVerts, int &nOffs, int Pool) {
-    // TODO: Implement dynamic vertex buffer pointer retrieval
-    // Should return a pointer to the mapped memory of the dynamic vertex buffer
-    // and update the offset.
-    return NULL;
+    int stride = 0;
+    if (m_RP.m_CurVFormat > 0 && m_RP.m_CurVFormat < VERTEX_FORMAT_NUMS)
+        stride = m_VertexSize[m_RP.m_CurVFormat];
+
+    if (stride == 0) stride = sizeof(struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F); // Fallback
+
+    int size = nVerts * stride;
+
+    // Align offset
+    int alignedOffset = (m_DynVBOffset + stride - 1) / stride * stride;
+
+    if (alignedOffset + size > m_DynVBSize) {
+        return NULL;
+    }
+
+    nOffs = alignedOffset / stride;
+    m_DynVBOffset = alignedOffset + size;
+
+    return (byte*)m_DynVBMapped[m_CurrentFrame] + alignedOffset;
 }
+
 void CVulkanRenderer::DrawDynVB(int nOffs, int Pool, int nVerts) {
-    // TODO: Implement drawing from dynamic vertex buffer
-    // Should bind the dynamic vertex buffer and issue a draw call
-    // using the provided offset and vertex count.
+    if (m_CurrentFrame >= MAX_FRAMES_IN_FLIGHT) return;
+    VkCommandBuffer cmd = m_CommandBuffers[m_CurrentFrame];
+
+    VkBuffer vertexBuffers[] = { m_DynVBs[m_CurrentFrame].buffer };
+    VkDeviceSize offsets[] = { 0 };
+    vkCmdBindVertexBuffers(cmd, 0, 1, vertexBuffers, offsets);
+
+    vkCmdDraw(cmd, nVerts, 1, nOffs, 0);
 }
+
 void CVulkanRenderer::DrawDynVB(struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F *pBuf, ushort *pInds, int nVerts, int nInds, int nPrimType) {
-    // TODO: Implement drawing from dynamic vertex buffer with provided data and indices
-    // Should probably copy data to a dynamic buffer and draw.
+    // Simple implementation: Copy to DynVB and draw
+    // Note: Does not handle indices yet!
+    // For now, assume non-indexed if pInds is null, or ignore pInds
+
+    if (!pBuf) return;
+
+    // Save current format
+    int oldFmt = m_RP.m_CurVFormat;
+    m_RP.m_CurVFormat = VERTEX_FORMAT_P3F_COL4UB_TEX2F;
+
+    int nOffs;
+    void* ptr = GetDynVBPtr(nVerts, nOffs, 0);
+    if (ptr)
+    {
+        memcpy(ptr, pBuf, nVerts * sizeof(struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F));
+        DrawDynVB(nOffs, 0, nVerts);
+    }
+
+    m_RP.m_CurVFormat = oldFmt;
 }
 
 uint32_t CVulkanRenderer::FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties) {
@@ -979,7 +1041,80 @@ void CVulkanRenderer::ReleaseIndexBuffer(SVertexStream *dest)
 
 void CVulkanRenderer::CheckError(const char *comment) {}
 
-void CVulkanRenderer::Draw3dBBox(const Vec3 &mins, const Vec3 &maxs, int nPrimType) {}
+void CVulkanRenderer::Draw3dBBox(const Vec3 &mins, const Vec3 &maxs, int nPrimType)
+{
+    VulkanPipelineState state;
+    state.renderPass = m_RenderPass;
+    state.vertexShader = m_VS2D;
+    state.fragmentShader = m_PS2D;
+    state.vertexFormat = VERTEX_FORMAT_P3F_COL4UB_TEX2F;
+    state.topology = VK_PRIMITIVE_TOPOLOGY_LINE_LIST; // Debug boxes are lines
+
+    CVulkanPipeline* pPipeline = GetPipeline(state);
+    if (!pPipeline) return;
+
+    VkCommandBuffer cmd = m_CommandBuffers[m_CurrentFrame];
+    vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pPipeline->GetPipeline());
+
+    Matrix44 MVP = m_ProjMatrix * m_ViewMatrix;
+    vkCmdPushConstants(cmd, pPipeline->GetLayout(), VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(Matrix44), &MVP);
+
+    // Get Dynamic Buffer
+    int nOffs;
+    int oldFmt = m_RP.m_CurVFormat;
+    m_RP.m_CurVFormat = VERTEX_FORMAT_P3F_COL4UB_TEX2F;
+    struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F* pV = (struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F*)GetDynVBPtr(24, nOffs, 0);
+    if (!pV) {
+        m_RP.m_CurVFormat = oldFmt;
+        return;
+    }
+
+    DWORD col = 0xFFFFFFFF; // White
+
+    Vec3 p[8];
+    p[0] = Vec3(mins.x, mins.y, mins.z);
+    p[1] = Vec3(maxs.x, mins.y, mins.z);
+    p[2] = Vec3(maxs.x, maxs.y, mins.z);
+    p[3] = Vec3(mins.x, maxs.y, mins.z);
+    p[4] = Vec3(mins.x, mins.y, maxs.z);
+    p[5] = Vec3(maxs.x, mins.y, maxs.z);
+    p[6] = Vec3(maxs.x, maxs.y, maxs.z);
+    p[7] = Vec3(mins.x, maxs.y, maxs.z);
+
+    // Bottom
+    pV[0].xyz = p[0]; pV[0].color.dcolor = col;
+    pV[1].xyz = p[1]; pV[1].color.dcolor = col;
+    pV[2].xyz = p[1]; pV[2].color.dcolor = col;
+    pV[3].xyz = p[2]; pV[3].color.dcolor = col;
+    pV[4].xyz = p[2]; pV[4].color.dcolor = col;
+    pV[5].xyz = p[3]; pV[5].color.dcolor = col;
+    pV[6].xyz = p[3]; pV[6].color.dcolor = col;
+    pV[7].xyz = p[0]; pV[7].color.dcolor = col;
+
+    // Top
+    pV[8].xyz = p[4]; pV[8].color.dcolor = col;
+    pV[9].xyz = p[5]; pV[9].color.dcolor = col;
+    pV[10].xyz = p[5]; pV[10].color.dcolor = col;
+    pV[11].xyz = p[6]; pV[11].color.dcolor = col;
+    pV[12].xyz = p[6]; pV[12].color.dcolor = col;
+    pV[13].xyz = p[7]; pV[13].color.dcolor = col;
+    pV[14].xyz = p[7]; pV[14].color.dcolor = col;
+    pV[15].xyz = p[4]; pV[15].color.dcolor = col;
+
+    // Sides
+    pV[16].xyz = p[0]; pV[16].color.dcolor = col;
+    pV[17].xyz = p[4]; pV[17].color.dcolor = col;
+    pV[18].xyz = p[1]; pV[18].color.dcolor = col;
+    pV[19].xyz = p[5]; pV[19].color.dcolor = col;
+    pV[20].xyz = p[2]; pV[20].color.dcolor = col;
+    pV[21].xyz = p[6]; pV[21].color.dcolor = col;
+    pV[22].xyz = p[3]; pV[22].color.dcolor = col;
+    pV[23].xyz = p[7]; pV[23].color.dcolor = col;
+
+    DrawDynVB(nOffs, 0, 24);
+
+    m_RP.m_CurVFormat = oldFmt;
+}
 void CVulkanRenderer::SetCamera(const CCamera &cam) {}
 void CVulkanRenderer::SetViewport(int x, int y, int width, int height) {}
 void CVulkanRenderer::SetScissor(int x, int y, int width, int height) {}
