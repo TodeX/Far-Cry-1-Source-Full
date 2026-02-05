@@ -26,6 +26,12 @@
 #include <windows.h>
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 #include <dinput.h>
+#else
+#include <unistd.h>
+typedef void* LPDIRECTINPUT8;
+typedef void* LPDIRECTINPUTDEVICE8;
+typedef void* HINSTANCE;
+typedef void* HWND;
 #endif
 
 //////////////////////////////////////////////////////////////////////

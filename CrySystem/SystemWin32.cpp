@@ -251,9 +251,14 @@ const char *CSystem::GetUserName()
 	static char						szNameBuffer[1024];
 	memset(szNameBuffer, 0, 1024);
 
+#ifdef WIN32
 	DWORD dwSize = 1024;
-
 	::GetUserName(szNameBuffer, &dwSize);
+#else
+	const char* user = getenv("USER");
+	if(user) strncpy(szNameBuffer, user, 1023);
+	else strcpy(szNameBuffer, "Unknown");
+#endif
 
 	return szNameBuffer;
 }
@@ -793,6 +798,7 @@ bool CSystem::GetSSFileInfo( const char *inszFileName, char *outszInfo, const DW
 		return(true);
 	}
 
+#ifdef WIN32
 	for(int iDatabase=0;iDatabase<=1;iDatabase++)		// search in all databases - if neccessry 
 	{
 		const char *szDatabase=0;
@@ -842,7 +848,7 @@ bool CSystem::GetSSFileInfo( const char *inszFileName, char *outszInfo, const DW
 		}
 
 	}	//  search in all databases
-
+#endif
 
 	return false;					// _GetSSFileInfo failed
 }
@@ -883,7 +889,9 @@ void CSystem::Error( const char *format,... )
 	DebugCallStack::instance()->LogCallstack();
 #endif
 #ifndef PS2
+#ifdef WIN32
   ::OutputDebugString(szBuffer);
+#endif
 #endif	//PS2
 
 	// try to shutdown renderer (if we crash here - error message will already stay in the log)

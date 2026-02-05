@@ -236,7 +236,7 @@ bool CJoystick::Init(ILog *pLog)
 
 #endif
 
-
+	return false;
 }
 
 ///////////////////////////////////////////
