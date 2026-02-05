@@ -81,6 +81,23 @@ void CVulkanPipeline::CreateLayout()
     }
 }
 
+static VkBlendFactor GetBlendFactor(int blendMode)
+{
+    switch (blendMode)
+    {
+    case GS_BLSRC_ZERO:             return VK_BLEND_FACTOR_ZERO;
+    case GS_BLSRC_ONE:              return VK_BLEND_FACTOR_ONE;
+    case GS_BLSRC_DSTCOL:           return VK_BLEND_FACTOR_DST_COLOR;
+    case GS_BLSRC_ONEMINUSDSTCOL:   return VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR;
+    case GS_BLSRC_SRCALPHA:         return VK_BLEND_FACTOR_SRC_ALPHA;
+    case GS_BLSRC_ONEMINUSSRCALPHA: return VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+    case GS_BLSRC_DSTALPHA:         return VK_BLEND_FACTOR_DST_ALPHA;
+    case GS_BLSRC_ONEMINUSDSTALPHA: return VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA;
+    case GS_BLSRC_ALPHASATURATE:    return VK_BLEND_FACTOR_SRC_ALPHA_SATURATE;
+    default:                        return VK_BLEND_FACTOR_ONE;
+    }
+}
+
 void CVulkanPipeline::CreatePipeline()
 {
     // --------------------------------------------------------------------------------
@@ -211,18 +228,17 @@ void CVulkanPipeline::CreatePipeline()
     rasterizer.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
     rasterizer.depthClampEnable = VK_FALSE;
     rasterizer.rasterizerDiscardEnable = VK_FALSE;
-    rasterizer.polygonMode = VK_POLYGON_MODE_FILL; // Default, change if wireframe requested in m_State.renderState
+    rasterizer.polygonMode = VK_POLYGON_MODE_FILL;
     rasterizer.lineWidth = 1.0f;
-    rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;   // Default, change based on m_State.renderState
-    rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE; // Check Engine convention (usually CCW in OGL, but check projection)
+    rasterizer.cullMode = m_State.cullMode;
+    rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE; // Check Engine convention
     rasterizer.depthBiasEnable = VK_FALSE;
     rasterizer.depthBiasConstantFactor = 0.0f;
     rasterizer.depthBiasClamp = 0.0f;
     rasterizer.depthBiasSlopeFactor = 0.0f;
 
     // Map Render State flags to Rasterizer State
-    // if (m_State.renderState & GS_WIREFRAME) rasterizer.polygonMode = VK_POLYGON_MODE_LINE;
-    // if (m_State.renderState & GS_NOCULL) rasterizer.cullMode = VK_CULL_MODE_NONE;
+    if (m_State.renderState & GS_POLYLINE) rasterizer.polygonMode = VK_POLYGON_MODE_LINE;
 
     // --------------------------------------------------------------------------------
     // Multisample State
@@ -242,20 +258,23 @@ void CVulkanPipeline::CreatePipeline()
     VkPipelineDepthStencilStateCreateInfo depthStencil = {};
     depthStencil.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
     depthStencil.depthTestEnable = VK_TRUE;  // Default
-    depthStencil.depthWriteEnable = VK_TRUE; // Default
+    depthStencil.depthWriteEnable = VK_FALSE; // Default false (assume read-only unless GS_DEPTHWRITE)
     depthStencil.depthCompareOp = VK_COMPARE_OP_LESS_OR_EQUAL;
     depthStencil.depthBoundsTestEnable = VK_FALSE;
     depthStencil.stencilTestEnable = VK_FALSE;
 
     // Map Render State flags to Depth Stencil State
-    // if (m_State.renderState & GS_NODEPTHTEST) depthStencil.depthTestEnable = VK_FALSE;
-    // if (m_State.renderState & GS_NODEPTHWRITE) depthStencil.depthWriteEnable = VK_FALSE;
+    if (m_State.renderState & GS_NODEPTHTEST) depthStencil.depthTestEnable = VK_FALSE;
+    if (m_State.renderState & GS_DEPTHWRITE) depthStencil.depthWriteEnable = VK_TRUE;
+
+    if (m_State.renderState & GS_DEPTHFUNC_EQUAL) depthStencil.depthCompareOp = VK_COMPARE_OP_EQUAL;
+    else if (m_State.renderState & GS_DEPTHFUNC_GREAT) depthStencil.depthCompareOp = VK_COMPARE_OP_GREATER; // or GREATER_OR_EQUAL
 
     // Stencil state mapping
-    if (m_State.stencilState != 0) // Simplified check
+    if (m_State.renderState & GS_STENCIL)
     {
         depthStencil.stencilTestEnable = VK_TRUE;
-        // Map m_State.stencilState bits to front/back stencil ops
+        // Map m_State.stencilState bits to front/back stencil ops (TODO: Detailed mapping)
     }
 
     // --------------------------------------------------------------------------------
@@ -272,10 +291,28 @@ void CVulkanPipeline::CreatePipeline()
     colorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;
 
     // Map Render State flags to Blend State
-    // if (m_State.renderState & GS_BLEND) {
-    //     colorBlendAttachment.blendEnable = VK_TRUE;
-    //     // extract src/dst factors from m_State.renderState
-    // }
+    if (m_State.renderState & GS_BLEND_MASK) {
+        colorBlendAttachment.blendEnable = VK_TRUE;
+
+        int srcBlend = m_State.renderState & GS_BLSRC_MASK;
+        int dstBlend = (m_State.renderState & GS_BLDST_MASK) >> 4;
+
+        colorBlendAttachment.srcColorBlendFactor = GetBlendFactor(srcBlend);
+        colorBlendAttachment.dstColorBlendFactor = GetBlendFactor(dstBlend);
+        // Assuming Alpha Blend Factors match Color for now, or use separate flags if available
+        colorBlendAttachment.srcAlphaBlendFactor = colorBlendAttachment.srcColorBlendFactor;
+        colorBlendAttachment.dstAlphaBlendFactor = colorBlendAttachment.dstColorBlendFactor;
+    }
+
+    if (m_State.renderState & GS_COLMASKONLYALPHA) {
+        colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_A_BIT;
+    }
+    if (m_State.renderState & GS_COLMASKONLYRGB) {
+        colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT;
+    }
+    if (m_State.renderState & GS_NOCOLMASK) {
+        colorBlendAttachment.colorWriteMask = 0;
+    }
 
     VkPipelineColorBlendStateCreateInfo colorBlending = {};
     colorBlending.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
