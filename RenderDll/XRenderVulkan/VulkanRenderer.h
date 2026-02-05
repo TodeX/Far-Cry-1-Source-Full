@@ -307,6 +307,12 @@ private:
     uint32_t m_CurrentFrame;
     uint32_t m_ImageIndex;
 
+    // Dynamic Vertex Buffer
+    std::vector<VulkanBuffer> m_DynVBs;
+    uint32_t m_DynVBOffset;
+    uint32_t m_DynVBSize;
+    std::vector<void*> m_DynVBMapped;
+
     void CreateInstance();
     void CreateSurface(WIN_HINSTANCE hinst, WIN_HWND hWnd);
     void PickPhysicalDevice();
