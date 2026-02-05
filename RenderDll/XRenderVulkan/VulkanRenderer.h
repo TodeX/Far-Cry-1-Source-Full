@@ -7,6 +7,12 @@
 #include <vulkan/vulkan.h>
 #include <vector>
 
+struct VulkanBuffer {
+    VkBuffer buffer;
+    VkDeviceMemory memory;
+    VkDeviceSize size;
+};
+
 class CVulkanRenderer : public CRenderer
 {
 public:
@@ -155,6 +161,10 @@ public:
 public:
     ILog* m_pLog;
     ISystem* m_pSystem;
+
+    // Helper methods for Vulkan
+    void CreateVulkanBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
+    uint32_t FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
 
 private:
     WIN_HWND m_hWnd;

@@ -497,19 +497,243 @@ bool CVulkanRenderer::ChangeResolution(int nNewWidth, int nNewHeight, int nNewCo
 
 void CVulkanRenderer::Reset() {}
 
-void *CVulkanRenderer::GetDynVBPtr(int nVerts, int &nOffs, int Pool) { return NULL; }
-void CVulkanRenderer::DrawDynVB(int nOffs, int Pool, int nVerts) {}
-void CVulkanRenderer::DrawDynVB(struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F *pBuf, ushort *pInds, int nVerts, int nInds, int nPrimType) {}
+void *CVulkanRenderer::GetDynVBPtr(int nVerts, int &nOffs, int Pool) {
+    // TODO: Implement dynamic vertex buffer pointer retrieval
+    // Should return a pointer to the mapped memory of the dynamic vertex buffer
+    // and update the offset.
+    return NULL;
+}
+void CVulkanRenderer::DrawDynVB(int nOffs, int Pool, int nVerts) {
+    // TODO: Implement drawing from dynamic vertex buffer
+    // Should bind the dynamic vertex buffer and issue a draw call
+    // using the provided offset and vertex count.
+}
+void CVulkanRenderer::DrawDynVB(struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F *pBuf, ushort *pInds, int nVerts, int nInds, int nPrimType) {
+    // TODO: Implement drawing from dynamic vertex buffer with provided data and indices
+    // Should probably copy data to a dynamic buffer and draw.
+}
 
-CVertexBuffer *CVulkanRenderer::CreateBuffer(int vertexcount,int vertexformat, const char *szSource, bool bDynamic) { return NULL; }
-void CVulkanRenderer::CreateBuffer(int size, int vertexformat, CVertexBuffer *buf, int Type, const char *szSource) {}
-void CVulkanRenderer::ReleaseBuffer(CVertexBuffer *bufptr) {}
-void CVulkanRenderer::DrawBuffer(CVertexBuffer *src,SVertexStream *indicies,int numindices, int offsindex, int prmode,int vert_start,int vert_stop, CMatInfo *mi) {}
-void CVulkanRenderer::UpdateBuffer(CVertexBuffer *dest,const void *src,int vertexcount, bool bUnLock, int offs, int Type) {}
+uint32_t CVulkanRenderer::FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties) {
+    VkPhysicalDeviceMemoryProperties memProperties;
+    vkGetPhysicalDeviceMemoryProperties(m_PhysicalDevice, &memProperties);
 
-void CVulkanRenderer::CreateIndexBuffer(SVertexStream *dest,const void *src,int indexcount) {}
-void CVulkanRenderer::UpdateIndexBuffer(SVertexStream *dest,const void *src,int indexcount, bool bUnLock) {}
-void CVulkanRenderer::ReleaseIndexBuffer(SVertexStream *dest) {}
+    for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++) {
+        if ((typeFilter & (1 << i)) && (memProperties.memoryTypes[i].propertyFlags & properties) == properties) {
+            return i;
+        }
+    }
+
+    throw std::runtime_error("failed to find suitable memory type!");
+}
+
+void CVulkanRenderer::CreateVulkanBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory) {
+    VkBufferCreateInfo bufferInfo = {};
+    bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+    bufferInfo.size = size;
+    bufferInfo.usage = usage;
+    bufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+
+    if (vkCreateBuffer(m_Device, &bufferInfo, nullptr, &buffer) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create buffer!");
+    }
+
+    VkMemoryRequirements memRequirements;
+    vkGetBufferMemoryRequirements(m_Device, buffer, &memRequirements);
+
+    VkMemoryAllocateInfo allocInfo = {};
+    allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+    allocInfo.allocationSize = memRequirements.size;
+    allocInfo.memoryTypeIndex = FindMemoryType(memRequirements.memoryTypeBits, properties);
+
+    if (vkAllocateMemory(m_Device, &allocInfo, nullptr, &bufferMemory) != VK_SUCCESS) {
+        throw std::runtime_error("failed to allocate buffer memory!");
+    }
+
+    vkBindBufferMemory(m_Device, buffer, bufferMemory, 0);
+}
+
+CVertexBuffer *CVulkanRenderer::CreateBuffer(int vertexcount,int vertexformat, const char *szSource, bool bDynamic)
+{
+    CVertexBuffer * vtemp = new CVertexBuffer;
+    vtemp->m_bDynamic = bDynamic;
+    vtemp->m_vertexformat = vertexformat;
+    vtemp->m_NumVerts = vertexcount;
+
+    int size = m_VertexSize[vertexformat] * vertexcount;
+
+    // Allocate Vulkan Buffer
+    VulkanBuffer* vb = new VulkanBuffer;
+    VkBufferUsageFlags usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
+    // Using Host Visible for now for simplicity
+    VkMemoryPropertyFlags properties = VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT;
+
+    CreateVulkanBuffer(size, usage, properties, vb->buffer, vb->memory);
+    vb->size = size;
+
+    vtemp->m_VS[VSF_GENERAL].m_VertBuf.m_pPtr = vb;
+
+    return vtemp;
+}
+
+void CVulkanRenderer::CreateBuffer(int size, int vertexformat, CVertexBuffer *buf, int Type, const char *szSource)
+{
+    // This overload seems to be used when appending to existing buffer or creating specific stream?
+    // The OGL implementation creates a new buffer if supported.
+
+    VulkanBuffer* vb = new VulkanBuffer;
+    VkBufferUsageFlags usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
+    VkMemoryPropertyFlags properties = VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT;
+
+    CreateVulkanBuffer(size, usage, properties, vb->buffer, vb->memory);
+    vb->size = size;
+
+    buf->m_VS[Type].m_VertBuf.m_pPtr = vb;
+}
+
+void CVulkanRenderer::ReleaseBuffer(CVertexBuffer *bufptr)
+{
+    if (bufptr)
+    {
+        for (int i=0; i<VSF_NUM; i++)
+        {
+            VulkanBuffer* vb = (VulkanBuffer*)bufptr->m_VS[i].m_VertBuf.m_pPtr;
+            if (vb)
+            {
+                vkDestroyBuffer(m_Device, vb->buffer, nullptr);
+                vkFreeMemory(m_Device, vb->memory, nullptr);
+                delete vb;
+                bufptr->m_VS[i].m_VertBuf.m_pPtr = NULL;
+            }
+        }
+        delete bufptr;
+    }
+}
+
+void CVulkanRenderer::DrawBuffer(CVertexBuffer *src,SVertexStream *indicies,int numindices, int offsindex, int prmode,int vert_start,int vert_stop, CMatInfo *mi)
+{
+    // TODO: Implement drawing
+    // Need pipeline, render pass, shaders bound.
+    //
+    // vkCmdBindVertexBuffers(m_CommandBuffers[m_CurrentFrame], 0, 1, &vertexBuffers, &offsets);
+    // vkCmdBindIndexBuffer(m_CommandBuffers[m_CurrentFrame], indexBuffer, 0, VK_INDEX_TYPE_UINT16);
+    // vkCmdDrawIndexed(m_CommandBuffers[m_CurrentFrame], static_cast<uint32_t>(indices.size()), 1, 0, 0, 0);
+}
+
+void CVulkanRenderer::UpdateBuffer(CVertexBuffer *dest,const void *src,int vertexcount, bool bUnLock, int offs, int Type)
+{
+    VulkanBuffer* vb = (VulkanBuffer*)dest->m_VS[Type].m_VertBuf.m_pPtr;
+    if (!vb) return;
+
+    if (src && vertexcount)
+    {
+        // Copy from src to buffer
+        void* data;
+        vkMapMemory(m_Device, vb->memory, 0, vb->size, 0, &data);
+
+        int stride = 0;
+        if (Type == VSF_GENERAL)
+            stride = m_VertexSize[dest->m_vertexformat];
+        else if (Type == VSF_TANGENTS)
+            stride = sizeof(SPipTangents);
+
+        if (stride > 0)
+            memcpy((char*)data + offs * stride, src, vertexcount * stride);
+
+        vkUnmapMemory(m_Device, vb->memory);
+    }
+    else
+    {
+        // Locking/Unlocking
+        if (bUnLock)
+        {
+            if (dest->m_VS[Type].m_bLocked)
+            {
+                vkUnmapMemory(m_Device, vb->memory);
+                dest->m_VS[Type].m_bLocked = false;
+                dest->m_VS[Type].m_VData = NULL;
+            }
+        }
+        else
+        {
+            if (!dest->m_VS[Type].m_bLocked)
+            {
+                void* data;
+                vkMapMemory(m_Device, vb->memory, 0, vb->size, 0, &data);
+                dest->m_VS[Type].m_VData = data;
+                dest->m_VS[Type].m_bLocked = true;
+            }
+        }
+    }
+}
+
+void CVulkanRenderer::CreateIndexBuffer(SVertexStream *dest,const void *src,int indexcount)
+{
+    ReleaseIndexBuffer(dest);
+    if (indexcount)
+    {
+        VulkanBuffer* vb = new VulkanBuffer;
+        VkDeviceSize size = indexcount * sizeof(ushort);
+
+        CreateVulkanBuffer(size, VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, vb->buffer, vb->memory);
+        vb->size = size;
+
+        dest->m_VertBuf.m_pPtr = vb;
+        dest->m_nItems = indexcount;
+    }
+    if (src && indexcount)
+    {
+        UpdateIndexBuffer(dest, src, indexcount, true);
+    }
+}
+
+void CVulkanRenderer::UpdateIndexBuffer(SVertexStream *dest,const void *src,int indexcount, bool bUnLock)
+{
+    VulkanBuffer* vb = (VulkanBuffer*)dest->m_VertBuf.m_pPtr;
+    if (!vb) return;
+
+    if (src && indexcount)
+    {
+        void* data;
+        vkMapMemory(m_Device, vb->memory, 0, vb->size, 0, &data);
+        memcpy(data, src, indexcount * sizeof(ushort));
+        vkUnmapMemory(m_Device, vb->memory);
+    }
+    else
+    {
+         if (bUnLock)
+        {
+            if (dest->m_bLocked)
+            {
+                vkUnmapMemory(m_Device, vb->memory);
+                dest->m_bLocked = false;
+                dest->m_VData = NULL;
+            }
+        }
+        else
+        {
+            if (!dest->m_bLocked)
+            {
+                void* data;
+                vkMapMemory(m_Device, vb->memory, 0, vb->size, 0, &data);
+                dest->m_VData = data;
+                dest->m_bLocked = true;
+            }
+        }
+    }
+}
+
+void CVulkanRenderer::ReleaseIndexBuffer(SVertexStream *dest)
+{
+    VulkanBuffer* vb = (VulkanBuffer*)dest->m_VertBuf.m_pPtr;
+    if (vb)
+    {
+        vkDestroyBuffer(m_Device, vb->buffer, nullptr);
+        vkFreeMemory(m_Device, vb->memory, nullptr);
+        delete vb;
+        dest->m_VertBuf.m_pPtr = NULL;
+    }
+    dest->Reset();
+}
 
 void CVulkanRenderer::CheckError(const char *comment) {}
 
@@ -529,7 +753,11 @@ void CVulkanRenderer::SetTexgen3D(float x1, float y1, float z1, float x2, float 
 void CVulkanRenderer::SetLodBias(float value) {}
 void CVulkanRenderer::EnableVSync(bool enable) {}
 
-void CVulkanRenderer::DrawTriStrip(CVertexBuffer *src, int vert_num) {}
+void CVulkanRenderer::DrawTriStrip(CVertexBuffer *src, int vert_num) {
+    // TODO: Implement triangle strip drawing
+    // Should bind the vertex buffer from src and issue a draw call
+    // with VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP.
+}
 
 // Matrix operations
 void CVulkanRenderer::PushMatrix() {}
