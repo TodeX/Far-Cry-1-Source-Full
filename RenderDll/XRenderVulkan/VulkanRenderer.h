@@ -269,6 +269,8 @@ public:
     CVulkanPipeline* GetPipeline(const VulkanPipelineState& state);
     VkDescriptorSet GetDescriptorSet(SVulkanTexture* pTex, CVulkanPipeline* pPipeline);
 
+    VulkanPipelineState m_CurrentPipelineState;
+
 private:
     WIN_HWND m_hWnd;
 

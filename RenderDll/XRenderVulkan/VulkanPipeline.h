@@ -29,6 +29,9 @@ struct VulkanPipelineState {
     VkRenderPass renderPass;
     uint32_t subpass;
 
+    // Cull Mode
+    VkCullModeFlags cullMode;
+
     // Default constructor
     VulkanPipelineState() :
         vertexShader(VK_NULL_HANDLE),
@@ -40,7 +43,8 @@ struct VulkanPipelineState {
         vertexFormat(0),
         topology(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST),
         renderPass(VK_NULL_HANDLE),
-        subpass(0)
+        subpass(0),
+        cullMode(VK_CULL_MODE_BACK_BIT)
     {}
 
     // Equality operator for hashing/map
@@ -54,7 +58,8 @@ struct VulkanPipelineState {
                vertexFormat == other.vertexFormat &&
                topology == other.topology &&
                renderPass == other.renderPass &&
-               subpass == other.subpass;
+               subpass == other.subpass &&
+               cullMode == other.cullMode;
     }
 
     // Less-than operator for std::map
@@ -68,7 +73,8 @@ struct VulkanPipelineState {
         if (vertexFormat != other.vertexFormat) return vertexFormat < other.vertexFormat;
         if (topology != other.topology) return topology < other.topology;
         if (renderPass != other.renderPass) return renderPass < other.renderPass;
-        return subpass < other.subpass;
+        if (subpass != other.subpass) return subpass < other.subpass;
+        return cullMode < other.cullMode;
     }
 };
 

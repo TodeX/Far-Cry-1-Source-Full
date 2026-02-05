@@ -683,6 +683,10 @@ void CVulkanRenderer::CreateCommandPool()
         }
     }
 
+    if (graphicsQueueFamilyIndex == -1) {
+        throw std::runtime_error("failed to find a graphics queue family!");
+    }
+
     VkCommandPoolCreateInfo poolInfo = {};
     poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
     poolInfo.queueFamilyIndex = graphicsQueueFamilyIndex;
@@ -1930,7 +1934,29 @@ void CVulkanRenderer::EF_FlushHW()
         {
             SShaderPassHW *slw = &hs->m_Passes[i];
 
-            // TODO: Setup pipeline state
+            // Pipeline State Setup
+            m_CurrentPipelineState = VulkanPipelineState(); // Reset state
+            m_CurrentPipelineState.renderPass = m_RenderPass;
+            m_CurrentPipelineState.renderState = slw->m_RenderState;
+            m_CurrentPipelineState.vertexFormat = m_RP.m_CurVFormat;
+
+            // Map Cull Mode
+            switch (hs->m_eCull) {
+                case R_CULL_DISABLE: m_CurrentPipelineState.cullMode = VK_CULL_MODE_NONE; break;
+                case R_CULL_FRONT: m_CurrentPipelineState.cullMode = VK_CULL_MODE_FRONT_BIT; break;
+                case R_CULL_BACK: m_CurrentPipelineState.cullMode = VK_CULL_MODE_BACK_BIT; break;
+                default: m_CurrentPipelineState.cullMode = VK_CULL_MODE_BACK_BIT; break;
+            }
+
+            // Map Stencil State (Simplified)
+            // if (slw->m_RenderState & GS_STENCIL) ...
+
+            // Shaders
+            // Note: Currently we don't have compiled 3D shaders.
+            // Using placeholder shaders to allow pipeline creation for now.
+            // In a real implementation, we would look up slw->m_VProgram and slw->m_FShader
+            m_CurrentPipelineState.vertexShader = m_VS2D; // Placeholder!
+            m_CurrentPipelineState.fragmentShader = m_PS2D; // Placeholder!
 
             if (m_RP.m_pRE)
                 m_RP.m_pRE->mfDraw(ef, slw);
@@ -1946,14 +1972,8 @@ void CVulkanRenderer::EF_DrawIndexedMesh(int nPrimType)
     VkCommandBuffer cmd = m_CommandBuffers[m_CurrentFrame];
 
     // 1. Setup Pipeline State
-    VulkanPipelineState state;
-    state.renderPass = m_RenderPass;
-    // Fill state from m_RP (Render Pipeline state)
-    // state.vertexShader = ...
-    // state.fragmentShader = ...
-    // state.renderState = ... (Cull mode, Depth test, etc.)
-    state.vertexFormat = m_RP.m_CurVFormat;
-    // state.topology = ... map nPrimType to VkPrimitiveTopology
+    VulkanPipelineState state = m_CurrentPipelineState;
+    state.renderPass = m_RenderPass; // Redundant but safe
 
     switch (nPrimType) {
         case R_PRIMV_TRIANGLES: state.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; break;
