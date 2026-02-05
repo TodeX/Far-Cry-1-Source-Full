@@ -8,6 +8,8 @@
 #include <set>
 #include <algorithm>
 
+const int MAX_FRAMES_IN_FLIGHT = 2;
+
 // --------------------------------------------------------------------------------
 // Vulkan Renderer Implementation
 // --------------------------------------------------------------------------------
@@ -19,6 +21,9 @@ CVulkanRenderer::CVulkanRenderer()
     , m_Queue(VK_NULL_HANDLE)
     , m_Surface(VK_NULL_HANDLE)
     , m_Swapchain(VK_NULL_HANDLE)
+    , m_CommandPool(VK_NULL_HANDLE)
+    , m_CurrentFrame(0)
+    , m_ImageIndex(0)
 {
     m_type = R_VULKAN_RENDERER;
 }
@@ -50,6 +55,9 @@ WIN_HWND CVulkanRenderer::Init(int x,int y,int width,int height,unsigned int cbp
         PickPhysicalDevice();
         CreateLogicalDevice();
         CreateSwapchain();
+        CreateCommandPool();
+        CreateCommandBuffers();
+        CreateSyncObjects();
     } catch (const std::exception& e) {
         if (m_pLog) m_pLog->Log("Vulkan Initialization Failed: %s", e.what());
         ShutDown();
@@ -75,6 +83,26 @@ void CVulkanRenderer::ShutDown(bool bReInit)
         vkDeviceWaitIdle(m_Device);
     }
 
+    for (size_t i = 0; i < m_RenderFinishedSemaphores.size(); i++) {
+        vkDestroySemaphore(m_Device, m_RenderFinishedSemaphores[i], nullptr);
+    }
+    m_RenderFinishedSemaphores.clear();
+
+    for (size_t i = 0; i < m_ImageAvailableSemaphores.size(); i++) {
+        vkDestroySemaphore(m_Device, m_ImageAvailableSemaphores[i], nullptr);
+    }
+    m_ImageAvailableSemaphores.clear();
+
+    for (size_t i = 0; i < m_InFlightFences.size(); i++) {
+        vkDestroyFence(m_Device, m_InFlightFences[i], nullptr);
+    }
+    m_InFlightFences.clear();
+
+    if (m_CommandPool) {
+        vkDestroyCommandPool(m_Device, m_CommandPool, nullptr);
+        m_CommandPool = VK_NULL_HANDLE;
+    }
+
     if (m_Swapchain) {
         vkDestroySwapchainKHR(m_Device, m_Swapchain, nullptr);
         m_Swapchain = VK_NULL_HANDLE;
@@ -98,12 +126,68 @@ void CVulkanRenderer::ShutDown(bool bReInit)
 
 void CVulkanRenderer::BeginFrame()
 {
-    // Placeholder
+    vkWaitForFences(m_Device, 1, &m_InFlightFences[m_CurrentFrame], VK_TRUE, UINT64_MAX);
+    vkResetFences(m_Device, 1, &m_InFlightFences[m_CurrentFrame]);
+
+    VkResult result = vkAcquireNextImageKHR(m_Device, m_Swapchain, UINT64_MAX, m_ImageAvailableSemaphores[m_CurrentFrame], VK_NULL_HANDLE, &m_ImageIndex);
+
+    if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
+        throw std::runtime_error("failed to acquire swap chain image!");
+    }
+
+    vkResetCommandBuffer(m_CommandBuffers[m_CurrentFrame], 0);
+
+    VkCommandBufferBeginInfo beginInfo = {};
+    beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+    beginInfo.flags = 0;
+    beginInfo.pInheritanceInfo = nullptr;
+
+    if (vkBeginCommandBuffer(m_CommandBuffers[m_CurrentFrame], &beginInfo) != VK_SUCCESS) {
+        throw std::runtime_error("failed to begin recording command buffer!");
+    }
 }
 
 void CVulkanRenderer::Update()
 {
-    // Placeholder
+    if (vkEndCommandBuffer(m_CommandBuffers[m_CurrentFrame]) != VK_SUCCESS) {
+        throw std::runtime_error("failed to record command buffer!");
+    }
+
+    VkSubmitInfo submitInfo = {};
+    submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+
+    VkSemaphore waitSemaphores[] = {m_ImageAvailableSemaphores[m_CurrentFrame]};
+    VkPipelineStageFlags waitStages[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
+    submitInfo.waitSemaphoreCount = 1;
+    submitInfo.pWaitSemaphores = waitSemaphores;
+    submitInfo.pWaitDstStageMask = waitStages;
+
+    submitInfo.commandBufferCount = 1;
+    submitInfo.pCommandBuffers = &m_CommandBuffers[m_CurrentFrame];
+
+    VkSemaphore signalSemaphores[] = {m_RenderFinishedSemaphores[m_CurrentFrame]};
+    submitInfo.signalSemaphoreCount = 1;
+    submitInfo.pSignalSemaphores = signalSemaphores;
+
+    if (vkQueueSubmit(m_Queue, 1, &submitInfo, m_InFlightFences[m_CurrentFrame]) != VK_SUCCESS) {
+        throw std::runtime_error("failed to submit draw command buffer!");
+    }
+
+    VkPresentInfoKHR presentInfo = {};
+    presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+
+    presentInfo.waitSemaphoreCount = 1;
+    presentInfo.pWaitSemaphores = signalSemaphores;
+
+    VkSwapchainKHR swapChains[] = {m_Swapchain};
+    presentInfo.swapchainCount = 1;
+    presentInfo.pSwapchains = swapChains;
+    presentInfo.pImageIndices = &m_ImageIndex;
+    presentInfo.pResults = nullptr;
+
+    vkQueuePresentKHR(m_Queue, &presentInfo);
+
+    m_CurrentFrame = (m_CurrentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
 }
 
 void CVulkanRenderer::CreateInstance()
@@ -325,6 +409,69 @@ void CVulkanRenderer::CreateSwapchain()
 
     m_SwapchainImageFormat = surfaceFormat.format;
     m_SwapchainExtent = extent;
+}
+
+void CVulkanRenderer::CreateCommandPool()
+{
+    uint32_t queueFamilyCount = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(m_PhysicalDevice, &queueFamilyCount, nullptr);
+
+    std::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+    vkGetPhysicalDeviceQueueFamilyProperties(m_PhysicalDevice, &queueFamilyCount, queueFamilies.data());
+
+    int graphicsQueueFamilyIndex = -1;
+    for (int i = 0; i < (int)queueFamilies.size(); i++) {
+        if (queueFamilies[i].queueCount > 0 && (queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)) {
+            graphicsQueueFamilyIndex = i;
+            break;
+        }
+    }
+
+    VkCommandPoolCreateInfo poolInfo = {};
+    poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+    poolInfo.queueFamilyIndex = graphicsQueueFamilyIndex;
+    poolInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
+
+    if (vkCreateCommandPool(m_Device, &poolInfo, nullptr, &m_CommandPool) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create command pool!");
+    }
+}
+
+void CVulkanRenderer::CreateCommandBuffers()
+{
+    m_CommandBuffers.resize(MAX_FRAMES_IN_FLIGHT);
+
+    VkCommandBufferAllocateInfo allocInfo = {};
+    allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+    allocInfo.commandPool = m_CommandPool;
+    allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+    allocInfo.commandBufferCount = (uint32_t)m_CommandBuffers.size();
+
+    if (vkAllocateCommandBuffers(m_Device, &allocInfo, m_CommandBuffers.data()) != VK_SUCCESS) {
+        throw std::runtime_error("failed to allocate command buffers!");
+    }
+}
+
+void CVulkanRenderer::CreateSyncObjects()
+{
+    m_ImageAvailableSemaphores.resize(MAX_FRAMES_IN_FLIGHT);
+    m_RenderFinishedSemaphores.resize(MAX_FRAMES_IN_FLIGHT);
+    m_InFlightFences.resize(MAX_FRAMES_IN_FLIGHT);
+
+    VkSemaphoreCreateInfo semaphoreInfo = {};
+    semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+
+    VkFenceCreateInfo fenceInfo = {};
+    fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+    fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+
+    for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+        if (vkCreateSemaphore(m_Device, &semaphoreInfo, nullptr, &m_ImageAvailableSemaphores[i]) != VK_SUCCESS ||
+            vkCreateSemaphore(m_Device, &semaphoreInfo, nullptr, &m_RenderFinishedSemaphores[i]) != VK_SUCCESS ||
+            vkCreateFence(m_Device, &fenceInfo, nullptr, &m_InFlightFences[i]) != VK_SUCCESS) {
+            throw std::runtime_error("failed to create synchronization objects for a frame!");
+        }
+    }
 }
 
 // --------------------------------------------------------------------------------

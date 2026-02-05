@@ -170,11 +170,22 @@ private:
     VkFormat m_SwapchainImageFormat;
     VkExtent2D m_SwapchainExtent;
 
+    VkCommandPool m_CommandPool;
+    std::vector<VkCommandBuffer> m_CommandBuffers;
+    std::vector<VkSemaphore> m_ImageAvailableSemaphores;
+    std::vector<VkSemaphore> m_RenderFinishedSemaphores;
+    std::vector<VkFence> m_InFlightFences;
+    uint32_t m_CurrentFrame;
+    uint32_t m_ImageIndex;
+
     void CreateInstance();
     void CreateSurface(WIN_HINSTANCE hinst, WIN_HWND hWnd);
     void PickPhysicalDevice();
     void CreateLogicalDevice();
     void CreateSwapchain();
+    void CreateCommandPool();
+    void CreateCommandBuffers();
+    void CreateSyncObjects();
     bool IsDeviceSuitable(VkPhysicalDevice device);
     bool CheckDeviceExtensionSupport(VkPhysicalDevice device);
     struct SwapChainSupportDetails {
