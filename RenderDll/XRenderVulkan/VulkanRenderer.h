@@ -9,6 +9,8 @@
 #include <vector>
 #include <map>
 
+#include "VulkanPipeline.h"
+
 struct VulkanBuffer {
     VkBuffer buffer;
     VkDeviceMemory memory;
@@ -248,8 +250,14 @@ public:
     VkQueue GetQueue() { return m_Queue; }
     VkPhysicalDevice GetPhysicalDevice() { return m_PhysicalDevice; }
 
+    // Pipeline management
+    CVulkanPipeline* GetPipeline(const VulkanPipelineState& state);
+
 private:
     WIN_HWND m_hWnd;
+
+    VkPipelineCache m_PipelineCache;
+    std::map<VulkanPipelineState, CVulkanPipeline*> m_Pipelines;
 
     VkInstance m_Instance;
     VkPhysicalDevice m_PhysicalDevice;

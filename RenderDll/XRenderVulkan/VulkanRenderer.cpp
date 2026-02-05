@@ -24,6 +24,7 @@ CVulkanRenderer::CVulkanRenderer()
     , m_Surface(VK_NULL_HANDLE)
     , m_Swapchain(VK_NULL_HANDLE)
     , m_CommandPool(VK_NULL_HANDLE)
+    , m_PipelineCache(VK_NULL_HANDLE)
     , m_CurrentFrame(0)
     , m_ImageIndex(0)
 {
@@ -111,6 +112,16 @@ void CVulkanRenderer::ShutDown(bool bReInit)
         vkDestroyCommandPool(m_Device, m_CommandPool, nullptr);
         m_CommandPool = VK_NULL_HANDLE;
     }
+
+    if (m_PipelineCache) {
+        vkDestroyPipelineCache(m_Device, m_PipelineCache, nullptr);
+        m_PipelineCache = VK_NULL_HANDLE;
+    }
+
+    for (auto const& [key, val] : m_Pipelines) {
+        delete val;
+    }
+    m_Pipelines.clear();
 
     if (m_Swapchain) {
         vkDestroySwapchainKHR(m_Device, m_Swapchain, nullptr);
@@ -361,6 +372,13 @@ void CVulkanRenderer::CreateLogicalDevice()
     }
 
     vkGetDeviceQueue(m_Device, 0, 0, &m_Queue);
+
+    // Create Pipeline Cache
+    VkPipelineCacheCreateInfo pipelineCacheCreateInfo = {};
+    pipelineCacheCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
+    if (vkCreatePipelineCache(m_Device, &pipelineCacheCreateInfo, nullptr, &m_PipelineCache) != VK_SUCCESS) {
+        if (m_pLog) m_pLog->Log("Failed to create pipeline cache!");
+    }
 }
 
 void CVulkanRenderer::CreateSwapchain()
@@ -1096,7 +1114,25 @@ VkImageView CVulkanRenderer::CreateImageView(VkImage image, VkFormat format, VkI
     return imageView;
 }
 
+CVulkanPipeline* CVulkanRenderer::GetPipeline(const VulkanPipelineState& state)
+{
+    auto it = m_Pipelines.find(state);
+    if (it != m_Pipelines.end())
+        return it->second;
+
+    CVulkanPipeline* pPipeline = new CVulkanPipeline(m_Device, m_PipelineCache, state);
+    if (pPipeline->Init())
+    {
+        m_Pipelines[state] = pPipeline;
+        return pPipeline;
+    }
+
+    delete pPipeline;
+    return NULL;
+}
+
 #include "Vulkan_Textures.cpp" // Include implementations of texture manager
+#include "VulkanPipeline.cpp"
 
 extern "C" DLL_EXPORT IRenderer * PackageRenderConstructor(int argc, char * argv[], SCryRenderInterface * sp)
 {
