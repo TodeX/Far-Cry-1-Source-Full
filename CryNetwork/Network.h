@@ -19,8 +19,6 @@ class CServerSlot;
 class CClientLocal;
 class CDefenceWall;
 struct IScriptSystem;
-class NewUbisoftClient;
-class CScriptObjectNewUbisoftClient;
 
 #if !defined(NOT_USE_PUNKBUSTER_SDK)
 class CPunkBusterInterface;
@@ -126,12 +124,6 @@ public:
 	void InitPunkbusterClientLocal(CClientLocal *pClientLocal);
 	void InitPunkbusterServer(bool bLocal, CServer *pServer);
 	void LockPunkbusterCVars();
-
-#ifndef NOT_USE_UBICOM_SDK
-
-	CScriptObjectNewUbisoftClient *			m_pScriptObjectNewUbisoftClient;		//!<
-	NewUbisoftClient *									m_pUbiSoftClient;										//!< for internet multiplayer with ubi.com (if game is running this pointer is always valid)
-#endif // NOT_USE_UBICOM_SDK
 
 private: // -------------------------------------------------------------------------
 

@@ -8,13 +8,7 @@
 #include "ClientLocal.h"
 #include <IConsole.h>									// ICVar
 
-#ifndef NOT_USE_UBICOM_SDK
-	#include "UbiSoftMemory.h"					// GS_WIN32
-	#include "cdkeydefines.h"						// UBI.com AUTHORIZATION_ID_SIZE
-	#include "NewUbisoftClient.h"								// NewUbisoftClient
-#else
-	#define AUTHORIZATION_ID_SIZE 20
-#endif // NOT_USE_UBICOM_SDK
+#define AUTHORIZATION_ID_SIZE 20
 
 
 #ifdef _DEBUG
@@ -167,14 +161,7 @@ void CClientLocal::SetServerIP( const char *szServerIP )
 
 void CClientLocal::InitiateCDKeyAuthorization( const bool inbCDAuthorization )
 {	
-#ifndef NOT_USE_UBICOM_SDK
-	if(inbCDAuthorization)
-		m_pNetwork->m_pUbiSoftClient->Client_GetCDKeyAuthorizationID();			// OnXCDKeyAuthorization is called later
-	else
-#endif // NOT_USE_UBICOM_SDK
-	{
-		OnCDKeyAuthorization(0);	// 0 -> fake AuthorizationID is generated
-	}
+	OnCDKeyAuthorization(0);	// 0 -> fake AuthorizationID is generated
 }
 
 ///////////////////////////////////////////////

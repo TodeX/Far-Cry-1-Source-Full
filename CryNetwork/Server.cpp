@@ -18,7 +18,6 @@
 #include "ServerSlot.h"
 #include "ILog.h"
 #include "IConsole.h"
-#include "NewUbisoftClient.h"								// NewUbisoftClient
 #include <IScriptSystem.h>
 
 #if defined(_DEBUG) && !defined(LINUX)
@@ -164,11 +163,6 @@ CServer::~CServer()
 	ASEQuery_shutdown();
 #endif
 	//------------------------------------------------------------------------------------------------- 
-
-#ifndef NOT_USE_UBICOM_SDK
-	// If it is a UBI type server we should unregister
-	m_pNetwork->m_pUbiSoftClient->Server_DestroyServer();
-#endif // NOT_USE_UBICOM_SDK
 
 	m_pNetwork->UnregisterServer(m_wPort);
 }

@@ -17,13 +17,7 @@
 #include "IGame.h"
 #include "IScriptSystem.h"
 
-#ifndef NOT_USE_UBICOM_SDK
-	#include "UbiSoftMemory.h"									// GS_WIN32
-	#include "cdkeydefines.h"										// UBI.com AUTHORIZATION_ID_SIZE
-	#include "NewUbisoftClient.h"								// NewUbisoftClient
-#else
-	#define AUTHORIZATION_ID_SIZE 20
-#endif // NOT_USE_UBICOM_SDK
+#define AUTHORIZATION_ID_SIZE 20
 
 
 #if defined(_DEBUG) && !defined(LINUX)
@@ -572,12 +566,5 @@ void CClient::OnCDKeyAuthorization( BYTE *pbAuthorizationID )
 
 void CClient::InitiateCDKeyAuthorization( const bool inbCDAuthorization )
 {
-#ifndef NOT_USE_UBICOM_SDK
-	if(inbCDAuthorization)
-		m_pNetwork->m_pUbiSoftClient->Client_GetCDKeyAuthorizationID();			// OnXCDKeyAuthorization is called later
-	else
-#endif // NOT_USE_UBICOM_SDK
-	{
-		OnCDKeyAuthorization(0);	// 0 -> fake AuthorizationID is generated
-	}
+	OnCDKeyAuthorization(0);	// 0 -> fake AuthorizationID is generated
 }
