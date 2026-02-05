@@ -57,8 +57,8 @@ CArticulatedEntity::CArticulatedEntity(CPhysicalWorld *pWorld) : CRigidEntity(pW
 	m_Ya_vec[0].Set(0,0,0);
 	m_nContacts = m_nDynContacts = m_bInGroup = 0;
 	m_nCollLyingMode = 5;
-	m_gravityLyingMode.Set(0,0,-5.0f);
-	m_dampingLyingMode = 1.0f;
+	m_gravityLyingMode.Set(0,0,-13.0f);
+	m_dampingLyingMode = 0.3f;
 	m_EminLyingMode = 0.04f;
 	m_maxPenetrationCur = 0;
 	m_iSimType = 0;
@@ -66,10 +66,10 @@ CArticulatedEntity::CArticulatedEntity(CPhysicalWorld *pWorld) : CRigidEntity(pW
 	m_iSimTypeCur = 0;
 	m_iSimTypeOverride = 0;
 	m_bFastLimbs = 0;
-	m_bExpandHinges = 0;
+	m_bExpandHinges = 1;
 	m_bUsingUnproj = 0;
-	m_softness[0] = 0.01f;
-	m_softness[1] = 0.05f;
+	m_softness[0] = 0.02f;
+	m_softness[1] = 0.1f;
 	m_softness[2] = 0.001f;
 	m_softness[3] = 0.01f;
 	m_bUpdateBodies = 1;

@@ -30,7 +30,7 @@ CRigidEntity::CRigidEntity(CPhysicalWorld *pWorld) : CPhysicalEntity(pWorld)
 	m_iSimClass=2; 
 	if (pWorld) 
 		m_gravity = pWorld->m_vars.gravity;
-	else m_gravity.Set(0,0,-9.81f);
+	else m_gravity.Set(0,0,-13.0f);
 	m_gravityFreefall = m_gravity;
 	m_maxAllowedStep = 0.01f;
 	m_Pext[0].zero(); m_Lext[0].zero();
@@ -58,7 +58,7 @@ CRigidEntity::CRigidEntity(CPhysicalWorld *pWorld) : CPhysicalEntity(pWorld)
 	//m_nStickyContacts = m_nSlidingContacts = 0;
 	m_prevUnprojDir.zero();
 	m_bProhibitUnproj = 0;
-	m_damping = 0.2f;
+	m_damping = 0.05f;
 	m_dampingFreefall = 0.03f;
 	m_dampingEx = 0;
 	m_waterDensity = 0;
