@@ -142,6 +142,7 @@ template	<class T> class list2;
 #define R_DX9_RENDERER	2
 #define R_NULL_RENDERER	3
 #define R_CUBAGL_RENDERER	4
+#define R_VULKAN_RENDERER	5
 
 //////////////////////////////////////////////////////////////////////
 // Render features
@@ -1118,6 +1119,13 @@ struct IRenderer//: public IRendererCallbackServer
   virtual bool DestroyRenderTarget (int nHandle)=0;
   virtual bool SetRenderTarget (int nHandle)=0;
   virtual float EF_GetWaterZElevation(float fX, float fY)=0;
+
+  //! Returns the maximum number of active shadow maps allowed (for optimizing/limiting shadows).
+  //! Returns -1 if there is no specific limit (except memory).
+  virtual int GetMaxActiveShadowMaps() { return -1; }
+
+  //! Checks if high resolution screenshot is supported by the renderer.
+  virtual bool IsHiResScreenshotSupported() { return false; }
 };
 
 

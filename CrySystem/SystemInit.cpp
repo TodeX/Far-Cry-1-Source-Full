@@ -124,6 +124,9 @@ bool CSystem::OpenRenderLibrary(const char *t_rend)
       case R_GL_RENDERER:
         GetILog()->LogToFile("System: Using OpenGL renderer...");
     	  break;
+      case R_VULKAN_RENDERER:
+        GetILog()->LogToFile("System: Using Vulkan renderer...");
+	  break;
       case R_NULL_RENDERER:
         GetILog()->LogToFile("System: Using NULL renderer...");
     	  break;
@@ -136,6 +139,9 @@ bool CSystem::OpenRenderLibrary(const char *t_rend)
 
 	if (stricmp(t_rend, "OpenGL") == 0)
     return OpenRenderLibrary(R_GL_RENDERER);
+  else
+  if (stricmp(t_rend, "Vulkan") == 0)
+    return OpenRenderLibrary(R_VULKAN_RENDERER);
   else
 	if (stricmp(t_rend, "Direct3D8") == 0)
 		return OpenRenderLibrary(R_DX8_RENDERER);
@@ -177,6 +183,9 @@ bool CSystem::OpenRenderLibrary(int type)
 	char libname[128];
 	if (type == R_GL_RENDERER)
     strcpy(libname, "XRenderOGL.dll");
+  else
+  if (type == R_VULKAN_RENDERER)
+    strcpy(libname, "XRenderVulkan.dll");
 	else
 	if (type == R_DX8_RENDERER)
 		strcpy(libname, "XRenderD3D8.dll");
