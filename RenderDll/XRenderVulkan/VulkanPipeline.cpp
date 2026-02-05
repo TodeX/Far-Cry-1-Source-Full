@@ -39,16 +39,18 @@ bool CVulkanPipeline::Init()
 
 void CVulkanPipeline::CreateLayout()
 {
-    // TODO: Create pipeline layout based on shader reflection or engine definitions.
-    // For now, we create a dummy layout with no descriptors or push constants.
-    // We should look into SShaderPass to see what uniforms/textures are bound.
+    // Enable Push Constants for MVP matrix (and other data)
+    VkPushConstantRange pushConstantRange = {};
+    pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
+    pushConstantRange.offset = 0;
+    pushConstantRange.size = 128; // Standard minimum guarantee
 
     VkPipelineLayoutCreateInfo pipelineLayoutInfo = {};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
     pipelineLayoutInfo.setLayoutCount = 0;
     pipelineLayoutInfo.pSetLayouts = nullptr;
-    pipelineLayoutInfo.pushConstantRangeCount = 0;
-    pipelineLayoutInfo.pPushConstantRanges = nullptr;
+    pipelineLayoutInfo.pushConstantRangeCount = 1;
+    pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
     if (vkCreatePipelineLayout(m_Device, &pipelineLayoutInfo, nullptr, &m_PipelineLayout) != VK_SUCCESS) {
         // gRenDev->CheckError("Failed to create pipeline layout!");
