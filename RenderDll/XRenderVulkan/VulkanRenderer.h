@@ -274,6 +274,12 @@ private:
     VkPipelineCache m_PipelineCache;
     std::map<VulkanPipelineState, CVulkanPipeline*> m_Pipelines;
 
+    VkShaderModule m_VS2D;
+    VkShaderModule m_PS2D;
+
+    std::vector<Matrix44> m_ProjMatrixStack;
+    std::vector<Matrix44> m_ViewMatrixStack;
+
     VkInstance m_Instance;
     VkPhysicalDevice m_PhysicalDevice;
     VkDevice m_Device;

@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <cstring>
 #include "VulkanRenderer.h"
+#include "VulkanInternalShaders.h"
 #include <IConsole.h>
 #include <ILog.h>
 #include <set>
@@ -25,6 +26,8 @@ CVulkanRenderer::CVulkanRenderer()
     , m_Swapchain(VK_NULL_HANDLE)
     , m_CommandPool(VK_NULL_HANDLE)
     , m_PipelineCache(VK_NULL_HANDLE)
+    , m_VS2D(VK_NULL_HANDLE)
+    , m_PS2D(VK_NULL_HANDLE)
     , m_CurrentFrame(0)
     , m_ImageIndex(0)
 {
@@ -68,6 +71,20 @@ WIN_HWND CVulkanRenderer::Init(int x,int y,int width,int height,unsigned int cbp
         CreateCommandPool();
         CreateCommandBuffers();
         CreateSyncObjects();
+
+        // Create Internal Shaders
+        VkShaderModuleCreateInfo createInfo = {};
+        createInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
+        createInfo.codeSize = sizeof(VS_2D);
+        createInfo.pCode = VS_2D;
+        if (vkCreateShaderModule(m_Device, &createInfo, nullptr, &m_VS2D) != VK_SUCCESS)
+             if (m_pLog) m_pLog->Log("Failed to create VS_2D");
+
+        createInfo.codeSize = sizeof(PS_2D);
+        createInfo.pCode = PS_2D;
+        if (vkCreateShaderModule(m_Device, &createInfo, nullptr, &m_PS2D) != VK_SUCCESS)
+             if (m_pLog) m_pLog->Log("Failed to create PS_2D");
+
     } catch (const std::exception& e) {
         if (m_pLog) m_pLog->Log("Vulkan Initialization Failed: %s", e.what());
         ShutDown();
@@ -117,6 +134,9 @@ void CVulkanRenderer::ShutDown(bool bReInit)
         vkDestroyPipelineCache(m_Device, m_PipelineCache, nullptr);
         m_PipelineCache = VK_NULL_HANDLE;
     }
+
+    if (m_VS2D) vkDestroyShaderModule(m_Device, m_VS2D, nullptr);
+    if (m_PS2D) vkDestroyShaderModule(m_Device, m_PS2D, nullptr);
 
     for (auto const& [key, val] : m_Pipelines) {
         delete val;
@@ -799,6 +819,138 @@ void CVulkanRenderer::SetTexgen3D(float x1, float y1, float z1, float x2, float 
 void CVulkanRenderer::SetLodBias(float value) {}
 void CVulkanRenderer::EnableVSync(bool enable) {}
 
+// Matrix operations
+void CVulkanRenderer::PushMatrix()
+{
+    m_ViewMatrixStack.push_back(m_ViewMatrix);
+}
+
+void CVulkanRenderer::PopMatrix()
+{
+    if (!m_ViewMatrixStack.empty())
+    {
+        m_ViewMatrix = m_ViewMatrixStack.back();
+        m_ViewMatrixStack.pop_back();
+    }
+}
+
+void CVulkanRenderer::RotateMatrix(float a,float x,float y,float z)
+{
+    // TODO: Apply rotation to m_ViewMatrix
+    // For now simple implementation using Cry_Matrix functions if available or manual
+    // Matrix44 rot = Matrix44::CreateRotationAA(DEG2RAD(a), Vec3(x,y,z));
+    // m_ViewMatrix = m_ViewMatrix * rot;
+}
+
+void CVulkanRenderer::RotateMatrix(const Vec3 & angels)
+{
+    // TODO
+}
+
+void CVulkanRenderer::TranslateMatrix(float x,float y,float z)
+{
+    // TODO
+}
+
+void CVulkanRenderer::ScaleMatrix(float x,float y,float z)
+{
+    // TODO
+}
+
+void CVulkanRenderer::TranslateMatrix(const Vec3 &pos)
+{
+    // TODO
+}
+
+void CVulkanRenderer::MultMatrix(float * mat)
+{
+    // TODO
+}
+
+void CVulkanRenderer::LoadMatrix(const Matrix44 *src)
+{
+    if (src)
+        m_ViewMatrix = *src;
+    else
+        m_ViewMatrix.SetIdentity();
+}
+
+static void MakeOrthoMatrix(Matrix44& m, float l, float r, float b, float t, float zn, float zf)
+{
+    // Standard Ortho:
+    // 2/(r-l)      0            0           -(r+l)/(r-l)
+    // 0            2/(t-b)      0           -(t+b)/(t-b)
+    // 0            0            1/(zf-zn)   -zn/(zf-zn)   <-- Vulkan 0..1 Z
+    // 0            0            0           1
+
+    // Vulkan NDC Y is down (top -1, bottom 1)
+    // Screen coords: Top (0), Bottom (h)
+    // We want 0 -> -1 (Top), h -> 1 (Bottom).
+    // y' = (y - 0) / (h - 0) * 2 - 1 = 2y/h - 1.
+    // 2/h * y - 1.
+    // So M[1][1] = 2/h. M[1][3] = -1.
+
+    // X: 0 -> -1, w -> 1.
+    // x' = 2x/w - 1.
+    // M[0][0] = 2/w. M[0][3] = -1.
+
+    // BUT Matrix44 is Row-Major? M03 is translation X.
+    // So M03 = -1. M00 = 2/w.
+
+    // In D3D Set2DMode: l=0, r=w, t=0, b=h.
+
+    float w = r - l;
+    float h = b - t; // if b=h, t=0
+
+    m.SetIdentity();
+
+    m.M00 = 2.0f / w;
+    m.M03 = -1.0f; // (l+r)/(l-r) ? if l=0, r=w, then w/-w = -1. Correct.
+
+    // Y
+    // D3D (Y-up NDC): maps 0(t) to 1, h(b) to -1.
+    // Vulkan (Y-down NDC): maps 0(t) to -1, h(b) to 1.
+    // t=0, b=h.
+    // 2/(b-t) = 2/h.
+    // -(b+t)/(b-t) = -h/h = -1.
+    m.M11 = 2.0f / h;
+    m.M13 = -1.0f;
+
+    // Z (0..1)
+    m.M22 = 1.0f / (zf - zn);
+    m.M23 = -zn / (zf - zn);
+
+    m.M33 = 1.0f;
+
+    // Note: This assumes input coordinates are 0..w, 0..h
+}
+
+void CVulkanRenderer::Set2DMode(bool enable, int ortox, int ortoy)
+{
+    if (enable)
+    {
+        m_ProjMatrixStack.push_back(m_ProjMatrix);
+
+        MakeOrthoMatrix(m_ProjMatrix, 0.0f, (float)ortox, (float)ortoy, 0.0f, -1e30f, 1e30f);
+
+        m_ViewMatrixStack.push_back(m_ViewMatrix);
+        m_ViewMatrix.SetIdentity();
+    }
+    else
+    {
+        if (!m_ProjMatrixStack.empty())
+        {
+            m_ProjMatrix = m_ProjMatrixStack.back();
+            m_ProjMatrixStack.pop_back();
+        }
+        if (!m_ViewMatrixStack.empty())
+        {
+            m_ViewMatrix = m_ViewMatrixStack.back();
+            m_ViewMatrixStack.pop_back();
+        }
+    }
+}
+
 void CVulkanRenderer::DrawTriStrip(CVertexBuffer *src, int vert_num) {
     if (!src || !vert_num) return;
 
@@ -819,16 +971,6 @@ void CVulkanRenderer::DrawTriStrip(CVertexBuffer *src, int vert_num) {
     ReleaseBuffer(vb);
 }
 
-// Matrix operations
-void CVulkanRenderer::PushMatrix() {}
-void CVulkanRenderer::RotateMatrix(float a,float x,float y,float z) {}
-void CVulkanRenderer::RotateMatrix(const Vec3 & angels) {}
-void CVulkanRenderer::TranslateMatrix(float x,float y,float z) {}
-void CVulkanRenderer::ScaleMatrix(float x,float y,float z) {}
-void CVulkanRenderer::TranslateMatrix(const Vec3 &pos) {}
-void CVulkanRenderer::MultMatrix(float * mat) {}
-void CVulkanRenderer::LoadMatrix(const Matrix44 *src) {}
-void CVulkanRenderer::PopMatrix() {}
 
 void CVulkanRenderer::EnableTMU(bool enable) {}
 void CVulkanRenderer::SelectTMU(int tnum) {}
@@ -905,7 +1047,93 @@ void CVulkanRenderer::SetWhiteTexture()
     m_TexMan->m_Text_White->Set();
 }
 
-void CVulkanRenderer::Draw2dImage(float xpos,float ypos,float w,float h,int texture_id,float s0,float t0,float s1,float t1,float angle,float r,float g,float b,float a,float z) {}
+void CVulkanRenderer::Draw2dImage(float xpos,float ypos,float w,float h,int texture_id,float s0,float t0,float s1,float t1,float angle,float r,float g,float b,float a,float z)
+{
+    if (m_CurrentFrame >= MAX_FRAMES_IN_FLIGHT) return;
+
+    Set2DMode(true, m_width, m_height);
+
+    // Create Vertices
+    struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F verts[4];
+    DWORD col = (DWORD(a*255.0f)<<24) | (DWORD(r*255.0f)<<16) | (DWORD(g*255.0f)<<8) | DWORD(b*255.0f);
+
+    float fx = xpos; // Top-Left X
+    float fy = ypos; // Top-Left Y
+    float fw = w;
+    float fh = h;
+
+    // TODO: Handle angle rotation (simplified for now)
+
+    verts[0].xyz.x = fx;      verts[0].xyz.y = fy;      verts[0].xyz.z = z;
+    verts[0].color.dcolor = col;
+    verts[0].st[0] = s0;      verts[0].st[1] = 1.0f-t0; // D3D9 texture coords might need flip, keeping D3D logic
+
+    verts[1].xyz.x = fx + fw; verts[1].xyz.y = fy;      verts[1].xyz.z = z;
+    verts[1].color.dcolor = col;
+    verts[1].st[0] = s1;      verts[1].st[1] = 1.0f-t0;
+
+    verts[2].xyz.x = fx + fw; verts[2].xyz.y = fy + fh; verts[2].xyz.z = z;
+    verts[2].color.dcolor = col;
+    verts[2].st[0] = s1;      verts[2].st[1] = 1.0f-t1;
+
+    verts[3].xyz.x = fx;      verts[3].xyz.y = fy + fh; verts[3].xyz.z = z;
+    verts[3].color.dcolor = col;
+    verts[3].st[0] = s0;      verts[3].st[1] = 1.0f-t1;
+
+    // Create Temporary Buffer
+    CVertexBuffer* vb = CreateBuffer(4, VERTEX_FORMAT_P3F_COL4UB_TEX2F, "Draw2dImage", true);
+    UpdateBuffer(vb, verts, 4, true);
+
+    // Setup Pipeline
+    VulkanPipelineState state;
+    state.vertexShader = m_VS2D;
+    state.fragmentShader = m_PS2D;
+    state.vertexFormat = VERTEX_FORMAT_P3F_COL4UB_TEX2F;
+    state.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN; // Or List with index buffer
+    // Note: Vulkan doesn't support Triangle Fan natively in core without extensions often, use Triangle List with Index Buffer
+    // For now, let's assume we can use Triangle List if we create Index Buffer or just 2 triangles (6 verts)
+    // Changing to 4 verts Triangle Strip for simplicity?
+    // D3D9 implementation uses Triangle Fan.
+    // Let's use Triangle Strip with 4 verts. Order: 0, 1, 3, 2 (TopLeft, TopRight, BotLeft, BotRight)
+
+    // Reordering for Strip:
+    // 0: TL (x, y)
+    // 1: TR (x+w, y)
+    // 2: BL (x, y+h)
+    // 3: BR (x+w, y+h)
+
+    struct_VERTEX_FORMAT_P3F_COL4UB_TEX2F vertsStrip[4];
+    vertsStrip[0] = verts[0]; // TL
+    vertsStrip[1] = verts[1]; // TR
+    vertsStrip[2] = verts[3]; // BL
+    vertsStrip[3] = verts[2]; // BR
+
+    UpdateBuffer(vb, vertsStrip, 4, true);
+    state.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP;
+
+    CVulkanPipeline* pPipeline = GetPipeline(state);
+    if (pPipeline)
+    {
+        VkCommandBuffer cmd = m_CommandBuffers[m_CurrentFrame];
+        vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pPipeline->GetPipeline());
+
+        // Push Constants
+        // Use m_ProjMatrix. View and Model are Identity in 2D Mode usually
+        vkCmdPushConstants(cmd, pPipeline->GetLayout(), VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(Matrix44), &m_ProjMatrix);
+
+        // TODO: Bind Texture (Descriptor Sets)
+
+        VulkanBuffer* pVB = (VulkanBuffer*)vb->m_VS[VSF_GENERAL].m_VertBuf.m_pPtr;
+        VkBuffer vertexBuffers[] = { pVB->buffer };
+        VkDeviceSize offsets[] = { 0 };
+        vkCmdBindVertexBuffers(cmd, 0, 1, vertexBuffers, offsets);
+
+        vkCmdDraw(cmd, 4, 1, 0, 0);
+    }
+
+    ReleaseBuffer(vb);
+    Set2DMode(false, m_width, m_height);
+}
 
 int CVulkanRenderer::SetPolygonMode(int mode) { return 0; }
 void CVulkanRenderer::ResetToDefault() {}
