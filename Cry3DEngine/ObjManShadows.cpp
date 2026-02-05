@@ -332,7 +332,9 @@ void CObjManager::DrawAllShadowsOnTheGroundInSector(list2<IEntityRender*> * pEnt
       pEnt->SetRndFlags(nFlags);
       
       nRealCout++;
-      if((GetRenderer()->GetType() == R_GL_RENDERER) && nRealCout>=64) // maximum number of shadow maps in frame is limited in ogl to MAX_DYNAMIC_SHADOW_MAPS_COUNT
+
+      int nMaxShadowMaps = GetRenderer()->GetMaxActiveShadowMaps();
+      if(nMaxShadowMaps >= 0 && nRealCout >= nMaxShadowMaps)
         break;
     }
   }	

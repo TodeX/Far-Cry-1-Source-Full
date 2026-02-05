@@ -1242,6 +1242,9 @@ public:
 
   virtual WIN_HWND GetHWND() = 0;
 
+  virtual int GetMaxActiveShadowMaps() { return (m_type == R_GL_RENDERER) ? 64 : -1; }
+  virtual bool IsHiResScreenshotSupported() { return (m_type == R_GL_RENDERER); }
+
   void SetTextureAlphaChannelFromRGB(byte * pMemBuffer, int nTexSize);
 	void RemoveAnimatedTexture(AnimTexInfo * pInfo);
 

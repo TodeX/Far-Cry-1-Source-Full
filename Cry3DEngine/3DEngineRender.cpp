@@ -60,11 +60,11 @@ void C3DEngine::Draw()
 
 	if(GetCVars()->e_hires_screenshoot)
 	{
-		if(GetRenderer()->GetType()==R_GL_RENDERER)
+		if(GetRenderer()->IsHiResScreenshotSupported())
 			MakeHiResScreenShot();
 		else
 		{
-			GetLog()->Log("\003e_hires_screenshoot is suported only in OpenGL");
+			GetLog()->Log("\003e_hires_screenshoot is not supported by current renderer");
 			GetCVars()->e_hires_screenshoot=0;
 		}
 	}
