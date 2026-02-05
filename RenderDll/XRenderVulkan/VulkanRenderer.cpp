@@ -8,8 +8,33 @@
 #include <ILog.h>
 #include <set>
 #include <algorithm>
+#include <array>
 
 CVulkanRenderer *gcpVulkan = NULL;
+
+static VkFormat FindSupportedFormat(VkPhysicalDevice physicalDevice, const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features) {
+    for (VkFormat format : candidates) {
+        VkFormatProperties props;
+        vkGetPhysicalDeviceFormatProperties(physicalDevice, format, &props);
+
+        if (tiling == VK_IMAGE_TILING_LINEAR && (props.linearTilingFeatures & features) == features) {
+            return format;
+        } else if (tiling == VK_IMAGE_TILING_OPTIMAL && (props.optimalTilingFeatures & features) == features) {
+            return format;
+        }
+    }
+
+    throw std::runtime_error("failed to find supported format!");
+}
+
+static VkFormat FindDepthFormat(VkPhysicalDevice physicalDevice) {
+    return FindSupportedFormat(
+        physicalDevice,
+        {VK_FORMAT_D32_SFLOAT, VK_FORMAT_D32_SFLOAT_S8_UINT, VK_FORMAT_D24_UNORM_S8_UINT},
+        VK_IMAGE_TILING_OPTIMAL,
+        VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT
+    );
+}
 
 const int MAX_FRAMES_IN_FLIGHT = 2;
 
@@ -68,6 +93,10 @@ WIN_HWND CVulkanRenderer::Init(int x,int y,int width,int height,unsigned int cbp
         PickPhysicalDevice();
         CreateLogicalDevice();
         CreateSwapchain();
+        CreateImageViews();
+        CreateRenderPass();
+        CreateDepthResources();
+        CreateFramebuffers();
         CreateCommandPool();
         CreateCommandBuffers();
         CreateSyncObjects();
@@ -143,6 +172,25 @@ void CVulkanRenderer::ShutDown(bool bReInit)
     }
     m_Pipelines.clear();
 
+    for (auto framebuffer : m_SwapchainFramebuffers) {
+        vkDestroyFramebuffer(m_Device, framebuffer, nullptr);
+    }
+    m_SwapchainFramebuffers.clear();
+
+    if (m_RenderPass) {
+        vkDestroyRenderPass(m_Device, m_RenderPass, nullptr);
+        m_RenderPass = VK_NULL_HANDLE;
+    }
+
+    if (m_DepthImageView) { vkDestroyImageView(m_Device, m_DepthImageView, nullptr); m_DepthImageView = VK_NULL_HANDLE; }
+    if (m_DepthImage) { vkDestroyImage(m_Device, m_DepthImage, nullptr); m_DepthImage = VK_NULL_HANDLE; }
+    if (m_DepthImageMemory) { vkFreeMemory(m_Device, m_DepthImageMemory, nullptr); m_DepthImageMemory = VK_NULL_HANDLE; }
+
+    for (auto imageView : m_SwapchainImageViews) {
+        vkDestroyImageView(m_Device, imageView, nullptr);
+    }
+    m_SwapchainImageViews.clear();
+
     if (m_Swapchain) {
         vkDestroySwapchainKHR(m_Device, m_Swapchain, nullptr);
         m_Swapchain = VK_NULL_HANDLE;
@@ -185,10 +233,42 @@ void CVulkanRenderer::BeginFrame()
     if (vkBeginCommandBuffer(m_CommandBuffers[m_CurrentFrame], &beginInfo) != VK_SUCCESS) {
         throw std::runtime_error("failed to begin recording command buffer!");
     }
+
+    VkRenderPassBeginInfo renderPassInfo = {};
+    renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+    renderPassInfo.renderPass = m_RenderPass;
+    renderPassInfo.framebuffer = m_SwapchainFramebuffers[m_ImageIndex];
+    renderPassInfo.renderArea.offset = {0, 0};
+    renderPassInfo.renderArea.extent = m_SwapchainExtent;
+
+    std::array<VkClearValue, 2> clearValues = {};
+    clearValues[0].color = {0.0f, 0.0f, 0.0f, 1.0f};
+    clearValues[1].depthStencil = {1.0f, 0};
+
+    renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
+    renderPassInfo.pClearValues = clearValues.data();
+
+    vkCmdBeginRenderPass(m_CommandBuffers[m_CurrentFrame], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
+
+    VkViewport viewport = {};
+    viewport.x = 0.0f;
+    viewport.y = 0.0f;
+    viewport.width = (float)m_SwapchainExtent.width;
+    viewport.height = (float)m_SwapchainExtent.height;
+    viewport.minDepth = 0.0f;
+    viewport.maxDepth = 1.0f;
+    vkCmdSetViewport(m_CommandBuffers[m_CurrentFrame], 0, 1, &viewport);
+
+    VkRect2D scissor = {};
+    scissor.offset = {0, 0};
+    scissor.extent = m_SwapchainExtent;
+    vkCmdSetScissor(m_CommandBuffers[m_CurrentFrame], 0, 1, &scissor);
 }
 
 void CVulkanRenderer::Update()
 {
+    vkCmdEndRenderPass(m_CommandBuffers[m_CurrentFrame]);
+
     if (vkEndCommandBuffer(m_CommandBuffers[m_CurrentFrame]) != VK_SUCCESS) {
         throw std::runtime_error("failed to record command buffer!");
     }
@@ -458,6 +538,102 @@ void CVulkanRenderer::CreateSwapchain()
 
     m_SwapchainImageFormat = surfaceFormat.format;
     m_SwapchainExtent = extent;
+}
+
+void CVulkanRenderer::CreateImageViews() {
+    m_SwapchainImageViews.resize(m_SwapchainImages.size());
+
+    for (size_t i = 0; i < m_SwapchainImages.size(); i++) {
+        m_SwapchainImageViews[i] = CreateImageView(m_SwapchainImages[i], m_SwapchainImageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
+    }
+}
+
+void CVulkanRenderer::CreateRenderPass() {
+    VkAttachmentDescription colorAttachment = {};
+    colorAttachment.format = m_SwapchainImageFormat;
+    colorAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+    colorAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR; // Clear screen
+    colorAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+    colorAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+    colorAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    colorAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    colorAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+
+    VkAttachmentDescription depthAttachment = {};
+    depthAttachment.format = FindDepthFormat(m_PhysicalDevice);
+    depthAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+    depthAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+    depthAttachment.storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    depthAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+    depthAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    depthAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    depthAttachment.finalLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+
+    VkAttachmentReference colorAttachmentRef = {};
+    colorAttachmentRef.attachment = 0;
+    colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+
+    VkAttachmentReference depthAttachmentRef = {};
+    depthAttachmentRef.attachment = 1;
+    depthAttachmentRef.layout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+
+    VkSubpassDescription subpass = {};
+    subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
+    subpass.colorAttachmentCount = 1;
+    subpass.pColorAttachments = &colorAttachmentRef;
+    subpass.pDepthStencilAttachment = &depthAttachmentRef;
+
+    VkSubpassDependency dependency = {};
+    dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+    dependency.dstSubpass = 0;
+    dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT | VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT;
+    dependency.srcAccessMask = 0;
+    dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT | VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT;
+    dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT | VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;
+
+    std::array<VkAttachmentDescription, 2> attachments = {colorAttachment, depthAttachment};
+    VkRenderPassCreateInfo renderPassInfo = {};
+    renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+    renderPassInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
+    renderPassInfo.pAttachments = attachments.data();
+    renderPassInfo.subpassCount = 1;
+    renderPassInfo.pSubpasses = &subpass;
+    renderPassInfo.dependencyCount = 1;
+    renderPassInfo.pDependencies = &dependency;
+
+    if (vkCreateRenderPass(m_Device, &renderPassInfo, nullptr, &m_RenderPass) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create render pass!");
+    }
+}
+
+void CVulkanRenderer::CreateDepthResources() {
+    VkFormat depthFormat = FindDepthFormat(m_PhysicalDevice);
+    CreateImage(m_SwapchainExtent.width, m_SwapchainExtent.height, depthFormat, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_DepthImage, m_DepthImageMemory);
+    m_DepthImageView = CreateImageView(m_DepthImage, depthFormat, VK_IMAGE_ASPECT_DEPTH_BIT);
+}
+
+void CVulkanRenderer::CreateFramebuffers() {
+    m_SwapchainFramebuffers.resize(m_SwapchainImageViews.size());
+
+    for (size_t i = 0; i < m_SwapchainImageViews.size(); i++) {
+        std::array<VkImageView, 2> attachments = {
+            m_SwapchainImageViews[i],
+            m_DepthImageView
+        };
+
+        VkFramebufferCreateInfo framebufferInfo = {};
+        framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+        framebufferInfo.renderPass = m_RenderPass;
+        framebufferInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
+        framebufferInfo.pAttachments = attachments.data();
+        framebufferInfo.width = m_SwapchainExtent.width;
+        framebufferInfo.height = m_SwapchainExtent.height;
+        framebufferInfo.layers = 1;
+
+        if (vkCreateFramebuffer(m_Device, &framebufferInfo, nullptr, &m_SwapchainFramebuffers[i]) != VK_SUCCESS) {
+            throw std::runtime_error("failed to create framebuffer!");
+        }
+    }
 }
 
 void CVulkanRenderer::CreateCommandPool()
@@ -1086,6 +1262,7 @@ void CVulkanRenderer::Draw2dImage(float xpos,float ypos,float w,float h,int text
 
     // Setup Pipeline
     VulkanPipelineState state;
+    state.renderPass = m_RenderPass;
     state.vertexShader = m_VS2D;
     state.fragmentShader = m_PS2D;
     state.vertexFormat = VERTEX_FORMAT_P3F_COL4UB_TEX2F;
@@ -1602,6 +1779,7 @@ void CVulkanRenderer::EF_DrawIndexedMesh(int nPrimType)
 
     // 1. Setup Pipeline State
     VulkanPipelineState state;
+    state.renderPass = m_RenderPass;
     // Fill state from m_RP (Render Pipeline state)
     // state.vertexShader = ...
     // state.fragmentShader = ...
