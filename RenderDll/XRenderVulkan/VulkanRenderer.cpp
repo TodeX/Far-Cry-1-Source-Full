@@ -1043,9 +1043,313 @@ void CVulkanRenderer::EF_Start(SShader *ef, SShader *efState, SRenderShaderResou
 }
 bool CVulkanRenderer::EF_SetLightHole(Vec3 vPos, Vec3 vNormal, int idTex, float fScale, bool bAdditive) { return true; }
 STexPic *CVulkanRenderer::EF_MakePhongTexture(int Exp) { return NULL; }
-void CVulkanRenderer::EF_EndEf3D (int nFlags) {}
+
+void CVulkanRenderer::EF_EndEf3D (int nFlags)
+{
+    if (m_bDeviceLost)
+    {
+        SRendItem::m_RecurseLevel--;
+        return;
+    }
+
+    assert(SRendItem::m_RecurseLevel >= 1);
+    if (SRendItem::m_RecurseLevel < 1)
+    {
+        if (m_pLog) m_pLog->Log("Error: CVulkanRenderer::EF_EndEf3D without CVulkanRenderer::EF_StartEf");
+        return;
+    }
+
+    if (CV_r_nodrawshaders == 1)
+    {
+        SetClearColor(Vec3d(0,0,0));
+        // EF_ClearBuffers(false, false, NULL); // TODO
+        SRendItem::m_RecurseLevel--;
+        return;
+    }
+
+    m_RP.m_PersFlags &= ~(RBPF_DRAWNIGHTMAP | RBPF_DRAWHEATMAP);
+    m_RP.m_RealTime = iTimer->GetCurrTime();
+
+    if (CV_r_fullbrightness)
+    {
+        m_RP.m_NeedGlobalColor.dcolor = -1;
+        m_RP.m_FlagsPerFlush |= RBSI_RGBGEN | RBSI_ALPHAGEN;
+    }
+
+    if (CV_r_excludeshader && CV_r_excludeshader->GetString()[0] != '0')
+        m_RP.m_ExcludeShader = CV_r_excludeshader->GetString();
+    else
+        m_RP.m_ExcludeShader = NULL;
+
+    if (CV_r_showonlyshader && CV_r_showonlyshader->GetString()[0] != '0')
+        m_RP.m_ShowOnlyShader = CV_r_showonlyshader->GetString();
+    else
+        m_RP.m_ShowOnlyShader = NULL;
+
+    EF_UpdateSplashes(m_RP.m_RealTime);
+    EF_AddClientPolys3D();
+    EF_AddClientPolys2D();
+
+    SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_PREPROCESS_ID] = SRendItem::m_RendItems[EFSLIST_PREPROCESS_ID].Num();
+    SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_STENCIL_ID] = SRendItem::m_RendItems[EFSLIST_STENCIL_ID].Num();
+    SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_GENERAL_ID] = SRendItem::m_RendItems[EFSLIST_GENERAL_ID].Num();
+    SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_UNSORTED_ID] = SRendItem::m_RendItems[EFSLIST_UNSORTED_ID].Num();
+    SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_DISTSORT_ID] = SRendItem::m_RendItems[EFSLIST_DISTSORT_ID].Num();
+    SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_LAST_ID] = SRendItem::m_RendItems[EFSLIST_LAST_ID].Num();
+
+    EF_RenderPipeLine(EF_Flush);
+
+    EF_DrawDebugTools();
+    EF_RemovePolysFromScene();
+    SRendItem::m_RecurseLevel--;
+}
+
 void CVulkanRenderer::EF_EndEf2D(bool bSort) {}
 int CVulkanRenderer::EF_RegisterFogVolume(float fMaxFogDist, float fFogLayerZ, CFColor color, int nIndex, bool bCaustics) { return 0; }
+
+void CVulkanRenderer::EF_RenderPipeLine(void (*RenderFunc)())
+{
+    EF_PipeLine(SRendItem::m_StartRI[SRendItem::m_RecurseLevel-1][EFSLIST_PREPROCESS_ID], SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_PREPROCESS_ID], EFSLIST_PREPROCESS_ID, RenderFunc);  // Preprocess and probably sky
+
+    if (!(m_RP.m_PersFlags & RBPF_IGNORERENDERING))
+    {
+        EF_PipeLine(SRendItem::m_StartRI[SRendItem::m_RecurseLevel-1][EFSLIST_STENCIL_ID], SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_STENCIL_ID], EFSLIST_STENCIL_ID, RenderFunc);   // Unsorted list for indoor
+        EF_PipeLine(SRendItem::m_StartRI[SRendItem::m_RecurseLevel-1][EFSLIST_GENERAL_ID], SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_GENERAL_ID], EFSLIST_GENERAL_ID, RenderFunc);    // Sorted list without preprocess
+        EF_PipeLine(SRendItem::m_StartRI[SRendItem::m_RecurseLevel-1][EFSLIST_UNSORTED_ID], SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_UNSORTED_ID], EFSLIST_UNSORTED_ID, RenderFunc); // Unsorted list
+        EF_PipeLine(SRendItem::m_StartRI[SRendItem::m_RecurseLevel-1][EFSLIST_DISTSORT_ID], SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_DISTSORT_ID], EFSLIST_DISTSORT_ID, RenderFunc);   // Sorted by distance elements
+        if (SRendItem::m_RecurseLevel <= 1)
+            EF_PipeLine(SRendItem::m_StartRI[SRendItem::m_RecurseLevel-1][EFSLIST_LAST_ID], SRendItem::m_EndRI[SRendItem::m_RecurseLevel-1][EFSLIST_LAST_ID], EFSLIST_LAST_ID, RenderFunc);       // Sorted list without preprocess of all fog passes and screen shaders
+    }
+    else
+        m_RP.m_PersFlags &= ~RBPF_IGNORERENDERING;
+}
+
+void CVulkanRenderer::EF_PipeLine(int nums, int nume, int nList, void (*RenderFunc)())
+{
+    int i;
+    SShader *pShader, *pCurShader, *pShaderState, *pCurShaderState;
+    SRenderShaderResources *pRes, *pCurRes;
+    int nObject, nCurObject;
+    int nFog, nCurFog;
+
+    if (nume-nums < 1)
+        return;
+
+    // CheckDeviceLost();
+
+    m_RP.m_pRenderFunc = RenderFunc;
+    m_RP.m_nCurLightParam = -1;
+    m_RP.m_pCurObject = m_RP.m_VisObjects[0];
+    m_RP.m_pPrevObject = m_RP.m_pCurObject;
+
+    EF_PreRender(1);
+
+    if (nList==EFSLIST_PREPROCESS_ID || nList==EFSLIST_GENERAL_ID || nList==EFSLIST_LAST_ID)
+    {
+        SRendItem::mfSort(&SRendItem::m_RendItems[nList][nums], nume-nums);
+
+        if ((SRendItem::m_RendItems[nList][nums].SortVal.i.High >> 26) == eS_PreProcess)
+            nums += EF_Preprocess(&SRendItem::m_RendItems[nList][0], nums, nume);
+
+        if (m_RP.m_PersFlags & RBPF_IGNORERENDERING)
+            return;
+    }
+    else if (nList==EFSLIST_DISTSORT_ID)
+    {
+        SRendItem::mfSortByDist(&SRendItem::m_RendItems[nList][nums], nume-nums);
+    }
+    // TODO: STENCIL_ID sorting
+
+    m_RP.m_Flags |= RBF_3D;
+
+    EF_PreRender(3);
+    EF_PushMatrix();
+
+    UnINT64 oldVal;
+    oldVal.SortVal = -1;
+    nCurObject = -2;
+    nCurFog = 0;
+    pCurShader = NULL;
+    pCurShaderState = NULL;
+    pCurRes = NULL;
+    bool bIgnore = false;
+    bool bChanged;
+    bool bUseBatching = (RenderFunc == EF_Flush);
+
+    for (i=nums; i<nume; i++)
+    {
+        SRendItemPre *ri = &SRendItem::m_RendItems[nList][i];
+        CRendElement *pRE = ri->Item;
+
+#ifdef PIPE_USE_INSTANCING
+        if (oldVal.i.High == ri->SortVal.i.High && !((oldVal.i.Low ^ ri->SortVal.i.Low) & 0x000fffff))
+        {
+            SRendItem::mfGetObj(ri->SortVal, &nObject);
+            bChanged = false;
+        }
+        else
+        {
+            SRendItem::mfGet(ri->SortVal, &nObject, &pShader, &pShaderState, &nFog, &pRes);
+            bChanged = true;
+        }
+        oldVal.SortVal = ri->SortVal.SortVal;
+#else
+        if (ri->SortVal.SortVal == oldVal.SortVal)
+        {
+            if (bIgnore) continue;
+            pRE->mfPrepare();
+            continue;
+        }
+        oldVal.SortVal = ri->SortVal.SortVal;
+        SRendItem::mfGet(ri->SortVal, &nObject, &pShader, &pShaderState, &nFog, &pRes);
+        bChanged = (pCurRes != pRes || pShader != pCurShader || pShaderState != pCurShaderState || nFog != nCurFog);
+#endif
+
+        if (nObject != nCurObject)
+        {
+            if (!bChanged && !pShader->m_Deforms && bUseBatching)
+            {
+                if (EF_TryToMerge(nObject, nCurObject, pRE))
+                    continue;
+            }
+            if (pCurShader)
+            {
+                m_RP.m_pRenderFunc();
+                pCurShader = NULL;
+                bChanged = true;
+            }
+            if (!EF_ObjectChange(pShader, pRes, nObject, pRE))
+            {
+                bIgnore = true;
+                continue;
+            }
+            bIgnore = false;
+            nCurObject = nObject;
+        }
+
+        if (bChanged)
+        {
+            if (pCurShader)
+                m_RP.m_pRenderFunc();
+            EF_Start(pShader, pShaderState, pRes, nFog, pRE);
+            nCurFog = nFog;
+            pCurShader = pShader;
+            pCurShaderState = pShaderState;
+            pCurRes = pRes;
+        }
+
+        pRE->mfPrepare();
+    }
+    if (pCurShader)
+        m_RP.m_pRenderFunc();
+
+    EF_PostRender();
+    EF_PopMatrix();
+}
+
+void CVulkanRenderer::EF_PreRender(int Stage)
+{
+    if (m_bDeviceLost)
+        return;
+
+    if (Stage & 1)
+    { // Before preprocess
+        m_RP.m_RealTime = iTimer->GetCurrTime();
+        m_RP.m_Flags = 0;
+        m_RP.m_pPrevObject = NULL;
+        m_RP.m_FrameObject++;
+    }
+
+    if (Stage & 2)
+    {  // After preprocess
+        if (!m_RP.m_bStartPipeline && !m_bWasCleared && !(m_RP.m_PersFlags & RBPF_NOCLEARBUF))
+        {
+            m_RP.m_bStartPipeline = true;
+            // EF_ClearBuffers(false, false, NULL); // TODO
+        }
+    }
+    m_RP.m_pCurLight = NULL;
+}
+
+void CVulkanRenderer::EF_PostRender()
+{
+    EF_ObjectChange(NULL, NULL, 0, NULL);
+    m_RP.m_pRE = NULL;
+
+    m_RP.m_FlagsModificators = 0;
+    m_RP.m_CurrentVLights = 0;
+    m_RP.m_FlagsPerFlush = 0;
+
+    m_RP.m_pShader = NULL;
+    m_RP.m_pCurObject = m_RP.m_VisObjects[0];
+}
+
+void CVulkanRenderer::EF_Flush()
+{
+    gcpVulkan->EF_FlushShader();
+}
+
+void CVulkanRenderer::EF_FlushShader()
+{
+    SShader *ef = m_RP.m_pShader;
+    if (!ef) return;
+
+    // if (m_RP.m_pRE) { EF_InitEvalFuncs(1); } else { EF_InitEvalFuncs(0); if (!m_RP.m_RendNumIndices) return; }
+
+    m_RP.m_ResourceState = 0;
+    // EF_SetResourcesState(true);
+
+    if (ef->m_HWTechniques.Num())
+    {
+        EF_FlushHW();
+        // EF_SetResourcesState(false);
+        return;
+    }
+}
+
+void CVulkanRenderer::EF_FlushHW()
+{
+    SShader *ef = m_RP.m_pShader;
+    if (!ef) return;
+
+    SShaderTechnique *hs = m_RP.m_pCurTechnique;
+    if (!hs) return;
+
+    if (m_RP.m_pRE)
+    {
+        m_RP.m_pRE->mfCheckUpdate(ef->m_VertexFormatId, hs->m_Flags);
+    }
+
+    if (hs->m_Passes.Num())
+    {
+        for (int i=0; i<hs->m_Passes.Num(); i++)
+        {
+            SShaderPassHW *slw = &hs->m_Passes[i];
+
+            // TODO: Setup pipeline state
+
+            if (m_RP.m_pRE)
+                m_RP.m_pRE->mfDraw(ef, slw);
+            else
+                EF_DrawIndexedMesh(R_PRIMV_TRIANGLES);
+        }
+    }
+}
+
+void CVulkanRenderer::EF_DrawIndexedMesh(int nPrimType)
+{
+    // TODO: Implement indexed mesh drawing using Vulkan
+}
+
+void CVulkanRenderer::EF_DrawDebugTools()
+{
+    // TODO: Implement EF_DrawDebugTools
+}
+
+bool CVulkanRenderer::EF_PreDraw(SShaderPass *sl) { return true; }
+bool CVulkanRenderer::EF_ObjectChange(SShader *Shader, SRenderShaderResources *pRes, int nObject, CRendElement *pRE) { return true; }
+int CVulkanRenderer::EF_Preprocess(SRendItemPre *ri, int nums, int nume) { return 0; }
+void CVulkanRenderer::EF_DrawREPreprocess(SRendItemPreprocess *ris, int Nums) {}
 
 bool CVulkanRenderer::FontUploadTexture(class CFBitmap*, ETEX_Format eTF) { return true; }
 int CVulkanRenderer::FontCreateTexture(int Width, int Height, byte *pData, ETEX_Format eTF) { return 0; }

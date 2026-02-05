@@ -232,6 +232,21 @@ public:
     virtual void FontRestoreRenderingState();
     virtual WIN_HWND GetHWND();
 
+    // RenderPipeline
+    void EF_RenderPipeLine(void (*RenderFunc)());
+    void EF_PipeLine(int nums, int nume, int nList, void (*RenderFunc)());
+    static void EF_Flush();
+    void EF_FlushShader();
+    void EF_FlushHW();
+    void EF_DrawDebugTools();
+    bool EF_PreDraw(SShaderPass *sl);
+    bool EF_ObjectChange(SShader *Shader, SRenderShaderResources *pRes, int nObject, CRendElement *pRE);
+    int EF_Preprocess(SRendItemPre *ri, int nums, int nume);
+    void EF_DrawREPreprocess(SRendItemPreprocess *ris, int Nums);
+    void EF_PreRender(int Stage);
+    void EF_PostRender();
+    void EF_DrawIndexedMesh(int nPrimType);
+
 public:
     ILog* m_pLog;
     ISystem* m_pSystem;
