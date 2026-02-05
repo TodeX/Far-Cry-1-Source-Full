@@ -290,6 +290,14 @@ private:
     std::vector<VkImage> m_SwapchainImages;
     VkFormat m_SwapchainImageFormat;
     VkExtent2D m_SwapchainExtent;
+    std::vector<VkImageView> m_SwapchainImageViews;
+    std::vector<VkFramebuffer> m_SwapchainFramebuffers;
+
+    VkImage m_DepthImage;
+    VkDeviceMemory m_DepthImageMemory;
+    VkImageView m_DepthImageView;
+
+    VkRenderPass m_RenderPass;
 
     VkCommandPool m_CommandPool;
     std::vector<VkCommandBuffer> m_CommandBuffers;
@@ -304,6 +312,10 @@ private:
     void PickPhysicalDevice();
     void CreateLogicalDevice();
     void CreateSwapchain();
+    void CreateImageViews();
+    void CreateRenderPass();
+    void CreateDepthResources();
+    void CreateFramebuffers();
     void CreateCommandPool();
     void CreateCommandBuffers();
     void CreateSyncObjects();
