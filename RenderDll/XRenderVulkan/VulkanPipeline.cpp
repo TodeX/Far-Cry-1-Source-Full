@@ -90,13 +90,77 @@ void CVulkanPipeline::CreatePipeline()
     VkPipelineVertexInputStateCreateInfo vertexInputInfo = {};
     vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 
-    // TODO: Map m_State.vertexFormat to Vulkan vertex attributes and bindings.
-    // Need to access global vertex format definitions (m_VertexSize, etc.)
-    // For now, leaving empty as skeleton.
-    vertexInputInfo.vertexBindingDescriptionCount = 0;
-    vertexInputInfo.pVertexBindingDescriptions = nullptr;
-    vertexInputInfo.vertexAttributeDescriptionCount = 0;
-    vertexInputInfo.pVertexAttributeDescriptions = nullptr;
+    // Map m_State.vertexFormat to Vulkan vertex attributes and bindings.
+    std::vector<VkVertexInputBindingDescription> bindingDescriptions;
+    std::vector<VkVertexInputAttributeDescription> attributeDescriptions;
+
+    if (m_State.vertexFormat > 0 && m_State.vertexFormat < VERTEX_FORMAT_NUMS)
+    {
+        VkVertexInputBindingDescription bindingDescription = {};
+        bindingDescription.binding = 0;
+        bindingDescription.stride = m_VertexSize[m_State.vertexFormat];
+        bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+        bindingDescriptions.push_back(bindingDescription);
+
+        // Position (Location 0)
+        VkVertexInputAttributeDescription posAttr = {};
+        posAttr.binding = 0;
+        posAttr.location = 0;
+        // Check for TRP3F (Transformed Position, usually x,y,z,rhw)
+        if (m_State.vertexFormat == VERTEX_FORMAT_TRP3F_COL4UB_TEX2F)
+            posAttr.format = VK_FORMAT_R32G32B32A32_SFLOAT;
+        else
+            posAttr.format = VK_FORMAT_R32G32B32_SFLOAT;
+        posAttr.offset = 0;
+        attributeDescriptions.push_back(posAttr);
+
+        SBufInfoTable& info = gBufInfoTable[m_State.vertexFormat];
+
+        // Color (Location 1)
+        if (info.OffsColor) {
+            VkVertexInputAttributeDescription colAttr = {};
+            colAttr.binding = 0;
+            colAttr.location = 1;
+            colAttr.format = VK_FORMAT_B8G8R8A8_UNORM;
+            colAttr.offset = info.OffsColor;
+            attributeDescriptions.push_back(colAttr);
+        }
+
+        // TexCoord (Location 2)
+        if (info.OffsTC) {
+            VkVertexInputAttributeDescription tcAttr = {};
+            tcAttr.binding = 0;
+            tcAttr.location = 2;
+            tcAttr.format = VK_FORMAT_R32G32_SFLOAT;
+            tcAttr.offset = info.OffsTC;
+            attributeDescriptions.push_back(tcAttr);
+        }
+
+        // Normal (Location 3)
+        if (info.OffsNormal) {
+            VkVertexInputAttributeDescription normAttr = {};
+            normAttr.binding = 0;
+            normAttr.location = 3;
+            normAttr.format = VK_FORMAT_R32G32B32_SFLOAT;
+            normAttr.offset = info.OffsNormal;
+            attributeDescriptions.push_back(normAttr);
+        }
+
+        // Secondary Color (Location 4)
+        if (info.OffsSecColor) {
+            VkVertexInputAttributeDescription secColAttr = {};
+            secColAttr.binding = 0;
+            secColAttr.location = 4;
+            secColAttr.format = VK_FORMAT_B8G8R8A8_UNORM;
+            secColAttr.offset = info.OffsSecColor;
+            attributeDescriptions.push_back(secColAttr);
+        }
+    }
+
+    vertexInputInfo.vertexBindingDescriptionCount = static_cast<uint32_t>(bindingDescriptions.size());
+    vertexInputInfo.pVertexBindingDescriptions = bindingDescriptions.data();
+    vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(attributeDescriptions.size());
+    vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
     // --------------------------------------------------------------------------------
     // Input Assembly State
