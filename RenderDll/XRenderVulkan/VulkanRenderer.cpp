@@ -57,6 +57,7 @@ CVulkanRenderer::CVulkanRenderer()
     , m_ImageIndex(0)
     , m_DynVBOffset(0)
     , m_DynVBSize(0)
+    , m_PolygonMode(R_SOLID_MODE)
 {
     if (!gcpVulkan)
         gcpVulkan = this;
@@ -128,6 +129,16 @@ WIN_HWND CVulkanRenderer::Init(int x,int y,int width,int height,unsigned int cbp
         if (vkCreateShaderModule(m_Device, &createInfo, nullptr, &m_PS2D) != VK_SUCCESS)
              if (m_pLog) m_pLog->Log("Failed to create PS_2D");
 
+        createInfo.codeSize = sizeof(VS_General);
+        createInfo.pCode = VS_General;
+        if (vkCreateShaderModule(m_Device, &createInfo, nullptr, &m_VSGeneral) != VK_SUCCESS)
+             if (m_pLog) m_pLog->Log("Failed to create VS_General");
+
+        createInfo.codeSize = sizeof(PS_General);
+        createInfo.pCode = PS_General;
+        if (vkCreateShaderModule(m_Device, &createInfo, nullptr, &m_PSGeneral) != VK_SUCCESS)
+             if (m_pLog) m_pLog->Log("Failed to create PS_General");
+
     } catch (const std::exception& e) {
         if (m_pLog) m_pLog->Log("Vulkan Initialization Failed: %s", e.what());
         ShutDown();
@@ -193,6 +204,8 @@ void CVulkanRenderer::ShutDown(bool bReInit)
 
     if (m_VS2D) vkDestroyShaderModule(m_Device, m_VS2D, nullptr);
     if (m_PS2D) vkDestroyShaderModule(m_Device, m_PS2D, nullptr);
+    if (m_VSGeneral) vkDestroyShaderModule(m_Device, m_VSGeneral, nullptr);
+    if (m_PSGeneral) vkDestroyShaderModule(m_Device, m_PSGeneral, nullptr);
 
     for (auto const& [key, val] : m_Pipelines) {
         delete val;
@@ -1484,7 +1497,12 @@ void CVulkanRenderer::Draw2dImage(float xpos,float ypos,float w,float h,int text
     Set2DMode(false, m_width, m_height);
 }
 
-int CVulkanRenderer::SetPolygonMode(int mode) { return 0; }
+int CVulkanRenderer::SetPolygonMode(int mode)
+{
+    int old = m_PolygonMode;
+    m_PolygonMode = mode;
+    return old;
+}
 void CVulkanRenderer::ResetToDefault() {}
 int CVulkanRenderer::GenerateAlphaGlowTexture(float k) { return 0; }
 void CVulkanRenderer::SetMaterialColor(float r, float g, float b, float a) {}
@@ -1952,11 +1970,15 @@ void CVulkanRenderer::EF_FlushHW()
             // if (slw->m_RenderState & GS_STENCIL) ...
 
             // Shaders
-            // Note: Currently we don't have compiled 3D shaders.
-            // Using placeholder shaders to allow pipeline creation for now.
-            // In a real implementation, we would look up slw->m_VProgram and slw->m_FShader
-            m_CurrentPipelineState.vertexShader = m_VS2D; // Placeholder!
-            m_CurrentPipelineState.fragmentShader = m_PS2D; // Placeholder!
+            // Use General 3D Shaders for geometry
+            m_CurrentPipelineState.vertexShader = m_VSGeneral;
+            m_CurrentPipelineState.fragmentShader = m_PSGeneral;
+
+            // Wireframe Override
+            if (m_PolygonMode == R_WIREFRAME_MODE)
+            {
+                m_CurrentPipelineState.renderState |= GS_POLYLINE;
+            }
 
             if (m_RP.m_pRE)
                 m_RP.m_pRE->mfDraw(ef, slw);
@@ -1988,7 +2010,20 @@ void CVulkanRenderer::EF_DrawIndexedMesh(int nPrimType)
         vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pPipeline->GetPipeline());
     }
 
-    // 3. Draw
+    // 3. Push Constants (MVP)
+    // MVP = Proj * View * Model
+    Matrix44 ModelMat;
+    if (m_RP.m_pCurObject)
+        ModelMat = m_RP.m_pCurObject->m_Matrix;
+    else
+        ModelMat.SetIdentity();
+
+    Matrix44 MVP = m_ProjMatrix * m_ViewMatrix * ModelMat;
+    MVP.Transpose();
+
+    vkCmdPushConstants(cmd, pPipeline->GetLayout(), VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(Matrix44), &MVP);
+
+    // 4. Draw
     // Buffers should be bound by EF_PreDraw
     if (m_RP.m_RendNumIndices > 0)
     {
