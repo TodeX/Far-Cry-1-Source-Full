@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="CryScriptSystem"
 	ProjectGUID="{A52DDB05-9D2B-45F8-A85A-D1463E6CE7F0}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	>
 	<Platforms>
 		<Platform
@@ -22,7 +19,7 @@
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -52,14 +49,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG;CRYXMLDOM_EXPORTS"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryScriptSystem.tlb"
 			/>
@@ -69,18 +69,17 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="lua,..\CryCommon"
 				PreprocessorDefinitions="_DEBUG;WIN32;_USRDLL;_WINDOWS;CRYSCRIPTSYSTEM_EXPORTS"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderFile=".\Debug/CryScriptSystem.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
 				CompileAs="0"
 			/>
@@ -99,8 +98,8 @@
 				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 			/>
@@ -123,7 +122,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -153,14 +152,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG;CRYXMLDOM_EXPORTS"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Release/CryScriptSystem.tlb"
 			/>
@@ -168,18 +170,17 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="lua,../CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN32;_WINDOWS;CRYSCRIPTSYSTEM_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile=".\Release/CryScriptSystem.pch"
@@ -187,7 +188,7 @@
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				CompileAs="0"
 			/>
 			<Tool
@@ -207,11 +208,11 @@
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				OutputFile=".\Release/CryScriptSystem.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				ProgramDatabaseFile=".\Release/CryScriptSystem.pdb"
-				GenerateMapFile="TRUE"
+				GenerateMapFile="true"
 				MapFileName="$(TargetDir)\map.map"
-				MapExports="TRUE"
+				MapExports="true"
 				SubSystem="2"
 				BaseAddress="0x34000000"
 			/>
@@ -234,7 +235,7 @@
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -265,14 +266,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG;CRYXMLDOM_EXPORTS"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName="C:\MasterCD/CryScriptSystem.tlb"
 			/>
@@ -280,26 +284,24 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="lua,../CryCommon"
 				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;_USRDLL;CRYSCRIPTSYSTEM_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderFile=".\Profile/CryScriptSystem.pch"
 				AssemblerListingLocation=".\Profile/"
 				ObjectFile=".\Profile/"
 				ProgramDataBaseFileName=".\Profile/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -319,8 +321,8 @@
 				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				BaseAddress="0x35500000"
 			/>
@@ -343,7 +345,7 @@
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -373,14 +375,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG;CRYXMLDOM_EXPORTS"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryScriptSystem.tlb"
 			/>
@@ -393,15 +398,14 @@
 				PreprocessorDefinitions="_DEBUG;WIN64;_WINDOWS;CRYSCRIPTSYSTEM_EXPORTS;"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -421,9 +425,9 @@
 				AdditionalOptions="/MACHINE:AMD64"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
@@ -448,7 +452,7 @@
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -479,14 +483,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG;CRYXMLDOM_EXPORTS"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryScriptSystem.tlb"
 			/>
@@ -495,25 +502,23 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				EnableIntrinsicFunctions="true"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="lua,..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;CRYSCRIPTSYSTEM_EXPORTS"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
+				BufferSecurityCheck="false"
 				FloatingPointModel="2"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -533,9 +538,9 @@
 				AdditionalOptions="/OPT:ref,icf"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
@@ -566,58 +571,10 @@
 			<File
 				RelativePath=".\CryScriptSystem.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\FunctionHandler.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MemStats.cpp"
@@ -650,58 +607,10 @@
 			<File
 				RelativePath=".\ScriptObject.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ScriptSystem.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\StdAfx.cpp"

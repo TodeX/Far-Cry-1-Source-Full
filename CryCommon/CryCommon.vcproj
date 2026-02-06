@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="CryCommon"
 	ProjectGUID="{CC7E772A-D33D-4CDA-9F83-9281A7C48539}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="MakeFileProj"
 	>
 	<Platforms>
@@ -34,9 +31,6 @@
 				Name="VCMIDLTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -57,9 +51,6 @@
 				Name="VCMIDLTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -78,9 +69,6 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"

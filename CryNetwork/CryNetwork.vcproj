@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="CryNetwork"
 	ProjectGUID="{4A4EE1C2-855E-48DB-815D-8AE882D3332F}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	>
 	<Platforms>
 		<Platform
@@ -22,7 +19,7 @@
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -53,14 +50,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryNetwork.tlb"
 			/>
@@ -70,19 +70,18 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;"
 				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;_USRDLL;CRYNETWORK_EXPORTS"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Debug/CryNetwork.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -102,10 +101,10 @@
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="winmm.lib Shlwapi.lib wininet.lib Wsock32.lib Ws2_32.lib"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\lib_win32&quot;"
 				IgnoreDefaultLibraryNames="libcmt.lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 			/>
 			<Tool
@@ -127,7 +126,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -158,14 +157,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Release/CryNetwork.tlb"
 			/>
@@ -173,27 +175,25 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN32;_WINDOWS;_USRDLL;CRYNETWORK_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Release/CryNetwork.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				CompileAs="0"
 			/>
 			<Tool
@@ -213,7 +213,7 @@
 				AdditionalDependencies="winmm.lib wininet.lib Wsock32.lib Ws2_32.lib"
 				OutputFile=".\Release/CryNetwork.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames="libcmt.lib"
 				ProgramDatabaseFile=".\Release/CryNetwork.pdb"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
@@ -237,7 +237,7 @@
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -268,14 +268,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName="C:\MasterCD/CryNetwork.tlb"
 			/>
@@ -283,27 +286,25 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;"
 				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;_USRDLL;CRYNETWORK_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Profile/CryNetwork.pch"
 				AssemblerListingLocation=".\Profile/"
 				ObjectFile=".\Profile/"
 				ProgramDataBaseFileName=".\Profile/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -323,10 +324,10 @@
 				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="winmm.lib wininet.lib Wsock32.lib Ws2_32.lib"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\lib_win32&quot;"
 				IgnoreDefaultLibraryNames="libcmt.lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				BaseAddress="0x34500000"
 			/>
 			<Tool
@@ -348,7 +349,7 @@
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -379,14 +380,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryNetwork.tlb"
 			/>
@@ -399,17 +403,16 @@
 				PreprocessorDefinitions="_DEBUG;WIN64;_WINDOWS;_USRDLL;CRYNETWORK_EXPORTS"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -430,11 +433,11 @@
 				AdditionalDependencies="winmm.lib Shlwapi.lib wininet.lib Wsock32.lib Ws2_32.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-regserver/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-msclient/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-common/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-base/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64\gs-sdk-cdkey\lib_amd64&quot;"
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				IgnoreDefaultLibraryNames="libcmt.lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"
@@ -458,7 +461,7 @@
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -490,14 +493,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryNetwork.tlb"
 			/>
@@ -506,27 +512,25 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				EnableIntrinsicFunctions="true"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;CRYNETWORK_EXPORTS"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				FloatingPointModel="2"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -547,11 +551,11 @@
 				AdditionalDependencies="winmm.lib wininet.lib Wsock32.lib Ws2_32.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-regserver/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-msclient/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-common/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64/gs-sdk-base/lib_amd64&quot;;&quot;..\ubisoft.com\GSServices\sdks64\gs-sdk-cdkey\lib_amd64&quot;"
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				IgnoreDefaultLibraryNames="libcmt.lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"

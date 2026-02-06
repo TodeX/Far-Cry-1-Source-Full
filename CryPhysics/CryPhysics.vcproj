@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="CryPhysics"
 	ProjectGUID="{9F51A48A-EE94-4A94-AABA-C0C18B7B8774}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	>
 	<Platforms>
 		<Platform
@@ -22,7 +19,7 @@
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -53,14 +50,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName="C:\MasterCD/CryPhysics.tlb"
 			/>
@@ -68,20 +68,18 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;_USRDLL;PHYSICS_EXPORTS;PIII_SSE;ENTITY_PROFILER_ENABLED"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Profile/CryPhysics.pch"
 				AssemblerListingLocation=".\Profile/"
@@ -89,7 +87,7 @@
 				ProgramDataBaseFileName=".\Profile/"
 				BrowseInformation="1"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -109,8 +107,8 @@
 				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateDebugInformation="true"
 				BaseAddress="0x35000000"
 			/>
 			<Tool
@@ -132,7 +130,7 @@
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -163,14 +161,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryPhysics.tlb"
 			/>
@@ -180,20 +181,19 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;_USRDLL;PHYSICS_EXPORTS;PIII_SSE;ENTITY_PROFILER_ENABLED"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Debug/CryPhysics.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
 				CompileAs="0"
 			/>
@@ -213,8 +213,8 @@
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateDebugInformation="true"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 			/>
 			<Tool
@@ -236,7 +236,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -267,14 +267,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Release/CryPhysics.tlb"
 			/>
@@ -282,27 +285,25 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN32;_WINDOWS;_USRDLL;PHYSICS_EXPORTS;PIII_SSE"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Release/CryPhysics.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				CompileAs="0"
 			/>
 			<Tool
@@ -322,7 +323,7 @@
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				OutputFile=".\Release/CryPhysics.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				ProgramDatabaseFile=".\Release/CryPhysics.pdb"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 			/>
@@ -345,7 +346,7 @@
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -376,14 +377,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryPhysics.tlb"
 			/>
@@ -396,17 +400,16 @@
 				PreprocessorDefinitions="_DEBUG;WIN64;_WINDOWS;_USRDLL;PHYSICS_EXPORTS"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -426,9 +429,9 @@
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"
@@ -453,7 +456,7 @@
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -485,14 +488,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryPhysics.tlb"
 			/>
@@ -501,28 +507,26 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;PHYSICS_EXPORTS"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
+				BufferSecurityCheck="false"
 				FloatingPointModel="0"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -543,8 +547,8 @@
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"

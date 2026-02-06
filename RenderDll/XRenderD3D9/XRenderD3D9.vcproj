@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="XRenderD3D9"
 	ProjectGUID="{6711B2B2-6829-4314-A491-D01A29365658}"
-	SccProjectName="Perforce Project"
-	SccLocalPath=".."
-	SccProvider="MSSCCI:Perforce SCM"
 	>
 	<Platforms>
 		<Platform
@@ -22,7 +19,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -53,14 +50,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Release/XRenderD3D9.tlb"
 			/>
@@ -68,28 +68,26 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\DX9SDK\Include;..\..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;COMP_VC;DO_ASM;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;NDEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;_RENDERER"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
 				EnableEnhancedInstructionSet="0"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				PrecompiledHeaderFile=".\Release/XRenderD3D9.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				CompileAs="0"
 			/>
 			<Tool
@@ -109,7 +107,7 @@
 				AdditionalDependencies="Winmm.lib version.lib d3dx9.lib d3d9.lib DXErr9.lib cg.lib cgD3D9.lib"
 				OutputFile=".\Release/XRenderD3D9.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\DX9SDK\Lib;Libraries"
 				ProgramDatabaseFile=".\Release/XRenderD3D9.pdb"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
@@ -133,7 +131,7 @@
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -164,14 +162,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName="C:\MasterCD/XRenderD3D9.tlb"
 			/>
@@ -179,28 +180,26 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\DX9SDK\Include;..\..\CryCommon"
 				PreprocessorDefinitions="ENABLE_FRAME_PROFILER;COMP_VC;DO_ASM;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;NDEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="0"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
 				EnableEnhancedInstructionSet="0"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				PrecompiledHeaderFile=".\Profile/XRenderD3D9.pch"
 				AssemblerListingLocation=".\Profile/"
 				ObjectFile=".\Profile/"
 				ProgramDataBaseFileName=".\Profile/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -220,9 +219,9 @@
 				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="Winmm.lib version.lib d3dx9.lib d3d9.lib DXErr9.lib cg.lib cgD3D9.lib"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\DX9SDK\Lib;Libraries"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				BaseAddress="0x38000000"
 			/>
 			<Tool
@@ -244,7 +243,7 @@
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -275,14 +274,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/XRenderD3D9.tlb"
 			/>
@@ -292,20 +294,19 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\DX9SDK\Include;..\..\CryCommon"
 				PreprocessorDefinitions="ENABLE_FRAME_PROFILER;COMP_VC;DO_ASM;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;_DEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				PrecompiledHeaderFile=".\Debug/XRenderD3D9.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
 				CompileAs="0"
 			/>
@@ -325,9 +326,9 @@
 				AdditionalOptions="/MACHINE:I386 "
 				AdditionalDependencies="Winmm.lib version.lib d3dx9.lib d3d9.lib DXErr9.lib cg.lib cgD3D9.lib"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\DX9SDK\Lib;Libraries"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 			/>
 			<Tool
@@ -349,7 +350,7 @@
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -380,14 +381,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/XRenderD3D9.tlb"
 			/>
@@ -400,17 +404,16 @@
 				PreprocessorDefinitions="_AMD64_;ENABLE_FRAME_PROFILER;COMP_VC;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;WIN64;_DEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				PrecompiledHeaderFile="$(IntDir)/$(TargetName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -430,11 +433,11 @@
 				AdditionalOptions="/MACHINE:AMD64"
 				AdditionalDependencies="Winmm.lib d3dx9.lib d3d9.lib DxErr9.lib version.lib ../../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
-				SuppressStartupBanner="FALSE"
+				SuppressStartupBanner="false"
 				AdditionalLibraryDirectories="E:\WINDDK\dx9\AMD64\libs;Libraries"
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				IgnoreDefaultLibraryNames="libcd.lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"
@@ -458,7 +461,7 @@
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -490,14 +493,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/XRenderD3D9.tlb"
 			/>
@@ -506,28 +512,26 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\..\CryCommon;..\DX9SDK\Include;"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;ENABLE_FRAME_PROFILER;COMP_VC;DIRECT3D9;OS_WIN32;PROC_INTEL;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
+				BufferSecurityCheck="false"
 				FloatingPointModel="2"
-				ForceConformanceInForLoopScope="TRUE"
-				UsePrecompiledHeader="3"
+				ForceConformanceInForLoopScope="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				PrecompiledHeaderFile="$(IntDir)/$(TargetName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -548,11 +552,11 @@
 				AdditionalDependencies="Winmm.lib d3dx9.lib d3d9.lib DxErr9.lib version.lib ../../CryCommon/fSinCos64.lib "
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="FALSE"
+				SuppressStartupBanner="false"
 				AdditionalLibraryDirectories="D:\AMD64\dx91amd64\libs;Libraries"
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				IgnoreDefaultLibraryNames=""
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"
@@ -1238,7 +1242,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1246,16 +1250,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1287,7 +1290,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1295,16 +1298,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1332,7 +1334,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1340,16 +1342,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1377,7 +1378,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1385,16 +1386,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1422,7 +1422,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1430,16 +1430,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1467,7 +1466,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1475,16 +1474,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1516,7 +1514,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1524,16 +1522,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1561,7 +1558,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1569,16 +1566,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1610,7 +1606,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1618,16 +1614,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1655,7 +1650,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1663,16 +1658,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1700,7 +1694,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1708,16 +1702,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1745,7 +1738,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1753,16 +1746,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1790,7 +1782,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1798,16 +1790,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1835,7 +1826,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1843,16 +1834,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1880,7 +1870,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1888,16 +1878,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1925,7 +1914,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1933,16 +1922,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1974,7 +1962,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -1982,16 +1970,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2019,7 +2006,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2027,16 +2014,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2068,7 +2054,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2076,16 +2062,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2113,7 +2098,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2121,16 +2106,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2174,7 +2158,7 @@
 							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
@@ -2182,16 +2166,15 @@
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"
 								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE"
+								ExcludedFromBuild="true"
 								>
 								<Tool
 									Name="VCCLCompilerTool"

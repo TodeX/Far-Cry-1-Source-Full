@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="XRenderNULL"
 	ProjectGUID="{1EE58697-2D3E-454A-BA80-2455F7EA14A0}"
-	SccProjectName="Perforce Project"
-	SccLocalPath=".."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -52,6 +49,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -64,18 +64,17 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;NULL_RENDERER;DO_ASM"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				AssemblerListingLocation=""
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/vc70.pdb"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -90,7 +89,7 @@
 				Name="VCLinkerTool"
 				ExecutionBucket="35"
 				LinkIncremental="2"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -142,6 +141,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -152,23 +154,21 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;WIN32;NDEBUG;_WINDOWS;NULL_RENDERER;DO_ASM"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -183,7 +183,7 @@
 				Name="VCLinkerTool"
 				ExecutionBucket="35"
 				LinkIncremental="1"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -237,6 +237,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -247,23 +250,21 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;WIN32;NDEBUG;_WINDOWS;NULL_RENDERER;DO_ASM"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="0"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -278,7 +279,7 @@
 				Name="VCLinkerTool"
 				ExecutionBucket="35"
 				AdditionalOptions="/OPT:ref,icf"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -333,6 +334,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -346,17 +350,16 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;WIN64;WIN32;_DEBUG;_WINDOWS;NULL_RENDERER"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -374,8 +377,8 @@
 				AdditionalDependencies="../../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
@@ -431,6 +434,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -442,25 +448,23 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				EnableIntrinsicFunctions="true"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;NULL_RENDERER"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
+				BufferSecurityCheck="false"
 				FloatingPointModel="2"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="RenderPCH.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -478,8 +482,8 @@
 				AdditionalDependencies="../../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"
@@ -878,7 +882,7 @@
 						>
 						<FileConfiguration
 							Name="Debug64|Win32"
-							ExcludedFromBuild="TRUE"
+							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -886,7 +890,7 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release64|Win32"
-							ExcludedFromBuild="TRUE"
+							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCLCompilerTool"

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="CryGame"
 	ProjectGUID="{75A0E1EE-267F-4D2A-A90D-AE3604E7C733}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	>
 	<Platforms>
 		<Platform
@@ -22,7 +19,7 @@
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -53,14 +50,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryGame.tlb"
 			/>
@@ -70,19 +70,18 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\BinkSDK;..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;"
 				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Debug/CryGame.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
 				CompileAs="0"
 			/>
@@ -102,10 +101,10 @@
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="Shlwapi.lib wininet.lib Wsock32.lib "
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\BinkSDK;..\CryNetwork\Debug;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\lib_win32&quot;"
 				IgnoreDefaultLibraryNames="libcmt.lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 			/>
 			<Tool
@@ -127,7 +126,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -158,14 +157,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Release/CryGame.tlb"
 			/>
@@ -173,27 +175,25 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\BinkSDK;..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;USE_GAME_DLL;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Release/CryGame.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				CompileAs="0"
 			/>
 			<Tool
@@ -213,7 +213,7 @@
 				AdditionalDependencies="Shlwapi.lib wininet.lib Ws2_32.lib"
 				OutputFile=".\Release/CryGame.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\BinkSDK;..\CryNetwork\Release;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\lib_win32&quot;"
 				IgnoreDefaultLibraryNames=""
 				ProgramDatabaseFile=".\Release/CryGame.pdb"
@@ -238,7 +238,7 @@
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -269,14 +269,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName="C:\MasterCD/CryGame.tlb"
 			/>
@@ -284,29 +287,27 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\BinkSDK;..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;"
 				PreprocessorDefinitions="NDEBUG;USE_GAME_DLL;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				DisableLanguageExtensions="FALSE"
-				ForceConformanceInForLoopScope="FALSE"
-				UsePrecompiledHeader="3"
+				DisableLanguageExtensions="false"
+				ForceConformanceInForLoopScope="false"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile=".\Profile/CryGame.pch"
 				AssemblerListingLocation=".\Profile/"
 				ObjectFile=".\Profile/"
 				ProgramDataBaseFileName=".\Profile/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -326,12 +327,12 @@
 				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="Shlwapi.lib wininet.lib Ws2_32.lib"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\BinkSDK;..\CryNetwork\Release;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-result/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-cdkey/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;"
-				IgnoreAllDefaultLibraries="FALSE"
+				IgnoreAllDefaultLibraries="false"
 				IgnoreDefaultLibraryNames=""
-				GenerateDebugInformation="TRUE"
-				GenerateMapFile="TRUE"
+				GenerateDebugInformation="true"
+				GenerateMapFile="true"
 				BaseAddress="0x33000000"
 			/>
 			<Tool
@@ -353,7 +354,7 @@
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -384,14 +385,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryGame.tlb"
 			/>
@@ -404,9 +408,8 @@
 				PreprocessorDefinitions="_AMD64_;_DEBUG;WIN64;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS;DIVX"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerOutput="2"
@@ -414,8 +417,8 @@
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -436,11 +439,11 @@
 				AdditionalDependencies="Shlwapi.lib wininet.lib Ws2_32.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories=""
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				IgnoreDefaultLibraryNames="libcmt.lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"
@@ -464,7 +467,7 @@
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -496,14 +499,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/CryGame.tlb"
 			/>
@@ -512,28 +518,26 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;CRYGAME_EXPORTS;DIVX"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				FloatingPointModel="0"
-				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -554,11 +558,11 @@
 				AdditionalDependencies="libcpmt.lib Shlwapi.lib wininet.lib Ws2_32.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories=""
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				IgnoreDefaultLibraryNames=""
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"

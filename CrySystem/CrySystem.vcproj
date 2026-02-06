@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="CrySystem"
 	ProjectGUID="{9F9FB6F5-D971-4887-B0AD-5C368DDAD90B}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -52,6 +49,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -64,14 +64,13 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -87,7 +86,7 @@
 				ExecutionBucket="35"
 				AdditionalDependencies="wininet.lib"
 				LinkIncremental="2"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 				TargetMachine="1"
@@ -140,6 +139,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -150,22 +152,20 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;WIN32;NDEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
@@ -235,6 +235,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -245,22 +248,20 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -277,9 +278,9 @@
 				AdditionalOptions="/OPT:ref,icf"
 				AdditionalDependencies="wininet.lib"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				IgnoreAllDefaultLibraries="FALSE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				IgnoreAllDefaultLibraries="false"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -334,6 +335,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -347,17 +351,16 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon;c:\Program Files\Microsoft SDK\include"
 				PreprocessorDefinitions="WIN64;_DEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS;GARBAGEMEMORY"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="FALSE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -376,8 +379,8 @@
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="C:\Program Files\Microsoft SDK\Lib\AMD64"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
@@ -433,6 +436,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -444,26 +450,24 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\CryCommon;c:\Program Files\Microsoft SDK\include"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS;GARBAGEMEMORY"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
+				BufferSecurityCheck="false"
 				FloatingPointModel="2"
-				UsePrecompiledHeader="3"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="FALSE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -482,8 +486,8 @@
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="C:\Program Files\Microsoft SDK\Lib\AMD64"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
@@ -1189,7 +1193,7 @@
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1198,7 +1202,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1207,7 +1211,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Profile|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1216,7 +1220,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug64|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1225,7 +1229,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release64|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1242,7 +1246,7 @@
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1251,7 +1255,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1260,7 +1264,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Profile|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1269,7 +1273,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug64|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1278,7 +1282,7 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release64|Win32"
-						ExcludedFromBuild="TRUE"
+						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"

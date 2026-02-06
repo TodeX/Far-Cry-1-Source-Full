@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="Editor"
 	ProjectGUID="{8E62D4F9-2AD9-45E3-B911-3D0BE2C60189}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="MFCProj"
 	>
 	<Platforms>
@@ -23,7 +20,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="1"
 			UseOfMFC="2"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -54,14 +51,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName="c:\MasterCD/Editor.tlb"
 			/>
@@ -69,21 +69,19 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="_RELEASE;WIN32,NDEBUG,_WINDOWS,_XT_STATICLINK"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="3"
+				RuntimeTypeInfo="true"
 				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile=".\Release/Editor.pch"
 				AssemblerListingLocation=".\Release/"
@@ -91,7 +89,7 @@
 				ProgramDataBaseFileName=".\Release/"
 				BrowseInformation="0"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -112,9 +110,9 @@
 				AdditionalOptions="/MACHINE:I386&#x0D;&#x0A;/fixed:no"
 				OutputFile="c:\MasterCD/Editor.exe"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="c:\MasterCD/Editor.pdb"
 				SubSystem="2"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
@@ -138,7 +136,7 @@
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="1"
 			UseOfMFC="2"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -169,14 +167,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/Editor.tlb"
 			/>
@@ -186,20 +187,19 @@
 				Optimization="0"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="WIN32,_DEBUG,_WINDOWS,_XT_STATICLINK"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
-				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
 				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile=".\Debug/Editor.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
 				CompileAs="0"
 			/>
@@ -219,9 +219,9 @@
 				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386&#x0D;&#x0A;/fixed:no"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 			/>
@@ -244,7 +244,7 @@
 			IntermediateDirectory="Profile"
 			ConfigurationType="1"
 			UseOfMFC="2"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -275,14 +275,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName="c:\MasterCD/Editor.tlb"
 			/>
@@ -290,21 +293,19 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="WIN32,NDEBUG,_WINDOWS,_XT_STATICLINK"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="3"
+				RuntimeTypeInfo="true"
 				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile=".\Profile/Editor.pch"
 				AssemblerListingLocation=".\Profile/"
@@ -312,8 +313,8 @@
 				ProgramDataBaseFileName=".\Profile/"
 				BrowseInformation="0"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				Detect64BitPortabilityProblems="FALSE"
+				SuppressStartupBanner="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -333,9 +334,9 @@
 				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386&#x0D;&#x0A;/fixed:no&#x0D;&#x0A;/OPT:ref,icf"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				BaseAddress="0x37000000"
 			/>
@@ -358,7 +359,7 @@
 			IntermediateDirectory="Debug64"
 			ConfigurationType="1"
 			UseOfMFC="2"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -389,14 +390,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/Editor.tlb"
 			/>
@@ -407,21 +411,20 @@
 				Optimization="0"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="_AFXDLL,_AMD64_,WIN64,WIN32,_DEBUG,_WINDOWS,_XT_STATICLINK"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
-				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
 				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="FALSE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -442,10 +445,10 @@
 				AdditionalOptions="/MACHINE:AMD64&#x0D;&#x0A;/fixed:no"
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				LargeAddressAware="2"
 			/>
@@ -468,7 +471,7 @@
 			IntermediateDirectory="Release64"
 			ConfigurationType="1"
 			UseOfMFC="2"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -500,14 +503,17 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
 				ExecutionBucket="21"
 				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
 				TargetEnvironment="1"
 				TypeLibraryName=".\Debug/Editor.tlb"
 			/>
@@ -516,31 +522,29 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="1"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="FALSE"
+				OmitFramePointers="true"
+				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="_AFXDLL,_AMD64_,WIN64,WIN32,NDEBUG,_RELEASE,_WINDOWS,_XT_STATICLINK"
-				StringPooling="TRUE"
-				MinimalRebuild="TRUE"
+				StringPooling="true"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
 				FloatingPointModel="2"
-				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="3"
+				RuntimeTypeInfo="true"
 				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
-				SuppressStartupBanner="FALSE"
-				Detect64BitPortabilityProblems="TRUE"
+				SuppressStartupBanner="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
@@ -561,10 +565,10 @@
 				AdditionalOptions="/OPT:ref,icf"
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
+				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				LargeAddressAware="2"
 				TargetMachine="17"
@@ -2714,7 +2718,7 @@
 			</File>
 			<File
 				RelativePath="AIPointPanel.htm"
-				DeploymentContent="TRUE"
+				DeploymentContent="true"
 				>
 			</File>
 			<File

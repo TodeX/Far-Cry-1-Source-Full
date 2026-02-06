@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="ResourceCompiler"
 	ProjectGUID="{2F21D2A8-925B-4A73-A32B-D111580614C3}"
-	SccProjectName="Perforce Project"
-	SccLocalPath=".."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -52,6 +49,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -64,14 +64,13 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -88,7 +87,7 @@
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/rc.exe"
 				LinkIncremental="2"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/rc.pdb"
 				SubSystem="1"
 				TargetMachine="1"
@@ -141,6 +140,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -151,22 +153,20 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;_RELEASE"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -184,7 +184,7 @@
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/rc.exe"
 				LinkIncremental="1"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -238,6 +238,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -253,12 +256,11 @@
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;WIN64;WIN32;_DEBUG;_CONSOLE"
 				BasicRuntimeChecks="0"
-				SmallerTypeCheck="FALSE"
+				SmallerTypeCheck="false"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -276,8 +278,8 @@
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/rc64.exe"
 				LinkIncremental="2"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
 				SubSystem="1"
 				LargeAddressAware="2"
@@ -332,6 +334,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -344,20 +349,19 @@
 				AdditionalOptions="/GS-"
 				Optimization="0"
 				InlineFunctionExpansion="0"
-				EnableIntrinsicFunctions="FALSE"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				EnableIntrinsicFunctions="false"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;WIN64;WIN32;NDEBUG;_CONSOLE"
-				StringPooling="TRUE"
+				StringPooling="true"
 				BasicRuntimeChecks="0"
-				SmallerTypeCheck="FALSE"
+				SmallerTypeCheck="false"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
+				BufferSecurityCheck="false"
 				FloatingPointModel="2"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -375,8 +379,8 @@
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/rc64.exe"
 				LinkIncremental="1"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
 				SubSystem="1"
 				LargeAddressAware="2"
@@ -650,7 +654,7 @@
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -658,7 +662,7 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="TRUE"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -666,7 +670,7 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug64|Win32"
-					ExcludedFromBuild="TRUE"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -674,7 +678,7 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release64|Win32"
-					ExcludedFromBuild="TRUE"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"

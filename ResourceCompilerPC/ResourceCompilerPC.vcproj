@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="ResourceCompilerPC"
 	ProjectGUID="{43B9F5EF-C4FC-44FF-BEB0-70EFE792B6C0}"
-	SccProjectName="SAK"
-	SccAuxPath="SAK"
-	SccLocalPath="SAK"
-	SccProvider="SAK"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -53,6 +49,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -65,14 +64,13 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -90,7 +88,7 @@
 				OutputFile="$(OutDir)/ResourceCompilerPC.dll"
 				LinkIncremental="2"
 				ModuleDefinitionFile="ResourceCompilerPlugin.def"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/ResourceCompilerPC.pdb"
 				SubSystem="2"
 				ImportLibrary="$(OutDir)/ResourceCompilerPC.lib"
@@ -144,6 +142,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -154,22 +155,20 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS;_RELEASE"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -188,7 +187,7 @@
 				OutputFile="$(OutDir)/ResourceCompilerPC.dll"
 				LinkIncremental="1"
 				ModuleDefinitionFile="ResourceCompilerPlugin.def"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -243,6 +242,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -257,12 +259,11 @@
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;WIN64;WIN32;_DEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS"
 				BasicRuntimeChecks="0"
-				SmallerTypeCheck="FALSE"
+				SmallerTypeCheck="false"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -280,10 +281,10 @@
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/$(ProjectName)64.dll"
 				LinkIncremental="2"
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				IgnoreDefaultLibraryNames=""
 				ModuleDefinitionFile="ResourceCompilerPlugin.def"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
@@ -339,6 +340,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -350,22 +354,20 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="0"
-				GlobalOptimizations="FALSE"
 				InlineFunctionExpansion="0"
-				EnableIntrinsicFunctions="FALSE"
-				OmitFramePointers="TRUE"
-				WholeProgramOptimization="TRUE"
+				EnableIntrinsicFunctions="false"
+				OmitFramePointers="true"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;WIN64;WIN32;NDEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				BasicRuntimeChecks="0"
-				SmallerTypeCheck="FALSE"
+				SmallerTypeCheck="false"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
+				BufferSecurityCheck="false"
 				FloatingPointModel="2"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -383,10 +385,10 @@
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/$(ProjectName)64.dll"
 				LinkIncremental="1"
-				GenerateManifest="FALSE"
+				GenerateManifest="false"
 				ManifestFile="$(TargetPath).intermediate.manifest"
 				ModuleDefinitionFile="ResourceCompilerPlugin.def"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
@@ -420,7 +422,7 @@
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -428,7 +430,7 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="TRUE"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCustomBuildTool"

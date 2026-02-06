@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="Cry3DEngine"
 	ProjectGUID="{BCE47A67-3614-49D1-BCE7-4FD4DFD453FE}"
-	SccProjectName="Perforce Project"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -52,6 +49,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -64,14 +64,13 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;CRY3DENGINE_EXPORTS"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="true"
+				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -86,8 +85,8 @@
 				Name="VCLinkerTool"
 				ExecutionBucket="35"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateDebugInformation="true"
 				SubSystem="0"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 				TargetMachine="1"
@@ -140,6 +139,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -150,22 +152,20 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CRY3DENGINE_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -181,7 +181,7 @@
 				ExecutionBucket="35"
 				OutputFile="$(OutDir)/Cry3DEngine.dll"
 				LinkIncremental="1"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="0"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -236,6 +236,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -246,22 +249,20 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="24"
 				Optimization="3"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CRY3DENGINE_EXPORTS"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -277,7 +278,7 @@
 				ExecutionBucket="35"
 				AdditionalOptions="/OPT:ref,icf"
 				LinkIncremental="1"
-				GenerateDebugInformation="TRUE"
+				GenerateDebugInformation="true"
 				SubSystem="0"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -333,6 +334,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -344,24 +348,22 @@
 				ExecutionBucket="24"
 				AdditionalOptions="/GS-"
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="FALSE"
-				WholeProgramOptimization="TRUE"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="false"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CRY3DENGINE_EXPORTS;WIN64;_AMD64_"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="FALSE"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="false"
 				EnableEnhancedInstructionSet="0"
 				FloatingPointModel="2"
-				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -378,8 +380,8 @@
 				AdditionalOptions="/OPT:ref,icf&#x0D;&#x0A;/xxLTCG:PGO  /xxPGD:C:\MasterCD\Bin64\Cry3DEngine.pgd"
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				LinkIncremental="1"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				SubSystem="0"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -434,6 +436,9 @@
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
@@ -447,14 +452,13 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;CRY3DENGINE_EXPORTS;WIN64;_AMD64_"
-				MinimalRebuild="TRUE"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="3"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -471,9 +475,9 @@
 				AdditionalOptions="/MACHINE:AMD64"
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
-				GenerateManifest="FALSE"
-				GenerateDebugInformation="TRUE"
+				SuppressStartupBanner="true"
+				GenerateManifest="false"
+				GenerateDebugInformation="true"
 				SubSystem="0"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
 				TargetMachine="1"
