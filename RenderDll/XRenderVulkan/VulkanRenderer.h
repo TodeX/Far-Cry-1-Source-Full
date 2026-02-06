@@ -279,6 +279,10 @@ private:
 
     VkShaderModule m_VS2D;
     VkShaderModule m_PS2D;
+    VkShaderModule m_VSGeneral;
+    VkShaderModule m_PSGeneral;
+
+    int m_PolygonMode;
 
     std::vector<Matrix44> m_ProjMatrixStack;
     std::vector<Matrix44> m_ViewMatrixStack;
