@@ -15,8 +15,8 @@
 	<Configurations>
 		<Configuration
 			Name="Release|Xbox"
-			OutputDirectory=".\Release_XBox"
-			IntermediateDirectory=".\Release_XBox"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="4"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE">
@@ -31,10 +31,6 @@
 				EnableFunctionLevelLinking="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile="$(IntDir)/XRenderD3D8_XBox.pch"
-				AssemblerListingLocation="$(IntDir)/"
-				ObjectFile="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="2"
@@ -54,8 +50,8 @@
 		</Configuration>
 		<Configuration
 			Name="Profile|Xbox"
-			OutputDirectory="Profile"
-			IntermediateDirectory="Profile"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="4"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE">
@@ -70,10 +66,6 @@
 				EnableFunctionLevelLinking="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Profile/XRenderD3D8.pch"
-				AssemblerListingLocation=".\XRenderD3D8_XBox___Xbox_Profile/"
-				ObjectFile=".\XRenderD3D8_XBox___Xbox_Profile/"
-				ProgramDataBaseFileName=".\XRenderD3D8_XBox___Xbox_Profile/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="2"
@@ -93,8 +85,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Xbox"
-			OutputDirectory=".\Debug_XBox"
-			IntermediateDirectory=".\Debug_XBox"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="4"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE">
@@ -110,10 +102,6 @@
 				EnableFunctionLevelLinking="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Debug_XBox/XRenderD3D8_XBox.pch"
-				AssemblerListingLocation=".\Debug_XBox/"
-				ObjectFile=".\Debug_XBox/"
-				ProgramDataBaseFileName=".\Debug_XBox/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
@@ -447,19 +435,19 @@
 						Name="Release|Xbox">
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"/>
+							/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Profile|Xbox">
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"/>
+							/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Xbox">
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"/>
+							/>
 					</FileConfiguration>
 				</File>
 				<File

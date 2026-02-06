@@ -15,8 +15,8 @@
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Release"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -58,10 +58,6 @@
 				EnableFunctionLevelLinking="true"
 				EnableEnhancedInstructionSet="0"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				PrecompiledHeaderFile=".\Release/XRenderOGL.pch"
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				CompileAs="0"
@@ -115,8 +111,8 @@
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Profile"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -158,10 +154,6 @@
 				EnableFunctionLevelLinking="true"
 				EnableEnhancedInstructionSet="0"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				PrecompiledHeaderFile=".\Profile/XRenderOGL.pch"
-				AssemblerListingLocation=".\Profile/"
-				ObjectFile=".\Profile/"
-				ProgramDataBaseFileName=".\Profile/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
@@ -215,8 +207,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Debug"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -253,10 +245,6 @@
 				BufferSecurityCheck="true"
 				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				PrecompiledHeaderFile=".\Debug/XRenderOGL.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
@@ -309,8 +297,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="C:\MasterCD\Bin64"
-			IntermediateDirectory="Debug64"
+			OutputDirectory="$(SolutionDir)..\bin64"
+			IntermediateDirectory="$(SolutionDir)..\obj64\$(ProjectName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -345,10 +333,6 @@
 				RuntimeLibrary="3"
 				BufferSecurityCheck="false"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				PrecompiledHeaderFile="$(IntDir)/$(TargetName).pch"
-				AssemblerListingLocation="$(IntDir)/"
-				ObjectFile="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="true"
@@ -406,8 +390,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="C:\MasterCD\Bin64"
-			IntermediateDirectory="Release64"
+			OutputDirectory="$(SolutionDir)..\bin64"
+			IntermediateDirectory="$(SolutionDir)..\obj64\$(ProjectName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -448,10 +432,6 @@
 				BufferSecurityCheck="false"
 				FloatingPointModel="2"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				PrecompiledHeaderFile="$(IntDir)/$(TargetName).pch"
-				AssemblerListingLocation="$(IntDir)/"
-				ObjectFile="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="true"
@@ -1480,7 +1460,6 @@
 						>
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"
 						/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -1488,7 +1467,6 @@
 						>
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"
 						/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -1496,7 +1474,6 @@
 						>
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"
 						/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -1504,7 +1481,6 @@
 						>
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"
 						/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -1512,7 +1488,6 @@
 						>
 						<Tool
 							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"
 						/>
 					</FileConfiguration>
 				</File>

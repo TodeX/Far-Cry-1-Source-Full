@@ -16,8 +16,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Debug"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -70,9 +70,6 @@
 				BufferSecurityCheck="true"
 				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				AssemblerListingLocation=""
-				ObjectFile="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/vc70.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
@@ -108,8 +105,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Release"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -204,8 +201,8 @@
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Profile"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -301,8 +298,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="C:\MasterCD\Bin64"
-			IntermediateDirectory="Debug64"
+			OutputDirectory="$(SolutionDir)..\bin64"
+			IntermediateDirectory="$(SolutionDir)..\obj64\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -355,9 +352,6 @@
 				RuntimeLibrary="3"
 				BufferSecurityCheck="false"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				AssemblerListingLocation="$(IntDir)/"
-				ObjectFile="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
@@ -400,8 +394,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="C:\MasterCD\Bin64"
-			IntermediateDirectory="Release64"
+			OutputDirectory="$(SolutionDir)..\bin64"
+			IntermediateDirectory="$(SolutionDir)..\obj64\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
@@ -460,9 +454,6 @@
 				BufferSecurityCheck="false"
 				FloatingPointModel="2"
 				PrecompiledHeaderThrough="RenderPCH.h"
-				AssemblerListingLocation="$(IntDir)/"
-				ObjectFile="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/$(ProjectName).pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
