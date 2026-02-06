@@ -16,8 +16,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\masterCD"
-			IntermediateDirectory="Debug"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2">
 			<Tool
@@ -68,8 +68,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="C:\masterCD"
-			IntermediateDirectory="Release"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2">
 			<Tool

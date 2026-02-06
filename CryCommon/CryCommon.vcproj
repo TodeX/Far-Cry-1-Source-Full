@@ -16,8 +16,8 @@
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory=".\Release"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="10"
 			UseOfMFC="0"
 			>
@@ -36,8 +36,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory=".\Debug_XBox"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="10"
 			UseOfMFC="0"
 			>
@@ -56,8 +56,8 @@
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory=".\Profile"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="10"
 			UseOfMFC="0"
 			>

@@ -16,8 +16,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Debug"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -106,8 +106,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Release"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -203,8 +203,8 @@
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="C:\MasterCD\Bin32"
-			IntermediateDirectory="Profile"
+			OutputDirectory="$(SolutionDir)..\bin32"
+			IntermediateDirectory="$(SolutionDir)..\obj32\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -300,8 +300,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="C:\MasterCD\Bin64"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin64"
+			IntermediateDirectory="$(SolutionDir)..\obj64\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
@@ -403,8 +403,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="C:\MasterCD\Bin64"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin64"
+			IntermediateDirectory="$(SolutionDir)..\obj64\$(ProjectName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
