@@ -1,29 +1,72 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="CryPhysics"
 	ProjectGUID="{9F51A48A-EE94-4A94-AABA-C0C18B7B8774}"
 	SccProjectName="Perforce Project"
-	SccAuxPath=""
 	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM">
+	SccProvider="MSSCCI:Perforce SCM"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName="C:\MasterCD/CryPhysics.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -31,7 +74,6 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="3"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;_USRDLL;PHYSICS_EXPORTS;PIII_SSE;ENTITY_PROFILER_ENABLED"
 				StringPooling="TRUE"
@@ -49,57 +91,93 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				BaseAddress="0x35000000"/>
+				BaseAddress="0x35000000"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName="C:\MasterCD/CryPhysics.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CryPhysics.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="0"
-				OptimizeForProcessor="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;_USRDLL;PHYSICS_EXPORTS;PIII_SSE;ENTITY_PROFILER_ENABLED"
 				MinimalRebuild="TRUE"
@@ -117,56 +195,92 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CryPhysics.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release/CryPhysics.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -174,7 +288,6 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="3"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN32;_WINDOWS;_USRDLL;PHYSICS_EXPORTS;PIII_SSE"
 				StringPooling="TRUE"
@@ -190,61 +303,99 @@
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				OutputFile=".\Release/CryPhysics.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				ProgramDatabaseFile=".\Release/CryPhysics.pdb"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Release/CryPhysics.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CryPhysics.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_DEBUG;WIN64;_WINDOWS;_USRDLL;PHYSICS_EXPORTS"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				BufferSecurityCheck="FALSE"
 				ForceConformanceInForLoopScope="TRUE"
 				UsePrecompiledHeader="3"
@@ -257,70 +408,111 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:AMD64"
+				ExecutionBucket="35"
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
+				GenerateManifest="FALSE"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CryPhysics.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CryPhysics.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/fp:fast /GL"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="2"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="TRUE"
 				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				WholeProgramOptimization="TRUE"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;PHYSICS_EXPORTS"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="FALSE"
+				FloatingPointModel="0"
 				ForceConformanceInForLoopScope="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
@@ -332,45 +524,44 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
 				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
+				GenerateManifest="FALSE"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CryPhysics.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -378,255 +569,335 @@
 	<Files>
 		<Filter
 			Name="Dynamics"
-			Filter="">
+			>
 			<File
-				RelativePath="articulatedentity.cpp">
+				RelativePath="articulatedentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath="articulatedentity.h">
+				RelativePath="articulatedentity.h"
+				>
 			</File>
 			<File
-				RelativePath=".\livingentity.cpp">
+				RelativePath=".\livingentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\livingentity.h">
+				RelativePath=".\livingentity.h"
+				>
 			</File>
 			<File
-				RelativePath=".\particleentity.cpp">
+				RelativePath=".\particleentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\particleentity.h">
+				RelativePath=".\particleentity.h"
+				>
 			</File>
 			<File
-				RelativePath=".\physicalentity.cpp">
+				RelativePath=".\physicalentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\physicalentity.h">
+				RelativePath=".\physicalentity.h"
+				>
 			</File>
 			<File
-				RelativePath="physicalplaceholder.cpp">
+				RelativePath="physicalplaceholder.cpp"
+				>
 			</File>
 			<File
-				RelativePath="physicalplaceholder.h">
+				RelativePath="physicalplaceholder.h"
+				>
 			</File>
 			<File
-				RelativePath=".\physicalworld.cpp">
+				RelativePath=".\physicalworld.cpp"
+				>
 			</File>
 			<File
-				RelativePath="physicalworld.h">
+				RelativePath="physicalworld.h"
+				>
 			</File>
 			<File
-				RelativePath=".\rigidbody.cpp">
+				RelativePath=".\rigidbody.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\rigidbody.h">
+				RelativePath=".\rigidbody.h"
+				>
 			</File>
 			<File
-				RelativePath=".\rigidentity.cpp">
+				RelativePath=".\rigidentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\rigidentity.h">
+				RelativePath=".\rigidentity.h"
+				>
 			</File>
 			<File
-				RelativePath="ropeentity.cpp">
+				RelativePath="ropeentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ropeentity.h">
+				RelativePath="ropeentity.h"
+				>
 			</File>
 			<File
-				RelativePath="softentity.cpp">
+				RelativePath="softentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath="softentity.h">
+				RelativePath="softentity.h"
+				>
 			</File>
 			<File
-				RelativePath="wheeledvehicleentity.cpp">
+				RelativePath="wheeledvehicleentity.cpp"
+				>
 			</File>
 			<File
-				RelativePath="wheeledvehicleentity.h">
+				RelativePath="wheeledvehicleentity.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Utils"
-			Filter="">
+			>
 			<File
-				RelativePath="boolean2d.cpp">
+				RelativePath="boolean2d.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\matrixnm.cpp">
+				RelativePath=".\matrixnm.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\matrixnm.h">
+				RelativePath=".\matrixnm.h"
+				>
 			</File>
 			<File
-				RelativePath="polynomial.h">
+				RelativePath="polynomial.h"
+				>
 			</File>
 			<File
-				RelativePath=".\qhull.cpp">
+				RelativePath=".\qhull.cpp"
+				>
 			</File>
 			<File
-				RelativePath="quotient.h">
+				RelativePath="quotient.h"
+				>
 			</File>
 			<File
-				RelativePath=".\utils.cpp">
+				RelativePath=".\utils.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\utils.h">
+				RelativePath=".\utils.h"
+				>
 			</File>
 			<File
-				RelativePath="vectorn.h">
+				RelativePath="vectorn.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Collisions"
-			Filter="">
+			>
 			<File
-				RelativePath="aabbtree.cpp">
+				RelativePath="aabbtree.cpp"
+				>
 			</File>
 			<File
-				RelativePath="aabbtree.h">
+				RelativePath="aabbtree.h"
+				>
 			</File>
 			<File
-				RelativePath="boxgeom.cpp">
+				RelativePath="boxgeom.cpp"
+				>
 			</File>
 			<File
-				RelativePath="boxgeom.h">
+				RelativePath="boxgeom.h"
+				>
 			</File>
 			<File
-				RelativePath="bvtree.h">
+				RelativePath="bvtree.h"
+				>
 			</File>
 			<File
-				RelativePath="cylindergeom.cpp">
+				RelativePath="cylindergeom.cpp"
+				>
 			</File>
 			<File
-				RelativePath="cylindergeom.h">
+				RelativePath="cylindergeom.h"
+				>
 			</File>
 			<File
-				RelativePath="geoman.cpp">
+				RelativePath="geoman.cpp"
+				>
 			</File>
 			<File
-				RelativePath="geoman.h">
+				RelativePath="geoman.h"
+				>
 			</File>
 			<File
-				RelativePath="geometries.h">
+				RelativePath="geometries.h"
+				>
 			</File>
 			<File
-				RelativePath="geometry.cpp">
+				RelativePath="geometry.cpp"
+				>
 			</File>
 			<File
-				RelativePath="geometry.h">
+				RelativePath="geometry.h"
+				>
 			</File>
 			<File
-				RelativePath="heightfieldbv.cpp">
+				RelativePath="heightfieldbv.cpp"
+				>
 			</File>
 			<File
-				RelativePath="heightfieldbv.h">
+				RelativePath="heightfieldbv.h"
+				>
 			</File>
 			<File
-				RelativePath="heightfieldgeom.cpp">
+				RelativePath="heightfieldgeom.cpp"
+				>
 			</File>
 			<File
-				RelativePath="heightfieldgeom.h">
+				RelativePath="heightfieldgeom.h"
+				>
 			</File>
 			<File
-				RelativePath="intersectionchecks.cpp">
+				RelativePath="intersectionchecks.cpp"
+				>
 			</File>
 			<File
-				RelativePath="intersectionchecks.h">
+				RelativePath="intersectionchecks.h"
+				>
 			</File>
 			<File
-				RelativePath="linunprojectionchecks.cpp">
+				RelativePath="linunprojectionchecks.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\obbtree.cpp">
+				RelativePath=".\obbtree.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\obbtree.h">
+				RelativePath=".\obbtree.h"
+				>
 			</File>
 			<File
-				RelativePath="overlapchecks.cpp">
+				RelativePath="overlapchecks.cpp"
+				>
 			</File>
 			<File
-				RelativePath="overlapchecks.h">
+				RelativePath="overlapchecks.h"
+				>
 			</File>
 			<File
-				RelativePath="raybv.cpp">
+				RelativePath="raybv.cpp"
+				>
 			</File>
 			<File
-				RelativePath="raybv.h">
+				RelativePath="raybv.h"
+				>
 			</File>
 			<File
-				RelativePath="raygeom.cpp">
+				RelativePath="raygeom.cpp"
+				>
 			</File>
 			<File
-				RelativePath="raygeom.h">
+				RelativePath="raygeom.h"
+				>
 			</File>
 			<File
-				RelativePath="rotunprojectionchecks.cpp">
+				RelativePath="rotunprojectionchecks.cpp"
+				>
 			</File>
 			<File
-				RelativePath="singleboxtree.cpp">
+				RelativePath="singleboxtree.cpp"
+				>
 			</File>
 			<File
-				RelativePath="singleboxtree.h">
+				RelativePath="singleboxtree.h"
+				>
 			</File>
 			<File
-				RelativePath="spheregeom.cpp">
+				RelativePath="spheregeom.cpp"
+				>
 			</File>
 			<File
-				RelativePath="spheregeom.h">
+				RelativePath="spheregeom.h"
+				>
 			</File>
 			<File
-				RelativePath="trimesh.cpp">
+				RelativePath="trimesh.cpp"
+				>
 			</File>
 			<File
-				RelativePath="trimesh.h">
+				RelativePath="trimesh.h"
+				>
 			</File>
 			<File
-				RelativePath="unprojectionchecks.h">
+				RelativePath="unprojectionchecks.h"
+				>
 			</File>
 		</Filter>
 		<File
-			RelativePath=".\CryPhysics.cpp">
+			RelativePath=".\CryPhysics.cpp"
+			>
 		</File>
 		<File
-			RelativePath="IPhysics.h">
+			RelativePath="IPhysics.h"
+			>
 		</File>
 		<File
-			RelativePath=".\StdAfx.cpp">
+			RelativePath=".\StdAfx.cpp"
+			>
 			<FileConfiguration
-				Name="Profile|Win32">
+				Name="Profile|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release|Win32">
+				Name="Release|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Debug64|Win32">
+				Name="Debug64|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release64|Win32">
+				Name="Release64|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath=".\StdAfx.h">
+			RelativePath=".\StdAfx.h"
+			>
 		</File>
 	</Files>
 	<Globals>

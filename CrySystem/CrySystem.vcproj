@@ -1,29 +1,67 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="CrySystem"
 	ProjectGUID="{9F9FB6F5-D971-4887-B0AD-5C368DDAD90B}"
 	SccProjectName="Perforce Project"
-	SccAuxPath=""
 	SccLocalPath="."
 	SccProvider="MSSCCI:Perforce SCM"
-	Keyword="Win32Proj">
+	Keyword="Win32Proj"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Debug"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="0"
-				OptimizeForProcessor="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS"
 				MinimalRebuild="TRUE"
@@ -34,46 +72,83 @@
 				UsePrecompiledHeader="3"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="FALSE"
-				DebugInformationFormat="4"/>
+				DebugInformationFormat="4"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalDependencies="wininet.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
-				TargetMachine="1"/>
+				TargetMachine="1"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -81,7 +156,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;WIN32;NDEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS"
 				StringPooling="TRUE"
@@ -91,11 +165,19 @@
 				EnableEnhancedInstructionSet="0"
 				UsePrecompiledHeader="3"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="FALSE"/>
+				Detect64BitPortabilityProblems="FALSE"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalDependencies="wininet.lib"
 				OutputFile="$(OutDir)/CrySystem.dll"
 				LinkIncremental="1"
@@ -103,36 +185,65 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				ImportLibrary="$(IntDir)/$(TargetName).lib"
-				TargetMachine="1"/>
+				TargetMachine="1"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -140,7 +251,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS"
 				StringPooling="TRUE"
@@ -151,11 +261,20 @@
 				UsePrecompiledHeader="3"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="FALSE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
 				AdditionalDependencies="wininet.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
@@ -165,42 +284,72 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				BaseAddress="0x36500000"
-				TargetMachine="1"/>
+				TargetMachine="1"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon;c:\Program Files\Microsoft SDK\include"
 				PreprocessorDefinitions="WIN64;_DEBUG;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS;GARBAGEMEMORY"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				BufferSecurityCheck="FALSE"
 				UsePrecompiledHeader="3"
 				AssemblerListingLocation="$(IntDir)/"
@@ -209,64 +358,105 @@
 				WarningLevel="3"
 				SuppressStartupBanner="FALSE"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:AMD64"
 				AdditionalDependencies="wininet.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="C:\Program Files\Microsoft SDK\Lib\AMD64"
+				GenerateManifest="FALSE"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName).lib"
-				TargetMachine="0"/>
+				TargetMachine="0"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/fp:fast /GL"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="2"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="TRUE"
 				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				WholeProgramOptimization="TRUE"
 				AdditionalIncludeDirectories="..\CryCommon;c:\Program Files\Microsoft SDK\include"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;CRYSYSTEM_EXPORTS;GARBAGEMEMORY"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				BufferSecurityCheck="FALSE"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="3"
 				AssemblerListingLocation="$(IntDir)/"
 				ObjectFile="$(IntDir)/"
@@ -274,40 +464,44 @@
 				WarningLevel="3"
 				SuppressStartupBanner="FALSE"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
 				AdditionalDependencies="wininet.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="C:\Program Files\Microsoft SDK\Lib\AMD64"
+				GenerateManifest="FALSE"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -315,1270 +509,1675 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
+			>
 			<File
-				RelativePath=".\ApplicationHelper.cpp">
+				RelativePath=".\ApplicationHelper.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CompressedFile.cpp">
+				RelativePath="CompressedFile.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CPUDetect.cpp">
+				RelativePath="CPUDetect.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CryPak.cpp">
+				RelativePath="CryPak.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySizerImpl.cpp">
+				RelativePath="CrySizerImpl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySizerStats.cpp">
+				RelativePath="CrySizerStats.cpp"
+				>
 			</File>
 			<File
-				RelativePath="DebugCallStack.cpp">
+				RelativePath="DebugCallStack.cpp"
+				>
 			</File>
 			<File
-				RelativePath="DllMain.cpp">
+				RelativePath="DllMain.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DxDiag.h">
+				RelativePath=".\DxDiag.h"
+				>
 			</File>
 			<File
-				RelativePath="FrameProfileRender.cpp">
+				RelativePath="FrameProfileRender.cpp"
+				>
 			</File>
 			<File
-				RelativePath="FrameProfileSystem.cpp">
+				RelativePath="FrameProfileSystem.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\getdxver.cpp">
+				RelativePath=".\getdxver.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="Log.cpp">
-			</File>
-			<File
-				RelativePath="Mailer.cpp">
-			</File>
-			<File
-				RelativePath="ScriptBinding.cpp">
-			</File>
-			<File
-				RelativePath="ScriptSink.cpp">
-			</File>
-			<File
-				RelativePath="SourceSafeHelper.cpp">
-			</File>
-			<File
-				RelativePath="StdAfx.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Profile|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="System.cpp">
+				RelativePath="Log.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SystemCFG.cpp">
+				RelativePath="Mailer.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SystemInit.cpp">
+				RelativePath="ScriptBinding.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SystemRender.cpp">
+				RelativePath="ScriptSink.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SystemWin32.cpp">
+				RelativePath="SourceSafeHelper.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Timer.cpp">
-			</File>
-			<File
-				RelativePath="XConsole.cpp">
+				RelativePath="StdAfx.cpp"
+				>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="0"/>
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="XConsoleVariable.cpp">
+				RelativePath="System.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SystemCFG.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SystemInit.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SystemRender.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SystemWin32.cpp"
+				>
+			</File>
+			<File
+				RelativePath="Timer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="XConsole.cpp"
+				>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerOutput="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="XConsoleVariable.cpp"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc">
+			Filter="h;hpp;hxx;hm;inl;inc"
+			>
 			<File
-				RelativePath=".\ApplicationHelper.h">
+				RelativePath=".\ApplicationHelper.h"
+				>
 			</File>
 			<File
-				RelativePath="CPUDetect.h">
+				RelativePath="CPUDetect.h"
+				>
 			</File>
 			<File
-				RelativePath="CryPak.h">
+				RelativePath="CryPak.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySizerImpl.h">
+				RelativePath="CrySizerImpl.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySizerStats.h">
+				RelativePath="CrySizerStats.h"
+				>
 			</File>
 			<File
-				RelativePath="CryWaterMark.h">
+				RelativePath="CryWaterMark.h"
+				>
 			</File>
 			<File
-				RelativePath="DebugCallStack.h">
+				RelativePath="DebugCallStack.h"
+				>
 			</File>
 			<File
-				RelativePath="FrameProfileSystem.h">
+				RelativePath="FrameProfileSystem.h"
+				>
 			</File>
 			<File
-				RelativePath="Log.h">
+				RelativePath="Log.h"
+				>
 			</File>
 			<File
-				RelativePath="Mailer.h">
+				RelativePath="Mailer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PakVars.h">
+				RelativePath=".\PakVars.h"
+				>
 			</File>
 			<File
-				RelativePath="resource.h">
+				RelativePath="resource.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptSink.h">
+				RelativePath="ScriptSink.h"
+				>
 			</File>
 			<File
-				RelativePath="SourceSafeHelper.h">
+				RelativePath="SourceSafeHelper.h"
+				>
 			</File>
 			<File
-				RelativePath="StdAfx.h">
+				RelativePath="StdAfx.h"
+				>
 			</File>
 			<File
-				RelativePath="System.h">
+				RelativePath="System.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SystemCFG.h">
+				RelativePath=".\SystemCFG.h"
+				>
 			</File>
 			<File
-				RelativePath="Timer.h">
+				RelativePath="Timer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Validator.h">
+				RelativePath=".\Validator.h"
+				>
 			</File>
 			<File
-				RelativePath="XConsole.h">
+				RelativePath="XConsole.h"
+				>
 			</File>
 			<File
-				RelativePath="XConsoleVariable.h">
+				RelativePath="XConsoleVariable.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+			>
 			<File
-				RelativePath="CrySystem.rc">
+				RelativePath="CrySystem.rc"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\LUADBG.ico">
+				RelativePath="LuaDebugger\LUADBG.ico"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\small.ico">
+				RelativePath="LuaDebugger\small.ico"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\res\toolbar1.bmp">
+				RelativePath="LuaDebugger\res\toolbar1.bmp"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\res\TreeView.bmp">
+				RelativePath="LuaDebugger\res\TreeView.bmp"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="MemoryManager"
-			Filter="">
+			>
 			<File
-				RelativePath="CryMemoryManager.cpp">
+				RelativePath="CryMemoryManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath="MTSafeAllocator.cpp">
+				RelativePath="MTSafeAllocator.cpp"
+				>
 			</File>
 			<File
-				RelativePath="MTSafeAllocator.h">
+				RelativePath="MTSafeAllocator.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="LuaDebugger"
-			Filter="">
+			>
 			<File
-				RelativePath="LuaDebugger\_TinyBrowseFolder.h">
+				RelativePath="LuaDebugger\_TinyBrowseFolder.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyCaptionWindow.h">
+				RelativePath="LuaDebugger\_TinyCaptionWindow.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyCoolEdit.h">
+				RelativePath="LuaDebugger\_TinyCoolEdit.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyFileEnum.h">
+				RelativePath="LuaDebugger\_TinyFileEnum.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyImageList.h">
+				RelativePath="LuaDebugger\_TinyImageList.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyMain.h">
+				RelativePath="LuaDebugger\_TinyMain.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyRegistry.h">
+				RelativePath="LuaDebugger\_TinyRegistry.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinySplitter.h">
+				RelativePath="LuaDebugger\_TinySplitter.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyStatusBar.h">
+				RelativePath="LuaDebugger\_TinyStatusBar.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyTreeList.h">
+				RelativePath="LuaDebugger\_TinyTreeList.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\_TinyWindow.h">
+				RelativePath="LuaDebugger\_TinyWindow.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\AboutWnd.h">
+				RelativePath="LuaDebugger\AboutWnd.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\FileTree.cpp">
+				RelativePath="LuaDebugger\FileTree.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\FileTree.h">
+				RelativePath="LuaDebugger\FileTree.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\LUADBG.cpp">
+				RelativePath="LuaDebugger\LUADBG.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\LUADBG.h">
+				RelativePath="LuaDebugger\LUADBG.h"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\LuaDbgInterface.cpp">
+				RelativePath="LuaDebugger\LuaDbgInterface.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LuaDebugger\LuaDbgInterface.h">
+				RelativePath="LuaDebugger\LuaDbgInterface.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="StreamEngine"
-			Filter="">
+			>
 			<File
-				RelativePath="CritSection.h">
+				RelativePath="CritSection.h"
+				>
 			</File>
 			<File
-				RelativePath="..\CryCommon\IStreamEngine.h">
+				RelativePath="..\CryCommon\IStreamEngine.h"
+				>
 			</File>
 			<File
-				RelativePath="RefReadStream.cpp">
+				RelativePath="RefReadStream.cpp"
+				>
 			</File>
 			<File
-				RelativePath="RefReadStream.h">
+				RelativePath="RefReadStream.h"
+				>
 			</File>
 			<File
-				RelativePath="RefReadStreamProxy.cpp">
+				RelativePath="RefReadStreamProxy.cpp"
+				>
 			</File>
 			<File
-				RelativePath="RefReadStreamProxy.h">
+				RelativePath="RefReadStreamProxy.h"
+				>
 			</File>
 			<File
-				RelativePath="RefStreamEngine.cpp">
+				RelativePath="RefStreamEngine.cpp"
+				>
 			</File>
 			<File
-				RelativePath="RefStreamEngine.h">
+				RelativePath="RefStreamEngine.h"
+				>
 			</File>
 			<File
-				RelativePath="StreamEngine.cpp">
+				RelativePath="StreamEngine.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StreamEngine.h">
+				RelativePath="StreamEngine.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="XML"
-			Filter="">
+			>
 			<File
-				RelativePath="XML\_XMLDOMParserImpl.cpp">
+				RelativePath="XML\_XMLDOMParserImpl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="XML\_XMLDOMParserImpl.h">
+				RelativePath="XML\_XMLDOMParserImpl.h"
+				>
 			</File>
 			<File
-				RelativePath="XML\nanoxml.h">
+				RelativePath="XML\nanoxml.h"
+				>
 			</File>
 			<File
-				RelativePath="XML\xml.cpp">
+				RelativePath="XML\xml.cpp"
+				>
 			</File>
 			<File
-				RelativePath="XML\xml.h">
+				RelativePath="XML\xml.h"
+				>
 			</File>
 			<File
-				RelativePath="XML\xml_string.h">
+				RelativePath="XML\xml_string.h"
+				>
 			</File>
 			<File
-				RelativePath="XML\XMLDOMDocumentImpl.cpp">
+				RelativePath="XML\XMLDOMDocumentImpl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="XML\XMLDOMDocumentImpl.h">
+				RelativePath="XML\XMLDOMDocumentImpl.h"
+				>
 			</File>
 			<File
-				RelativePath="XML\XMLDOMNodeImpl.cpp">
+				RelativePath="XML\XMLDOMNodeImpl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="XML\XMLDOMNodeImpl.h">
+				RelativePath="XML\XMLDOMNodeImpl.h"
+				>
 			</File>
 			<File
-				RelativePath="XML\XMLDOMNodeListImpl.cpp">
+				RelativePath="XML\XMLDOMNodeListImpl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="XML\XMLDOMNodeListImpl.h">
+				RelativePath="XML\XMLDOMNodeListImpl.h"
+				>
 			</File>
 			<Filter
 				Name="Expat"
-				Filter="">
+				>
 				<File
-					RelativePath="XML\Expat\ascii.h">
+					RelativePath="XML\Expat\ascii.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\asciitab.h">
+					RelativePath="XML\Expat\asciitab.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\config.h">
+					RelativePath="XML\Expat\config.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\expat.h">
+					RelativePath="XML\Expat\expat.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\iasciitab.h">
+					RelativePath="XML\Expat\iasciitab.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\latin1tab.h">
+					RelativePath="XML\Expat\latin1tab.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\nametab.h">
+					RelativePath="XML\Expat\nametab.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\utf8tab.h">
+					RelativePath="XML\Expat\utf8tab.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\winconfig.h">
+					RelativePath="XML\Expat\winconfig.h"
+					>
 				</File>
 				<File
-					RelativePath="XML\Expat\xmlparse.c">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Profile|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="XML\Expat\xmlrole.c">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Profile|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="XML\Expat\xmlrole.h">
-				</File>
-				<File
-					RelativePath="XML\Expat\xmltok.c">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Profile|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="XML\Expat\xmltok.h">
-				</File>
-				<File
-					RelativePath="XML\Expat\xmltok_impl.c">
+					RelativePath="XML\Expat\xmlparse.c"
+					>
 					<FileConfiguration
 						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Profile|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug64|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release64|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="XML\Expat\xmltok_impl.h">
-				</File>
-				<File
-					RelativePath="XML\Expat\xmltok_ns.c">
+					RelativePath="XML\Expat\xmlrole.c"
+					>
 					<FileConfiguration
 						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Profile|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug64|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release64|Win32"
-						ExcludedFromBuild="TRUE">
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="XML\Expat\xmlrole.h"
+					>
+				</File>
+				<File
+					RelativePath="XML\Expat\xmltok.c"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Profile|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug64|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release64|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="XML\Expat\xmltok.h"
+					>
+				</File>
+				<File
+					RelativePath="XML\Expat\xmltok_impl.c"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Profile|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug64|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release64|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="XML\Expat\xmltok_impl.h"
+					>
+				</File>
+				<File
+					RelativePath="XML\Expat\xmltok_ns.c"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Profile|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug64|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release64|Win32"
+						ExcludedFromBuild="TRUE"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="ScriptObjects"
-			Filter="">
+			>
 			<File
-				RelativePath="ScriptObjectAnimation.cpp">
+				RelativePath="ScriptObjectAnimation.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectAnimation.h">
+				RelativePath="ScriptObjectAnimation.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectEntity.cpp">
+				RelativePath="ScriptObjectEntity.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectEntity.h">
+				RelativePath="ScriptObjectEntity.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectMovie.cpp">
+				RelativePath="ScriptObjectMovie.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectMovie.h">
+				RelativePath="ScriptObjectMovie.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectParticle.cpp">
+				RelativePath="ScriptObjectParticle.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectParticle.h">
+				RelativePath="ScriptObjectParticle.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectScript.cpp">
+				RelativePath="ScriptObjectScript.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectScript.h">
+				RelativePath="ScriptObjectScript.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectSound.cpp">
+				RelativePath="ScriptObjectSound.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectSound.h">
+				RelativePath="ScriptObjectSound.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectSystem.cpp">
+				RelativePath="ScriptObjectSystem.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectSystem.h">
+				RelativePath="ScriptObjectSystem.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="zlib"
-			Filter="">
+			>
 			<File
-				RelativePath="zlib\adler32.c">
+				RelativePath="zlib\adler32.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\compress.c">
+				RelativePath="zlib\compress.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="zlib\crc32.c">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Profile|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\deflate.c">
+				RelativePath="zlib\crc32.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="zlib\deflate.h">
-			</File>
-			<File
-				RelativePath="zlib\gzio.c">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Profile|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\infblock.c">
+				RelativePath="zlib\deflate.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="zlib\infblock.h">
-			</File>
-			<File
-				RelativePath="zlib\infcodes.c">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Profile|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\infcodes.h">
+				RelativePath="zlib\deflate.h"
+				>
 			</File>
 			<File
-				RelativePath="zlib\inffast.c">
+				RelativePath="zlib\gzio.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="zlib\inffast.h">
-			</File>
-			<File
-				RelativePath="zlib\inffixed.h">
-			</File>
-			<File
-				RelativePath="zlib\inflate.c">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Profile|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\inftrees.c">
+				RelativePath="zlib\infblock.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="zlib\inftrees.h">
-			</File>
-			<File
-				RelativePath="zlib\infutil.c">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Profile|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\infutil.h">
+				RelativePath="zlib\infblock.h"
+				>
 			</File>
 			<File
-				RelativePath="zlib\trees.c">
+				RelativePath="zlib\infcodes.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="zlib\trees.h">
-			</File>
-			<File
-				RelativePath="zlib\uncompr.c">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Profile|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\zconf.h">
+				RelativePath="zlib\infcodes.h"
+				>
 			</File>
 			<File
-				RelativePath="zlib\zlib.h">
+				RelativePath="zlib\inffast.c"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\zutil.c">
+				RelativePath="zlib\inffast.h"
+				>
+			</File>
+			<File
+				RelativePath="zlib\inffixed.h"
+				>
+			</File>
+			<File
+				RelativePath="zlib\inflate.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="zlib\zutil.h">
+				RelativePath="zlib\inftrees.c"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="zlib\inftrees.h"
+				>
+			</File>
+			<File
+				RelativePath="zlib\infutil.c"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="zlib\infutil.h"
+				>
+			</File>
+			<File
+				RelativePath="zlib\trees.c"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="zlib\trees.h"
+				>
+			</File>
+			<File
+				RelativePath="zlib\uncompr.c"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="zlib\zconf.h"
+				>
+			</File>
+			<File
+				RelativePath="zlib\zlib.h"
+				>
+			</File>
+			<File
+				RelativePath="zlib\zutil.c"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="zlib\zutil.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="ZipDir"
-			Filter="">
+			>
 			<File
-				RelativePath="ZipDir.h">
+				RelativePath="ZipDir.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirCache.cpp">
+				RelativePath="ZipDirCache.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirCache.h">
+				RelativePath="ZipDirCache.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirCacheFactory.cpp">
+				RelativePath="ZipDirCacheFactory.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirCacheFactory.h">
+				RelativePath="ZipDirCacheFactory.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirCacheRW.cpp">
+				RelativePath="ZipDirCacheRW.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirCacheRW.h">
+				RelativePath="ZipDirCacheRW.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirFind.cpp">
+				RelativePath="ZipDirFind.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirFind.h">
+				RelativePath="ZipDirFind.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirFindRW.cpp">
+				RelativePath="ZipDirFindRW.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirFindRW.h">
+				RelativePath="ZipDirFindRW.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirList.cpp">
+				RelativePath="ZipDirList.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirList.h">
+				RelativePath="ZipDirList.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirStructures.cpp">
+				RelativePath="ZipDirStructures.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirStructures.h">
+				RelativePath="ZipDirStructures.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirTree.cpp">
+				RelativePath="ZipDirTree.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZipDirTree.h">
+				RelativePath="ZipDirTree.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipFile.h">
+				RelativePath="ZipFile.h"
+				>
 			</File>
 			<File
-				RelativePath="ZipFileFormat.h">
+				RelativePath="ZipFileFormat.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="HTTPDownloader"
-			Filter="">
+			>
 			<File
-				RelativePath=".\DownloadManager.cpp">
+				RelativePath=".\DownloadManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DownloadManager.h">
+				RelativePath=".\DownloadManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\HTTPDownloader.cpp">
+				RelativePath=".\HTTPDownloader.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\HTTPDownloader.h">
+				RelativePath=".\HTTPDownloader.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="CheatProtection"
-			Filter="">
+			>
 			<File
-				RelativePath=".\DataProbe.cpp">
+				RelativePath=".\DataProbe.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DataProbe.h">
+				RelativePath=".\DataProbe.h"
+				>
 			</File>
 			<File
-				RelativePath=".\md5.c">
+				RelativePath=".\md5.c"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\md5.h">
+				RelativePath=".\md5.h"
+				>
 			</File>
 			<File
-				RelativePath=".\RandGen.cpp">
+				RelativePath=".\RandGen.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\RandGen.h">
+				RelativePath=".\RandGen.h"
+				>
 			</File>
 		</Filter>
 	</Files>

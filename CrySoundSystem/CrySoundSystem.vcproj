@@ -1,28 +1,72 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="CrySoundSystem"
 	ProjectGUID="{FD988D8E-914A-4463-A458-4568120E258C}"
 	SccProjectName="Perforce Project"
-	SccAuxPath=""
 	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM">
+	SccProvider="MSSCCI:Perforce SCM"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release/CrySoundSystem.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -30,7 +74,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\CryCommon;OggVorbisInclude\"
 				PreprocessorDefinitions="_RELEASE;WIN32;NDEBUG;_WINDOWS;_USRDLL;CRYSOUNDSYSTEM_EXPORTS"
 				StringPooling="TRUE"
@@ -45,56 +88,93 @@
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="ogg_static.lib vorbis_static.lib vorbisfile_static.lib"
 				OutputFile=".\Release/CrySoundSystem.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				ProgramDatabaseFile=".\Release/CrySoundSystem.pdb"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Release/CrySoundSystem.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Profile/CrySoundSystem.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -102,7 +182,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\CryCommon;OggVorbisInclude\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CRYSOUNDSYSTEM_EXPORTS"
 				StringPooling="TRUE"
@@ -118,57 +197,93 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="ogg_static.lib vorbis_static.lib vorbisfile_static.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				BaseAddress="0x36000000"/>
+				BaseAddress="0x36000000"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Profile/CrySoundSystem.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CrySoundSystem.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="0"
-				OptimizeForProcessor="0"
 				AdditionalIncludeDirectories="..\CryCommon;OggVorbisInclude\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;CRYSOUNDSYSTEM_EXPORTS"
 				MinimalRebuild="TRUE"
@@ -184,60 +299,98 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="ogg_static.lib vorbis_static.lib vorbisfile_static.lib"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CrySoundSystem.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CrySoundSystem.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon;OggVorbisInclude\"
 				PreprocessorDefinitions="WIN64;WIN32;_DEBUG;_WINDOWS;_USRDLL;CRYSOUNDSYSTEM_EXPORTS"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				BufferSecurityCheck="FALSE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
@@ -248,70 +401,112 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:AMD64"
 				AdditionalDependencies="ogg_static_d64.lib vorbis_static_d64.lib vorbisfile_static_d64.lib crysound64d.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
+				GenerateManifest="FALSE"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CrySoundSystem.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CrySoundSystem.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="TRUE"
+				OmitFramePointers="TRUE"
+				WholeProgramOptimization="TRUE"
 				AdditionalIncludeDirectories="..\CryCommon;OggVorbisInclude\"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;CRYSOUNDSYSTEM_EXPORTS"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="FALSE"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
 				AssemblerListingLocation="$(IntDir)/"
@@ -321,48 +516,46 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:AMD64"
-				AdditionalDependencies="ogg_static_r64.lib vorbis_static_r64.lib vorbisfile_static_r64.lib crysound64.lib ../CryCommon/fSinCos64.lib"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
+				AdditionalDependencies="crysound64.lib ogg_static_r64.lib vorbis_static_r64.lib vorbisfile_static_r64.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
+				GenerateManifest="FALSE"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CrySoundSystem.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -370,233 +563,293 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+			>
 			<File
-				RelativePath=".\CrySoundSystem.cpp">
+				RelativePath=".\CrySoundSystem.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"/>
+						UsePrecompiledHeader="2"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Sound.cpp">
+				RelativePath=".\Sound.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"/>
+						UsePrecompiledHeader="2"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="SoundBuffer.cpp">
+				RelativePath="SoundBuffer.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"/>
+						UsePrecompiledHeader="2"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\SoundSystem.cpp">
+				RelativePath=".\SoundSystem.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"/>
+						UsePrecompiledHeader="2"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="SoundSystemCommon.cpp">
+				RelativePath="SoundSystemCommon.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"/>
+						UsePrecompiledHeader="2"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\StdAfx.cpp">
+				RelativePath=".\StdAfx.cpp"
+				>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl">
+			Filter="h;hpp;hxx;hm;inl"
+			>
 			<File
-				RelativePath=".\DummySound.h">
+				RelativePath=".\DummySound.h"
+				>
 			</File>
 			<File
-				RelativePath="MusicLoadSink.h">
+				RelativePath="MusicLoadSink.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Sound.h">
+				RelativePath=".\Sound.h"
+				>
 			</File>
 			<File
-				RelativePath="SoundBuffer.h">
+				RelativePath="SoundBuffer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SoundSystem.h">
+				RelativePath=".\SoundSystem.h"
+				>
 			</File>
 			<File
-				RelativePath="SoundSystemCommon.h">
+				RelativePath="SoundSystemCommon.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.h">
+				RelativePath=".\StdAfx.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+			>
 		</Filter>
 		<Filter
 			Name="DynamicMusic"
-			Filter="">
+			>
 			<Filter
 				Name="Pattern"
-				Filter="">
+				>
 				<File
-					RelativePath="MusicPattern.cpp">
+					RelativePath="MusicPattern.cpp"
+					>
 				</File>
 				<File
-					RelativePath="MusicPattern.h">
+					RelativePath="MusicPattern.h"
+					>
 				</File>
 				<File
-					RelativePath="MusicPatternInstance.cpp">
+					RelativePath="MusicPatternInstance.cpp"
+					>
 				</File>
 				<File
-					RelativePath="MusicPatternInstance.h">
+					RelativePath="MusicPatternInstance.h"
+					>
 				</File>
 				<Filter
 					Name="Decoder"
-					Filter="">
+					>
 					<File
-						RelativePath="PatternDecoder.h">
+						RelativePath="PatternDecoder.h"
+						>
 					</File>
 					<Filter
 						Name="WAV"
-						Filter="">
+						>
 						<File
-							RelativePath="PCMDecoder.cpp">
+							RelativePath="PCMDecoder.cpp"
+							>
 						</File>
 						<File
-							RelativePath="PCMDecoder.h">
+							RelativePath="PCMDecoder.h"
+							>
 						</File>
 					</Filter>
 					<Filter
 						Name="OGG"
-						Filter="">
+						>
 						<File
-							RelativePath="OGGDecoder.cpp">
+							RelativePath="OGGDecoder.cpp"
+							>
 						</File>
 						<File
-							RelativePath="OGGDecoder.h">
+							RelativePath="OGGDecoder.h"
+							>
 						</File>
 						<Filter
 							Name="OggVorbisInclude"
-							Filter="">
+							>
 							<Filter
 								Name="Ogg"
-								Filter="">
+								>
 								<File
-									RelativePath="OggVorbisInclude\ogg\ogg.h">
+									RelativePath="OggVorbisInclude\ogg\ogg.h"
+									>
 								</File>
 								<File
-									RelativePath="OggVorbisInclude\ogg\os_types.h">
+									RelativePath="OggVorbisInclude\ogg\os_types.h"
+									>
 								</File>
 							</Filter>
 							<Filter
 								Name="Vorbis"
-								Filter="">
+								>
 								<File
-									RelativePath="OggVorbisInclude\vorbis\codec.h">
+									RelativePath="OggVorbisInclude\vorbis\codec.h"
+									>
 								</File>
 								<File
-									RelativePath="OggVorbisInclude\vorbis\vorbisenc.h">
+									RelativePath="OggVorbisInclude\vorbis\vorbisenc.h"
+									>
 								</File>
 								<File
-									RelativePath="OggVorbisInclude\vorbis\vorbisfile.h">
+									RelativePath="OggVorbisInclude\vorbis\vorbisfile.h"
+									>
 								</File>
 							</Filter>
 						</Filter>
 					</Filter>
 					<Filter
 						Name="ADPCM"
-						Filter="">
+						>
 						<File
-							RelativePath=".\ADPCMDecoder.cpp">
+							RelativePath=".\ADPCMDecoder.cpp"
+							>
 						</File>
 						<File
-							RelativePath=".\ADPCMDecoder.h">
+							RelativePath=".\ADPCMDecoder.h"
+							>
 						</File>
 					</Filter>
 				</Filter>
 			</Filter>
 			<Filter
 				Name="System"
-				Filter="">
+				>
 				<File
-					RelativePath="MusicSystem.cpp">
+					RelativePath="MusicSystem.cpp"
+					>
 				</File>
 				<File
-					RelativePath="MusicSystem.h">
+					RelativePath="MusicSystem.h"
+					>
 				</File>
 				<Filter
 					Name="Dummy"
-					Filter="">
+					>
 					<File
-						RelativePath="DummyMusic.h">
+						RelativePath="DummyMusic.h"
+						>
 					</File>
 				</Filter>
 			</Filter>
 			<Filter
 				Name="RandGen"
-				Filter="">
+				>
 				<File
-					RelativePath="RandGen.cpp">
+					RelativePath="RandGen.cpp"
+					>
 				</File>
 				<File
-					RelativePath="RandGen.h">
+					RelativePath="RandGen.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<File
-			RelativePath="crysound.lib">
+			RelativePath="crysound.lib"
+			>
 			<FileConfiguration
 				Name="Debug64|Win32"
-				ExcludedFromBuild="TRUE">
+				ExcludedFromBuild="TRUE"
+				>
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCustomBuildTool"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Release64|Win32"
-				ExcludedFromBuild="TRUE">
+				ExcludedFromBuild="TRUE"
+				>
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCustomBuildTool"
+				/>
 			</FileConfiguration>
 		</File>
 	</Files>

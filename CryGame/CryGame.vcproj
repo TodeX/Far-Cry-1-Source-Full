@@ -1,30 +1,73 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="CryGame"
-	ProjectGUID="{A7EC04A5-D65C-4C45-969C-D842823446ED}"
+	ProjectGUID="{75A0E1EE-267F-4D2A-A90D-AE3604E7C733}"
 	SccProjectName="Perforce Project"
-	SccAuxPath=""
 	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM">
+	SccProvider="MSSCCI:Perforce SCM"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CryGame.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="0"
-				OptimizeForProcessor="0"
 				AdditionalIncludeDirectories="..\BinkSDK;..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;"
 				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS"
 				MinimalRebuild="TRUE"
@@ -41,11 +84,21 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="Shlwapi.lib wininet.lib Wsock32.lib "
 				LinkIncremental="2"
@@ -53,45 +106,72 @@
 				AdditionalLibraryDirectories="..\BinkSDK;..\CryNetwork\Debug;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\lib_win32&quot;"
 				IgnoreDefaultLibraryNames="libcmt.lib"
 				GenerateDebugInformation="TRUE"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CryGame.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release/CryGame.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -99,7 +179,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\BinkSDK;..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;USE_GAME_DLL;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS"
 				StringPooling="TRUE"
@@ -115,11 +194,21 @@
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="Shlwapi.lib wininet.lib Ws2_32.lib"
 				OutputFile=".\Release/CryGame.dll"
@@ -128,45 +217,72 @@
 				AdditionalLibraryDirectories="..\BinkSDK;..\CryNetwork\Release;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\lib_win32&quot;"
 				IgnoreDefaultLibraryNames=""
 				ProgramDatabaseFile=".\Release/CryGame.pdb"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Release/CryGame.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName="C:\MasterCD/CryGame.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -174,7 +290,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\BinkSDK;..\CryCommon;..\ubisoft.com\ConsoleImplementation\src;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-msclient\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-common\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-base\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-cdkey\include&quot;;&quot;..\ubisoft.com\GSServices\sdks\gs-sdk-regserver\include&quot;"
 				PreprocessorDefinitions="NDEBUG;USE_GAME_DLL;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS"
 				StringPooling="TRUE"
@@ -193,63 +308,102 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="Shlwapi.lib wininet.lib Ws2_32.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="..\BinkSDK;..\CryNetwork\Release;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-regserver/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-msclient/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-result/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-cdkey/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-common/lib_win32&quot;;&quot;.\..\ubisoft.com\GSServices\sdks/gs-sdk-base/lib_win32&quot;"
 				IgnoreAllDefaultLibraries="FALSE"
-				IgnoreDefaultLibraryNames="libcmt.lib"
+				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="TRUE"
-				BaseAddress="0x33000000"/>
+				GenerateMapFile="TRUE"
+				BaseAddress="0x33000000"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName="C:\MasterCD/CryGame.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CryGame.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;_DEBUG;WIN64;WIN32;_WINDOWS;_USRDLL;CRYGAME_EXPORTS;DIVX"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				BufferSecurityCheck="FALSE"
 				EnableFunctionLevelLinking="FALSE"
 				UsePrecompiledHeader="3"
@@ -263,73 +417,114 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:AMD64"
 				AdditionalDependencies="Shlwapi.lib wininet.lib Ws2_32.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories=""
+				GenerateManifest="FALSE"
 				IgnoreDefaultLibraryNames="libcmt.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CryGame.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CryGame.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/fp:fast /GL"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="2"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="TRUE"
 				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				WholeProgramOptimization="TRUE"
 				AdditionalIncludeDirectories="..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;_WINDOWS;_USRDLL;CRYGAME_EXPORTS;DIVX"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="FALSE"
 				EnableFunctionLevelLinking="FALSE"
+				FloatingPointModel="0"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
@@ -340,48 +535,47 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Shlwapi.lib wininet.lib Ws2_32.lib ../CryCommon/fSinCos64.lib"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
+				AdditionalDependencies="libcpmt.lib Shlwapi.lib wininet.lib Ws2_32.lib ../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories=""
-				IgnoreDefaultLibraryNames="libcmt.lib"
+				GenerateManifest="FALSE"
+				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/CryGame.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -389,649 +583,838 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+			>
 			<File
-				RelativePath=".\CryGame.cpp">
+				RelativePath=".\CryGame.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.cpp">
+				RelativePath=".\StdAfx.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 			</File>
 			<Filter
 				Name="UI"
-				Filter="">
+				>
 				<File
-					RelativePath=".\IngameDialog.cpp">
+					RelativePath=".\IngameDialog.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectUI.cpp">
+					RelativePath="ScriptObjectUI.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectUI.h">
+					RelativePath="ScriptObjectUI.h"
+					>
 				</File>
 				<File
-					RelativePath="UIButton.cpp">
+					RelativePath="UIButton.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIButton.h">
+					RelativePath="UIButton.h"
+					>
 				</File>
 				<File
-					RelativePath="UICheckBox.cpp">
+					RelativePath="UICheckBox.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UICheckBox.h">
+					RelativePath="UICheckBox.h"
+					>
 				</File>
 				<File
-					RelativePath="UIComboBox.cpp">
+					RelativePath="UIComboBox.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIComboBox.h">
+					RelativePath="UIComboBox.h"
+					>
 				</File>
 				<File
-					RelativePath="UICVars.cpp">
+					RelativePath="UICVars.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UICVars.h">
+					RelativePath="UICVars.h"
+					>
 				</File>
 				<File
-					RelativePath=".\UIDivX_Video.cpp">
+					RelativePath=".\UIDivX_Video.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\UIDivX_Video.h">
+					RelativePath=".\UIDivX_Video.h"
+					>
 				</File>
 				<File
-					RelativePath="UIEditBox.cpp">
+					RelativePath="UIEditBox.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIEditBox.h">
+					RelativePath="UIEditBox.h"
+					>
 				</File>
 				<File
-					RelativePath=".\UIHud.cpp">
+					RelativePath=".\UIHud.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIListView.cpp">
+					RelativePath="UIListView.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIListView.h">
+					RelativePath="UIListView.h"
+					>
 				</File>
 				<File
-					RelativePath="UIMessages.h">
+					RelativePath="UIMessages.h"
+					>
 				</File>
 				<File
-					RelativePath="UIScreen.cpp">
+					RelativePath="UIScreen.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIScreen.h">
+					RelativePath="UIScreen.h"
+					>
 				</File>
 				<File
-					RelativePath="UIScrollBar.cpp">
+					RelativePath="UIScrollBar.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIScrollBar.h">
+					RelativePath="UIScrollBar.h"
+					>
 				</File>
 				<File
-					RelativePath="UIStatic.cpp">
+					RelativePath="UIStatic.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIStatic.h">
+					RelativePath="UIStatic.h"
+					>
 				</File>
 				<File
-					RelativePath="UISystem.cpp">
+					RelativePath="UISystem.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UISystem.h">
+					RelativePath="UISystem.h"
+					>
 				</File>
 				<File
-					RelativePath="UITodo.txt">
+					RelativePath="UITodo.txt"
+					>
 				</File>
 				<File
-					RelativePath="UIVideoPanel.cpp">
+					RelativePath="UIVideoPanel.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIVideoPanel.h">
+					RelativePath="UIVideoPanel.h"
+					>
 				</File>
 				<File
-					RelativePath="UIWidget.cpp">
+					RelativePath="UIWidget.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UIWidget.h">
+					RelativePath="UIWidget.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="ScriptObjects"
-				Filter="">
+				>
 				<File
-					RelativePath="ScriptObjectAdvCamSystem.cpp">
+					RelativePath="ScriptObjectAdvCamSystem.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectAI.cpp">
+					RelativePath=".\ScriptObjectAI.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectBoids.cpp">
+					RelativePath="ScriptObjectBoids.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectClient.cpp">
+					RelativePath="ScriptObjectClient.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectGame.cpp">
+					RelativePath=".\ScriptObjectGame.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectInput.cpp">
+					RelativePath=".\ScriptObjectInput.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectLanguage.cpp">
+					RelativePath=".\ScriptObjectLanguage.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectPlayer.cpp">
+					RelativePath=".\ScriptObjectPlayer.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectRenderer.cpp">
+					RelativePath="ScriptObjectRenderer.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectServer.cpp">
+					RelativePath="ScriptObjectServer.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectServerSlot.cpp">
+					RelativePath="ScriptObjectServerSlot.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectSpectator.cpp">
+					RelativePath="ScriptObjectSpectator.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectStream.cpp">
+					RelativePath=".\ScriptObjectStream.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectSynched2DTable.cpp">
+					RelativePath=".\ScriptObjectSynched2DTable.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectVehicle.cpp">
+					RelativePath=".\ScriptObjectVehicle.cpp"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectWeaponClass.cpp">
+					RelativePath="ScriptObjectWeaponClass.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="GameServer"
-				Filter="">
+				>
 				<File
-					RelativePath=".\XServer.cpp">
+					RelativePath=".\XServer.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XServerRules.cpp">
+					RelativePath=".\XServerRules.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XServerSlot.cpp">
+					RelativePath=".\XServerSlot.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XSnapshot.cpp">
+					RelativePath=".\XSnapshot.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="GameSystem"
-				Filter="">
+				>
 				<File
-					RelativePath=".\XSystemBase.cpp">
+					RelativePath=".\XSystemBase.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XSystemClient.cpp">
+					RelativePath=".\XSystemClient.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XSystemDummy.cpp">
+					RelativePath=".\XSystemDummy.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XSystemEntities.cpp">
+					RelativePath="XSystemEntities.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XSystemServer.cpp">
+					RelativePath=".\XSystemServer.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Weapons"
-				Filter="">
+				>
 				<File
-					RelativePath="WeaponClass.cpp">
+					RelativePath="WeaponClass.cpp"
+					>
 				</File>
 				<File
-					RelativePath="WeaponSystemEx.cpp">
+					RelativePath="WeaponSystemEx.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="GameClient"
-				Filter="">
+				>
 				<File
-					RelativePath=".\ReadMe.txt">
+					RelativePath=".\ReadMe.txt"
+					>
 				</File>
 				<File
-					RelativePath=".\XClient.cpp">
+					RelativePath=".\XClient.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XClientSnapshot.cpp">
+					RelativePath=".\XClientSnapshot.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Flock"
-				Filter="">
+				>
 				<File
-					RelativePath="BugsFlock.cpp">
+					RelativePath="BugsFlock.cpp"
+					>
 				</File>
 				<File
-					RelativePath="BugsFlock.h">
+					RelativePath="BugsFlock.h"
+					>
 				</File>
 				<File
-					RelativePath="Flock.cpp">
+					RelativePath="Flock.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Flock.h">
+					RelativePath="Flock.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Vehicle"
-				Filter="">
+				>
 				<File
-					RelativePath="XplayerVehicle.cpp">
+					RelativePath="XplayerVehicle.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XVehicle.cpp">
+					RelativePath=".\XVehicle.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XVehicleProxy.cpp">
+					RelativePath="XVehicleProxy.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XVehicleProxyHeli.cpp">
+					RelativePath="XVehicleProxyHeli.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XVehicleSystem.cpp">
+					RelativePath=".\XVehicleSystem.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="TimeDemoRecorder"
-				Filter="">
+				>
 				<File
-					RelativePath="TimeDemoRecorder.cpp">
+					RelativePath="TimeDemoRecorder.cpp"
+					>
 				</File>
 				<File
-					RelativePath="TimeDemoRecorder.h">
+					RelativePath="TimeDemoRecorder.h"
+					>
 				</File>
 				<File
-					RelativePath=".\XDemoMgr.cpp">
+					RelativePath=".\XDemoMgr.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Player"
-				Filter="">
+				>
 				<File
-					RelativePath="AdvCamSystem.cpp">
+					RelativePath="AdvCamSystem.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Spectator.cpp">
+					RelativePath="Spectator.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\SynchedRandomSeed.cpp">
+					RelativePath=".\SynchedRandomSeed.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XPlayer.cpp">
+					RelativePath=".\XPlayer.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XPlayerCamera.cpp">
+					RelativePath="XPlayerCamera.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XPlayerLight.cpp">
+					RelativePath="XPlayerLight.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="AI"
-				Filter="">
+				>
 				<File
-					RelativePath="AIHandler.cpp">
+					RelativePath="AIHandler.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XObjectProxy.cpp">
+					RelativePath="XObjectProxy.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XPuppetProxy.cpp">
+					RelativePath=".\XPuppetProxy.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Network"
-				Filter="">
+				>
 				<File
-					RelativePath=".\BitStream_Base.cpp">
+					RelativePath=".\BitStream_Base.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\BitStream_Compressed.cpp">
+					RelativePath=".\BitStream_Compressed.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\NetEntityInfo.cpp">
+					RelativePath=".\NetEntityInfo.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XEntityProcessingCmd.cpp">
+					RelativePath=".\XEntityProcessingCmd.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\XNetwork.cpp">
+					RelativePath=".\XNetwork.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XNetworkStats.cpp">
+					RelativePath="XNetworkStats.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="GameFiles"
-				Filter="">
+				>
 				<File
-					RelativePath=".\EntityClassRegistry.cpp">
+					RelativePath=".\EntityClassRegistry.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Game.cpp">
+					RelativePath=".\Game.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameActionInput.cpp">
+					RelativePath=".\GameActionInput.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameCallbacks.cpp">
+					RelativePath=".\GameCallbacks.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameClientServer.cpp">
+					RelativePath=".\GameClientServer.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameDevMode.cpp">
+					RelativePath=".\GameDevMode.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameEquipPacks.cpp">
+					RelativePath=".\GameEquipPacks.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameEvents.cpp">
+					RelativePath=".\GameEvents.cpp"
+					>
 				</File>
 				<File
-					RelativePath="GameMemStats.cpp">
+					RelativePath="GameMemStats.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameMisc.cpp">
+					RelativePath=".\GameMisc.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameMods.cpp">
+					RelativePath=".\GameMods.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameMovieUser.cpp">
+					RelativePath=".\GameMovieUser.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameRadar.cpp">
+					RelativePath=".\GameRadar.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\GameTagPoints.cpp">
+					RelativePath=".\GameTagPoints.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptTimerMgr.cpp">
+					RelativePath=".\ScriptTimerMgr.cpp"
+					>
 				</File>
 				<File
-					RelativePath="XArea.cpp">
+					RelativePath="XArea.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Materials"
-				Filter="">
+				>
 				<File
-					RelativePath=".\XSurfaceMgr.cpp">
+					RelativePath=".\XSurfaceMgr.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Localization"
-				Filter="">
+				>
 				<File
-					RelativePath=".\StringTableMgr.cpp">
+					RelativePath=".\StringTableMgr.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="GameSerialization"
-				Filter="">
+				>
 				<File
-					RelativePath=".\GameLoading.cpp">
+					RelativePath=".\GameLoading.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Scoreboard"
-				Filter="">
+				>
 				<File
-					RelativePath=".\Synched2DTable.cpp">
+					RelativePath=".\Synched2DTable.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Synched2DTable.h">
+					RelativePath=".\Synched2DTable.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl">
+			Filter="h;hpp;hxx;hm;inl"
+			>
 			<File
-				RelativePath="AdvCamSystem.h">
+				RelativePath="AdvCamSystem.h"
+				>
 			</File>
 			<File
-				RelativePath="AIHandler.h">
+				RelativePath="AIHandler.h"
+				>
 			</File>
 			<File
-				RelativePath=".\BitStream_Base.h">
+				RelativePath=".\BitStream_Base.h"
+				>
 			</File>
 			<File
-				RelativePath=".\BitStream_Compressed.h">
+				RelativePath=".\BitStream_Compressed.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CMovieUser.h">
+				RelativePath=".\CMovieUser.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CryGame.h">
+				RelativePath=".\CryGame.h"
+				>
 			</File>
 			<File
-				RelativePath=".\EntityClassRegistry.h">
+				RelativePath=".\EntityClassRegistry.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Game.h">
+				RelativePath=".\Game.h"
+				>
 			</File>
 			<File
-				RelativePath=".\GameMods.h">
+				RelativePath=".\GameMods.h"
+				>
 			</File>
 			<File
-				RelativePath=".\GameObject.h">
+				RelativePath=".\GameObject.h"
+				>
 			</File>
 			<File
-				RelativePath=".\GameShared.h">
+				RelativePath=".\GameShared.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IngameDialog.h">
+				RelativePath=".\IngameDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IXSystem.h">
+				RelativePath=".\IXSystem.h"
+				>
 			</File>
 			<File
-				RelativePath=".\NetEntityInfo.h">
+				RelativePath=".\NetEntityInfo.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PlayerSystem.h">
+				RelativePath=".\PlayerSystem.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ScriptTimerMgr.h">
+				RelativePath=".\ScriptTimerMgr.h"
+				>
 			</File>
 			<File
-				RelativePath="Spectator.h">
+				RelativePath="Spectator.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.h">
+				RelativePath=".\StdAfx.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StringTableMgr.h">
+				RelativePath=".\StringTableMgr.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SynchedRandomSeed.h">
+				RelativePath=".\SynchedRandomSeed.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TagPoint.h">
+				RelativePath=".\TagPoint.h"
+				>
 			</File>
 			<File
-				RelativePath=".\UIHud.h">
+				RelativePath=".\UIHud.h"
+				>
 			</File>
 			<File
-				RelativePath="XArea.h">
+				RelativePath="XArea.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XClient.h">
+				RelativePath=".\XClient.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XClientSnapshot.h">
+				RelativePath=".\XClientSnapshot.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XDemoMgr.h">
+				RelativePath=".\XDemoMgr.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XEntityProcessingCmd.h">
+				RelativePath=".\XEntityProcessingCmd.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XNetwork.h">
+				RelativePath=".\XNetwork.h"
+				>
 			</File>
 			<File
-				RelativePath="XNetworkStats.h">
+				RelativePath="XNetworkStats.h"
+				>
 			</File>
 			<File
-				RelativePath="XObjectProxy.h">
+				RelativePath="XObjectProxy.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XPlayer.h">
+				RelativePath=".\XPlayer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XPuppetProxy.h">
+				RelativePath=".\XPuppetProxy.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XServer.h">
+				RelativePath=".\XServer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XServerRules.h">
+				RelativePath=".\XServerRules.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XServerSlot.h">
+				RelativePath=".\XServerSlot.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XSnapshot.h">
+				RelativePath=".\XSnapshot.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XSurfaceMgr.h">
+				RelativePath=".\XSurfaceMgr.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XSystemBase.h">
+				RelativePath=".\XSystemBase.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XSystemClient.h">
+				RelativePath=".\XSystemClient.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XSystemDummy.h">
+				RelativePath=".\XSystemDummy.h"
+				>
 			</File>
 			<File
-				RelativePath="XSystemEntities.h">
+				RelativePath="XSystemEntities.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XSystemServer.h">
+				RelativePath=".\XSystemServer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XVehicle.h">
+				RelativePath=".\XVehicle.h"
+				>
 			</File>
 			<File
-				RelativePath="XVehicleProxy.h">
+				RelativePath="XVehicleProxy.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XVehicleSystem.h">
+				RelativePath=".\XVehicleSystem.h"
+				>
 			</File>
 			<Filter
 				Name="Weapons"
-				Filter="">
+				>
 				<File
-					RelativePath=".\FireType.h">
+					RelativePath=".\FireType.h"
+					>
 				</File>
 				<File
-					RelativePath="WeaponClass.h">
+					RelativePath="WeaponClass.h"
+					>
 				</File>
 				<File
-					RelativePath="WeaponSystemEx.h">
+					RelativePath="WeaponSystemEx.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="ScriptObjects"
-				Filter="">
+				>
 				<File
-					RelativePath="ScriptObjectAdvCamSystem.h">
+					RelativePath="ScriptObjectAdvCamSystem.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectAI.h">
+					RelativePath=".\ScriptObjectAI.h"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectBoids.h">
+					RelativePath="ScriptObjectBoids.h"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectClient.h">
+					RelativePath="ScriptObjectClient.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectGame.h">
+					RelativePath=".\ScriptObjectGame.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectInput.h">
+					RelativePath=".\ScriptObjectInput.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectLanguage.h">
+					RelativePath=".\ScriptObjectLanguage.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectPlayer.h">
+					RelativePath=".\ScriptObjectPlayer.h"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectRenderer.h">
+					RelativePath="ScriptObjectRenderer.h"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectServer.h">
+					RelativePath="ScriptObjectServer.h"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectServerSlot.h">
+					RelativePath="ScriptObjectServerSlot.h"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectSpectator.h">
+					RelativePath="ScriptObjectSpectator.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectStream.h">
+					RelativePath=".\ScriptObjectStream.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectSynched2DTable.h">
+					RelativePath=".\ScriptObjectSynched2DTable.h"
+					>
 				</File>
 				<File
-					RelativePath=".\ScriptObjectVehicle.h">
+					RelativePath=".\ScriptObjectVehicle.h"
+					>
 				</File>
 				<File
-					RelativePath="ScriptObjectWeaponClass.h">
+					RelativePath="ScriptObjectWeaponClass.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+			>
 		</Filter>
 	</Files>
 	<Globals>

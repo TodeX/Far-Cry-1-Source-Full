@@ -1,63 +1,90 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="CryCommon"
-	ProjectGUID="{AEB958D4-45CA-478B-BA8E-D0E897CE974B}"
+	ProjectGUID="{CC7E772A-D33D-4CDA-9F83-9281A7C48539}"
 	SccProjectName="Perforce Project"
-	SccAuxPath=""
 	SccLocalPath="."
 	SccProvider="MSSCCI:Perforce SCM"
-	Keyword="MakeFileProj">
+	Keyword="MakeFileProj"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Release"
 			ConfigurationType="10"
-			UseOfMFC="0">
+			UseOfMFC="0"
+			>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCMIDLTool"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Debug_XBox"
 			ConfigurationType="10"
-			UseOfMFC="0">
+			UseOfMFC="0"
+			>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCMIDLTool"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Profile"
 			ConfigurationType="10"
-			UseOfMFC="0">
+			UseOfMFC="0"
+			>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCMIDLTool"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -65,379 +92,498 @@
 	<Files>
 		<Filter
 			Name="Interfaces_h"
-			Filter="">
+			>
 			<File
-				RelativePath="AgentParams.h">
+				RelativePath="AgentParams.h"
+				>
 			</File>
 			<File
-				RelativePath="crysound.h">
+				RelativePath="crysound.h"
+				>
 			</File>
 			<File
-				RelativePath=".\I3DEngine.h">
+				RelativePath=".\I3DEngine.h"
+				>
 			</File>
 			<File
-				RelativePath=".\I3DIndoorEngine.h">
+				RelativePath=".\I3DIndoorEngine.h"
+				>
 			</File>
 			<File
-				RelativePath="IAgent.h">
+				RelativePath="IAgent.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IAISystem.h">
+				RelativePath=".\IAISystem.h"
+				>
 			</File>
 			<File
-				RelativePath="IBindable.h">
+				RelativePath="IBindable.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IBitStream.h">
+				RelativePath=".\IBitStream.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ICompressionHelper.h">
+				RelativePath=".\ICompressionHelper.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IConsole.h">
+				RelativePath=".\IConsole.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ICryAnimation.h">
+				RelativePath=".\ICryAnimation.h"
+				>
 			</File>
 			<File
-				RelativePath="ICryPak.h">
+				RelativePath="ICryPak.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IDataProbe.h">
+				RelativePath=".\IDataProbe.h"
+				>
 			</File>
 			<File
-				RelativePath="IEdgeConnectivityBuilder.h">
+				RelativePath="IEdgeConnectivityBuilder.h"
+				>
 			</File>
 			<File
-				RelativePath="IEntityRenderState.h">
+				RelativePath="IEntityRenderState.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IEntitySystem.h">
+				RelativePath=".\IEntitySystem.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IFont.h">
+				RelativePath=".\IFont.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IGame.h">
+				RelativePath=".\IGame.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IInput.h">
+				RelativePath=".\IInput.h"
+				>
 			</File>
 			<File
-				RelativePath="ILipSync.h">
+				RelativePath="ILipSync.h"
+				>
 			</File>
 			<File
-				RelativePath="ILMSerializationManager.h">
+				RelativePath="ILMSerializationManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ILog.h">
+				RelativePath=".\ILog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IMarkers.h">
+				RelativePath=".\IMarkers.h"
+				>
 			</File>
 			<File
-				RelativePath="IMiniLog.h">
+				RelativePath="IMiniLog.h"
+				>
 			</File>
 			<File
-				RelativePath="IMovieSystem.h">
+				RelativePath="IMovieSystem.h"
+				>
 			</File>
 			<File
-				RelativePath=".\INetwork.h">
+				RelativePath=".\INetwork.h"
+				>
 			</File>
 			<File
-				RelativePath="IPhysics.h">
+				RelativePath="IPhysics.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IProcess.h">
+				RelativePath=".\IProcess.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IRenderer.h">
+				RelativePath=".\IRenderer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IScriptSystem.h">
+				RelativePath=".\IScriptSystem.h"
+				>
 			</File>
 			<File
-				RelativePath="IShader.h">
+				RelativePath="IShader.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ISound.h">
+				RelativePath=".\ISound.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IStatObj.h">
+				RelativePath=".\IStatObj.h"
+				>
 			</File>
 			<File
-				RelativePath="IStreamEngine.h">
+				RelativePath="IStreamEngine.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IStreamPersist.h">
+				RelativePath=".\IStreamPersist.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ISystem.h">
+				RelativePath=".\ISystem.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ITimer.h">
+				RelativePath=".\ITimer.h"
+				>
 			</File>
 			<File
-				RelativePath="IValidator.h">
+				RelativePath="IValidator.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IXGame.h">
+				RelativePath=".\IXGame.h"
+				>
 			</File>
 			<File
-				RelativePath="IXml.h">
+				RelativePath="IXml.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IXMLDOM.h">
+				RelativePath=".\IXMLDOM.h"
+				>
 			</File>
 			<File
-				RelativePath="LMCompStructures.h">
+				RelativePath="LMCompStructures.h"
+				>
 			</File>
 			<File
-				RelativePath=".\physinterface.h">
+				RelativePath=".\physinterface.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Common_h"
-			Filter="">
+			>
 			<File
-				RelativePath="_ScriptableEx.h">
+				RelativePath="_ScriptableEx.h"
+				>
 			</File>
 			<File
-				RelativePath="AnimKey.h">
+				RelativePath="AnimKey.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ColorDefs.h">
+				RelativePath=".\ColorDefs.h"
+				>
 			</File>
 			<File
-				RelativePath="CrtDebugStats.h">
+				RelativePath="CrtDebugStats.h"
+				>
 			</File>
 			<File
-				RelativePath="CryAnimationScriptCommands.h">
+				RelativePath="CryAnimationScriptCommands.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CryCharAnimationParams.h">
+				RelativePath=".\CryCharAnimationParams.h"
+				>
 			</File>
 			<File
-				RelativePath="CryCharMorphParams.h">
+				RelativePath="CryCharMorphParams.h"
+				>
 			</File>
 			<File
-				RelativePath="CryCompiledFile.h">
+				RelativePath="CryCompiledFile.h"
+				>
 			</File>
 			<File
-				RelativePath="CryEngineDecalInfo.h">
+				RelativePath="CryEngineDecalInfo.h"
+				>
 			</File>
 			<File
-				RelativePath="CryFile.h">
+				RelativePath="CryFile.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CryHeaders.h">
+				RelativePath=".\CryHeaders.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CryMemoryManager.h">
+				RelativePath=".\CryMemoryManager.h"
+				>
 			</File>
 			<File
-				RelativePath="CryParticleSpawnInfo.h">
+				RelativePath="CryParticleSpawnInfo.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySizer.h">
+				RelativePath="CrySizer.h"
+				>
 			</File>
 			<File
-				RelativePath="CryVersion.h">
+				RelativePath="CryVersion.h"
+				>
 			</File>
 			<File
-				RelativePath=".\EntityDesc.h">
+				RelativePath=".\EntityDesc.h"
+				>
 			</File>
 			<File
-				RelativePath="Font.h">
+				RelativePath="Font.h"
+				>
 			</File>
 			<File
-				RelativePath="FrameProfiler.h">
+				RelativePath="FrameProfiler.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IPAddress.h">
+				RelativePath=".\IPAddress.h"
+				>
 			</File>
 			<File
-				RelativePath="LeafBuffer.h">
+				RelativePath="LeafBuffer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\list2.h">
+				RelativePath=".\list2.h"
+				>
 			</File>
 			<File
-				RelativePath="MakMatInfoFromMAT_ENTITY.h">
+				RelativePath="MakMatInfoFromMAT_ENTITY.h"
+				>
 			</File>
 			<File
-				RelativePath="MeshIdx.h">
+				RelativePath="MeshIdx.h"
+				>
 			</File>
 			<File
-				RelativePath="Names.h">
+				RelativePath="Names.h"
+				>
 			</File>
 			<File
-				RelativePath="primitives.h">
+				RelativePath="primitives.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ProjectDefines.h">
+				RelativePath=".\ProjectDefines.h"
+				>
 			</File>
 			<File
-				RelativePath="Range.h">
+				RelativePath="Range.h"
+				>
 			</File>
 			<File
-				RelativePath="RendElement.h">
+				RelativePath="RendElement.h"
+				>
 			</File>
 			<File
-				RelativePath="ScriptObjectVector.h">
+				RelativePath="ScriptObjectVector.h"
+				>
 			</File>
 			<File
-				RelativePath="SerializeBuffer.h">
+				RelativePath="SerializeBuffer.h"
+				>
 			</File>
 			<File
-				RelativePath="smartptr.h">
+				RelativePath="smartptr.h"
+				>
 			</File>
 			<File
-				RelativePath="StlDbgAlloc.h">
+				RelativePath="StlDbgAlloc.h"
+				>
 			</File>
 			<File
-				RelativePath="StlUtils.h">
+				RelativePath="StlUtils.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Stream.h">
+				RelativePath=".\Stream.h"
+				>
 			</File>
 			<File
-				RelativePath="StreamData.h">
+				RelativePath="StreamData.h"
+				>
 			</File>
 			<File
-				RelativePath="StringUtils.h">
+				RelativePath="StringUtils.h"
+				>
 			</File>
 			<File
-				RelativePath="TAlloc.h">
+				RelativePath="TAlloc.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Tarray.h">
+				RelativePath=".\Tarray.h"
+				>
 			</File>
 			<File
-				RelativePath="TArrays.h">
+				RelativePath="TArrays.h"
+				>
 			</File>
 			<File
-				RelativePath="TimeValue.h">
+				RelativePath="TimeValue.h"
+				>
 			</File>
 			<File
-				RelativePath="TString.h">
+				RelativePath="TString.h"
+				>
 			</File>
 			<File
-				RelativePath="VertexBufferSource.h">
+				RelativePath="VertexBufferSource.h"
+				>
 			</File>
 			<File
-				RelativePath=".\VertexFormats.h">
+				RelativePath=".\VertexFormats.h"
+				>
 			</File>
 			<File
-				RelativePath="XboxSpecific.h">
+				RelativePath="XboxSpecific.h"
+				>
 			</File>
 			<File
-				RelativePath="XmlParserFont.h">
+				RelativePath="XmlParserFont.h"
+				>
 			</File>
 			<File
-				RelativePath=".\XmlStream.h">
+				RelativePath=".\XmlStream.h"
+				>
 			</File>
 			<Filter
 				Name="RenderElements"
-				Filter="">
+				>
 				<File
-					RelativePath="CRE2DQuad.h">
+					RelativePath="CRE2DQuad.h"
+					>
 				</File>
 				<File
-					RelativePath="CREDummy.h">
+					RelativePath="CREDummy.h"
+					>
 				</File>
 				<File
-					RelativePath="CREFlashBang.h">
+					RelativePath="CREFlashBang.h"
+					>
 				</File>
 				<File
-					RelativePath="CREGlare.h">
+					RelativePath="CREGlare.h"
+					>
 				</File>
 				<File
-					RelativePath="CREOcclusionQuery.h">
+					RelativePath="CREOcclusionQuery.h"
+					>
 				</File>
 				<File
-					RelativePath="CREOcLeaf.h">
+					RelativePath="CREOcLeaf.h"
+					>
 				</File>
 				<File
-					RelativePath="CREPolyMesh.h">
+					RelativePath="CREPolyMesh.h"
+					>
 				</File>
 				<File
-					RelativePath="CREScreenProcess.h">
+					RelativePath="CREScreenProcess.h"
+					>
 				</File>
 				<File
-					RelativePath="CRESky.h">
+					RelativePath="CRESky.h"
+					>
 				</File>
 				<File
-					RelativePath="CRETerrainSector.h">
+					RelativePath="CRETerrainSector.h"
+					>
 				</File>
 				<File
-					RelativePath="CRETriMeshAdditionalShadow.h">
+					RelativePath="CRETriMeshAdditionalShadow.h"
+					>
 				</File>
 				<File
-					RelativePath="CRETriMeshShadow.h">
+					RelativePath="CRETriMeshShadow.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="MatLib"
-			Filter="">
+			>
 			<File
-				RelativePath=".\AABBSV.h">
+				RelativePath=".\AABBSV.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_Camera.h">
+				RelativePath=".\Cry_Camera.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_Color4.h">
+				RelativePath=".\Cry_Color4.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_Geo.h">
+				RelativePath=".\Cry_Geo.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_GeoDistance.h">
+				RelativePath=".\Cry_GeoDistance.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_GeoIntersect.h">
+				RelativePath=".\Cry_GeoIntersect.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_GeoOverlap.h">
+				RelativePath=".\Cry_GeoOverlap.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_Math.h">
+				RelativePath=".\Cry_Math.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Cry_Matrix.h">
+				RelativePath=".\Cry_Matrix.h"
+				>
 			</File>
 			<File
-				RelativePath="Cry_Quat.h">
+				RelativePath="Cry_Quat.h"
+				>
 			</File>
 			<File
-				RelativePath="Cry_Vector2.h">
+				RelativePath="Cry_Vector2.h"
+				>
 			</File>
 			<File
-				RelativePath="Cry_Vector3.h">
+				RelativePath="Cry_Vector3.h"
+				>
 			</File>
 			<File
-				RelativePath="Cry_XOptimise.h">
+				RelativePath="Cry_XOptimise.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Platform_h"
-			Filter="">
+			>
 			<File
-				RelativePath=".\CryLibrary.h">
+				RelativePath=".\CryLibrary.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Linux32Specific.h">
+				RelativePath=".\Linux32Specific.h"
+				>
 			</File>
 			<File
-				RelativePath="platform.h">
+				RelativePath="platform.h"
+				>
 			</File>
 			<File
-				RelativePath="Win32specific.h">
+				RelativePath="Win32specific.h"
+				>
 			</File>
 			<File
-				RelativePath="Win64specific.h">
+				RelativePath="Win64specific.h"
+				>
 			</File>
 		</Filter>
 	</Files>

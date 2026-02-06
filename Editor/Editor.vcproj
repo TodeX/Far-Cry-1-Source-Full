@@ -1,29 +1,73 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="Editor"
 	ProjectGUID="{8E62D4F9-2AD9-45E3-B911-3D0BE2C60189}"
 	SccProjectName="Perforce Project"
-	SccAuxPath=""
 	SccLocalPath="."
 	SccProvider="MSSCCI:Perforce SCM"
-	Keyword="MFCProj">
+	Keyword="MFCProj"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Release"
 			ConfigurationType="1"
 			UseOfMFC="2"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName="c:\MasterCD/Editor.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -31,8 +75,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="FALSE"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="_RELEASE;WIN32,NDEBUG,_WINDOWS,_XT_STATICLINK"
 				StringPooling="TRUE"
@@ -51,13 +93,23 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="XT\Include"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386
-/fixed:no"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:I386&#x0D;&#x0A;/fixed:no"
 				OutputFile="c:\MasterCD/Editor.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
@@ -65,48 +117,73 @@
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="c:\MasterCD/Editor.pdb"
 				SubSystem="2"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName="c:\MasterCD/Editor.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"
-				AdditionalIncludeDirectories="XT\Include"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="1"
 			UseOfMFC="2"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/Editor.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="0"
-				OptimizeForProcessor="0"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="WIN32,_DEBUG,_WINDOWS,_XT_STATICLINK"
 				MinimalRebuild="TRUE"
@@ -124,58 +201,94 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="XT\Include"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386
-/fixed:no"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:I386&#x0D;&#x0A;/fixed:no"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/Editor.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"
-				AdditionalIncludeDirectories="XT\Include"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Profile"
 			ConfigurationType="1"
 			UseOfMFC="2"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName="c:\MasterCD/Editor.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -183,8 +296,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="FALSE"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="WIN32,NDEBUG,_WINDOWS,_XT_STATICLINK"
 				StringPooling="TRUE"
@@ -204,58 +315,95 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="XT\Include"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386
-/fixed:no"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:I386&#x0D;&#x0A;/fixed:no&#x0D;&#x0A;/OPT:ref,icf"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
-				BaseAddress="0x37000000"/>
+				BaseAddress="0x37000000"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName="c:\MasterCD/Editor.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"
-				AdditionalIncludeDirectories="XT\Include"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Debug64"
 			ConfigurationType="1"
 			UseOfMFC="2"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/Editor.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="_AFXDLL,_AMD64_,WIN64,WIN32,_DEBUG,_WINDOWS,_XT_STATICLINK"
@@ -275,63 +423,105 @@
 				SuppressStartupBanner="FALSE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="XT\Include"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:AMD64
-/fixed:no"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:AMD64&#x0D;&#x0A;/fixed:no"
+				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
+				GenerateManifest="FALSE"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
-				LargeAddressAware="2"/>
+				LargeAddressAware="2"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/Editor.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"
-				AdditionalIncludeDirectories="XT\Include"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Release64"
 			ConfigurationType="1"
 			UseOfMFC="2"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/Editor.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="1"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="TRUE"
 				FavorSizeOrSpeed="2"
+				OmitFramePointers="TRUE"
+				WholeProgramOptimization="FALSE"
 				AdditionalIncludeDirectories=".\;..\;..\CryCommon;XT\Include;Include"
 				PreprocessorDefinitions="_AFXDLL,_AMD64_,WIN64,WIN32,NDEBUG,_RELEASE,_WINDOWS,_XT_STATICLINK"
 				StringPooling="TRUE"
@@ -340,6 +530,7 @@
 				RuntimeLibrary="2"
 				BufferSecurityCheck="FALSE"
 				EnableFunctionLevelLinking="TRUE"
+				FloatingPointModel="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="StdAfx.h"
@@ -351,46 +542,45 @@
 				SuppressStartupBanner="FALSE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="XT\Include"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:AMD64"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
+				AdditionalDependencies="../CryCommon/fSinCos64.lib"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="XT\Lib;Lib"
+				GenerateManifest="FALSE"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
-				LargeAddressAware="2"/>
+				LargeAddressAware="2"
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/Editor.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"
-				AdditionalIncludeDirectories="XT\Include"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -398,3363 +588,4394 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+			>
 			<File
-				RelativePath="CrtDebug.cpp">
+				RelativePath="CrtDebug.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\CryEdit.cpp">
+				RelativePath=".\CryEdit.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\CryEditDoc.cpp">
+				RelativePath=".\CryEditDoc.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\CurveObject.cpp">
+				RelativePath=".\CurveObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="EditorDefs.h">
+				RelativePath="EditorDefs.h"
+				>
 			</File>
 			<File
-				RelativePath="EdMesh.cpp">
+				RelativePath="EdMesh.cpp"
+				>
 			</File>
 			<File
-				RelativePath="EdMesh.h">
+				RelativePath="EdMesh.h"
+				>
 			</File>
 			<File
-				RelativePath="FileTypeUtils.cpp">
+				RelativePath="FileTypeUtils.cpp"
+				>
 			</File>
 			<File
-				RelativePath="GameEngine.cpp">
+				RelativePath="GameEngine.cpp"
+				>
 			</File>
 			<File
-				RelativePath="GameEngine.h">
+				RelativePath="GameEngine.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IEditor.h">
+				RelativePath=".\IEditor.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IEditorImpl.cpp">
+				RelativePath=".\IEditorImpl.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\IEditorImpl.h">
+				RelativePath=".\IEditorImpl.h"
+				>
 			</File>
 			<File
-				RelativePath="LightmapGen.cpp">
+				RelativePath="LightmapGen.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LightmapGen.h">
+				RelativePath="LightmapGen.h"
+				>
 			</File>
 			<File
-				RelativePath="LMCompDialog.cpp">
+				RelativePath="LMCompDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\LogFile.cpp">
+				RelativePath=".\LogFile.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\MainFrm.cpp">
+				RelativePath=".\MainFrm.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Plugin.cpp">
+				RelativePath="Plugin.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Plugin.h">
+				RelativePath="Plugin.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PluginManager.cpp">
+				RelativePath=".\PluginManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Settings.cpp">
+				RelativePath="Settings.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Settings.h">
+				RelativePath="Settings.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.cpp">
+				RelativePath=".\StdAfx.cpp"
+				>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="TestDialog.cpp">
+				RelativePath="TestDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\LightmapCompiler\TexelSampler.cpp">
+				RelativePath=".\LightmapCompiler\TexelSampler.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ThumbnailGenerator.cpp">
+				RelativePath="ThumbnailGenerator.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ThumbnailGenerator.h">
+				RelativePath="ThumbnailGenerator.h"
+				>
 			</File>
 			<File
-				RelativePath=".\UsedResources.cpp">
+				RelativePath=".\UsedResources.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\UsedResources.h">
+				RelativePath=".\UsedResources.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl">
+			Filter="h;hpp;hxx;hm;inl"
+			>
 			<File
-				RelativePath=".\CryEdit.h">
+				RelativePath=".\CryEdit.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CryEditDoc.h">
+				RelativePath=".\CryEditDoc.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CurveObject.h">
+				RelativePath=".\CurveObject.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CurveObjectDef.h">
+				RelativePath=".\CurveObjectDef.h"
+				>
 			</File>
 			<File
-				RelativePath="FileTypeUtils.h">
+				RelativePath="FileTypeUtils.h"
+				>
 			</File>
 			<File
-				RelativePath="LMCompDialog.h">
+				RelativePath="LMCompDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\LogFile.h">
+				RelativePath=".\LogFile.h"
+				>
 			</File>
 			<File
-				RelativePath=".\MainFrm.h">
+				RelativePath=".\MainFrm.h"
+				>
 			</File>
 			<File
-				RelativePath="MFC_AMD64_Fix.h">
+				RelativePath="MFC_AMD64_Fix.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PluginManager.h">
+				RelativePath=".\PluginManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Resource.h">
+				RelativePath=".\Resource.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.h">
+				RelativePath=".\StdAfx.h"
+				>
 			</File>
 			<File
-				RelativePath="TestDialog.h">
+				RelativePath="TestDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\LightmapCompiler\TexelSampler.h">
+				RelativePath=".\LightmapCompiler\TexelSampler.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+			>
 			<File
-				RelativePath=".\res\anim.bmp">
+				RelativePath=".\res\anim.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\arhitype_tree.bmp">
+				RelativePath=".\res\arhitype_tree.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\arr_addkey.cur">
+				RelativePath="res\arr_addkey.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\arrow.cur">
+				RelativePath=".\arrow.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\arrowcop.cur">
+				RelativePath=".\arrowcop.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\AVI_Recorder.bmp">
+				RelativePath=".\res\AVI_Recorder.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00005.bmp">
+				RelativePath=".\res\bmp00005.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00006.bmp">
+				RelativePath=".\res\bmp00006.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00007.bmp">
+				RelativePath=".\res\bmp00007.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00008.bmp">
+				RelativePath=".\res\bmp00008.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00009.bmp">
+				RelativePath=".\res\bmp00009.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00010.bmp">
+				RelativePath=".\res\bmp00010.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00011.bmp">
+				RelativePath=".\res\bmp00011.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00012.bmp">
+				RelativePath=".\res\bmp00012.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00013.bmp">
+				RelativePath=".\res\bmp00013.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\bmp00014.bmp">
+				RelativePath=".\res\bmp00014.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\bmp00015.bmp">
+				RelativePath="res\bmp00015.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\bmp00016.bmp">
+				RelativePath="res\bmp00016.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\bmp00017.bmp">
+				RelativePath="res\bmp00017.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\bmp00018.bmp">
+				RelativePath="res\bmp00018.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\bmp00019.bmp">
+				RelativePath="res\bmp00019.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\bmp00020.bmp">
+				RelativePath="res\bmp00020.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\brush24bpp.bmp">
+				RelativePath=".\res\brush24bpp.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\clone.ico">
+				RelativePath="res\clone.ico"
+				>
 			</File>
 			<File
-				RelativePath=".\res\CryEdit.ico">
+				RelativePath=".\res\CryEdit.ico"
+				>
 			</File>
 			<File
-				RelativePath=".\CryEdit.rc">
+				RelativePath=".\CryEdit.rc"
+				>
 			</File>
 			<File
-				RelativePath=".\res\CryEdit.rc2">
+				RelativePath=".\res\CryEdit.rc2"
+				>
 			</File>
 			<File
-				RelativePath=".\res\CryEditDoc.ico">
+				RelativePath=".\res\CryEditDoc.ico"
+				>
 			</File>
 			<File
-				RelativePath=".\res\cur00001.cur">
+				RelativePath=".\res\cur00001.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\cur00002.cur">
+				RelativePath=".\res\cur00002.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\cur00003.cur">
+				RelativePath=".\res\cur00003.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\cur00004.cur">
+				RelativePath=".\res\cur00004.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\cur00005.cur">
+				RelativePath=".\res\cur00005.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\cursor1.cur">
+				RelativePath=".\res\cursor1.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\Cursor_2.cur">
+				RelativePath=".\res\Cursor_2.cur"
+				>
 			</File>
 			<File
-				RelativePath="res\db_music.bmp">
+				RelativePath="res\db_music.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\db_prefab.bmp">
+				RelativePath=".\res\db_prefab.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\down_arrow.ico">
+				RelativePath=".\res\down_arrow.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\dynamichelp.bmp">
+				RelativePath="res\dynamichelp.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\edit_mod.bmp">
+				RelativePath=".\res\edit_mod.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\editor_icon.bmp">
+				RelativePath="res\editor_icon.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\editor_icon.ico">
+				RelativePath="res\editor_icon.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\editor_icon16.ico">
+				RelativePath="res\editor_icon16.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\entitybar.bmp">
+				RelativePath="res\entitybar.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\error_report.bmp">
+				RelativePath="res\error_report.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\file_browse.ico">
+				RelativePath="res\file_browse.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\filesimage.bmp">
+				RelativePath="res\filesimage.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\folder.ico">
+				RelativePath="res\folder.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\fopen_back.ico">
+				RelativePath="res\fopen_back.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\fopen_up.ico">
+				RelativePath="res\fopen_up.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\grid.ico">
+				RelativePath="res\grid.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\hit.cur">
+				RelativePath="res\hit.cur"
+				>
 			</File>
 			<File
-				RelativePath="res\icon1.ico">
+				RelativePath="res\icon1.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_delete.ico">
+				RelativePath="res\icon_delete.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_export.ico">
+				RelativePath="res\icon_export.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_import.ico">
+				RelativePath="res\icon_import.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_layers.ico">
+				RelativePath="res\icon_layers.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_lock.ico">
+				RelativePath="res\icon_lock.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_new.ico">
+				RelativePath="res\icon_new.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_question.bmp">
+				RelativePath="res\icon_question.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_question.ico">
+				RelativePath="res\icon_question.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\icon_tcoll.ico">
+				RelativePath="res\icon_tcoll.ico"
+				>
 			</File>
 			<File
-				RelativePath=".\res\idb_.bmp">
+				RelativePath=".\res\idb_.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\layer_buttons.bmp">
+				RelativePath="res\layer_buttons.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\layouts.bmp">
+				RelativePath="res\layouts.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\leftright.cur">
+				RelativePath="res\leftright.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\litebulb.bmp">
+				RelativePath=".\res\litebulb.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\lock_sel.bmp">
+				RelativePath=".\res\lock_sel.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\locksele.bmp">
+				RelativePath=".\res\locksele.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\logo.bmp">
+				RelativePath=".\res\logo.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\mainfram.bmp">
+				RelativePath=".\res\mainfram.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\materialbar.bmp">
+				RelativePath="res\materialbar.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\minus.ico">
+				RelativePath="res\minus.ico"
+				>
 			</File>
 			<File
-				RelativePath=".\res\mission_.bmp">
+				RelativePath=".\res\mission_.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\musictree.bmp">
+				RelativePath="res\musictree.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\nodrop.cur">
+				RelativePath=".\nodrop.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\object_move.cur">
+				RelativePath=".\res\object_move.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\object_rotate.cur">
+				RelativePath=".\res\object_rotate.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\object_scale.cur">
+				RelativePath=".\res\object_scale.cur"
+				>
 			</File>
 			<File
-				RelativePath="res\objectsbrowser.bmp">
+				RelativePath="res\objectsbrowser.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\panel_veg.bmp">
+				RelativePath="res\panel_veg.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\particles_tree.bmp">
+				RelativePath=".\res\particles_tree.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pick.bmp">
+				RelativePath=".\res\pick.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pick_cursor.cur">
+				RelativePath=".\res\pick_cursor.cur"
+				>
 			</File>
 			<File
-				RelativePath="res\plus.ico">
+				RelativePath="res\plus.ico"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pointer_flatten.cur">
+				RelativePath=".\res\pointer_flatten.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\pointer_getheight.cur">
+				RelativePath=".\pointer_getheight.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pointer_link.cur">
+				RelativePath=".\res\pointer_link.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pointer_linknow.cur">
+				RelativePath=".\res\pointer_linknow.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pointer_minus.cur">
+				RelativePath=".\res\pointer_minus.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pointer_plus.cur">
+				RelativePath=".\res\pointer_plus.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pointer_smooth.cur">
+				RelativePath=".\res\pointer_smooth.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\pointerHit.cur">
+				RelativePath=".\res\pointerHit.cur"
+				>
 			</File>
 			<File
-				RelativePath=".\res\prefabs_tree.bmp">
+				RelativePath=".\res\prefabs_tree.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\Preferences.bmp">
+				RelativePath=".\res\Preferences.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\properties.bmp">
+				RelativePath="res\properties.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\rename.ico">
+				RelativePath="res\rename.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\replace.ico">
+				RelativePath="res\replace.ico"
+				>
 			</File>
 			<File
-				RelativePath=".\res\sandbox.bmp">
+				RelativePath=".\res\sandbox.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\selectobj.bmp">
+				RelativePath="res\selectobj.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\soundfiles.bmp">
+				RelativePath="res\soundfiles.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\soundpre.bmp">
+				RelativePath="res\soundpre.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\TabPanel.bmp">
+				RelativePath=".\res\TabPanel.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\Toolbar.bmp">
+				RelativePath=".\res\Toolbar.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\toolbar1.bmp">
+				RelativePath=".\res\toolbar1.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\toolbar2.bmp">
+				RelativePath="res\toolbar2.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\trackview.bmp">
+				RelativePath="res\trackview.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\trackview_keys.bmp">
+				RelativePath="res\trackview_keys.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\trackview_nodes.bmp">
+				RelativePath="res\trackview_nodes.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\tree_vie.bmp">
+				RelativePath=".\res\tree_vie.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\TreeView.bmp">
+				RelativePath=".\res\TreeView.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\up_arrow.ico">
+				RelativePath=".\res\up_arrow.ico"
+				>
 			</File>
 			<File
-				RelativePath="res\vegetati.bmp">
+				RelativePath="res\vegetati.bmp"
+				>
 			</File>
 			<File
-				RelativePath="res\vegtree.bmp">
+				RelativePath="res\vegtree.bmp"
+				>
 			</File>
 			<File
-				RelativePath=".\res\water.bmp">
+				RelativePath=".\res\water.bmp"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Layout"
-			Filter="">
+			>
 			<File
-				RelativePath="2DViewport.cpp">
+				RelativePath="2DViewport.cpp"
+				>
 			</File>
 			<File
-				RelativePath="2DViewport.h">
+				RelativePath="2DViewport.h"
+				>
 			</File>
 			<File
-				RelativePath="Grid.cpp">
+				RelativePath="Grid.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Grid.h">
+				RelativePath="Grid.h"
+				>
 			</File>
 			<File
-				RelativePath=".\LayoutWnd.cpp">
+				RelativePath=".\LayoutWnd.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\LayoutWnd.h">
+				RelativePath=".\LayoutWnd.h"
+				>
 			</File>
 			<File
-				RelativePath=".\RenderViewport.cpp">
+				RelativePath=".\RenderViewport.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\RenderViewport.h">
+				RelativePath=".\RenderViewport.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainViewport.cpp">
+				RelativePath=".\TerrainViewport.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainViewport.h">
+				RelativePath=".\TerrainViewport.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TopRendererWnd.cpp">
+				RelativePath=".\TopRendererWnd.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TopRendererWnd.h">
+				RelativePath=".\TopRendererWnd.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ViewManager.cpp">
+				RelativePath=".\ViewManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ViewManager.h">
+				RelativePath=".\ViewManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ViewPane.cpp">
+				RelativePath=".\ViewPane.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ViewPane.h">
+				RelativePath=".\ViewPane.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Viewport.cpp">
+				RelativePath=".\Viewport.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Viewport.h">
+				RelativePath=".\Viewport.h"
+				>
 			</File>
 			<File
-				RelativePath="ZViewport.cpp">
+				RelativePath="ZViewport.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ZViewport.h">
+				RelativePath="ZViewport.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Dialogs"
-			Filter="">
+			>
 			<File
-				RelativePath="AIAnchorsDialog.cpp">
+				RelativePath="AIAnchorsDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AIAnchorsDialog.h">
+				RelativePath="AIAnchorsDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="AICharactersDialog.cpp">
+				RelativePath="AICharactersDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AICharactersDialog.h">
+				RelativePath="AICharactersDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="AIDialog.cpp">
+				RelativePath="AIDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AIDialog.h">
+				RelativePath="AIDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="CheckOutDialog.cpp">
+				RelativePath="CheckOutDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CheckOutDialog.h">
+				RelativePath="CheckOutDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ConsoleDialog.cpp">
+				RelativePath=".\ConsoleDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ConsoleDialog.h">
+				RelativePath=".\ConsoleDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CurveWnd.cpp">
+				RelativePath=".\CurveWnd.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\CurveWnd.h">
+				RelativePath=".\CurveWnd.h"
+				>
 			</File>
 			<File
-				RelativePath=".\CustomColorDialog.cpp">
+				RelativePath=".\CustomColorDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\CustomColorDialog.h">
+				RelativePath=".\CustomColorDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="CustomFileDialog.cpp">
+				RelativePath="CustomFileDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CustomFileDialog.h">
+				RelativePath="CustomFileDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\DimensionsDialog.cpp">
+				RelativePath=".\DimensionsDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DimensionsDialog.h">
+				RelativePath=".\DimensionsDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\DrawWnd.cpp">
+				RelativePath=".\DrawWnd.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DrawWnd.h">
+				RelativePath=".\DrawWnd.h"
+				>
 			</File>
 			<File
-				RelativePath="DynamicHelpDialog.cpp">
+				RelativePath="DynamicHelpDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="DynamicHelpDialog.h">
+				RelativePath="DynamicHelpDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="EAXPresetsDlg.cpp">
+				RelativePath="EAXPresetsDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath="EAXPresetsDlg.h">
+				RelativePath="EAXPresetsDlg.h"
+				>
 			</File>
 			<File
-				RelativePath="EquipPackDialog.cpp">
+				RelativePath="EquipPackDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="EquipPackDialog.h">
+				RelativePath="EquipPackDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="ErrorReportDialog.cpp">
+				RelativePath="ErrorReportDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ErrorReportDialog.h">
+				RelativePath="ErrorReportDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="GridSettingsDialog.cpp">
+				RelativePath="GridSettingsDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="GridSettingsDialog.h">
+				RelativePath="GridSettingsDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\InfoBar.cpp">
+				RelativePath=".\InfoBar.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\InfoBar.h">
+				RelativePath=".\InfoBar.h"
+				>
 			</File>
 			<File
-				RelativePath=".\InfoBarHolder.cpp">
+				RelativePath=".\InfoBarHolder.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\InfoBarHolder.h">
+				RelativePath=".\InfoBarHolder.h"
+				>
 			</File>
 			<File
-				RelativePath=".\InfoProgressBar.cpp">
+				RelativePath=".\InfoProgressBar.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\InfoProgressBar.h">
+				RelativePath=".\InfoProgressBar.h"
+				>
 			</File>
 			<File
-				RelativePath="LayersSelectDialog.cpp">
+				RelativePath="LayersSelectDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LayersSelectDialog.h">
+				RelativePath="LayersSelectDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="LayoutConfigDialog.cpp">
+				RelativePath="LayoutConfigDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LayoutConfigDialog.h">
+				RelativePath="LayoutConfigDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\LoadingDialog.cpp">
+				RelativePath=".\LoadingDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\LoadingDialog.h">
+				RelativePath=".\LoadingDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\LoadingScreen.cpp">
+				RelativePath=".\LoadingScreen.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\LoadingScreen.h">
+				RelativePath=".\LoadingScreen.h"
+				>
 			</File>
 			<File
-				RelativePath="MissionProps.cpp">
+				RelativePath="MissionProps.cpp"
+				>
 			</File>
 			<File
-				RelativePath="MissionProps.h">
+				RelativePath="MissionProps.h"
+				>
 			</File>
 			<File
-				RelativePath=".\MissionSelectDialog.cpp">
+				RelativePath=".\MissionSelectDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\MissionSelectDialog.h">
+				RelativePath=".\MissionSelectDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="MusicInfoDlg.cpp">
+				RelativePath="MusicInfoDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath="MusicInfoDlg.h">
+				RelativePath="MusicInfoDlg.h"
+				>
 			</File>
 			<File
-				RelativePath="NewLevelDialog.cpp">
+				RelativePath="NewLevelDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="NewLevelDialog.h">
+				RelativePath="NewLevelDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\NumberDlg.cpp">
+				RelativePath=".\NumberDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\NumberDlg.h">
+				RelativePath=".\NumberDlg.h"
+				>
 			</File>
 			<File
-				RelativePath="ObjectBrowserDialog.cpp">
+				RelativePath="ObjectBrowserDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ObjectBrowserDialog.h">
+				RelativePath="ObjectBrowserDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="ObjectLayerPropsDialog.cpp">
+				RelativePath="ObjectLayerPropsDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ObjectLayerPropsDialog.h">
+				RelativePath="ObjectLayerPropsDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="PanelPreview.cpp">
+				RelativePath="PanelPreview.cpp"
+				>
 			</File>
 			<File
-				RelativePath="PanelPreview.h">
+				RelativePath="PanelPreview.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PreferencesDialog.cpp">
+				RelativePath=".\PreferencesDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PreferencesDialog.h">
+				RelativePath=".\PreferencesDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PreferencesPropertyPage.cpp">
+				RelativePath=".\PreferencesPropertyPage.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PreferencesPropertyPage.h">
+				RelativePath=".\PreferencesPropertyPage.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PreferencesStdPages.cpp">
+				RelativePath=".\PreferencesStdPages.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PreferencesStdPages.h">
+				RelativePath=".\PreferencesStdPages.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PropertiesDialog.cpp">
+				RelativePath=".\PropertiesDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PropertiesDialog.h">
+				RelativePath=".\PropertiesDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="SelectEAXPresetDlg.cpp">
+				RelativePath="SelectEAXPresetDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath="SelectEAXPresetDlg.h">
+				RelativePath="SelectEAXPresetDlg.h"
+				>
 			</File>
 			<File
-				RelativePath="SelectEntityClsDialog.cpp">
+				RelativePath="SelectEntityClsDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="SelectEntityClsDialog.h">
+				RelativePath="SelectEntityClsDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SelectFileDlg.cpp">
+				RelativePath=".\SelectFileDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SelectFileDlg.h">
+				RelativePath=".\SelectFileDlg.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SelectObjectDlg.cpp">
+				RelativePath=".\SelectObjectDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SelectObjectDlg.h">
+				RelativePath=".\SelectObjectDlg.h"
+				>
 			</File>
 			<File
-				RelativePath="SelectSoundPresetDlg.cpp">
+				RelativePath="SelectSoundPresetDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath="SelectSoundPresetDlg.h">
+				RelativePath="SelectSoundPresetDlg.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SetHeightDlg.cpp">
+				RelativePath=".\SetHeightDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SetHeightDlg.h">
+				RelativePath=".\SetHeightDlg.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ShadersDialog.cpp">
+				RelativePath=".\ShadersDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ShadersDialog.h">
+				RelativePath=".\ShadersDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SizeDialog.cpp">
+				RelativePath=".\SizeDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SizeDialog.h">
+				RelativePath=".\SizeDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SkyDialog.cpp">
+				RelativePath=".\SkyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SkyDialog.h">
+				RelativePath=".\SkyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="SoundPresetsDlg.cpp">
+				RelativePath="SoundPresetsDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath="SoundPresetsDlg.h">
+				RelativePath="SoundPresetsDlg.h"
+				>
 			</File>
 			<File
-				RelativePath="SrcSafeSettingsDialog.cpp">
+				RelativePath="SrcSafeSettingsDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="SrcSafeSettingsDialog.h">
+				RelativePath="SrcSafeSettingsDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StartupDialog.cpp">
+				RelativePath=".\StartupDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\StartupDialog.h">
+				RelativePath=".\StartupDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StartupLogoDialog.cpp">
+				RelativePath=".\StartupLogoDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\StartupLogoDialog.h">
+				RelativePath=".\StartupLogoDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StringDlg.cpp">
+				RelativePath=".\StringDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\StringDlg.h">
+				RelativePath=".\StringDlg.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SurfaceTypesDialog.cpp">
+				RelativePath=".\SurfaceTypesDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SurfaceTypesDialog.h">
+				RelativePath=".\SurfaceTypesDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainCurve.cpp">
+				RelativePath=".\TerrainCurve.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainCurve.h">
+				RelativePath=".\TerrainCurve.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainDialog.cpp">
+				RelativePath=".\TerrainDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainDialog.h">
+				RelativePath=".\TerrainDialog.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainFormulaDlg.cpp">
+				RelativePath=".\TerrainFormulaDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainFormulaDlg.h">
+				RelativePath=".\TerrainFormulaDlg.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainLighting.cpp">
+				RelativePath=".\TerrainLighting.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainLighting.h">
+				RelativePath=".\TerrainLighting.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainTexture.cpp">
+				RelativePath=".\TerrainTexture.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainTexture.h">
+				RelativePath=".\TerrainTexture.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TipDlg.cpp">
+				RelativePath=".\TipDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TipDlg.h">
+				RelativePath=".\TipDlg.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ToolbarDialog.cpp">
+				RelativePath=".\ToolbarDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ToolbarDialog.h">
+				RelativePath=".\ToolbarDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="ToolsConfigPage.cpp">
+				RelativePath="ToolsConfigPage.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ToolsConfigPage.h">
+				RelativePath="ToolsConfigPage.h"
+				>
 			</File>
 			<File
-				RelativePath=".\UndoDropDown.cpp">
+				RelativePath=".\UndoDropDown.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\UndoDropDown.h">
+				RelativePath=".\UndoDropDown.h"
+				>
 			</File>
 			<File
-				RelativePath="WeaponProps.cpp">
+				RelativePath="WeaponProps.cpp"
+				>
 			</File>
 			<File
-				RelativePath="WeaponProps.h">
+				RelativePath="WeaponProps.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Controls"
-			Filter="">
+			>
 			<File
-				RelativePath="Controls\AnimationToolBar.cpp">
+				RelativePath="Controls\AnimationToolBar.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\AnimationToolBar.h">
+				RelativePath="Controls\AnimationToolBar.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\AnimSequences.cpp">
+				RelativePath="Controls\AnimSequences.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\AnimSequences.h">
+				RelativePath="Controls\AnimSequences.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ColorCheckBox.cpp">
+				RelativePath="Controls\ColorCheckBox.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ColorCheckBox.h">
+				RelativePath="Controls\ColorCheckBox.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ColorCtrl.h">
+				RelativePath="Controls\ColorCtrl.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ConsoleSCB.cpp">
+				RelativePath="Controls\ConsoleSCB.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ConsoleSCB.h">
+				RelativePath="Controls\ConsoleSCB.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\CustomComboBoxEx.h">
+				RelativePath="Controls\CustomComboBoxEx.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\DLGBARS.CPP">
+				RelativePath="Controls\DLGBARS.CPP"
+				>
 			</File>
 			<File
-				RelativePath="Controls\DLGBARS.H">
+				RelativePath="Controls\DLGBARS.H"
+				>
 			</File>
 			<File
-				RelativePath="Controls\EditModeToolBar.cpp">
+				RelativePath="Controls\EditModeToolBar.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\EditModeToolBar.h">
+				RelativePath="Controls\EditModeToolBar.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\FileTree.cpp">
+				RelativePath="Controls\FileTree.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\FileTree.h">
+				RelativePath="Controls\FileTree.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\LayersListBox.cpp">
+				RelativePath="Controls\LayersListBox.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\LayersListBox.h">
+				RelativePath="Controls\LayersListBox.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\MemDC.h">
+				RelativePath="Controls\MemDC.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\MltiTree.cpp">
+				RelativePath="Controls\MltiTree.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\MltiTree.h">
+				RelativePath="Controls\MltiTree.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\NumberCtrl.cpp">
+				RelativePath="Controls\NumberCtrl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\NumberCtrl.h">
+				RelativePath="Controls\NumberCtrl.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\NumberCtrlEdit.cpp">
+				RelativePath="Controls\NumberCtrlEdit.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\NumberCtrlEdit.h">
+				RelativePath="Controls\NumberCtrlEdit.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\PickObjectButton.cpp">
+				RelativePath="Controls\PickObjectButton.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\PickObjectButton.h">
+				RelativePath="Controls\PickObjectButton.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\PreviewModelCtrl.cpp">
+				RelativePath="Controls\PreviewModelCtrl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\PreviewModelCtrl.h">
+				RelativePath="Controls\PreviewModelCtrl.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\RollupBar.cpp">
+				RelativePath="Controls\RollupBar.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\RollupBar.h">
+				RelativePath="Controls\RollupBar.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\RollupCtrl.cpp">
+				RelativePath="Controls\RollupCtrl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\RollupCtrl.h">
+				RelativePath="Controls\RollupCtrl.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\SelectionCombo.cpp">
+				RelativePath="Controls\SelectionCombo.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\SelectionCombo.h">
+				RelativePath="Controls\SelectionCombo.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\SplitterWndEx.cpp">
+				RelativePath="Controls\SplitterWndEx.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\SplitterWndEx.h">
+				RelativePath="Controls\SplitterWndEx.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\SyntaxColorizer.cpp">
+				RelativePath="Controls\SyntaxColorizer.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\SyntaxColorizer.h">
+				RelativePath="Controls\SyntaxColorizer.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\TemplDef.h">
+				RelativePath="Controls\TemplDef.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\TextEditorCtrl.cpp">
+				RelativePath="Controls\TextEditorCtrl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\TextEditorCtrl.h">
+				RelativePath="Controls\TextEditorCtrl.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ToolBarContainer.cpp">
+				RelativePath="Controls\ToolBarContainer.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ToolBarContainer.h">
+				RelativePath="Controls\ToolBarContainer.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ToolBarTab.cpp">
+				RelativePath="Controls\ToolBarTab.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ToolBarTab.h">
+				RelativePath="Controls\ToolBarTab.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ToolButton.cpp">
+				RelativePath="Controls\ToolButton.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\ToolButton.h">
+				RelativePath="Controls\ToolButton.h"
+				>
 			</File>
 			<File
-				RelativePath="Controls\TreeCtrlEx.cpp">
+				RelativePath="Controls\TreeCtrlEx.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Controls\TreeCtrlEx.h">
+				RelativePath="Controls\TreeCtrlEx.h"
+				>
 			</File>
 			<Filter
 				Name="SizingControlBar"
-				Filter="">
+				>
 				<File
-					RelativePath="Controls\scbarcf.cpp">
+					RelativePath="Controls\scbarcf.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\scbarcf.h">
+					RelativePath="Controls\scbarcf.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\scbarg.cpp">
+					RelativePath="Controls\scbarg.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\scbarg.h">
+					RelativePath="Controls\scbarg.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\sizecbar.cpp">
+					RelativePath="Controls\sizecbar.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\sizecbar.h">
+					RelativePath="Controls\sizecbar.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="PropertyCtrl"
-				Filter="">
+				>
 				<File
-					RelativePath="Controls\DropListBox.cpp">
+					RelativePath="Controls\DropListBox.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\DropListBox.h">
+					RelativePath="Controls\DropListBox.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\DropScrollBar.cpp">
+					RelativePath="Controls\DropScrollBar.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\DropScrollBar.h">
+					RelativePath="Controls\DropScrollBar.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\DropWnd.cpp">
+					RelativePath="Controls\DropWnd.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\DropWnd.h">
+					RelativePath="Controls\DropWnd.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\InPlaceButton.cpp">
+					RelativePath="Controls\InPlaceButton.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\InPlaceButton.h">
+					RelativePath="Controls\InPlaceButton.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\InPlaceComboBox.cpp">
+					RelativePath="Controls\InPlaceComboBox.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\InPlaceComboBox.h">
+					RelativePath="Controls\InPlaceComboBox.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\InPlaceEdit.cpp">
+					RelativePath="Controls\InPlaceEdit.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\InPlaceEdit.h">
+					RelativePath="Controls\InPlaceEdit.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\PropertyCtrl.cpp">
+					RelativePath="Controls\PropertyCtrl.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\PropertyCtrl.h">
+					RelativePath="Controls\PropertyCtrl.h"
+					>
 				</File>
 				<File
-					RelativePath="Controls\PropertyItem.cpp">
+					RelativePath="Controls\PropertyItem.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Controls\PropertyItem.h">
+					RelativePath="Controls\PropertyItem.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="System"
-			Filter="">
+			>
 			<File
-				RelativePath=".\DisplaySettings.cpp">
+				RelativePath=".\DisplaySettings.cpp"
+				>
 			</File>
 			<File
-				RelativePath="DisplaySettings.h">
+				RelativePath="DisplaySettings.h"
+				>
 			</File>
 			<File
-				RelativePath="ErrorReport.cpp">
+				RelativePath="ErrorReport.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ErrorReport.h">
+				RelativePath="ErrorReport.h"
+				>
 			</File>
 			<File
-				RelativePath="ExternalTools.cpp">
+				RelativePath="ExternalTools.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ExternalTools.h">
+				RelativePath="ExternalTools.h"
+				>
 			</File>
 			<File
-				RelativePath=".\IconManager.cpp">
+				RelativePath=".\IconManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\IconManager.h">
+				RelativePath=".\IconManager.h"
+				>
 			</File>
 			<File
-				RelativePath="LevelInfo.cpp">
+				RelativePath="LevelInfo.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LevelInfo.h">
+				RelativePath="LevelInfo.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Mailer.cpp">
+				RelativePath=".\Mailer.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Mailer.h">
+				RelativePath=".\Mailer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\MaterialEnum.cpp">
+				RelativePath=".\MaterialEnum.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\MaterialEnum.h">
+				RelativePath=".\MaterialEnum.h"
+				>
 			</File>
 			<File
-				RelativePath="ProcessInfo.cpp">
+				RelativePath="ProcessInfo.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ProcessInfo.h">
+				RelativePath="ProcessInfo.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ShaderEnum.cpp">
+				RelativePath=".\ShaderEnum.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ShaderEnum.h">
+				RelativePath=".\ShaderEnum.h"
+				>
 			</File>
 			<File
-				RelativePath="unzip.cpp">
+				RelativePath="unzip.cpp"
+				>
 			</File>
 			<File
-				RelativePath="unzip.h">
+				RelativePath="unzip.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="ModelView"
-			Filter="">
+			>
 			<File
-				RelativePath=".\ModelViewPanel.cpp">
+				RelativePath=".\ModelViewPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ModelViewPanel.h">
+				RelativePath=".\ModelViewPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ModelViewport.cpp">
+				RelativePath=".\ModelViewport.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ModelViewport.h">
+				RelativePath=".\ModelViewport.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ModelViewSubmeshPanel.cpp">
+				RelativePath=".\ModelViewSubmeshPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ModelViewSubmeshPanel.h">
+				RelativePath=".\ModelViewSubmeshPanel.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Objects"
-			Filter="">
+			>
 			<File
-				RelativePath="Objects\AIAnchor.cpp">
+				RelativePath="Objects\AIAnchor.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\AIAnchor.h">
+				RelativePath="Objects\AIAnchor.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\AiPoint.cpp">
+				RelativePath="Objects\AiPoint.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\AiPoint.h">
+				RelativePath="Objects\AiPoint.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\AreaBox.cpp">
+				RelativePath="Objects\AreaBox.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\AreaBox.h">
+				RelativePath="Objects\AreaBox.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\AreaSphere.cpp">
+				RelativePath="Objects\AreaSphere.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\AreaSphere.h">
+				RelativePath="Objects\AreaSphere.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\BaseObject.cpp">
+				RelativePath=".\Objects\BaseObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\BaseObject.h">
+				RelativePath=".\Objects\BaseObject.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\BrushObject.cpp">
+				RelativePath="Objects\BrushObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\BrushObject.h">
+				RelativePath="Objects\BrushObject.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\CameraObject.cpp">
+				RelativePath="Objects\CameraObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\CameraObject.h">
+				RelativePath="Objects\CameraObject.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\ClassDesc.h">
+				RelativePath=".\Objects\ClassDesc.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\DisplayContext.cpp">
+				RelativePath=".\Objects\DisplayContext.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\DisplayContext.h">
+				RelativePath=".\Objects\DisplayContext.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\Entity.cpp">
+				RelativePath=".\Objects\Entity.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\Entity.h">
+				RelativePath=".\Objects\Entity.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\EntityScript.cpp">
+				RelativePath=".\Objects\EntityScript.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\EntityScript.h">
+				RelativePath=".\Objects\EntityScript.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\Group.cpp">
+				RelativePath=".\Objects\Group.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\Group.h">
+				RelativePath=".\Objects\Group.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ObjectLayer.cpp">
+				RelativePath="Objects\ObjectLayer.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ObjectLayer.h">
+				RelativePath="Objects\ObjectLayer.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ObjectLayerManager.cpp">
+				RelativePath="Objects\ObjectLayerManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ObjectLayerManager.h">
+				RelativePath="Objects\ObjectLayerManager.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ObjectLoader.cpp">
+				RelativePath="Objects\ObjectLoader.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ObjectLoader.h">
+				RelativePath="Objects\ObjectLoader.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\ObjectManager.cpp">
+				RelativePath=".\Objects\ObjectManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\ObjectManager.h">
+				RelativePath=".\Objects\ObjectManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\PrefabObject.cpp">
+				RelativePath=".\Objects\PrefabObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\PrefabObject.h">
+				RelativePath=".\Objects\PrefabObject.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ProtEntityObject.cpp">
+				RelativePath="Objects\ProtEntityObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ProtEntityObject.h">
+				RelativePath="Objects\ProtEntityObject.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\SafeObjectsArray.cpp">
+				RelativePath="Objects\SafeObjectsArray.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\SafeObjectsArray.h">
+				RelativePath="Objects\SafeObjectsArray.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\SelectionGroup.cpp">
+				RelativePath=".\Objects\SelectionGroup.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\SelectionGroup.h">
+				RelativePath=".\Objects\SelectionGroup.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ShapeObject.cpp">
+				RelativePath="Objects\ShapeObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\ShapeObject.h">
+				RelativePath="Objects\ShapeObject.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\SoundObject.cpp">
+				RelativePath=".\Objects\SoundObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\SoundObject.h">
+				RelativePath=".\Objects\SoundObject.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\TagComment.cpp">
+				RelativePath="Objects\TagComment.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\TagComment.h">
+				RelativePath="Objects\TagComment.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\TagPoint.cpp">
+				RelativePath=".\Objects\TagPoint.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\TagPoint.h">
+				RelativePath=".\Objects\TagPoint.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\VisAreaShapeObject.cpp">
+				RelativePath="Objects\VisAreaShapeObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\VisAreaShapeObject.h">
+				RelativePath="Objects\VisAreaShapeObject.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\Volume.cpp">
+				RelativePath=".\Objects\Volume.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Objects\Volume.h">
+				RelativePath=".\Objects\Volume.h"
+				>
 			</File>
 			<File
-				RelativePath="Objects\WaterShapeObject.cpp">
+				RelativePath="Objects\WaterShapeObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Objects\WaterShapeObject.h">
+				RelativePath="Objects\WaterShapeObject.h"
+				>
 			</File>
 			<Filter
 				Name="Gizmo"
-				Filter="">
+				>
 				<File
-					RelativePath="Objects\AxisGizmo.cpp">
+					RelativePath="Objects\AxisGizmo.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Objects\AxisGizmo.h">
+					RelativePath="Objects\AxisGizmo.h"
+					>
 				</File>
 				<File
-					RelativePath="Objects\Gizmo.cpp">
+					RelativePath="Objects\Gizmo.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Objects\Gizmo.h">
+					RelativePath="Objects\Gizmo.h"
+					>
 				</File>
 				<File
-					RelativePath="Objects\GizmoManager.cpp">
+					RelativePath="Objects\GizmoManager.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Objects\GizmoManager.h">
+					RelativePath="Objects\GizmoManager.h"
+					>
 				</File>
 				<File
-					RelativePath=".\Objects\LineGizmo.cpp">
+					RelativePath=".\Objects\LineGizmo.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Objects\LineGizmo.h">
+					RelativePath=".\Objects\LineGizmo.h"
+					>
 				</File>
 				<File
-					RelativePath="Objects\TrackGizmo.cpp">
+					RelativePath="Objects\TrackGizmo.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Objects\TrackGizmo.h">
+					RelativePath="Objects\TrackGizmo.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Xml"
-			Filter="">
+			>
 			<File
-				RelativePath=".\xml\xml.cpp">
+				RelativePath=".\xml\xml.cpp"
+				>
 			</File>
 			<File
-				RelativePath="xml\xml.h">
+				RelativePath="xml\xml.h"
+				>
 			</File>
 			<Filter
 				Name="Expat"
-				Filter="">
+				>
 				<File
-					RelativePath=".\xml\Expat\ascii.h">
+					RelativePath=".\xml\Expat\ascii.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\asciitab.h">
+					RelativePath=".\xml\Expat\asciitab.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\config.h">
+					RelativePath=".\xml\Expat\config.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\expat.h">
+					RelativePath=".\xml\Expat\expat.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\iasciitab.h">
+					RelativePath=".\xml\Expat\iasciitab.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\latin1tab.h">
+					RelativePath=".\xml\Expat\latin1tab.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\nametab.h">
+					RelativePath=".\xml\Expat\nametab.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\utf8tab.h">
+					RelativePath=".\xml\Expat\utf8tab.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\xmlparse.c">
+					RelativePath=".\xml\Expat\xmlparse.c"
+					>
 					<FileConfiguration
-						Name="Release|Win32">
+						Name="Release|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32">
+						Name="Debug|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Profile|Win32">
+						Name="Profile|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug64|Win32">
+						Name="Debug64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Release64|Win32">
+						Name="Release64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\xml\Expat\xmlrole.c">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Profile|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release64|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\xmlrole.h">
+					RelativePath=".\xml\Expat\xmlrole.c"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Profile|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug64|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release64|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\xmltok.c">
+					RelativePath=".\xml\Expat\xmlrole.h"
+					>
+				</File>
+				<File
+					RelativePath=".\xml\Expat\xmltok.c"
+					>
 					<FileConfiguration
-						Name="Release|Win32">
+						Name="Release|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32">
+						Name="Debug|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Profile|Win32">
+						Name="Profile|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug64|Win32">
+						Name="Debug64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Release64|Win32">
+						Name="Release64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\xmltok.h">
+					RelativePath=".\xml\Expat\xmltok.h"
+					>
 				</File>
 				<File
-					RelativePath=".\xml\Expat\xmltok_impl.h">
+					RelativePath=".\xml\Expat\xmltok_impl.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Panels"
-			Filter="">
+			>
 			<File
-				RelativePath="AIPointPanel.cpp">
+				RelativePath="AIPointPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AIPointPanel.h">
+				RelativePath="AIPointPanel.h"
+				>
 			</File>
 			<File
 				RelativePath="AIPointPanel.htm"
-				DeploymentContent="TRUE">
+				DeploymentContent="TRUE"
+				>
 			</File>
 			<File
-				RelativePath=".\EntityPanel.cpp">
+				RelativePath=".\EntityPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\EntityPanel.h">
+				RelativePath=".\EntityPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\MainTools.cpp">
+				RelativePath=".\MainTools.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\MainTools.h">
+				RelativePath=".\MainTools.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ObjectPanel.cpp">
+				RelativePath=".\ObjectPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ObjectPanel.h">
+				RelativePath=".\ObjectPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ObjectTypeBrowser.cpp">
+				RelativePath=".\ObjectTypeBrowser.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ObjectTypeBrowser.h">
+				RelativePath=".\ObjectTypeBrowser.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PanelDisplayHide.cpp">
+				RelativePath=".\PanelDisplayHide.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PanelDisplayHide.h">
+				RelativePath=".\PanelDisplayHide.h"
+				>
 			</File>
 			<File
-				RelativePath="PanelDisplayLayer.cpp">
+				RelativePath="PanelDisplayLayer.cpp"
+				>
 			</File>
 			<File
-				RelativePath="PanelDisplayLayer.h">
+				RelativePath="PanelDisplayLayer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PanelDisplayRender.cpp">
+				RelativePath=".\PanelDisplayRender.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PanelDisplayRender.h">
+				RelativePath=".\PanelDisplayRender.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PanelTreeBrowser.cpp">
+				RelativePath=".\PanelTreeBrowser.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PanelTreeBrowser.h">
+				RelativePath=".\PanelTreeBrowser.h"
+				>
 			</File>
 			<File
-				RelativePath="PickEntitiesPanel.cpp">
+				RelativePath="PickEntitiesPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath="PickEntitiesPanel.h">
+				RelativePath="PickEntitiesPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PrefabPanel.cpp">
+				RelativePath=".\PrefabPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PrefabPanel.h">
+				RelativePath=".\PrefabPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\PropertiesPanel.cpp">
+				RelativePath=".\PropertiesPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\PropertiesPanel.h">
+				RelativePath=".\PropertiesPanel.h"
+				>
 			</File>
 			<File
-				RelativePath="ShapePanel.cpp">
+				RelativePath="ShapePanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ShapePanel.h">
+				RelativePath="ShapePanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SoundObjectPanel.cpp">
+				RelativePath=".\SoundObjectPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SoundObjectPanel.h">
+				RelativePath=".\SoundObjectPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainPanel.cpp">
+				RelativePath=".\TerrainPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TerrainPanel.h">
+				RelativePath=".\TerrainPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\VolumePanel.cpp">
+				RelativePath=".\VolumePanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\VolumePanel.h">
+				RelativePath=".\VolumePanel.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Util"
-			Filter="">
+			>
 			<File
-				RelativePath="Util\AffineParts.cpp">
+				RelativePath="Util\AffineParts.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\AffineParts.h">
+				RelativePath="Util\AffineParts.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\AVI_Writer.cpp">
+				RelativePath=".\Util\AVI_Writer.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\AVI_Writer.h">
+				RelativePath=".\Util\AVI_Writer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\AVIGenerator.cpp">
+				RelativePath=".\Util\AVIGenerator.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\AVIGenerator.h">
+				RelativePath=".\Util\AVIGenerator.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\bitarray.h">
+				RelativePath=".\Util\bitarray.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\ChunkFile.cpp">
+				RelativePath="Util\ChunkFile.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\ChunkFile.h">
+				RelativePath="Util\ChunkFile.h"
+				>
 			</File>
 			<File
-				RelativePath="Clipboard.cpp">
+				RelativePath="Clipboard.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Clipboard.h">
+				RelativePath="Clipboard.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\crc32.cpp">
+				RelativePath="Util\crc32.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\crc32.h">
+				RelativePath="Util\crc32.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\dds.h">
+				RelativePath="Util\dds.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\DynamicArray2D.cpp">
+				RelativePath=".\Util\DynamicArray2D.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\DynamicArray2D.h">
+				RelativePath=".\Util\DynamicArray2D.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\EditorUtils.cpp">
+				RelativePath=".\Util\EditorUtils.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\EditorUtils.h">
+				RelativePath=".\Util\EditorUtils.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\fastlib.h">
+				RelativePath=".\Util\fastlib.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\FileEnum.cpp">
+				RelativePath=".\Util\FileEnum.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\FileEnum.h">
+				RelativePath=".\Util\FileEnum.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\FileUtil.cpp">
+				RelativePath="Util\FileUtil.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\FileUtil.h">
+				RelativePath="Util\FileUtil.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\functor.h">
+				RelativePath=".\Util\functor.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\FunctorMulticaster.h">
+				RelativePath=".\Util\FunctorMulticaster.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\GuidUtil.cpp">
+				RelativePath="Util\GuidUtil.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\GuidUtil.h">
+				RelativePath="Util\GuidUtil.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\MemoryBlock.cpp">
+				RelativePath="Util\MemoryBlock.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\MemoryBlock.h">
+				RelativePath="Util\MemoryBlock.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\NamedData.cpp">
+				RelativePath=".\Util\NamedData.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\NamedData.h">
+				RelativePath=".\Util\NamedData.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\PakFile.cpp">
+				RelativePath="Util\PakFile.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\PakFile.h">
+				RelativePath="Util\PakFile.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\PathUtil.h">
+				RelativePath="Util\PathUtil.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\RefCountBase.h">
+				RelativePath="Util\RefCountBase.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\smartptr.h">
+				RelativePath="Util\smartptr.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\Thread.cpp">
+				RelativePath="Util\Thread.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\Thread.h">
+				RelativePath="Util\Thread.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\ThreadWin32.h">
+				RelativePath="Util\ThreadWin32.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\Triangulate.cpp">
+				RelativePath=".\Util\Triangulate.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\Triangulate.h">
+				RelativePath=".\Util\Triangulate.h"
+				>
 			</File>
 			<File
-				RelativePath="Util\Variable.cpp">
+				RelativePath="Util\Variable.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Util\Variable.h">
+				RelativePath="Util\Variable.h"
+				>
 			</File>
 			<File
-				RelativePath="WaitProgress.cpp">
+				RelativePath="WaitProgress.cpp"
+				>
 			</File>
 			<File
-				RelativePath="WaitProgress.h">
+				RelativePath="WaitProgress.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\XmlArchive.cpp">
+				RelativePath=".\Util\XmlArchive.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\XmlArchive.h">
+				RelativePath=".\Util\XmlArchive.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\XmlTemplate.cpp">
+				RelativePath=".\Util\XmlTemplate.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Util\XmlTemplate.h">
+				RelativePath=".\Util\XmlTemplate.h"
+				>
 			</File>
 			<Filter
 				Name="Images"
-				Filter="">
+				>
 				<File
-					RelativePath=".\Util\IJL.H">
+					RelativePath=".\Util\IJL.H"
+					>
 				</File>
 				<File
-					RelativePath=".\Util\Image.cpp">
+					RelativePath=".\Util\Image.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Util\Image.h">
+					RelativePath=".\Util\Image.h"
+					>
 				</File>
 				<File
-					RelativePath="Util\Image_DXTC.cpp">
+					RelativePath="Util\Image_DXTC.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Util\Image_DXTC.h">
+					RelativePath="Util\Image_DXTC.h"
+					>
 				</File>
 				<File
-					RelativePath="Util\ImageGif.cpp">
+					RelativePath="Util\ImageGif.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Util\ImageGif.h">
+					RelativePath="Util\ImageGif.h"
+					>
 				</File>
 				<File
-					RelativePath="Util\ImagePainter.cpp">
+					RelativePath="Util\ImagePainter.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Util\ImagePainter.h">
+					RelativePath="Util\ImagePainter.h"
+					>
 				</File>
 				<File
-					RelativePath=".\Util\ImageUtil.cpp">
+					RelativePath=".\Util\ImageUtil.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Util\ImageUtil.h">
+					RelativePath=".\Util\ImageUtil.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Math"
-				Filter="">
+				>
 				<File
-					RelativePath="Util\BBox.cpp">
+					RelativePath="Util\BBox.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Util\BBox.h">
+					RelativePath="Util\BBox.h"
+					>
 				</File>
 				<File
-					RelativePath="Util\Math.h">
+					RelativePath="Util\Math.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="FileChangeMonitor"
-				Filter="">
+				>
 				<File
-					RelativePath="Util\FileChangeMonitor.cpp">
+					RelativePath="Util\FileChangeMonitor.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Util\FileChangeMonitor.h">
+					RelativePath="Util\FileChangeMonitor.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="zlib"
-				Filter="">
+				>
 				<Filter
 					Name="Source Files"
-					Filter="">
+					>
 					<File
-						RelativePath="zlib\adler32.c">
+						RelativePath="zlib\adler32.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\compress.c">
+						RelativePath="zlib\compress.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\crc32.c">
+						RelativePath="zlib\crc32.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"
-								ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"
-								ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"
-								ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
 								ObjectFile="$(IntDir)/$(InputName)1.obj"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
 								ObjectFile="$(IntDir)/$(InputName)1.obj"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								ObjectFile="$(IntDir)/$(InputName)1.obj"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								ObjectFile="$(IntDir)/$(InputName)1.obj"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								ObjectFile="$(IntDir)/$(InputName)1.obj"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\deflate.c">
+						RelativePath="zlib\deflate.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\gzio.c">
+						RelativePath="zlib\gzio.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\infblock.c">
+						RelativePath="zlib\infblock.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\infcodes.c">
+						RelativePath="zlib\infcodes.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\inffast.c">
+						RelativePath="zlib\inffast.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\inflate.c">
+						RelativePath="zlib\inflate.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\inftrees.c">
+						RelativePath="zlib\inftrees.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\infutil.c">
+						RelativePath="zlib\infutil.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\trees.c">
+						RelativePath="zlib\trees.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\uncompr.c">
+						RelativePath="zlib\uncompr.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="zlib\zutil.c">
+						RelativePath="zlib\zutil.c"
+						>
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Profile|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								UsePrecompiledHeader="0"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug64|Win32">
+							Name="Release|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release64|Win32">
+							Name="Debug|Win32"
+							>
 							<Tool
 								Name="VCCLCompilerTool"
 								UsePrecompiledHeader="0"
-								WarningLevel="2"/>
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Profile|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release64|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+								WarningLevel="2"
+							/>
 						</FileConfiguration>
 					</File>
 				</Filter>
 				<Filter
 					Name="Header Files"
-					Filter="">
+					>
 					<File
-						RelativePath="zlib\deflate.h">
+						RelativePath="zlib\deflate.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\infblock.h">
+						RelativePath="zlib\infblock.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\infcodes.h">
+						RelativePath="zlib\infcodes.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\inffast.h">
+						RelativePath="zlib\inffast.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\inffixed.h">
+						RelativePath="zlib\inffixed.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\inftrees.h">
+						RelativePath="zlib\inftrees.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\infutil.h">
+						RelativePath="zlib\infutil.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\trees.h">
+						RelativePath="zlib\trees.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\zconf.h">
+						RelativePath="zlib\zconf.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\zlib.h">
+						RelativePath="zlib\zlib.h"
+						>
 					</File>
 					<File
-						RelativePath="zlib\zutil.h">
+						RelativePath="zlib\zutil.h"
+						>
 					</File>
 				</Filter>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="EditTools"
-			Filter="">
+			>
 			<File
-				RelativePath=".\EditTool.cpp">
+				RelativePath=".\EditTool.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\EditTool.h">
+				RelativePath=".\EditTool.h"
+				>
 			</File>
 			<Filter
 				Name="Texture"
-				Filter="">
+				>
 				<File
-					RelativePath=".\TexturePanel.cpp">
+					RelativePath=".\TexturePanel.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\TexturePanel.h">
+					RelativePath=".\TexturePanel.h"
+					>
 				</File>
 				<File
-					RelativePath=".\TextureTool.cpp">
+					RelativePath=".\TextureTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\TextureTool.h">
+					RelativePath=".\TextureTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Clone"
-				Filter="">
+				>
 				<File
-					RelativePath=".\ObjectCloneTool.cpp">
+					RelativePath=".\ObjectCloneTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ObjectCloneTool.h">
+					RelativePath=".\ObjectCloneTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Create"
-				Filter="">
+				>
 				<File
-					RelativePath=".\ObjectCreateTool.cpp">
+					RelativePath=".\ObjectCreateTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\ObjectCreateTool.h">
+					RelativePath=".\ObjectCreateTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Pick"
-				Filter="">
+				>
 				<File
-					RelativePath=".\PickObjectTool.cpp">
+					RelativePath=".\PickObjectTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\PickObjectTool.h">
+					RelativePath=".\PickObjectTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="LinkTool"
-				Filter="">
+				>
 				<File
-					RelativePath="LinkTool.cpp">
+					RelativePath="LinkTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath="LinkTool.h">
+					RelativePath="LinkTool.h"
+					>
 				</File>
 				<File
-					RelativePath="UnlinkTool.cpp">
+					RelativePath="UnlinkTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath="UnlinkTool.h">
+					RelativePath="UnlinkTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="AlignTool"
-				Filter="">
+				>
 				<File
-					RelativePath="AlignTool.cpp">
+					RelativePath="AlignTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath="AlignTool.h">
+					RelativePath="AlignTool.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="TerrainTools"
-			Filter="">
+			>
 			<Filter
 				Name="Hole"
-				Filter="">
+				>
 				<File
-					RelativePath=".\TerrainHolePanel.cpp">
+					RelativePath=".\TerrainHolePanel.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\TerrainHolePanel.h">
+					RelativePath=".\TerrainHolePanel.h"
+					>
 				</File>
 				<File
-					RelativePath=".\TerrainHoleTool.cpp">
+					RelativePath=".\TerrainHoleTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\TerrainHoleTool.h">
+					RelativePath=".\TerrainHoleTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Modify"
-				Filter="">
+				>
 				<File
-					RelativePath=".\TerrainModifyPanel.cpp">
+					RelativePath=".\TerrainModifyPanel.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\TerrainModifyPanel.h">
+					RelativePath=".\TerrainModifyPanel.h"
+					>
 				</File>
 				<File
-					RelativePath=".\TerrainModifyTool.cpp">
+					RelativePath=".\TerrainModifyTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\TerrainModifyTool.h">
+					RelativePath=".\TerrainModifyTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Environment"
-				Filter="">
+				>
 				<File
-					RelativePath=".\EnvironmentPanel.cpp">
+					RelativePath=".\EnvironmentPanel.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\EnvironmentPanel.h">
+					RelativePath=".\EnvironmentPanel.h"
+					>
 				</File>
 				<File
-					RelativePath=".\EnvironmentTool.cpp">
+					RelativePath=".\EnvironmentTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\EnvironmentTool.h">
+					RelativePath=".\EnvironmentTool.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="TexturePainter"
-				Filter="">
+				>
 				<File
-					RelativePath="TerrainPainterPanel.cpp">
+					RelativePath="TerrainPainterPanel.cpp"
+					>
 				</File>
 				<File
-					RelativePath="TerrainPainterPanel.h">
+					RelativePath="TerrainPainterPanel.h"
+					>
 				</File>
 				<File
-					RelativePath="TerrainTexturePainter.cpp">
+					RelativePath="TerrainTexturePainter.cpp"
+					>
 				</File>
 				<File
-					RelativePath="TerrainTexturePainter.h">
+					RelativePath="TerrainTexturePainter.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Move"
-				Filter="">
+				>
 				<File
-					RelativePath="TerrainMoveTool.cpp">
+					RelativePath="TerrainMoveTool.cpp"
+					>
 				</File>
 				<File
-					RelativePath="TerrainMoveTool.h">
+					RelativePath="TerrainMoveTool.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Undo"
-			Filter="">
+			>
 			<File
-				RelativePath=".\Undo\IUndoObject.h">
+				RelativePath=".\Undo\IUndoObject.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Undo\Undo.cpp">
+				RelativePath=".\Undo\Undo.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Undo\Undo.h">
+				RelativePath=".\Undo\Undo.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="MaterialTools"
-			Filter="">
+			>
 			<File
-				RelativePath=".\ShaderTemplatePanel.cpp">
+				RelativePath=".\ShaderTemplatePanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ShaderTemplatePanel.h">
+				RelativePath=".\ShaderTemplatePanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\ShaderTemplateTool.cpp">
+				RelativePath=".\ShaderTemplateTool.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\ShaderTemplateTool.h">
+				RelativePath=".\ShaderTemplateTool.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Vegetation"
-			Filter="">
+			>
 			<File
-				RelativePath="VegetationBrush.cpp">
+				RelativePath="VegetationBrush.cpp"
+				>
 			</File>
 			<File
-				RelativePath="VegetationBrush.h">
+				RelativePath="VegetationBrush.h"
+				>
 			</File>
 			<File
-				RelativePath="VegetationMap.cpp">
+				RelativePath="VegetationMap.cpp"
+				>
 			</File>
 			<File
-				RelativePath="VegetationMap.h">
+				RelativePath="VegetationMap.h"
+				>
 			</File>
 			<File
-				RelativePath="VegetationObject.cpp">
+				RelativePath="VegetationObject.cpp"
+				>
 			</File>
 			<File
-				RelativePath="VegetationObject.h">
+				RelativePath="VegetationObject.h"
+				>
 			</File>
 			<File
-				RelativePath=".\VegetationPanel.cpp">
+				RelativePath=".\VegetationPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\VegetationPanel.h">
+				RelativePath=".\VegetationPanel.h"
+				>
 			</File>
 			<File
-				RelativePath=".\VegetationTool.cpp">
+				RelativePath=".\VegetationTool.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\VegetationTool.h">
+				RelativePath=".\VegetationTool.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="AI"
-			Filter="">
+			>
 			<File
-				RelativePath="AI\AiBehavior.cpp">
+				RelativePath="AI\AiBehavior.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AI\AiBehavior.h">
+				RelativePath="AI\AiBehavior.h"
+				>
 			</File>
 			<File
-				RelativePath="AI\AiBehaviorLibrary.cpp">
+				RelativePath="AI\AiBehaviorLibrary.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AI\AiBehaviorLibrary.h">
+				RelativePath="AI\AiBehaviorLibrary.h"
+				>
 			</File>
 			<File
-				RelativePath="AI\AiGoal.cpp">
+				RelativePath="AI\AiGoal.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AI\AiGoal.h">
+				RelativePath="AI\AiGoal.h"
+				>
 			</File>
 			<File
-				RelativePath="AI\AiGoalLibrary.cpp">
+				RelativePath="AI\AiGoalLibrary.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AI\AiGoalLibrary.h">
+				RelativePath="AI\AiGoalLibrary.h"
+				>
 			</File>
 			<File
-				RelativePath="AI\AIManager.cpp">
+				RelativePath="AI\AIManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AI\AIManager.h">
+				RelativePath="AI\AIManager.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="TrackView"
-			Filter="">
+			>
 			<File
-				RelativePath="IKeyDlg.cpp">
+				RelativePath="IKeyDlg.cpp"
+				>
 			</File>
 			<File
-				RelativePath="IKeyDlg.h">
+				RelativePath="IKeyDlg.h"
+				>
 			</File>
 			<File
-				RelativePath="TcbKeyDialog.cpp">
+				RelativePath="TcbKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TcbKeyDialog.h">
+				RelativePath="TcbKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TcbPreviewCtrl.cpp">
+				RelativePath="TcbPreviewCtrl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TcbPreviewCtrl.h">
+				RelativePath="TcbPreviewCtrl.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewControlBar.cpp">
+				RelativePath="TrackViewControlBar.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewControlBar.h">
+				RelativePath="TrackViewControlBar.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewDialog.cpp">
+				RelativePath="TrackViewDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewDialog.h">
+				RelativePath="TrackViewDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewGraph.cpp">
+				RelativePath="TrackViewGraph.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewGraph.h">
+				RelativePath="TrackViewGraph.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewKeyList.cpp">
+				RelativePath="TrackViewKeyList.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewKeyList.h">
+				RelativePath="TrackViewKeyList.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewKeys.cpp">
+				RelativePath="TrackViewKeys.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewKeys.h">
+				RelativePath="TrackViewKeys.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewNodes.cpp">
+				RelativePath="TrackViewNodes.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewNodes.h">
+				RelativePath="TrackViewNodes.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewSpline.cpp">
+				RelativePath="TrackViewSpline.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewSpline.h">
+				RelativePath="TrackViewSpline.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewSplitter.cpp">
+				RelativePath="TrackViewSplitter.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewSplitter.h">
+				RelativePath="TrackViewSplitter.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewTimeBar.cpp">
+				RelativePath="TrackViewTimeBar.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewTimeBar.h">
+				RelativePath="TrackViewTimeBar.h"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewUndo.cpp">
+				RelativePath="TrackViewUndo.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TrackViewUndo.h">
+				RelativePath="TrackViewUndo.h"
+				>
 			</File>
 			<File
-				RelativePath="TVCharacterKeyDialog.cpp">
+				RelativePath="TVCharacterKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVCharacterKeyDialog.h">
+				RelativePath="TVCharacterKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TVConsoleKeyDialog.cpp">
+				RelativePath="TVConsoleKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVConsoleKeyDialog.h">
+				RelativePath="TVConsoleKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TVEventKeyDialog.cpp">
+				RelativePath="TVEventKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVEventKeyDialog.h">
+				RelativePath="TVEventKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TVExprKeyDialog.cpp">
+				RelativePath="TVExprKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVExprKeyDialog.h">
+				RelativePath="TVExprKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TVMusicKeyDialog.cpp">
+				RelativePath="TVMusicKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVMusicKeyDialog.h">
+				RelativePath="TVMusicKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TVSelectKeyDialog.cpp">
+				RelativePath="TVSelectKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVSelectKeyDialog.h">
+				RelativePath="TVSelectKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TVSequenceProps.cpp">
+				RelativePath="TVSequenceProps.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVSequenceProps.h">
+				RelativePath="TVSequenceProps.h"
+				>
 			</File>
 			<File
-				RelativePath="TVSoundKeyDialog.cpp">
+				RelativePath="TVSoundKeyDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVSoundKeyDialog.h">
+				RelativePath="TVSoundKeyDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="TVTrackPropsDialog.cpp">
+				RelativePath="TVTrackPropsDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TVTrackPropsDialog.h">
+				RelativePath="TVTrackPropsDialog.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Animation"
-			Filter="">
+			>
 			<File
-				RelativePath="AnimationContext.cpp">
+				RelativePath="AnimationContext.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AnimationContext.h">
+				RelativePath="AnimationContext.h"
+				>
 			</File>
 			<File
-				RelativePath="AnimationSerializer.cpp">
+				RelativePath="AnimationSerializer.cpp"
+				>
 			</File>
 			<File
-				RelativePath="AnimationSerializer.h">
+				RelativePath="AnimationSerializer.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="EquipPack"
-			Filter="">
+			>
 			<File
-				RelativePath="EquipPack.cpp">
+				RelativePath="EquipPack.cpp"
+				>
 			</File>
 			<File
-				RelativePath="EquipPack.h">
+				RelativePath="EquipPack.h"
+				>
 			</File>
 			<File
-				RelativePath="EquipPackLib.cpp">
+				RelativePath="EquipPackLib.cpp"
+				>
 			</File>
 			<File
-				RelativePath="EquipPackLib.h">
+				RelativePath="EquipPackLib.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Commands"
-			Filter="">
+			>
 			<File
-				RelativePath="Commands\Command.cpp">
+				RelativePath="Commands\Command.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Commands\Command.h">
+				RelativePath="Commands\Command.h"
+				>
 			</File>
 			<File
-				RelativePath="Commands\CommandManager.cpp">
+				RelativePath="Commands\CommandManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Commands\CommandManager.h">
+				RelativePath="Commands\CommandManager.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Brush"
-			Filter="">
+			>
 			<File
-				RelativePath="Brush\Brush.cpp">
+				RelativePath="Brush\Brush.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\Brush.h">
+				RelativePath="Brush\Brush.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushExporter.cpp">
+				RelativePath="Brush\BrushExporter.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushExporter.h">
+				RelativePath="Brush\BrushExporter.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushFace.cpp">
+				RelativePath="Brush\BrushFace.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushFace.h">
+				RelativePath="Brush\BrushFace.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushMtl.cpp">
+				RelativePath="Brush\BrushMtl.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushMtl.h">
+				RelativePath="Brush\BrushMtl.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushMtlLib.cpp">
+				RelativePath="Brush\BrushMtlLib.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushMtlLib.h">
+				RelativePath="Brush\BrushMtlLib.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushPanel.cpp">
+				RelativePath="Brush\BrushPanel.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushPanel.h">
+				RelativePath="Brush\BrushPanel.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushPlane.cpp">
+				RelativePath="Brush\BrushPlane.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushPlane.h">
+				RelativePath="Brush\BrushPlane.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushPoly.cpp">
+				RelativePath="Brush\BrushPoly.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushPoly.h">
+				RelativePath="Brush\BrushPoly.h"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushTool.cpp">
+				RelativePath="Brush\BrushTool.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Brush\BrushTool.h">
+				RelativePath="Brush\BrushTool.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Mission"
-			Filter="">
+			>
 			<File
-				RelativePath=".\Mission.cpp">
+				RelativePath=".\Mission.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Mission.h">
+				RelativePath=".\Mission.h"
+				>
 			</File>
 			<File
-				RelativePath="MissionScript.cpp">
+				RelativePath="MissionScript.cpp"
+				>
 			</File>
 			<File
-				RelativePath="MissionScript.h">
+				RelativePath="MissionScript.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Libraries"
-			Filter="">
+			>
 			<File
-				RelativePath="Lib\IJL15.LIB">
+				RelativePath="Lib\IJL15.LIB"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Terrain"
-			Filter="">
+			>
 			<File
-				RelativePath=".\Clouds.cpp">
+				RelativePath=".\Clouds.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Clouds.h">
+				RelativePath=".\Clouds.h"
+				>
 			</File>
 			<File
-				RelativePath=".\GenerationParam.cpp">
+				RelativePath=".\GenerationParam.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\GenerationParam.h">
+				RelativePath=".\GenerationParam.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Heightmap.cpp">
+				RelativePath=".\Heightmap.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Heightmap.h">
+				RelativePath=".\Heightmap.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Layer.cpp">
+				RelativePath=".\Layer.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Layer.h">
+				RelativePath=".\Layer.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Noise.cpp">
+				RelativePath=".\Noise.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\Noise.h">
+				RelativePath=".\Noise.h"
+				>
 			</File>
 			<File
-				RelativePath=".\SurfaceType.cpp">
+				RelativePath=".\SurfaceType.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\SurfaceType.h">
+				RelativePath=".\SurfaceType.h"
+				>
 			</File>
 			<File
-				RelativePath="TerrainBeachGen.cpp">
+				RelativePath="TerrainBeachGen.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TerrainBeachGen.h">
+				RelativePath="TerrainBeachGen.h"
+				>
 			</File>
 			<File
-				RelativePath="TerrainGrid.cpp">
+				RelativePath="TerrainGrid.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TerrainGrid.h">
+				RelativePath="TerrainGrid.h"
+				>
 			</File>
 			<File
-				RelativePath="TerrainTexGen.cpp">
+				RelativePath="TerrainTexGen.cpp"
+				>
 			</File>
 			<File
-				RelativePath="TerrainTexGen.h">
+				RelativePath="TerrainTexGen.h"
+				>
 			</File>
 			<File
-				RelativePath=".\TextureCompression.cpp">
+				RelativePath=".\TextureCompression.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\TextureCompression.h">
+				RelativePath=".\TextureCompression.h"
+				>
 			</File>
 			<Filter
 				Name="Sky Accessiblity"
-				Filter="">
+				>
 				<File
-					RelativePath="HeightmapAccessibility.h">
+					RelativePath="HeightmapAccessibility.h"
+					>
 				</File>
 				<File
-					RelativePath="HorizonTracker.h">
+					RelativePath="HorizonTracker.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="GameExport"
-			Filter="">
+			>
 			<File
-				RelativePath="GameExporter.cpp">
+				RelativePath="GameExporter.cpp"
+				>
 			</File>
 			<File
-				RelativePath="GameExporter.h">
+				RelativePath="GameExporter.h"
+				>
 			</File>
 			<File
-				RelativePath=".\GameResourcesExporter.cpp">
+				RelativePath=".\GameResourcesExporter.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\GameResourcesExporter.h">
+				RelativePath=".\GameResourcesExporter.h"
+				>
 			</File>
 			<File
-				RelativePath=".\OBJExporter1.cpp">
+				RelativePath=".\OBJExporter1.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\OBJExporter1.h">
+				RelativePath=".\OBJExporter1.h"
+				>
 			</File>
 			<File
-				RelativePath="ParticleExporter.cpp">
+				RelativePath="ParticleExporter.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ParticleExporter.h">
+				RelativePath="ParticleExporter.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="LightmapCompiler"
-			Filter="">
+			>
 			<File
-				RelativePath=".\LightmapCompiler\GLMInfo.cpp">
+				RelativePath=".\LightmapCompiler\GLMInfo.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\LightmapCompiler\GLMInfo.h">
+				RelativePath=".\LightmapCompiler\GLMInfo.h"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\IndoorLightPatches.h">
+				RelativePath="LightmapCompiler\IndoorLightPatches.h"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\IndoorPatches.cpp">
+				RelativePath="LightmapCompiler\IndoorPatches.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\IndoorPatchLights.cpp">
+				RelativePath="LightmapCompiler\IndoorPatchLights.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\LMCompCommon.h">
+				RelativePath="LightmapCompiler\LMCompCommon.h"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\LMLightCollection.h">
+				RelativePath="LightmapCompiler\LMLightCollection.h"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\RadMesh.cpp">
+				RelativePath="LightmapCompiler\RadMesh.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\RasterCube.h">
+				RelativePath="LightmapCompiler\RasterCube.h"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\RasterTable.h">
+				RelativePath="LightmapCompiler\RasterTable.h"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\SimpleTriangleRasterizer.cpp">
+				RelativePath="LightmapCompiler\SimpleTriangleRasterizer.cpp"
+				>
 			</File>
 			<File
-				RelativePath="LightmapCompiler\SimpleTriangleRasterizer.h">
+				RelativePath="LightmapCompiler\SimpleTriangleRasterizer.h"
+				>
 			</File>
 			<File
-				RelativePath="TODO.txt">
+				RelativePath="TODO.txt"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="DataBase"
-			Filter="">
+			>
 			<File
-				RelativePath="BaseLibrary.cpp">
+				RelativePath="BaseLibrary.cpp"
+				>
 			</File>
 			<File
-				RelativePath="BaseLibrary.h">
+				RelativePath="BaseLibrary.h"
+				>
 			</File>
 			<File
-				RelativePath="BaseLibraryDialog.cpp">
+				RelativePath="BaseLibraryDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="BaseLibraryDialog.h">
+				RelativePath="BaseLibraryDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="BaseLibraryItem.cpp">
+				RelativePath="BaseLibraryItem.cpp"
+				>
 			</File>
 			<File
-				RelativePath="BaseLibraryItem.h">
+				RelativePath="BaseLibraryItem.h"
+				>
 			</File>
 			<File
-				RelativePath="BaseLibraryManager.cpp">
+				RelativePath="BaseLibraryManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath="BaseLibraryManager.h">
+				RelativePath="BaseLibraryManager.h"
+				>
 			</File>
 			<File
-				RelativePath="DataBaseDialog.cpp">
+				RelativePath="DataBaseDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="DataBaseDialog.h">
+				RelativePath="DataBaseDialog.h"
+				>
 			</File>
 			<Filter
 				Name="EntityArchetype"
-				Filter="">
+				>
 				<File
-					RelativePath="EntityProtLibDialog.cpp">
+					RelativePath="EntityProtLibDialog.cpp"
+					>
 				</File>
 				<File
-					RelativePath="EntityProtLibDialog.h">
+					RelativePath="EntityProtLibDialog.h"
+					>
 				</File>
 				<File
-					RelativePath="EntityPrototype.cpp">
+					RelativePath="EntityPrototype.cpp"
+					>
 				</File>
 				<File
-					RelativePath="EntityPrototype.h">
+					RelativePath="EntityPrototype.h"
+					>
 				</File>
 				<File
-					RelativePath="EntityPrototypeLibrary.cpp">
+					RelativePath="EntityPrototypeLibrary.cpp"
+					>
 				</File>
 				<File
-					RelativePath="EntityPrototypeLibrary.h">
+					RelativePath="EntityPrototypeLibrary.h"
+					>
 				</File>
 				<File
-					RelativePath="EntityPrototypeManager.cpp">
+					RelativePath="EntityPrototypeManager.cpp"
+					>
 				</File>
 				<File
-					RelativePath="EntityPrototypeManager.h">
+					RelativePath="EntityPrototypeManager.h"
+					>
 				</File>
 				<File
-					RelativePath="EntityScriptDialog.cpp">
+					RelativePath="EntityScriptDialog.cpp"
+					>
 				</File>
 				<File
-					RelativePath="EntityScriptDialog.h">
+					RelativePath="EntityScriptDialog.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="ParticlesEditor"
-				Filter="">
+				>
 				<File
-					RelativePath="Particles\ParticleDialog.cpp">
+					RelativePath="Particles\ParticleDialog.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Particles\ParticleDialog.h">
+					RelativePath="Particles\ParticleDialog.h"
+					>
 				</File>
 				<File
-					RelativePath="Particles\ParticleItem.cpp">
+					RelativePath="Particles\ParticleItem.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Particles\ParticleItem.h">
+					RelativePath="Particles\ParticleItem.h"
+					>
 				</File>
 				<File
-					RelativePath="Particles\ParticleLibrary.cpp">
+					RelativePath="Particles\ParticleLibrary.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Particles\ParticleLibrary.h">
+					RelativePath="Particles\ParticleLibrary.h"
+					>
 				</File>
 				<File
-					RelativePath="Particles\ParticleManager.cpp">
+					RelativePath="Particles\ParticleManager.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Particles\ParticleManager.h">
+					RelativePath="Particles\ParticleManager.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="MusicEditor"
-				Filter="">
+				>
 				<File
-					RelativePath="Music\MusicEditorDialog.cpp">
+					RelativePath="Music\MusicEditorDialog.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicEditorDialog.h">
+					RelativePath="Music\MusicEditorDialog.h"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicEditorUI.h">
+					RelativePath="Music\MusicEditorUI.h"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicManager.cpp">
+					RelativePath="Music\MusicManager.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicManager.h">
+					RelativePath="Music\MusicManager.h"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicThemeLibItem.cpp">
+					RelativePath="Music\MusicThemeLibItem.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicThemeLibItem.h">
+					RelativePath="Music\MusicThemeLibItem.h"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicThemeLibrary.cpp">
+					RelativePath="Music\MusicThemeLibrary.cpp"
+					>
 				</File>
 				<File
-					RelativePath="Music\MusicThemeLibrary.h">
+					RelativePath="Music\MusicThemeLibrary.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="PrefabsEditor"
-				Filter="">
+				>
 				<File
-					RelativePath=".\Prefabs\PrefabDialog.cpp">
+					RelativePath=".\Prefabs\PrefabDialog.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Prefabs\PrefabDialog.h">
+					RelativePath=".\Prefabs\PrefabDialog.h"
+					>
 				</File>
 				<File
-					RelativePath=".\Prefabs\PrefabItem.cpp">
+					RelativePath=".\Prefabs\PrefabItem.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Prefabs\PrefabItem.h">
+					RelativePath=".\Prefabs\PrefabItem.h"
+					>
 				</File>
 				<File
-					RelativePath=".\Prefabs\PrefabLibrary.cpp">
+					RelativePath=".\Prefabs\PrefabLibrary.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Prefabs\PrefabLibrary.h">
+					RelativePath=".\Prefabs\PrefabLibrary.h"
+					>
 				</File>
 				<File
-					RelativePath=".\Prefabs\PrefabManager.cpp">
+					RelativePath=".\Prefabs\PrefabManager.cpp"
+					>
 				</File>
 				<File
-					RelativePath=".\Prefabs\PrefabManager.h">
+					RelativePath=".\Prefabs\PrefabManager.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Material"
-			Filter="">
+			>
 			<File
-				RelativePath="Material\Material.cpp">
+				RelativePath="Material\Material.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Material\Material.h">
+				RelativePath="Material\Material.h"
+				>
 			</File>
 			<File
-				RelativePath="Material\MaterialDialog.cpp">
+				RelativePath="Material\MaterialDialog.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Material\MaterialDialog.h">
+				RelativePath="Material\MaterialDialog.h"
+				>
 			</File>
 			<File
-				RelativePath="Material\MaterialLibrary.cpp">
+				RelativePath="Material\MaterialLibrary.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Material\MaterialLibrary.h">
+				RelativePath="Material\MaterialLibrary.h"
+				>
 			</File>
 			<File
-				RelativePath="Material\MaterialManager.cpp">
+				RelativePath="Material\MaterialManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath="Material\MaterialManager.h">
+				RelativePath="Material\MaterialManager.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Presets"
-			Filter="">
+			>
 			<Filter
 				Name="EAXPresets"
-				Filter="">
+				>
 				<File
-					RelativePath="EAXPresetMgr.cpp">
+					RelativePath="EAXPresetMgr.cpp"
+					>
 				</File>
 				<File
-					RelativePath="EAXPresetMgr.h">
+					RelativePath="EAXPresetMgr.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="SoundPresets"
-				Filter="">
+				>
 				<File
-					RelativePath="SoundPresetMgr.cpp">
+					RelativePath="SoundPresetMgr.cpp"
+					>
 				</File>
 				<File
-					RelativePath="SoundPresetMgr.h">
+					RelativePath="SoundPresetMgr.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Include"
-			Filter="">
+			>
 			<File
-				RelativePath=".\Include\IDataBaseItem.h">
+				RelativePath=".\Include\IDataBaseItem.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Include\IDataBaseLibrary.h">
+				RelativePath=".\Include\IDataBaseLibrary.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Include\IDataBaseManager.h">
+				RelativePath=".\Include\IDataBaseManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Include\IGizmoManager.h">
+				RelativePath=".\Include\IGizmoManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Include\IObjectManager.h">
+				RelativePath=".\Include\IObjectManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Include\IPreferencesPage.h">
+				RelativePath=".\Include\IPreferencesPage.h"
+				>
 			</File>
 			<File
-				RelativePath=".\Include\ObjectEvent.h">
+				RelativePath=".\Include\ObjectEvent.h"
+				>
 			</File>
 		</Filter>
 		<File
-			RelativePath=".\changes.txt">
+			RelativePath=".\changes.txt"
+			>
 		</File>
 	</Files>
 	<Globals>
 		<Global
 			Name="RESOURCE_FILE"
-			Value="CryEdit.rc"/>
+			Value="CryEdit.rc"
+		/>
 	</Globals>
 </VisualStudioProject>

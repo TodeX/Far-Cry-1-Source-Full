@@ -1,29 +1,68 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="ResourceCompilerPC"
 	ProjectGUID="{43B9F5EF-C4FC-44FF-BEB0-70EFE792B6C0}"
 	SccProjectName="SAK"
 	SccAuxPath="SAK"
 	SccLocalPath="SAK"
 	SccProvider="SAK"
-	Keyword="Win32Proj">
+	Keyword="Win32Proj"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Debug"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="0"
-				OptimizeForProcessor="0"
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS"
 				MinimalRebuild="TRUE"
@@ -34,11 +73,19 @@
 				UsePrecompiledHeader="3"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="FALSE"
-				DebugInformationFormat="4"/>
+				DebugInformationFormat="4"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/ResourceCompilerPC.dll"
 				LinkIncremental="2"
@@ -47,36 +94,65 @@
 				ProgramDatabaseFile="$(OutDir)/ResourceCompilerPC.pdb"
 				SubSystem="2"
 				ImportLibrary="$(OutDir)/ResourceCompilerPC.lib"
-				TargetMachine="1"/>
+				TargetMachine="1"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -84,7 +160,6 @@
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS;_RELEASE"
 				StringPooling="TRUE"
@@ -95,11 +170,20 @@
 				UsePrecompiledHeader="3"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="FALSE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/ResourceCompilerPC.dll"
 				LinkIncremental="1"
@@ -109,36 +193,66 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				ImportLibrary="$(OutDir)/ResourceCompilerPC.lib"
-				TargetMachine="1"/>
+				TargetMachine="1"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;WIN64;WIN32;_DEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS"
@@ -149,15 +263,24 @@
 				UsePrecompiledHeader="3"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:AMD64"
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/$(ProjectName)64.dll"
 				LinkIncremental="2"
+				GenerateManifest="FALSE"
 				IgnoreDefaultLibraryNames=""
 				ModuleDefinitionFile="ResourceCompilerPlugin.def"
 				GenerateDebugInformation="TRUE"
@@ -165,41 +288,73 @@
 				SubSystem="2"
 				LargeAddressAware="2"
 				ImportLibrary="$(OutDir)/$(ProjectName)64.lib"
-				TargetMachine="0"/>
+				TargetMachine="0"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				GlobalOptimizations="FALSE"
 				InlineFunctionExpansion="0"
 				EnableIntrinsicFunctions="FALSE"
+				OmitFramePointers="TRUE"
+				WholeProgramOptimization="TRUE"
 				AdditionalIncludeDirectories="..\ResourceCompiler,..\CryCommon"
 				PreprocessorDefinitions="_AMD64_;WIN64;WIN32;NDEBUG;_WINDOWS;_USRDLL;RESOURCECOMPILERPC_EXPORTS"
 				StringPooling="TRUE"
@@ -207,18 +362,29 @@
 				SmallerTypeCheck="FALSE"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="FALSE"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="3"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:AMD64"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf"
 				AdditionalDependencies="dbghelp.lib"
 				OutputFile="$(OutDir)/$(ProjectName)64.dll"
 				LinkIncremental="1"
+				GenerateManifest="FALSE"
+				ManifestFile="$(TargetPath).intermediate.manifest"
 				ModuleDefinitionFile="ResourceCompilerPlugin.def"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
@@ -227,27 +393,20 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				ImportLibrary="$(OutDir)/$(ProjectName)64.lib"
-				TargetMachine="0"/>
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -255,393 +414,509 @@
 	<Files>
 		<Filter
 			Name="Skin"
-			Filter="">
+			>
 			<File
-				RelativePath="CrySkinAMD64.asm">
+				RelativePath="CrySkinAMD64.asm"
+				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
+					ExcludedFromBuild="TRUE"
+					>
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCustomBuildTool"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
+					ExcludedFromBuild="TRUE"
+					>
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCustomBuildTool"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Compiling $(InputName)"
-						CommandLine="ml64 /c /Fl&quot;$(OutDir)\$(InputName).cod&quot; /Fo&quot;$(OutDir)\$(InputName).obj&quot; $(InputPath)
-"
-						Outputs="$(OutDir)\$(InputName).obj"/>
+						CommandLine="ml64 /c /Fl&quot;$(OutDir)\$(InputName).cod&quot; /Fo&quot;$(OutDir)\$(InputName).obj&quot; $(InputPath)&#x0D;&#x0A;"
+						Outputs="$(OutDir)\$(InputName).obj"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Compiling $(InputName)"
-						CommandLine="ml64 /c /Fl&quot;$(OutDir)\$(InputName).cod&quot; /Fo&quot;$(OutDir)\$(InputName).obj&quot; $(InputPath)
-"
-						Outputs="$(OutDir)\$(InputName).obj"/>
+						CommandLine="ml64 /c /Fl&quot;$(OutDir)\$(InputName).cod&quot; /Fo&quot;$(OutDir)\$(InputName).obj&quot; $(InputPath)&#x0D;&#x0A;"
+						Outputs="$(OutDir)\$(InputName).obj"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="CrySkinBase.cpp">
+				RelativePath="CrySkinBase.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinBase.h">
+				RelativePath="CrySkinBase.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinBasisBuilder.cpp">
+				RelativePath="CrySkinBasisBuilder.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinBasisBuilder.h">
+				RelativePath="CrySkinBasisBuilder.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinBuilder.cpp">
+				RelativePath="CrySkinBuilder.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinBuilder.h">
+				RelativePath="CrySkinBuilder.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinBuilderBase.cpp">
+				RelativePath="CrySkinBuilderBase.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinBuilderBase.h">
+				RelativePath="CrySkinBuilderBase.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinFull.cpp">
+				RelativePath="CrySkinFull.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinFull.h">
+				RelativePath="CrySkinFull.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinMorph.cpp">
+				RelativePath="CrySkinMorph.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinMorph.h">
+				RelativePath="CrySkinMorph.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinMorphBuilder.cpp">
+				RelativePath="CrySkinMorphBuilder.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinMorphBuilder.h">
+				RelativePath="CrySkinMorphBuilder.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinRigidBasis.cpp">
+				RelativePath="CrySkinRigidBasis.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinRigidBasis.h">
+				RelativePath="CrySkinRigidBasis.h"
+				>
 			</File>
 			<File
-				RelativePath="CrySkinTypes.h">
+				RelativePath="CrySkinTypes.h"
+				>
 			</File>
 			<Filter
 				Name="DataSources"
-				Filter="">
+				>
 				<File
-					RelativePath="SkinDataSources.cpp">
+					RelativePath="SkinDataSources.cpp"
+					>
 				</File>
 				<File
-					RelativePath="SkinDataSources.h">
+					RelativePath="SkinDataSources.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Front-End"
-			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;h;hpp;hxx;hm;inl;inc">
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;h;hpp;hxx;hm;inl;inc"
+			>
 			<File
-				RelativePath="CalConvertor.h">
+				RelativePath="CalConvertor.h"
+				>
 			</File>
 			<File
-				RelativePath="CgfConvertor.cpp">
+				RelativePath="CgfConvertor.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CgfConvertor.h">
+				RelativePath="CgfConvertor.h"
+				>
 			</File>
 			<File
-				RelativePath="CgfUtils.cpp">
+				RelativePath="CgfUtils.cpp"
+				>
 			</File>
 			<File
-				RelativePath="GC_CgfConverter.cpp">
+				RelativePath="GC_CgfConverter.cpp"
+				>
 			</File>
 			<File
-				RelativePath="GC_CgfConverter.h">
+				RelativePath="GC_CgfConverter.h"
+				>
 			</File>
 			<File
-				RelativePath="ResourceCompilerPC.cpp">
+				RelativePath="ResourceCompilerPC.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ResourceCompilerPC.h">
+				RelativePath="ResourceCompilerPC.h"
+				>
 			</File>
 			<File
-				RelativePath="stdafx.cpp">
+				RelativePath="stdafx.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
+						UsePrecompiledHeader="1"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="stdafx.h">
+				RelativePath="stdafx.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+			>
 			<File
-				RelativePath="ReadMe.txt">
+				RelativePath="ReadMe.txt"
+				>
 			</File>
 			<File
-				RelativePath="ResourceCompilerPlugin.def">
+				RelativePath="ResourceCompilerPlugin.def"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Support"
-			Filter="">
+			>
 			<File
-				RelativePath="AutoFile.h">
+				RelativePath="AutoFile.h"
+				>
 			</File>
 			<File
-				RelativePath="..\..\GAME01\CryCommon\CryCompiledFile.h">
+				RelativePath="..\..\GAME01\CryCommon\CryCompiledFile.h"
+				>
 			</File>
 			<File
-				RelativePath="MathUtils.h">
+				RelativePath="MathUtils.h"
+				>
 			</File>
 			<File
-				RelativePath="RenderMeshBuilder.cpp">
+				RelativePath="RenderMeshBuilder.cpp"
+				>
 			</File>
 			<File
-				RelativePath="RenderMeshBuilder.h">
+				RelativePath="RenderMeshBuilder.h"
+				>
 			</File>
 			<File
-				RelativePath="TangentSpaceCalculation.h">
+				RelativePath="TangentSpaceCalculation.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Shared with Animation"
-			Filter="">
+			>
 			<File
-				RelativePath="BoneLightBindInfo.cpp">
+				RelativePath="BoneLightBindInfo.cpp"
+				>
 			</File>
 			<File
-				RelativePath="BoneLightBindInfo.h">
+				RelativePath="BoneLightBindInfo.h"
+				>
 			</File>
 			<File
-				RelativePath="ChunkFileReader.cpp">
+				RelativePath="ChunkFileReader.cpp"
+				>
 			</File>
 			<File
-				RelativePath="ChunkFileReader.h">
+				RelativePath="ChunkFileReader.h"
+				>
 			</File>
 			<File
-				RelativePath="Controller.h">
+				RelativePath="Controller.h"
+				>
 			</File>
 			<File
-				RelativePath="CryAnimationInfo.h">
+				RelativePath="CryAnimationInfo.h"
+				>
 			</File>
 			<File
-				RelativePath="CryBoneDesc.cpp">
+				RelativePath="CryBoneDesc.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CryBoneDesc.h">
+				RelativePath="CryBoneDesc.h"
+				>
 			</File>
 			<File
-				RelativePath="CryVertexBinding.cpp">
+				RelativePath="CryVertexBinding.cpp"
+				>
 			</File>
 			<File
-				RelativePath="CryVertexBinding.h">
+				RelativePath="CryVertexBinding.h"
+				>
 			</File>
 			<File
-				RelativePath="FileMapping.cpp">
+				RelativePath="FileMapping.cpp"
+				>
 			</File>
 			<File
-				RelativePath="FileMapping.h">
+				RelativePath="FileMapping.h"
+				>
 			</File>
 			<File
-				RelativePath="SSEUtils.cpp">
+				RelativePath="SSEUtils.cpp"
+				>
 			</File>
 			<File
-				RelativePath="SSEUtils.h">
+				RelativePath="SSEUtils.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="NvTriStrip"
-			Filter="">
+			>
 			<File
-				RelativePath="NvTriStrip\NvTriStrip.cpp">
+				RelativePath="NvTriStrip\NvTriStrip.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="NvTriStrip\NvTriStrip.h">
+				RelativePath="NvTriStrip\NvTriStrip.h"
+				>
 			</File>
 			<File
-				RelativePath="NvTriStrip\NvTriStripObjects.cpp">
+				RelativePath="NvTriStrip\NvTriStripObjects.cpp"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="NvTriStrip\NvTriStripObjects.h">
+				RelativePath="NvTriStrip\NvTriStripObjects.h"
+				>
 			</File>
 			<File
-				RelativePath="NvTriStrip\RenderPCH.h">
+				RelativePath="NvTriStrip\RenderPCH.h"
+				>
 			</File>
 			<File
-				RelativePath="NvTriStrip\VertexCache.h">
+				RelativePath="NvTriStrip\VertexCache.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Stencil Shadows"
-			Filter="">
+			>
 			<File
-				RelativePath="StencilShadowConnectivity.h">
+				RelativePath="StencilShadowConnectivity.h"
+				>
 			</File>
 			<File
-				RelativePath="StencilShadowConnectivityBuilder.cpp">
+				RelativePath="StencilShadowConnectivityBuilder.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StencilShadowConnectivityBuilder.h">
+				RelativePath="StencilShadowConnectivityBuilder.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="StatCGFCompiler"
-			Filter="">
+			>
 			<File
-				RelativePath="StatCGFCompiler\BaseObj.h">
+				RelativePath="StatCGFCompiler\BaseObj.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\CryStaticModel.cpp">
+				RelativePath="StatCGFCompiler\CryStaticModel.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\CryStaticModel.h">
+				RelativePath="StatCGFCompiler\CryStaticModel.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\File.cpp">
+				RelativePath="StatCGFCompiler\File.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\File.h">
+				RelativePath="StatCGFCompiler\File.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Geom.cpp">
+				RelativePath="StatCGFCompiler\Geom.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Geom.h">
+				RelativePath="StatCGFCompiler\Geom.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Helper.cpp">
+				RelativePath="StatCGFCompiler\Helper.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Helper.h">
+				RelativePath="StatCGFCompiler\Helper.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Light.cpp">
+				RelativePath="StatCGFCompiler\Light.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Light.h">
+				RelativePath="StatCGFCompiler\Light.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Meshidx.cpp">
+				RelativePath="StatCGFCompiler\Meshidx.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\CryCommon\MeshIdx.h">
+				RelativePath="..\CryCommon\MeshIdx.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Node.cpp">
+				RelativePath="StatCGFCompiler\Node.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\Node.h">
+				RelativePath="StatCGFCompiler\Node.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\StatCGFCompiler.cpp">
+				RelativePath="StatCGFCompiler\StatCGFCompiler.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\StatCGFCompiler.h">
+				RelativePath="StatCGFCompiler\StatCGFCompiler.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\StatCGFCompilerLB.cpp">
+				RelativePath="StatCGFCompiler\StatCGFCompilerLB.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\StatCGFCompilerLBSerialize.cpp">
+				RelativePath="StatCGFCompiler\StatCGFCompilerLBSerialize.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\StatCGFShadowVolume.h">
+				RelativePath="StatCGFCompiler\StatCGFShadowVolume.h"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\StatCGFShadVol.cpp">
+				RelativePath="StatCGFCompiler\StatCGFShadVol.cpp"
+				>
 			</File>
 			<File
-				RelativePath="StatCGFCompiler\StatObjPhysics.cpp">
+				RelativePath="StatCGFCompiler\StatObjPhysics.cpp"
+				>
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\CryCommon\fSinCos64.lib">
+			RelativePath="..\CryCommon\fSinCos64.lib"
+			>
 		</File>
 	</Files>
 	<Globals>

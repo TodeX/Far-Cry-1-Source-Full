@@ -1,28 +1,72 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="XRenderD3D9"
 	ProjectGUID="{6711B2B2-6829-4314-A491-D01A29365658}"
 	SccProjectName="Perforce Project"
-	SccAuxPath=""
 	SccLocalPath=".."
-	SccProvider="MSSCCI:Perforce SCM">
+	SccProvider="MSSCCI:Perforce SCM"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release/XRenderD3D9.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -30,7 +74,6 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\DX9SDK\Include;..\..\CryCommon"
 				PreprocessorDefinitions="_RELEASE;COMP_VC;DO_ASM;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;NDEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;_RENDERER"
 				StringPooling="TRUE"
@@ -47,11 +90,21 @@
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386 "
 				AdditionalDependencies="Winmm.lib version.lib d3dx9.lib d3d9.lib DXErr9.lib cg.lib cgD3D9.lib"
 				OutputFile=".\Release/XRenderD3D9.dll"
@@ -59,46 +112,72 @@
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="..\DX9SDK\Lib;Libraries"
 				ProgramDatabaseFile=".\Release/XRenderD3D9.pdb"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Release/XRenderD3D9.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Profile|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory="Profile"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
 			CharacterSet="2"
-			WholeProgramOptimization="FALSE">
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName="C:\MasterCD/XRenderD3D9.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="3"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
@@ -106,11 +185,10 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="TRUE"
 				EnableFiberSafeOptimizations="FALSE"
-				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="..\DX9SDK\Include;..\..\CryCommon"
 				PreprocessorDefinitions="ENABLE_FRAME_PROFILER;COMP_VC;DO_ASM;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;NDEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
 				StringPooling="TRUE"
-				RuntimeLibrary="4"
+				RuntimeLibrary="0"
 				BufferSecurityCheck="FALSE"
 				EnableFunctionLevelLinking="TRUE"
 				EnableEnhancedInstructionSet="0"
@@ -124,63 +202,99 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386 /OPT:REF /OPT:ICF"
+				ExecutionBucket="35"
+				AdditionalOptions="/MACHINE:I386 /OPT:ref,icf"
 				AdditionalDependencies="Winmm.lib version.lib d3dx9.lib d3d9.lib DXErr9.lib cg.lib cgD3D9.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="..\DX9SDK\Lib;Libraries"
 				GenerateDebugInformation="TRUE"
-				BaseAddress="0x38000000"/>
+				BaseAddress="0x38000000"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName="C:\MasterCD/XRenderD3D9.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin32"
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/XRenderD3D9.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
 				Optimization="0"
-				OptimizeForProcessor="0"
 				AdditionalIncludeDirectories="..\DX9SDK\Include;..\..\CryCommon"
 				PreprocessorDefinitions="ENABLE_FRAME_PROFILER;COMP_VC;DO_ASM;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;_DEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="5"
+				RuntimeLibrary="1"
 				BufferSecurityCheck="TRUE"
 				EnableFunctionLevelLinking="TRUE"
 				ForceConformanceInForLoopScope="TRUE"
@@ -193,59 +307,97 @@
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:I386 "
 				AdditionalDependencies="Winmm.lib version.lib d3dx9.lib d3d9.lib DXErr9.lib cg.lib cgD3D9.lib"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="..\DX9SDK\Lib;Libraries"
 				GenerateDebugInformation="TRUE"
-				ImportLibrary="$(IntDir)/$(TargetName).lib"/>
+				ImportLibrary="$(IntDir)/$(TargetName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/XRenderD3D9.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Debug64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/XRenderD3D9.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\CryCommon;..\DX9SDK\Include;"
-				PreprocessorDefinitions="_AMD64_;ENABLE_FRAME_PROFILER;COMP_VC;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN64;_DEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
+				PreprocessorDefinitions="_AMD64_;ENABLE_FRAME_PROFILER;COMP_VC;DIRECT3D9;OS_WIN32;PROC_INTEL;WIN32;WIN64;_DEBUG;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
 				BufferSecurityCheck="FALSE"
@@ -260,71 +412,112 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
+				ExecutionBucket="35"
 				AdditionalOptions="/MACHINE:AMD64"
 				AdditionalDependencies="Winmm.lib d3dx9.lib d3d9.lib DxErr9.lib version.lib ../../CryCommon/fSinCos64.lib"
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				SuppressStartupBanner="FALSE"
 				AdditionalLibraryDirectories="E:\WINDDK\dx9\AMD64\libs;Libraries"
+				GenerateManifest="FALSE"
 				IgnoreDefaultLibraryNames="libcd.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/XRenderD3D9.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release64|Win32"
-			OutputDirectory="D:\Games\FC\Bin32"
+			OutputDirectory="C:\MasterCD\Bin64"
 			IntermediateDirectory="Release64"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				ExecutionBucket="6"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+				ExecutionBucket="12"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+				ExecutionBucket="15"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				ExecutionBucket="21"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/XRenderD3D9.tlb"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/fp:fast"
+				ExecutionBucket="24"
+				AdditionalOptions="/GS-"
 				Optimization="2"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="TRUE"
 				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				WholeProgramOptimization="TRUE"
 				AdditionalIncludeDirectories="..\..\CryCommon;..\DX9SDK\Include;"
 				PreprocessorDefinitions="_RELEASE;NDEBUG;WIN64;WIN32;_AMD64_;ENABLE_FRAME_PROFILER;COMP_VC;DIRECT3D9;OS_WIN32;PROC_INTEL;_WINDOWS;_USRDLL;XRENDERD3D9_EXPORTS;DO_RENDERLOG;DO_RENDERSTATS;_RENDERER"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				BufferSecurityCheck="FALSE"
+				FloatingPointModel="2"
 				ForceConformanceInForLoopScope="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="RenderPCH.h"
@@ -336,48 +529,47 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				CompileAs="0"/>
+				CompileAs="0"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCResourceCompilerTool"
+				ExecutionBucket="30"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				ExecutionBucket="33"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib d3dx9.lib d3d9.lib DxErr9.lib version.lib ../../CryCommon/fSinCos64.lib"
+				ExecutionBucket="35"
+				AdditionalOptions="/OPT:ref,icf&#x0D;&#x0A;/xxLTCG:PGO  /xxPGD:C:\MasterCD\Bin64\XRenderD3D9.pgd"
+				AdditionalDependencies="Winmm.lib d3dx9.lib d3d9.lib DxErr9.lib version.lib ../../CryCommon/fSinCos64.lib "
 				OutputFile="$(OutDir)/$(ProjectName).dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="FALSE"
 				AdditionalLibraryDirectories="D:\AMD64\dx91amd64\libs;Libraries"
+				GenerateManifest="FALSE"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				LargeAddressAware="2"
-				ImportLibrary="$(OutDir)/$(ProjectName).lib"/>
+				ImportLibrary="$(OutDir)/$(ProjectName).lib"
+				TargetMachine="17"
+			/>
 			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/XRenderD3D9.tlb"/>
+				Name="VCBscMakeTool"
+				ExecutionBucket="41"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+				ExecutionBucket="47"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCPostBuildEventTool"
+				ExecutionBucket="49"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -385,1427 +577,1890 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+			>
 			<File
-				RelativePath="D3DCGPShader.cpp">
+				RelativePath="D3DCGPShader.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DCGVProgram.cpp">
+				RelativePath="D3DCGVProgram.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DEnumeration.cpp">
+				RelativePath="D3DEnumeration.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\D3DFont.cpp">
+				RelativePath=".\D3DFont.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\D3DHDRRender.cpp">
+				RelativePath=".\D3DHDRRender.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DLog.cpp">
+				RelativePath="D3DLog.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\D3DRenderRE.cpp">
+				RelativePath=".\D3DRenderRE.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DRendPipeline.cpp">
+				RelativePath="D3DRendPipeline.cpp"
+				>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="D3DREOcean.cpp">
+				RelativePath="D3DREOcean.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DScreenRender.cpp">
+				RelativePath="D3DScreenRender.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DShaders.cpp">
+				RelativePath="D3DShaders.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\D3DShadows.cpp">
+				RelativePath=".\D3DShadows.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DSprites.cpp">
+				RelativePath="D3DSprites.cpp"
+				>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="D3DSystem.cpp">
-			</File>
-			<File
-				RelativePath=".\D3DTextures.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release64|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="D3DTexturesStreaming.cpp">
+				RelativePath="D3DSystem.cpp"
+				>
 			</File>
 			<File
-				RelativePath="D3DVertBuffer.cpp">
+				RelativePath=".\D3DTextures.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerOutput="4"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerOutput="4"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerOutput="4"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\DriverD3D9.cpp">
+				RelativePath="D3DTexturesStreaming.cpp"
+				>
+			</File>
+			<File
+				RelativePath="D3DVertBuffer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DriverD3D9.cpp"
+				>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug64|Win32">
+					Name="Debug64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release64|Win32">
+					Name="Release64|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						AssemblerOutput="4"/>
+						AssemblerOutput="4"
+					/>
 				</FileConfiguration>
 			</File>
 			<Filter
 				Name="CG"
-				Filter="">
+				>
 				<File
-					RelativePath="CG\cg.h">
+					RelativePath="CG\cg.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cg_bindlocations.h">
+					RelativePath="CG\cg_bindlocations.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cg_datatypes.h">
+					RelativePath="CG\cg_datatypes.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cg_deprecated_api.h">
+					RelativePath="CG\cg_deprecated_api.h"
+					>
 				</File>
 				<File
-					RelativePath=".\Cg\cg_enums.h">
+					RelativePath=".\Cg\cg_enums.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cg_errors.h">
+					RelativePath="CG\cg_errors.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cg_profiles.h">
+					RelativePath="CG\cg_profiles.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cgContextManager.h">
+					RelativePath="CG\cgContextManager.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cgD3D.h">
+					RelativePath="CG\cgD3D.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cgD3D9.h">
+					RelativePath="CG\cgD3D9.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cgD3D9.h">
+					RelativePath="CG\cgD3D9.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cgGL_profiles.h">
+					RelativePath="CG\cgGL_profiles.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cgProgramManager.h">
+					RelativePath="CG\cgProgramManager.h"
+					>
 				</File>
 				<File
-					RelativePath="CG\cgTemplates.h">
+					RelativePath="CG\cgTemplates.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl">
+			Filter="h;hpp;hxx;hm;inl"
+			>
 			<File
-				RelativePath="D3DCGPShader.h">
+				RelativePath="D3DCGPShader.h"
+				>
 			</File>
 			<File
-				RelativePath="D3DCGVProgram.h">
+				RelativePath="D3DCGVProgram.h"
+				>
 			</File>
 			<File
-				RelativePath=".\D3DCubeMaps.h">
+				RelativePath=".\D3DCubeMaps.h"
+				>
 			</File>
 			<File
-				RelativePath="D3DEnumeration.h">
+				RelativePath="D3DEnumeration.h"
+				>
 			</File>
 			<File
-				RelativePath="D3DSettings.h">
+				RelativePath="D3DSettings.h"
+				>
 			</File>
 			<File
-				RelativePath=".\D3DTexture.h">
+				RelativePath=".\D3DTexture.h"
+				>
 			</File>
 			<File
-				RelativePath=".\DriverD3D9.h">
+				RelativePath=".\DriverD3D9.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StaticIB.h">
+				RelativePath=".\StaticIB.h"
+				>
 			</File>
 			<File
-				RelativePath=".\StaticVB.h">
+				RelativePath=".\StaticVB.h"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Common"
-			Filter="">
+			>
 			<File
-				RelativePath="..\Common\3DUtils.cpp">
+				RelativePath="..\Common\3DUtils.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\Common\CRT.cpp">
+				RelativePath="..\Common\CRT.cpp"
+				>
 				<FileConfiguration
-					Name="Profile|Win32">
+					Name="Profile|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release64|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\Common\EvalFuncs_C.cpp">
+				RelativePath="..\Common\EvalFuncs_C.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\Common\EvalFuncs_RE.cpp">
+				RelativePath="..\Common\EvalFuncs_RE.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\Common\LightMaterial.cpp">
+				RelativePath="..\Common\LightMaterial.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\Common\Names.cpp">
+				RelativePath="..\Common\Names.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\Common\Renderer.cpp">
+				RelativePath="..\Common\Renderer.cpp"
+				>
 			</File>
 			<File
-				RelativePath="..\Common\ResFile.cpp">
+				RelativePath="..\Common\ResFile.cpp"
+				>
 			</File>
 			<Filter
 				Name="Common_h"
-				Filter="">
+				>
 				<File
-					RelativePath="..\Common\3DUtils.h">
+					RelativePath="..\Common\3DUtils.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\CommonRender.h">
+					RelativePath="..\Common\CommonRender.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\EvalFuncs.h">
+					RelativePath="..\Common\EvalFuncs.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\LZSS.H">
+					RelativePath="..\Common\LZSS.H"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Names.int">
+					RelativePath="..\Common\Names.int"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Renderer.h">
+					RelativePath="..\Common\Renderer.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RenderPipeline.h">
+					RelativePath="..\Common\RenderPipeline.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shadow_Renderer.h">
+					RelativePath="..\Common\Shadow_Renderer.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\SimpleFrameProfiler.h">
+					RelativePath="..\Common\SimpleFrameProfiler.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="RendElements"
-				Filter="">
+				>
 				<File
-					RelativePath="..\Common\RendElements\CRE2DQuad.cpp">
+					RelativePath="..\Common\RendElements\CRE2DQuad.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREBeam.cpp">
+					RelativePath="..\Common\RendElements\CREBeam.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREClientPoly.cpp">
+					RelativePath="..\Common\RendElements\CREClientPoly.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREClientPoly2D.cpp">
+					RelativePath="..\Common\RendElements\CREClientPoly2D.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREDummy.cpp">
+					RelativePath="..\Common\RendElements\CREDummy.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREFlares.cpp">
+					RelativePath="..\Common\RendElements\CREFlares.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREFlashBang.cpp">
+					RelativePath="..\Common\RendElements\CREFlashBang.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREGlare.cpp">
+					RelativePath="..\Common\RendElements\CREGlare.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREHDRProcess.cpp">
+					RelativePath="..\Common\RendElements\CREHDRProcess.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREOcean.cpp">
+					RelativePath="..\Common\RendElements\CREOcean.cpp"
+					>
 					<FileConfiguration
-						Name="Release|Win32">
+						Name="Release|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							AssemblerOutput="4"/>
+							AssemblerOutput="4"
+						/>
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREOcLeaf.cpp">
+					RelativePath="..\Common\RendElements\CREOcLeaf.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREOclusionQuery.cpp">
+					RelativePath="..\Common\RendElements\CREOclusionQuery.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREParticleSpray.cpp">
+					RelativePath="..\Common\RendElements\CREParticleSpray.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREPolyBlend.cpp">
+					RelativePath="..\Common\RendElements\CREPolyBlend.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREPolyMesh.cpp">
+					RelativePath="..\Common\RendElements\CREPolyMesh.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREPrefabGeom.cpp">
+					RelativePath="..\Common\RendElements\CREPrefabGeom.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREScreenProcess.cpp">
+					RelativePath="..\Common\RendElements\CREScreenProcess.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CREShadowMap.cpp">
+					RelativePath="..\Common\RendElements\CREShadowMap.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CRESky.cpp">
+					RelativePath="..\Common\RendElements\CRESky.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CRETempMesh.cpp">
+					RelativePath="..\Common\RendElements\CRETempMesh.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CRETerrainSector.cpp">
+					RelativePath="..\Common\RendElements\CRETerrainSector.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\CRETriMeshShadow.cpp">
+					RelativePath="..\Common\RendElements\CRETriMeshShadow.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\FFT_SSE.cpp">
+					RelativePath="..\Common\RendElements\FFT_SSE.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\RendElements\RendElement.cpp">
+					RelativePath="..\Common\RendElements\RendElement.cpp"
+					>
 				</File>
 				<Filter
 					Name="RendElements_h"
-					Filter="">
+					>
 					<File
-						RelativePath="..\Common\RendElements\CREBeam.h">
+						RelativePath="..\Common\RendElements\CREBeam.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREClientPoly.h">
+						RelativePath="..\Common\RendElements\CREClientPoly.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREClientPoly2D.h">
+						RelativePath="..\Common\RendElements\CREClientPoly2D.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREFlares.h">
+						RelativePath="..\Common\RendElements\CREFlares.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREGlare.h">
+						RelativePath="..\Common\RendElements\CREGlare.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREHDRProcess.h">
+						RelativePath="..\Common\RendElements\CREHDRProcess.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREOcean.h">
+						RelativePath="..\Common\RendElements\CREOcean.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREParticleSpray.h">
+						RelativePath="..\Common\RendElements\CREParticleSpray.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREPolyBlend.h">
+						RelativePath="..\Common\RendElements\CREPolyBlend.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CREScreenCommon.h">
+						RelativePath="..\Common\RendElements\CREScreenCommon.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CRESkyZone.h">
+						RelativePath="..\Common\RendElements\CRESkyZone.h"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\RendElements\CRETempMesh.h">
+						RelativePath="..\Common\RendElements\CRETempMesh.h"
+						>
 					</File>
 				</Filter>
 			</Filter>
 			<Filter
 				Name="Textures"
-				Filter="">
+				>
 				<File
-					RelativePath="..\Common\Textures\dxtlib.h">
+					RelativePath="..\Common\Textures\dxtlib.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Textures\TexMan.cpp">
+					RelativePath="..\Common\Textures\TexMan.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Textures\TexMan.h">
+					RelativePath="..\Common\Textures\TexMan.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Textures\TexManShadows.cpp">
+					RelativePath="..\Common\Textures\TexManShadows.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Textures\TexManStreaming.cpp">
+					RelativePath="..\Common\Textures\TexManStreaming.cpp"
+					>
 				</File>
 				<Filter
 					Name="Image"
-					Filter="">
+					>
 					<File
-						RelativePath="..\Common\Textures\Image\BmpImage.cpp">
+						RelativePath="..\Common\Textures\Image\BmpImage.cpp"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\Textures\Image\CImage.cpp">
+						RelativePath="..\Common\Textures\Image\CImage.cpp"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\Textures\Image\DDSImage.cpp">
+						RelativePath="..\Common\Textures\Image\DDSImage.cpp"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\Textures\Image\inv_cmap.cpp">
+						RelativePath="..\Common\Textures\Image\inv_cmap.cpp"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\Textures\Image\JpgImage.cpp">
+						RelativePath="..\Common\Textures\Image\JpgImage.cpp"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\Textures\Image\PcxImage.cpp">
+						RelativePath="..\Common\Textures\Image\PcxImage.cpp"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\Textures\Image\Quantize.cpp">
+						RelativePath="..\Common\Textures\Image\Quantize.cpp"
+						>
 					</File>
 					<File
-						RelativePath="..\Common\Textures\Image\TgaImage.cpp">
+						RelativePath="..\Common\Textures\Image\TgaImage.cpp"
+						>
 					</File>
 					<Filter
 						Name="Image_h"
-						Filter="">
+						>
 						<File
-							RelativePath="..\Common\Textures\Image\BmpImage.h">
+							RelativePath="..\Common\Textures\Image\BmpImage.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\CImage.h">
+							RelativePath="..\Common\Textures\Image\CImage.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\dds.h">
+							RelativePath="..\Common\Textures\Image\dds.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\DDSImage.h">
+							RelativePath="..\Common\Textures\Image\DDSImage.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\ijl.h">
+							RelativePath="..\Common\Textures\Image\ijl.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\inv_cmap.h">
+							RelativePath="..\Common\Textures\Image\inv_cmap.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\JpgImage.h">
+							RelativePath="..\Common\Textures\Image\JpgImage.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\PcxImage.h">
+							RelativePath="..\Common\Textures\Image\PcxImage.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\Quantize.h">
+							RelativePath="..\Common\Textures\Image\Quantize.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\SHendian.h">
+							RelativePath="..\Common\Textures\Image\SHendian.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\TgaImage.h">
+							RelativePath="..\Common\Textures\Image\TgaImage.h"
+							>
 						</File>
 					</Filter>
 					<Filter
 						Name="zlib"
-						Filter="">
+						>
 						<File
-							RelativePath="..\Common\Textures\Image\zlib\zconf.h">
+							RelativePath="..\Common\Textures\Image\zlib\zconf.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\zlib\zlib.h">
+							RelativePath="..\Common\Textures\Image\zlib\zlib.h"
+							>
 						</File>
 					</Filter>
 					<Filter
 						Name="jpeg6"
-						Filter="">
+						>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jchuff.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jchuff.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jcomapi.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jcomapi.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jconfig.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jconfig.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdapimin.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdapimin.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdapistd.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdapistd.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdatasrc.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdatasrc.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdcoefct.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdcoefct.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdcolor.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdcolor.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdct.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdct.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jddctmgr.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jddctmgr.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdhuff.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdhuff.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdhuff.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdhuff.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdinput.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdinput.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdmainct.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdmainct.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdmarker.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdmarker.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdmaster.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdmaster.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdpostct.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdpostct.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdsample.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdsample.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jdtrans.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jdtrans.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jerror.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jerror.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jerror.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jerror.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jfdctflt.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jfdctflt.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jidctflt.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jidctflt.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jinclude.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jinclude.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jmemmgr.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jmemmgr.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jmemnobs.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jmemnobs.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jmemsys.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jmemsys.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jmorecfg.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jmorecfg.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jpegint.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jpegint.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jpeglib.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jpeglib.h"
+							>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jutils.cpp">
+							RelativePath="..\Common\Textures\Image\jpeg6\jutils.cpp"
+							>
 							<FileConfiguration
 								Name="Release|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
-									Name="VCCLCompilerTool"/>
+									Name="VCCLCompilerTool"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Profile|Win32"
-								ExcludedFromBuild="TRUE">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="3"/>
+									UsePrecompiledHeader="3"
+								/>
 							</FileConfiguration>
 							<FileConfiguration
 								Name="Debug|Win32"
-								ExcludedFromBuild="TRUE">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug64|Win32">
+								ExcludedFromBuild="TRUE"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+								/>
 							</FileConfiguration>
 							<FileConfiguration
-								Name="Release64|Win32">
+								Name="Debug64|Win32"
+								>
 								<Tool
 									Name="VCCLCompilerTool"
-									UsePrecompiledHeader="0"/>
+									UsePrecompiledHeader="0"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release64|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									UsePrecompiledHeader="0"
+								/>
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\Common\Textures\Image\jpeg6\jversion.h">
+							RelativePath="..\Common\Textures\Image\jpeg6\jversion.h"
+							>
 						</File>
 					</Filter>
 				</Filter>
 			</Filter>
 			<Filter
 				Name="LeafBuffer"
-				Filter="">
+				>
 				<File
-					RelativePath="..\Common\LeafBufferCreate.cpp">
+					RelativePath="..\Common\LeafBufferCreate.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\LeafBufferRender.cpp">
+					RelativePath="..\Common\LeafBufferRender.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\LeafBufferSerialize.cpp">
+					RelativePath="..\Common\LeafBufferSerialize.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\pip_addons.cpp">
+					RelativePath="..\Common\pip_addons.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="NvTriStrip"
-				Filter="">
+				>
 				<File
-					RelativePath="..\Common\NvTriStrip\NvTriStrip.cpp">
+					RelativePath="..\Common\NvTriStrip\NvTriStrip.cpp"
+					>
 					<FileConfiguration
-						Name="Release|Win32">
+						Name="Release|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Profile|Win32">
+						Name="Profile|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32">
+						Name="Debug|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug64|Win32">
+						Name="Debug64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Release64|Win32">
+						Name="Release64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\Common\NvTriStrip\NvTriStrip.h">
+					RelativePath="..\Common\NvTriStrip\NvTriStrip.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\NvTriStrip\NvTriStripObjects.cpp">
+					RelativePath="..\Common\NvTriStrip\NvTriStripObjects.cpp"
+					>
 					<FileConfiguration
-						Name="Release|Win32">
+						Name="Release|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Profile|Win32">
+						Name="Profile|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32">
+						Name="Debug|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug64|Win32">
+						Name="Debug64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Release64|Win32">
+						Name="Release64|Win32"
+						>
 						<Tool
 							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"/>
+							UsePrecompiledHeader="0"
+						/>
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\Common\NvTriStrip\NvTriStripObjects.h">
+					RelativePath="..\Common\NvTriStrip\NvTriStripObjects.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\NvTriStrip\VertexCache.h">
+					RelativePath="..\Common\NvTriStrip\VertexCache.h"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="Shaders"
-				Filter="">
+				>
 				<File
-					RelativePath="..\Common\Shaders\CShader.h">
+					RelativePath="..\Common\Shaders\CShader.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\Parser.cpp">
+					RelativePath="..\Common\Shaders\Parser.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\Parser.h">
+					RelativePath="..\Common\Shaders\Parser.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\Shader.h">
+					RelativePath="..\Common\Shaders\Shader.h"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\ShaderComponents.cpp">
+					RelativePath="..\Common\Shaders\ShaderComponents.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\ShaderCore.cpp">
+					RelativePath="..\Common\Shaders\ShaderCore.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\ShaderParse.cpp">
+					RelativePath="..\Common\Shaders\ShaderParse.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\ShaderScript.cpp">
+					RelativePath="..\Common\Shaders\ShaderScript.cpp"
+					>
 				</File>
 				<File
-					RelativePath="..\Common\Shaders\ShaderTemplate.cpp">
+					RelativePath="..\Common\Shaders\ShaderTemplate.cpp"
+					>
 				</File>
 			</Filter>
 			<Filter
 				Name="3Dc"
-				Filter="">
+				>
 				<File
-					RelativePath="..\Common\3Dc\CompressorLib.h">
+					RelativePath="..\Common\3Dc\CompressorLib.h"
+					>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Libraries"
-			Filter="">
+			>
 			<File
-				RelativePath=".\Libraries\ijl15.lib">
+				RelativePath=".\Libraries\ijl15.lib"
+				>
 			</File>
 			<File
-				RelativePath=".\Libraries\nvDXTlib.lib">
+				RelativePath=".\Libraries\nvDXTlib.lib"
+				>
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\CrtOverrides.h">
+			RelativePath="..\CrtOverrides.h"
+			>
 		</File>
 		<File
-			RelativePath="..\RenderPCH.cpp">
+			RelativePath="..\RenderPCH.cpp"
+			>
 			<FileConfiguration
-				Name="Release|Win32">
+				Name="Release|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Profile|Win32">
+				Name="Profile|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Debug64|Win32">
+				Name="Debug64|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release64|Win32">
+				Name="Release64|Win32"
+				>
 				<Tool
 					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
+					UsePrecompiledHeader="1"
+				/>
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath="..\RenderPCH.h">
+			RelativePath="..\RenderPCH.h"
+			>
 		</File>
 		<File
-			RelativePath="..\Workarounds.txt">
+			RelativePath="..\Workarounds.txt"
+			>
 		</File>
 	</Files>
 	<Globals>
